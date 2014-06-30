@@ -33,7 +33,7 @@ android {
 
 
 # Additional import path used to resolve QML modules in Creator's code model
-QML_IMPORT_PATH = ..\terminalQmlPlugin\imports\
+QML_IMPORT_PATH = ../terminalQmlPlugin/imports/
 
 # Please do not modify the following two lines. Required for deployment.
 include(qtquick2applicationviewer/qtquick2applicationviewer.pri)

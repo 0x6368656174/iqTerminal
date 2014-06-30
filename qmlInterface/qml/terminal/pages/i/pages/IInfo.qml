@@ -243,6 +243,7 @@ Page {
                 ColorAnimation {
                     id: namePressAndHoldAnimation
                     target: nameItem
+                    duration: 800
                     property: "color"
                     from: "#c6c1c7"
                     to: "#ff5d1b"
