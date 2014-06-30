@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+	<item>
+		<name>i</name>
+		<title>Я</title>
+		<image>13.png</image>
+		<qml_page>i/I.qml</qml_page>
+	</item>
+	<item>
+		<name>all</name>
+		<title>ВСЕ</title>
+		<image>15.png</image>
+		<qml_page>all/All.qml</qml_page>
+	</item>
+	<item>
+		<name>contacts</name>
+		<title>КОНТАКТЫ</title>
+		<image>16.png</image>
+		<qml_page>contacts/Contacts.qml</qml_page>
+	</item>
+	<item>
+		<name>visitors</name>
+		<title>ПОСЕТИТЕЛИ</title>
+		<image>17.png</image>
+		<qml_page>visitors/Visitors.qml</qml_page>
+	</item>
+	<item>
+		<name>torrent</name>
+		<title>ТОРРЕНТ</title>
+		<image>14.png</image>
+		<qml_page>torrent/Torrent.qml</qml_page>
+	</item>
+	<item>
+		<name>settings</name>
+		<title>НАСТРОЙКИ</title>
+		<image>18.png</image>
+		<qml_page>settings/Settings.qml</qml_page>
+	</item>
+</menu>

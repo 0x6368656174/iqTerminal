@@ -1,0 +1,4 @@
+module TerminalQmlPlugin
+plugin terminalqmlplugin
+
+TerminalMouseArea 1.0 TerminalMouseArea.qml
