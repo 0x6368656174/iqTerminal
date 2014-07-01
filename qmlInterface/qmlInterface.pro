@@ -2,7 +2,7 @@ QT += xml xmlpatterns multimedia
 
 DESTDIR = ../bin/
 
-
+include(../terminalQmlPlugin/terminalQmlPlugin.pri)
 
 #Не настоящая цель. Просто для удобства работы в QtCreator, чтоб была видна папка QML.
 #Сами файлы QML будут находиться в ресурсах, т.к. это в разы ускоряет работу приложения
@@ -10,27 +10,13 @@ qml.source = qml/terminal
 qml.target = qml
 deploymentfolder = qml
 item = item$${deploymentfolder}
-greaterThan(QT_MAJOR_VERSION, 4) {
-    itemsources = $${item}.files
-} else {
-    itemsources = $${item}.sources
-}
+itemsources = $${item}.files
 $$itemsources = $$eval($${deploymentfolder}.source)
 itempath = $${item}.path
 $$itempath= $$eval($${deploymentfolder}.target)
 export($$itemsources)
 export($$itempath)
 DEPLOYMENT += $$item
-
-
-android {
-    imports_dir.source = ../bin/imports
-    imports_dir.target =
-
-    DEPLOYMENTFOLDERS += imports_dir
-}
-
-
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH = ../terminalQmlPlugin/imports/
@@ -45,8 +31,6 @@ SOURCES += main.cpp \
 
 HEADERS += \
     terminalimageprovider.h
-
-ANDROID_EXTRA_LIBS +=$$OUT_PWD/../bin/plugins/libterminalqmlplugin.so
 
 RESOURCES += \
     data.qrc \

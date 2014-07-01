@@ -1,6 +1,7 @@
 #include <QtGui/QGuiApplication>
 #include "qtquick2applicationviewer.h"
 #include "terminalimageprovider.h"
+#include "../terminalQmlPlugin/terminalQmlPlugin.h"
 #include <QQmlEngine>
 #include <QFileInfo>
 #include <QFile>
@@ -36,14 +37,10 @@ int main(int argc, char *argv[])
 
     initialData();
 
-#ifdef Q_OS_ANDROID
-    viewer.addImportPath("assets:/imports");
-    viewer.engine()->addPluginPath(QGuiApplication::applicationDirPath());
-#else
-    viewer.addImportPath(QGuiApplication::applicationDirPath() + "/imports/");
-    viewer.engine()->addPluginPath(QGuiApplication::applicationDirPath() + "/plugins/");
-#endif
+    TerminalQmlPlugin terminalQmlPlugin;
+    terminalQmlPlugin.registerTypes("TerminalQmlPlugin");
 
+    viewer.addImportPath("qrc:/imports/");
     viewer.engine()->addImageProvider("xml", new TerminalImageProvider);
     viewer.setSource(QUrl("qrc:/qml/terminal/main.qml"));
 
