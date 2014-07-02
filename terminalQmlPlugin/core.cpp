@@ -1,5 +1,6 @@
 #include "core.h"
 #include <QDir>
+#include <QStandardPaths>
 
 Core::Core(QObject *parent) :
     QObject(parent)
@@ -15,9 +16,9 @@ qreal Core::dp(const qreal px) const
 #endif
 }
 
-QUrl Core::dataDir() const
+QUrl Core::dataDir()
 {
-    return QUrl::fromLocalFile(QDir::homePath() + "/.terminalData/");
+    return QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/");
 }
 
 QString Core::dataDirPath() const

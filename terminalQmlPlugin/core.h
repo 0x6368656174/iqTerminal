@@ -26,7 +26,7 @@ public:
 
 public:
     OS operatingSystem() const;
-    QUrl dataDir() const;
+    static QUrl dataDir();
     QString dataDirPath() const;
 };
 

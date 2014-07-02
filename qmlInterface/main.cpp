@@ -1,7 +1,8 @@
 #include <QtGui/QGuiApplication>
 #include "qtquick2applicationviewer.h"
 #include "terminalimageprovider.h"
-#include "../terminalQmlPlugin/terminalQmlPlugin.h"
+#include "terminalQmlPlugin.h"
+#include "core.h"
 #include <QQmlEngine>
 #include <QFileInfo>
 #include <QFile>
@@ -10,18 +11,19 @@
 
 void initialData()
 {
-    if (!QFileInfo::exists(QDir::homePath() + "/.terminalData"))
+    if (!QFileInfo::exists(Core::dataDir().toLocalFile()))
     {
         QDir dataDir;
-        dataDir.mkdir(QDir::homePath() + "/.terminalData");
+        dataDir.mkdir(Core::dataDir().toLocalFile());
     }
 
     QStringList dataFiles = QStringList() << "i.xml" << "menu.xml";
     foreach (QString dataFile, dataFiles)
     {
-        QString dataFilePath = QDir::homePath() + "/.terminalData/" + dataFile;
+        QString dataFilePath = Core::dataDir().toLocalFile() + dataFile;
         if (!QFileInfo::exists(dataFilePath))
         {
+            qDebug() << QString("Copy \":/data/%0\" to \"%1\".").arg(dataFile).arg(dataFilePath);
             QFile::copy(":/data/" + dataFile, dataFilePath);
         }
         QFile file (dataFilePath);
