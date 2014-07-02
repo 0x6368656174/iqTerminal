@@ -3,6 +3,7 @@ import TerminalQmlPlugin 1.0
 import QtQuick.XmlListModel 2.0
 import "../.."
 import ".."
+import "../../../elements"
 
 Page {
     id: photoSlider

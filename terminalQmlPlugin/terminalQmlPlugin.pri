@@ -16,9 +16,6 @@
         $$PWD/base64.cpp \
         $$PWD/filevalidator.cpp
 
-    RESOURCES += \
-        $$PWD/imports.qrc
-
     OTHER_FILES += \
         $$PWD/imports/TerminalQmlPlugin\TerminalMouseArea.qml \
         $$PWD/imports/TerminalQmlPlugin/qmldir

@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>imports/TerminalQmlPlugin/qmldir</file>
-        <file>imports/TerminalQmlPlugin/TerminalMouseArea.qml</file>
-    </qresource>
-</RCC>

@@ -2,6 +2,7 @@ import QtQuick 2.0
 import TerminalQmlPlugin 1.0
 import ".."
 import "pages"
+import "../../elements"
 
 Page {
     id:iPage

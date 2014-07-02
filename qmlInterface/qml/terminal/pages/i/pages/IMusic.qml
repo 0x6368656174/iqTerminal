@@ -1,10 +1,10 @@
 import QtQuick 2.0
-import QtQuick 2.0
 import QtQuick.Dialogs 1.1
 import TerminalQmlPlugin 1.0
 import QtQuick.XmlListModel 2.0
 import "../.."
 import ".."
+import "../.././../elements"
 
 Page {
     id: page

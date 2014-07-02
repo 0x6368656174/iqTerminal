@@ -4,6 +4,7 @@ import QtQuick.XmlListModel 2.0
 import QtMultimedia 5.2
 import "../.."
 import ".."
+import "../../../elements"
 
 Page {
     id: videoPlayer

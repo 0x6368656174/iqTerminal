@@ -177,5 +177,6 @@
         <file>qml/terminal/pages/i/pages/PhotoSlider.qml</file>
         <file>qml/terminal/pages/i/pages/VideoPlayer.qml</file>
         <file>qml/terminal/pages/Page.qml</file>
+        <file>qml/terminal/elements/TerminalMouseArea.qml</file>
     </qresource>
 </RCC>

@@ -40,7 +40,6 @@ int main(int argc, char *argv[])
     TerminalQmlPlugin terminalQmlPlugin;
     terminalQmlPlugin.registerTypes("TerminalQmlPlugin");
 
-    viewer.addImportPath("qrc:/imports/");
     viewer.engine()->addImageProvider("xml", new TerminalImageProvider);
     viewer.setSource(QUrl("qrc:/qml/terminal/main.qml"));
 
