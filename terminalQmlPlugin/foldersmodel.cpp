@@ -8,10 +8,10 @@ FoldersModel::FoldersModel(QObject *parent) :
     _source(QUrl()),
     _parentElement("")
 {
-    _roles[Id] = "id";
-    _roles[Name] = "name";
-    _roles[SidsAvailability] = "sidsAvailability";
-    _roles[LoadingInProcess] = "loadingInProcess";
+    _roles[Id] = "folder_id";
+    _roles[Name] = "folder_name";
+    _roles[SidsAvailability] = "folder_sids_availability";
+    _roles[LoadingInProcess] = "folder_loading_in_process";
 }
 
 void FoldersModel::setSource(const QUrl &source)
@@ -141,7 +141,7 @@ bool FoldersModel::loadFromDomElement(const QDomElement &domElement)
         if (itemId != -1)
         {
             Folder *oldItem = find(itemId);
-            if (oldItem)
+            if (!oldItem)
             {
                 //Создадим новый файл
                 insertRow(row);

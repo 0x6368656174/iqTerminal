@@ -200,5 +200,7 @@
         <file>qml/terminal/pages/torrent/Torrent.qml</file>
         <file>qml/terminal/elements/Button.qml</file>
         <file>qml/terminal/elements/BackButton.qml</file>
+        <file>qml/terminal/pages/torrent/pages/TorrentDownload.qml</file>
+        <file>qml/terminal/pages/torrent/pages/TorrentSearch.qml</file>
     </qresource>
 </RCC>

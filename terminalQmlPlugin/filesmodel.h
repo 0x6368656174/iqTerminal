@@ -24,7 +24,7 @@ public:
     QDomElement toDomElement(QDomElement &rootElement, QDomDocument &domDocument) const;
 
 public:
-    virtual inline QHash<int, QByteArray> roleName() const {return _roles;}
+    virtual inline QHash<int, QByteArray> roleNames() const {return _roles;}
 
     virtual inline int rowCount(const QModelIndex &parent = QModelIndex()) const {Q_UNUSED(parent); return _items.count();}
 

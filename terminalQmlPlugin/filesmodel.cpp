@@ -3,10 +3,10 @@
 FilesModel::FilesModel(QObject *parent) :
     QAbstractListModel(parent)
 {
-    _roles[Id] = "id";
-    _roles[Path] = "path";
-    _roles[Size] = "size";
-    _roles[DowloadedSize] = "downloadedSize";
+    _roles[Id] = "file_id";
+    _roles[Path] = "file_path";
+    _roles[Size] = "file_size";
+    _roles[DowloadedSize] = "file_downloaded_size";
 }
 
 bool FilesModel::loadFromDomElement(const QDomElement &domElement)
@@ -45,7 +45,7 @@ bool FilesModel::loadFromDomElement(const QDomElement &domElement)
         if (itemId != -1)
         {
             File *oldItem = find(itemId);
-            if (oldItem)
+            if (!oldItem)
             {
                 //Создадим новый файл
                 insertRow(row);

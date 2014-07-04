@@ -25,11 +25,11 @@ Page {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
 
-        Image {
-            anchors.fill: parent
-            fillMode: Image.PreserveAspectCrop
-            source: "../../images/1a.png"
-        }
+//        Image {
+//            anchors.fill: parent
+//            fillMode: Image.PreserveAspectCrop
+//            source: "../../images/1a.png"
+//        }
 
         IInfo {
             id: iInfo
