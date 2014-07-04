@@ -35,3 +35,6 @@ HEADERS += \
 RESOURCES += \
     data.qrc \
     qml.qrc
+
+OTHER_FILES += \
+    qml/terminal/elements/BaseHeader.qml

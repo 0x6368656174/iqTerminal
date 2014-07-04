@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>data/i.xml</file>
         <file>data/menu.xml</file>
+        <file>data/torrent.xml</file>
     </qresource>
 </RCC>

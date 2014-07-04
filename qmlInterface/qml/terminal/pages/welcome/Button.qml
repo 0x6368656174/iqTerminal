@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
-import "../../elements"
+import "../../elements" as Elements
 
 Image {
     id: button
@@ -92,7 +92,7 @@ Image {
         NumberAnimation { duration: 200 }
     }
 
-    TerminalMouseArea {
+    Elements.TerminalMouseArea {
         id: ma
         anchors.fill: parent
         platformIndependentHoverEnabled: true

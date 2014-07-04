@@ -1,13 +1,7 @@
 import QtQuick 2.0
-import TerminalQmlPlugin 1.0
+import "../../elements"
 
-Rectangle {
-    property string activeTab: "info"
-
-    anchors.left: parent.left
-    anchors.right: parent.right
-    height: Core.dp(24)
-
+BaseHeader {
     Row {
         anchors.fill: parent
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<torrent>
+	<folder id="0">
+		<name>Rammstein</name>
+		<availability>1</availability>
+		<loading>true</loading>
+		<file id="0">
+			<path>file://~/testData/Rammstein - Du hast.mp4</path>
+			<size>15497455</size>
+			<downloaded>2591</downloaded>
+		</file>
+		<file id="1">
+			<path>file://~/testData/Rammstein - Mutter.mp4</path>
+			<size>9108175</size>
+			<downloaded>0</downloaded>
+		</file>
+	</folder>
+	<folder id="1">
+		<name>Louis Armstrong</name>
+		<availability>0</availability>
+		<loading>true</loading>
+		<file id="0">
+			<path>file://~/testData/Louis Armstrong - What a wonderful world.mp4</path>
+			<size>6188310</size>
+			<downloaded>91385</downloaded>
+		</file>
+	</folder>
+	<folder id="2">
+		<name>Blue Stahli</name>
+		<availability>2</availability>
+		<loading>true</loading>
+		<file id="0">
+			<path>file://~/testData/Blue Stahli - Anti You.mp3</path>
+			<size>8831336</size>
+			<downloaded>8831336</downloaded>
+		</file>
+		<file id="1">
+			<path>file://~/testData/Blue Stahli - ULTRAnumb.mp3</path>
+			<size>10622601</size>
+			<downloaded>10622601</downloaded>
+		</file>
+	</folder>
+	<folder id="3">
+		<name>Scorpions</name>
+		<availability>3</availability>
+		<loading>false</loading>
+		<file id="0">
+			<path>file://~/testData/Scorpions - Raised on Rock.mp3</path>
+			<size>6176733</size>
+			<downloaded>0</downloaded>
+		</file>
+		<file id="1">
+			<path>file://~/testData/Scorpions - Your Last Song.mp3</path>
+			<size>5910604</size>
+			<downloaded>0</downloaded>
+		</file>
+	</folder>
+</torrent>

@@ -6,10 +6,17 @@ import "../../elements"
 
 Page {
     id:iPage
+    name: "i"
     property string iXmlPath: Core.dataDir + "/i.xml"
     Header {
         id: header
         activeTab: "info"
+    }
+
+    BackButton {
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.topMargin: Core.dp(70)
     }
 
     Item {
@@ -29,7 +36,7 @@ Page {
             iXmlPath: iPage.iXmlPath
             opacity: header.activeTab === "info"?1:0
             visible: opacity !== 0
-            Behavior on opacity {NumberAnimation {duration: 200} }
+            Behavior on opacity {NumberAnimation {duration: 300} }
 
             onDataChanged: save()
         }
@@ -39,7 +46,7 @@ Page {
             iXmlPath: iPage.iXmlPath
             opacity: header.activeTab === "photo"?1:0
             visible: opacity !== 0
-            Behavior on opacity {NumberAnimation {duration: 200} }
+            Behavior on opacity {NumberAnimation {duration: 300} }
 
             onDataChanged: save()
         }
@@ -49,7 +56,7 @@ Page {
             iXmlPath: iPage.iXmlPath
             opacity: header.activeTab === "video"?1:0
             visible: opacity !== 0
-            Behavior on opacity {NumberAnimation {duration: 200} }
+            Behavior on opacity {NumberAnimation {duration: 300} }
 
             onDataChanged: save()
             onNeedStopAllPlayer: stopAllPlayer(pageName)
@@ -60,7 +67,7 @@ Page {
             iXmlPath: iPage.iXmlPath
             opacity: header.activeTab === "music"?1:0
             visible: opacity !== 0
-            Behavior on opacity {NumberAnimation {duration: 200} }
+            Behavior on opacity {NumberAnimation {duration: 300} }
 
             onDataChanged: save()
             onNeedStopAllPlayer: stopAllPlayer(pageName)

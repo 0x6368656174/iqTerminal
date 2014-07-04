@@ -2,6 +2,7 @@ import QtQuick 2.0
 import TerminalQmlPlugin 1.0
 
 import ".."
+import "." as Welcome
 
 Page {
     id: welcomePage
@@ -351,7 +352,7 @@ Page {
                 Item {
                     width: Core.dp(28)
                     height: width
-                    Button {
+                    Welcome.Button {
                         id: signInButton
                         anchors.centerIn: parent
                         source: "../../images/5.png"
@@ -362,7 +363,7 @@ Page {
                 Item {
                     width: Core.dp(28)
                     height: width
-                    Button {
+                    Welcome.Button {
                         id: registerButton
                         anchors.centerIn: parent
                         source: "../../images/6.png"
@@ -373,7 +374,7 @@ Page {
                 }Item {
                     width: Core.dp(28)
                     height: width
-                    Button {
+                    Welcome.Button {
                         id: remindButton
                         anchors.centerIn: parent
                         source: "../../images/7.png"
@@ -383,7 +384,7 @@ Page {
                 }Item {
                     width: Core.dp(28)
                     height: width
-                    Button {
+                    Welcome.Button {
                         id: changeButton
                         anchors.centerIn: parent
                         source: "../../images/8.png"
@@ -424,14 +425,14 @@ Page {
 
                         Behavior on opacity {NumberAnimation {duration: 200;} }
 
-                        LineEdit {
+                        Welcome.LineEdit {
                             id: signInLogin
                             placeholderText: qsTr("LOGIN")
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: signInPassword
                             onSubmit: submitButton.click()
                         }
-                        LineEdit {
+                        Welcome.LineEdit {
                             id: signInPassword
                             placeholderText: qsTr("PASSWORD")
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -451,21 +452,21 @@ Page {
 
                         Behavior on opacity {NumberAnimation {duration: 200;} }
 
-                        LineEdit {
+                        Welcome.LineEdit {
                             id: registerLogin
                             placeholderText: qsTr("LOGIN")
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: registerEmail
                             onSubmit: submitButton.click()
                         }
-                        LineEdit {
+                        Welcome.LineEdit {
                             id: registerEmail
                             placeholderText: qsTr("EMAIL")
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: registerName
                             onSubmit: submitButton.click()
                         }
-                        LineEdit {
+                        Welcome.LineEdit {
                             id: registerName
                             placeholderText: qsTr("YOUR NAME")
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -484,7 +485,7 @@ Page {
 
                         Behavior on opacity {NumberAnimation {duration: 200;} }
 
-                        LineEdit {
+                        Welcome.LineEdit {
                             id: remindEmal
                             placeholderText: qsTr("EMAIL")
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -502,7 +503,7 @@ Page {
 
                         Behavior on opacity {NumberAnimation {duration: 200;} }
 
-                        LineEdit {
+                        Welcome.LineEdit {
                             id: changeOldPassword
                             placeholderText: qsTr("OLD PASSWORD")
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -510,7 +511,7 @@ Page {
                             KeyNavigation.tab: changeNewPassword
                             onSubmit: submitButton.click()
                         }
-                        LineEdit {
+                        Welcome.LineEdit {
                             id: changeNewPassword
                             placeholderText: qsTr("NEW PASSWORD")
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -518,7 +519,7 @@ Page {
                             KeyNavigation.tab: changeRepeatPassword
                             onSubmit: submitButton.click()
                         }
-                        LineEdit {
+                        Welcome.LineEdit {
                             id: changeRepeatPassword
                             placeholderText: qsTr("REPEAT PASSWORD")
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -586,7 +587,7 @@ Page {
                     anchors.horizontalCenterOffset: Core.dp(66)
                     anchors.topMargin: Core.dp(130)
 
-                    Button {
+                    Welcome.Button {
                         id: submitButton
                         anchors.centerIn: parent
                         baseWidth: Core.dp(18)

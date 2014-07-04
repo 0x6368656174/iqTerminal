@@ -5,17 +5,70 @@ import "pages/welcome"
 import "pages/menu"
 
 Rectangle {
+    id: main
     width: Core.dp(208)
     height: Core.dp(285)
 
+    Image {
+        anchors.fill: parent
+        fillMode: Image.PreserveAspectCrop
+        source: "images/1a.png"
+    }
+
+    Rectangle {
+        anchors.fill: parent
+        color: "#b0706a78"
+    }
+
+    QtObject {
+        id: privateData
+        property var pageHistory
+        Component.onCompleted: {
+            pageHistory = []
+        }
+    }
+
     function showRightPage(name) {
         for (var i = 0; i < pages.children.length; i++) {
-            pages.children[i].visible = false
+            if (pages.children[i].visible) {
+                privateData.pageHistory.push(pages.children[i].name)
+                pages.children[i].hideLeft()
+            }
             if (pages.children[i].name === name) {
-                console.log("Show page \"" + name + "\"")
-                pages.children[i].visible = true
+                pages.children[i].showRight()
             }
         }
+        console.log("Show page \"" + name + "\"")
+//        showPage(name)
+    }
+
+    function showLeftPage(name) {
+        for (var i = 0; i < pages.children.length; i++) {
+            if (pages.children[i].visible) {
+                pages.children[i].hideRight()
+            }
+            if (pages.children[i].name === name) {
+                pages.children[i].showLeft()
+            }
+        }
+        console.log("Show page \"" + name + "\"")
+//        showPage(name)
+    }
+
+//    function showPage(name) {
+//        for (var i = 0; i < pages.children.length; i++) {
+//            if (pages.children[i].name === name) {
+//                pages.children[i].opacity = 1
+//            } else {
+//                pages.children[i].opacity = 0
+//            }
+//        }
+//    }
+
+    function backPage() {
+        var backPageName = privateData.pageHistory.pop()
+        console.log("Back to page \"" + backPageName + "\"")
+        showLeftPage(backPageName)
     }
 
     Item {
@@ -28,13 +81,12 @@ Rectangle {
 
         Menu {
             visible: false
-
             onPageLoaded: addMenuPage(page)
             onPageClicked: showRightPage(pageName)
 
             function addMenuPage(page) {
-                page.parent = pages
                 page.visible = false
+                page.parent = pages
             }
         }
     }

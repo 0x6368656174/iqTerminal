@@ -8,6 +8,11 @@
 #include "base64.h"
 #include "filevalidator.h"
 
+#include "file.h"
+#include "filesmodel.h"
+#include "folder.h"
+#include "foldersmodel.h"
+
 static QObject *core_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine)
@@ -49,6 +54,14 @@ public:
         qmlRegisterSingletonType<Base64>(uri, 1, 0, "Base64", base64_singletontype_provider);
         // @uri TerminalQmlPlugin
         qmlRegisterSingletonType<FileValidator>(uri, 1, 0, "FileValidator", fileValidator_singletontype_provider);
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<File>(uri, 1, 0, "File");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<FilesModel>(uri, 1, 0, "FilesModel");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<Folder>(uri, 1, 0, "Folder");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<FoldersModel>(uri, 1, 0, "FoldersModel");
     }
 };
 

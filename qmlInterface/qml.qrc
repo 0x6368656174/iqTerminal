@@ -162,11 +162,9 @@
         <file>qml/terminal/images/90.png</file>
         <file>qml/terminal/images/91.png</file>
         <file>qml/terminal/pages/i/AudioPlayer.qml</file>
-        <file>qml/terminal/pages/i/Button.qml</file>
         <file>qml/terminal/pages/i/EditBar.qml</file>
         <file>qml/terminal/pages/i/EditButton.qml</file>
         <file>qml/terminal/pages/i/Header.qml</file>
-        <file>qml/terminal/pages/i/HeaderButton.qml</file>
         <file>qml/terminal/pages/i/I.qml</file>
         <file>qml/terminal/pages/i/MediaButtons.qml</file>
         <file>qml/terminal/pages/i/SaveBar.qml</file>
@@ -178,5 +176,29 @@
         <file>qml/terminal/pages/i/pages/VideoPlayer.qml</file>
         <file>qml/terminal/pages/Page.qml</file>
         <file>qml/terminal/elements/TerminalMouseArea.qml</file>
+        <file>qml/terminal/elements/BaseHeader.qml</file>
+        <file>qml/terminal/elements/HeaderButton.qml</file>
+        <file>qml/terminal/images/92.png</file>
+        <file>qml/terminal/images/93.png</file>
+        <file>qml/terminal/images/93a.png</file>
+        <file>qml/terminal/images/94.png</file>
+        <file>qml/terminal/images/94a.png</file>
+        <file>qml/terminal/images/95.png</file>
+        <file>qml/terminal/images/95a.png</file>
+        <file>qml/terminal/images/96.png</file>
+        <file>qml/terminal/images/96a.png</file>
+        <file>qml/terminal/images/97.png</file>
+        <file>qml/terminal/images/97a.png</file>
+        <file>qml/terminal/images/97b.png</file>
+        <file>qml/terminal/images/97c.png</file>
+        <file>qml/terminal/images/98.png</file>
+        <file>qml/terminal/images/99.png</file>
+        <file>qml/terminal/images/99a.png</file>
+        <file>qml/terminal/images/100.png</file>
+        <file>qml/terminal/images/100a.png</file>
+        <file>qml/terminal/pages/torrent/Header.qml</file>
+        <file>qml/terminal/pages/torrent/Torrent.qml</file>
+        <file>qml/terminal/elements/Button.qml</file>
+        <file>qml/terminal/elements/BackButton.qml</file>
     </qresource>
 </RCC>

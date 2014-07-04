@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
 import "../../elements"
+import "." as Welcome
 
 Item {
     id: startViewRowItem
@@ -48,7 +49,7 @@ Item {
         Item {
             width: height
             height: parent.height
-            Button {
+            Welcome.Button {
                 id: buttonImage
                 source: startViewRowItem.iconSource
                 anchors.centerIn: parent

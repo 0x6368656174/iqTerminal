@@ -17,7 +17,7 @@ void initialData()
         dataDir.mkdir(Core::dataDir().toLocalFile());
     }
 
-    QStringList dataFiles = QStringList() << "i.xml" << "menu.xml";
+    QStringList dataFiles = QStringList() << "i.xml" << "menu.xml" << "torrent.xml";
     foreach (QString dataFile, dataFiles)
     {
         QString dataFilePath = Core::dataDir().toLocalFile() + dataFile;

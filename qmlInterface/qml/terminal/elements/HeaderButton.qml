@@ -1,12 +1,11 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
-import "../../elements"
-
 
 Rectangle {
     id: button
     property int imageNumber
     property bool isActive: false
+    property bool inverse: false
 
     onIsActiveChanged: {
         if (!clickAnimation.running)
@@ -21,11 +20,12 @@ Rectangle {
 
     Item {
         anchors.fill: parent
+        clip: true
         Image {
             id: activeImage
             visible: false
             anchors.fill: parent
-            source: "../../images/" + imageNumber + ".png"
+            source: !inverse?"../images/" + imageNumber + ".png":"../images/" + imageNumber + "a.png"
         }
 
         Image {
@@ -33,7 +33,7 @@ Rectangle {
             anchors.centerIn: parent
             width: parent.width
             height: parent.height
-            source: "../../images/" + imageNumber + "a.png"
+            source: !inverse?"../images/" + imageNumber + "a.png":"../images/" + imageNumber + ".png"
         }
     }
 

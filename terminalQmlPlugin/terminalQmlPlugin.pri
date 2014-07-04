@@ -20,3 +20,15 @@
         $$PWD/imports/TerminalQmlPlugin\TerminalMouseArea.qml \
         $$PWD/imports/TerminalQmlPlugin/qmldir
 }
+
+HEADERS += \
+    ../terminalQmlPlugin/folder.h \
+    ../terminalQmlPlugin/file.h \
+    ../terminalQmlPlugin/filesmodel.h \
+    ../terminalQmlPlugin/foldersmodel.h
+
+SOURCES += \
+    ../terminalQmlPlugin/folder.cpp \
+    ../terminalQmlPlugin/file.cpp \
+    ../terminalQmlPlugin/filesmodel.cpp \
+    ../terminalQmlPlugin/foldersmodel.cpp
