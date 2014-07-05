@@ -1,10 +1,12 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
-import "../../elements"
 
 Rectangle {
     id: button
-    property string type: "add"
+    property string type
+    property bool enabled: true
+
+    visible: enabled
 
     signal clicked()
 
@@ -23,15 +25,19 @@ Rectangle {
 
             source: {
                 if (type === "add") {
-                    return "../../images/43.png"
+                    return "../images/43.png"
                 } else if (type === "edit") {
-                    return "../../images/24.png"
+                    return "../images/24.png"
                 } else if (type === "remove") {
-                    return "../../images/45.png"
+                    return "../images/45.png"
                 } else if (type === "submit") {
-                    return "../../images/34b.png"
+                    return "../images/34b.png"
                 } else if (type === "back") {
-                    return "../../images/22b.png"
+                    return "../images/22b.png"
+                } else if (type === "selectAll") {
+                    return "../images/34b.png"
+                } else if (type === "deselectAll") {
+                    return "../images/34.png"
                 }
 
                 return ""
@@ -42,6 +48,7 @@ Rectangle {
     }
 
     TerminalMouseArea {
+        id: ma
         anchors.fill: parent
         hoverEnabled: true
         onContainsMouseChanged: {
@@ -51,6 +58,7 @@ Rectangle {
                 button.color = "#b0b5b4b9"
             }
         }
+
         onPressed: {
             clickAnimation.restart()
             button.clicked()

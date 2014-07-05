@@ -8,6 +8,7 @@
 class FilesModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
 public:
     explicit FilesModel(QObject *parent = 0);
 
@@ -15,13 +16,19 @@ public:
 
     Q_INVOKABLE File * find(const qint64 id) const;
 
-    Q_INVOKABLE File * appendNew(const QString &path);
+    Q_INVOKABLE File * appendNew(const QUrl &path);
 
-    Q_INVOKABLE File * insertNew(int row, const QString &path);
+    Q_INVOKABLE File * insertNew(int row, const QUrl &path);
+
+    Q_INVOKABLE bool remove(int row);
 
     bool loadFromDomElement(const QDomElement &domElement);
 
-    QDomElement toDomElement(QDomElement &rootElement, QDomDocument &domDocument) const;
+    void toDomElement(QDomElement &rootElement, QDomDocument &domDocument) const;
+
+    qint64 filesSumSize() const;
+
+    qint64 filesDownloadedSumSize() const;
 
 public:
     virtual inline QHash<int, QByteArray> roleNames() const {return _roles;}
@@ -34,6 +41,14 @@ public:
 
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
+public:
+    int count() const {return rowCount();}
+
+signals:
+    void countChanged();
+    void filesSumSizeChanged();
+    void filesDownloadedSumSizeChanged();
+
 private slots:
     void itemDataChanged();
 
@@ -42,6 +57,7 @@ private:
     {
         Id = Qt::UserRole,
         Path,
+        Name,
         Size,
         DowloadedSize
     };

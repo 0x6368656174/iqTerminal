@@ -1,6 +1,7 @@
 #include "folder.h"
 #include <QDebug>
 #include <QDir>
+#include <QUrl>
 
 Folder::Folder(QObject *parent) :
     QObject(parent),
@@ -8,8 +9,13 @@ Folder::Folder(QObject *parent) :
     _id(-1),
     _name(""),
     _sidsAvailability(0),
-    _loadingInProcess(false)
+    _loadingInProcess(false),
+    _additionalData(NULL),
+    _size(0),
+    _downloadedSize(0)
 {
+    connect(_filesModel, SIGNAL(filesSumSizeChanged()), this, SLOT(updateSize()));
+    connect(_filesModel, SIGNAL(filesDownloadedSumSizeChanged()), this, SLOT(updateDownloadedSize()));
 }
 
 void Folder::reset()
@@ -60,22 +66,79 @@ void Folder::setLoadingInProcess(const bool loadingInProcess)
     }
 }
 
-bool Folder::loadFromPath(const QString &path)
+void Folder::setAdditionalData(QObject *additionalData)
+{
+    if (_additionalData != additionalData)
+    {
+        _additionalData = additionalData;
+        _additionalData->setParent(this);
+
+        emit additionalDataChanged();
+    }
+}
+
+void Folder::setSize(const qint64 size)
+{
+    if (_size != size)
+    {
+        _size = size;
+
+        emit sizeChanged();
+    }
+}
+
+void Folder::setDownloadedSize(const qint64 downloadedSize)
+{
+    if (_downloadedSize != downloadedSize)
+    {
+        _downloadedSize = downloadedSize;
+
+        emit downloadedSizeChanged();
+    }
+}
+
+bool Folder::loadFromPath(const QUrl &path)
 {
     reset();
-    QDir dir(path);
+    QDir dir(path.toLocalFile());
     if (dir.exists())
     {
         setName(dir.dirName());
 
-        foreach (QString filePath, dir.entryList(QDir::NoDotAndDotDot))
-        {
-            _filesModel->appendNew(filePath);
-        }
+        loadFromDir(path);
 
         return true;
     }
     return false;
+}
+
+void Folder::updateSize()
+{
+    setSize(_filesModel->filesSumSize());
+}
+
+void Folder::updateDownloadedSize()
+{
+    setDownloadedSize(_filesModel->filesDownloadedSumSize());
+}
+
+void Folder::loadFromDir(const QUrl &path)
+{
+    QDir dir(path.toLocalFile());
+    if (dir.exists())
+    {
+        foreach (QFileInfo fileInfo, dir.entryInfoList(QDir::AllEntries | QDir::NoDotAndDotDot))
+        {
+            if (fileInfo.isDir())
+            {
+                loadFromDir(QUrl::fromLocalFile(fileInfo.absoluteFilePath()));
+            }
+            else
+            {
+                _filesModel->appendNew(QUrl::fromLocalFile(fileInfo.absoluteFilePath()));
+            }
+        }
+    }
 }
 
 bool Folder::loadFromDomElement(const QDomElement &domElement)

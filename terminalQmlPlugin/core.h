@@ -24,6 +24,7 @@ public:
 
     Q_INVOKABLE qreal dp(const qreal px) const;
 
+    Q_INVOKABLE QString humanReadableSize(const qint64 size);
 public:
     OS operatingSystem() const;
     static QUrl dataDir();

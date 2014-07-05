@@ -44,3 +44,23 @@ Core::OS Core::operatingSystem() const
     return Windows;
 #endif
 }
+
+QString Core::humanReadableSize(const qint64 size)
+{
+    qreal bytes = size;
+    int thresh = 1024;
+    if (bytes < thresh)
+        return QString("%0 B").arg(bytes);
+    QStringList units = QStringList() << tr("KiB") << tr("MiB") << tr("GiB")
+                                      << tr("TiB") << tr("PiB") << tr("EiB")
+                                      << tr("ZiB") << tr("YiB");
+    int u = -1;
+    do
+    {
+        bytes /= thresh;
+        u++;
+    }
+    while(bytes >= thresh);
+
+    return QString("%0 %1").arg(bytes, 0, 'f', 1).arg(units[u]);
+}

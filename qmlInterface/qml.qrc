@@ -162,8 +162,6 @@
         <file>qml/terminal/images/90.png</file>
         <file>qml/terminal/images/91.png</file>
         <file>qml/terminal/pages/i/AudioPlayer.qml</file>
-        <file>qml/terminal/pages/i/EditBar.qml</file>
-        <file>qml/terminal/pages/i/EditButton.qml</file>
         <file>qml/terminal/pages/i/Header.qml</file>
         <file>qml/terminal/pages/i/I.qml</file>
         <file>qml/terminal/pages/i/MediaButtons.qml</file>
@@ -202,5 +200,8 @@
         <file>qml/terminal/elements/BackButton.qml</file>
         <file>qml/terminal/pages/torrent/pages/TorrentDownload.qml</file>
         <file>qml/terminal/pages/torrent/pages/TorrentSearch.qml</file>
+        <file>qml/terminal/elements/EditBar.qml</file>
+        <file>qml/terminal/elements/EditButton.qml</file>
+        <file>qml/terminal/images/51b.png</file>
     </qresource>
 </RCC>

@@ -15,11 +15,14 @@ class Folder : public QObject
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(qint32 sidsAvailability READ sidsAvailability WRITE setSidsAvailability NOTIFY sidsAvailabilityChanged)
     Q_PROPERTY(bool loadingInProcess READ loadingInProcess WRITE setLoadingInProcess NOTIFY loadingInProcessChanged)
+    Q_PROPERTY(QObject* additionalData READ additionalData WRITE setAdditionalData NOTIFY additionalDataChanged)
+    Q_PROPERTY(qint64 size READ size NOTIFY sizeChanged)
+    Q_PROPERTY(qint64 downloadedSize READ downloadedSize NOTIFY downloadedSizeChanged)
 
 public:
     explicit Folder(QObject *parent = 0);
 
-    bool loadFromPath(const QString &path);
+    bool loadFromPath(const QUrl &path);
 
     bool loadFromDomElement(const QDomElement &domElement);
 
@@ -40,11 +43,25 @@ public:
     inline bool loadingInProcess() const {return _loadingInProcess;}
     void setLoadingInProcess(const bool loadingInProcess);
 
+    inline QObject *additionalData() const {return _additionalData;}
+    void setAdditionalData(QObject *additionalData);
+
+    inline qint64 size() const {return _size;}
+
+    inline qint64 downloadedSize() const {return _downloadedSize;}
+
 signals:
     void idChanged();
     void nameChanged();
     void sidsAvailabilityChanged();
     void loadingInProcessChanged();
+    void additionalDataChanged();
+    void sizeChanged();
+    void downloadedSizeChanged();
+
+private slots:
+    void updateSize();
+    void updateDownloadedSize();
 
 private:
     FilesModel *_filesModel;
@@ -52,8 +69,14 @@ private:
     QString _name;
     qint32 _sidsAvailability;
     bool _loadingInProcess;
+    QObject *_additionalData;
+    qint64 _size;
+    qint64 _downloadedSize;
 
     void reset();
+    void loadFromDir(const QUrl &path);
+    void setSize(const qint64 size);
+    void setDownloadedSize(const qint64 downloadedSize);
 };
 
 #endif // FOLDER_H

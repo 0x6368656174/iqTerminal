@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
-import "../../elements"
 
 Item {
     id: bar
@@ -8,6 +7,11 @@ Item {
     property bool addButtonEnabled: true
     property bool editButtonEnabled: true
     property bool removeButtonEnabled: true
+    property bool selectAllButtonEnabled: false
+    property bool deselectAllButtonEnabled: false
+
+    property bool hideOnMissClick: true
+
     property string editRole: ""
     onEditRoleChanged: {
         if (editRole !=="") {
@@ -52,7 +56,7 @@ Item {
     function getButtonWidth() {
         var visibleButtonCount = 0
         for(var i = 0; i < editButtons.children.length; i++){
-            if (editButtons.children[i].visible){
+            if (editButtons.children[i].enabled){
                 visibleButtonCount++
             }
         }
@@ -65,6 +69,7 @@ Item {
         anchors.bottom: barRow.top
         anchors.left: parent.left
         anchors.right: parent.right
+        enabled: hideOnMissClick
         visible: !isEditedSate
         onClicked: {
             bar.hidenClicked()
@@ -81,25 +86,40 @@ Item {
             id: editButtons
             anchors.fill: parent
             visible: !isEditedSate
+
+            EditButton {
+                type: "selectAll"
+                enabled: selectAllButtonEnabled
+                width: getButtonWidth()
+                onClicked: bar.buttonClicked(type)
+            }
+
+            EditButton {
+                type: "deselectAll"
+                enabled: deselectAllButtonEnabled
+                width: getButtonWidth()
+                onClicked: bar.buttonClicked(type)
+            }
+
             EditButton {
                 type: "add"
-                visible: addButtonEnabled
+                enabled: addButtonEnabled
                 width: getButtonWidth()
-                onClicked: bar.buttonClicked("add")
+                onClicked: bar.buttonClicked(type)
             }
 
             EditButton {
                 type: "edit"
-                visible: editButtonEnabled
+                enabled: editButtonEnabled
                 width: getButtonWidth()
-                onClicked: bar.buttonClicked("edit")
+                onClicked: bar.buttonClicked(type)
             }
 
             EditButton {
                 type: "remove"
-                visible: removeButtonEnabled
+                enabled: removeButtonEnabled
                 width: getButtonWidth()
-                onClicked: bar.buttonClicked("remove")
+                onClicked: bar.buttonClicked(type)
             }
         }
 

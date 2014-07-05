@@ -3,13 +3,17 @@
 
 #include <QAbstractListModel>
 #include <QUrl>
+#include <QQmlComponent>
 #include "folder.h"
 
 class FoldersModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
+
     Q_PROPERTY(QUrl source READ source WRITE setSource NOTIFY sourceChanged)
     Q_PROPERTY(QString parentElement READ parentElement WRITE setParentElement NOTIFY parentElementChanged)
+    Q_PROPERTY(QQmlComponent* folderAdditionalData READ folderAdditionalData WRITE setFolderAdditionalData NOTIFY folderAdditionalDataChanged)
 
 public:
     explicit FoldersModel(QObject *parent = 0);
@@ -26,9 +30,11 @@ public:
 
     Q_INVOKABLE Folder * insertNew(int row, const QString &path);
 
+    Q_INVOKABLE bool remove(int row);
+
     bool loadFromDomElement(const QDomElement &domElement);
 
-    QDomElement toDomElement(QDomElement &rootElement, QDomDocument &domDocument) const;
+    void toDomElement(QDomElement &rootElement, QDomDocument &domDocument) const;
 
 public:
     virtual inline QHash<int, QByteArray> roleNames() const {return _roles;}
@@ -42,15 +48,22 @@ public:
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
 public:
+    int count() const {return rowCount();}
+
     inline QUrl source() const {return _source;}
     void setSource(const QUrl &source);
 
     inline QString parentElement() const {return _parentElement;}
     void setParentElement(const QString &parentElement);
 
+    inline QQmlComponent *folderAdditionalData() const {return _folderAdditionalData;}
+    void setFolderAdditionalData(QQmlComponent *folderAdditionalData);
+
 signals:
+    void countChanged();
     void sourceChanged();
     void parentElementChanged();
+    void folderAdditionalDataChanged();
 
 private slots:
     void itemDataChanged();
@@ -61,7 +74,11 @@ private:
         Id = Qt::UserRole,
         Name,
         SidsAvailability,
-        LoadingInProcess
+        LoadingInProcess,
+        AdditionalData,
+        FilesModel,
+        Size,
+        DownloadedSize
     };
 
     QList<Folder *> _items;
@@ -71,6 +88,7 @@ private:
 
     QUrl _source;
     QString _parentElement;
+    QQmlComponent *_folderAdditionalData;
 };
 
 #endif // FOLDERSMODEL_H

@@ -1,5 +1,6 @@
 #include "file.h"
 #include <QFileInfo>
+#include <QUrl>
 #include <QDebug>
 
 File::File(QObject *parent) :
@@ -7,7 +8,8 @@ File::File(QObject *parent) :
     _id(-1),
     _path(""),
     _size(0),
-    _downloadedSize(0)
+    _downloadedSize(0),
+    _name("")
 {
 }
 
@@ -34,6 +36,9 @@ void File::setPath(const QString &path)
     {
         _path = path;
 
+        QFileInfo info (_path);
+        setName(info.fileName());
+
         emit pathChanged();
     }
 }
@@ -58,12 +63,22 @@ void File::setDownloadedSize(const qint64 downloadedSize)
     }
 }
 
-bool File::loadFromPath(const QString &path)
+void File::setName(const QString &name)
 {
-    QFileInfo info (path);
+    if (_name != name)
+    {
+        _name = name;
+
+        emit nameChanged();
+    }
+}
+
+bool File::loadFromPath(const QUrl &path)
+{
+    QFileInfo info (path.toLocalFile());
     if (info.exists())
     {
-        setPath(path);
+        setPath(path.toLocalFile());
         setSize(info.size());
         setDownloadedSize(0);
         return true;

@@ -5,6 +5,7 @@ FilesModel::FilesModel(QObject *parent) :
 {
     _roles[Id] = "file_id";
     _roles[Path] = "file_path";
+    _roles[Name] = "file_name";
     _roles[Size] = "file_size";
     _roles[DowloadedSize] = "file_downloaded_size";
 }
@@ -96,22 +97,42 @@ File * FilesModel::find(const qint64 id) const
     return NULL;
 }
 
-QDomElement FilesModel::toDomElement(QDomElement &rootElement, QDomDocument &domDocument) const
+void FilesModel::toDomElement(QDomElement &rootElement, QDomDocument &domDocument) const
 {
     foreach (File *item, _items)
     {
         rootElement.appendChild(item->toDomElement(domDocument));
     }
-
-    return rootElement;
 }
 
-File * FilesModel::appendNew(const QString &path)
+qint64 FilesModel::filesSumSize() const
+{
+    qint64 result = 0;
+    foreach (File *file, _items)
+    {
+        result += file->size();
+    }
+
+    return result;
+}
+
+qint64 FilesModel::filesDownloadedSumSize() const
+{
+    qint64 result = 0;
+    foreach (File *file, _items)
+    {
+        result += file->downloadedSize();
+    }
+
+    return result;
+}
+
+File * FilesModel::appendNew(const QUrl &path)
 {
     return insertNew(rowCount(), path);
 }
 
-File * FilesModel::insertNew(int row, const QString &path)
+File * FilesModel::insertNew(int row, const QUrl &path)
 {
     insertRow(row);
     File *newItem = get(row);
@@ -119,32 +140,46 @@ File * FilesModel::insertNew(int row, const QString &path)
     return newItem;
 }
 
+bool FilesModel::remove(int row)
+{
+    return removeRow(row);
+}
+
 bool FilesModel::insertRows(int row, int count, const QModelIndex &parent)
 {
-    emit beginInsertRows(parent, row, row + count-1);
+    beginInsertRows(parent, row, row + count-1);
     for (int i = 0; i < count; i++)
     {
         File *newItem = new File(this);
         newItem->setId(newId());
         connect(newItem, SIGNAL(pathChanged()), this, SLOT(itemDataChanged()));
+        connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
         connect(newItem, SIGNAL(sizeChanged()), this, SLOT(itemDataChanged()));
+        connect(newItem, SIGNAL(sizeChanged()), this, SIGNAL(filesSumSizeChanged()));
         connect(newItem, SIGNAL(downloadedSizeChanged()), this, SLOT(itemDataChanged()));
+        connect(newItem, SIGNAL(downloadedSizeChanged()), this, SIGNAL(filesDownloadedSumSizeChanged()));
         _items.insert(row + i, newItem);
     }
-    emit endInsertRows();
+    endInsertRows();
+    emit filesSumSizeChanged();
+    emit filesDownloadedSumSizeChanged();
+    emit countChanged();
     return true;
 }
 
 bool FilesModel::removeRows(int row, int count, const QModelIndex &parent)
 {
-    emit beginRemoveRows(parent, row, row+count-1);
+    beginRemoveRows(parent, row, row+count-1);
     for (int i = row + count - 1; i > row - 1; i--)
     {
         File *item = get(i);
         item->deleteLater();
         _items.removeAt(i);
     }
-    emit endRemoveRows();
+    endRemoveRows();
+    emit filesSumSizeChanged();
+    emit filesDownloadedSumSizeChanged();
+    emit countChanged();
     return true;
 }
 
@@ -172,6 +207,9 @@ QVariant FilesModel::data(const QModelIndex &index, int role) const
         break;
     case Path:
         return item->path();
+        break;
+    case Name:
+        return item->name();
         break;
     case Size:
         return item->size();

@@ -8,6 +8,7 @@ Item {
     Image {
         id: buttonImage
         anchors.fill: parent
+        fillMode: Image.PreserveAspectFit
 
         SequentialAnimation {
             id: buttonClickAnimation
