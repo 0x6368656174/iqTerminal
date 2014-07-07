@@ -13,7 +13,8 @@ Rectangle {
     width: Core.dp(22)
     height: Core.dp(22)
 
-    color: "#b0b5b4b9"
+//    color: "#b0b5b4b9"
+    color: "white"
 
     Item {
         anchors.fill: parent
@@ -53,9 +54,11 @@ Rectangle {
         hoverEnabled: true
         onContainsMouseChanged: {
             if (containsMouse) {
-                button.color = "#b0ff5d1b"
+//                button.color = "#b0ff5d1b"
+                button.color = "#ff5d1b"
             } else {
-                button.color = "#b0b5b4b9"
+//                button.color = "#b0b5b4b9"
+                button.color = "white"
             }
         }
 

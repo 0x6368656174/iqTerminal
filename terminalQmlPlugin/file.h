@@ -12,6 +12,7 @@ class File : public QObject
     Q_PROPERTY(qint64 size READ size WRITE setSize NOTIFY sizeChanged)
     Q_PROPERTY(qint64 downloadedSize READ downloadedSize WRITE setDownloadedSize NOTIFY downloadedSizeChanged)
     Q_PROPERTY(QString name READ name NOTIFY nameChanged)
+    Q_PROPERTY(QObject* additionalData READ additionalData WRITE setAdditionalData NOTIFY additionalDataChanged)
 public:
     explicit File(QObject *parent = 0);
 
@@ -36,12 +37,16 @@ public:
 
     inline QString name() const {return _name;}
 
+    inline QObject *additionalData() const {return _additionalData;}
+    void setAdditionalData(QObject *additionalData);
+
 signals:
     void idChanged();
     void pathChanged();
     void sizeChanged();
     void downloadedSizeChanged();
     void nameChanged();
+    void additionalDataChanged();
 
 private:
     qint64 _id;
@@ -51,6 +56,8 @@ private:
 
     QString _name;
     void setName(const QString &name);
+
+    QObject *_additionalData;
 
     void reset();
 };

@@ -3,12 +3,15 @@
 
 #include <QAbstractListModel>
 #include <QDomElement>
+#include <QQmlComponent>
 #include "file.h"
 
 class FilesModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int count READ count NOTIFY countChanged)
+    Q_PROPERTY(QQmlComponent* itemAdditionalData READ itemAdditionalData WRITE setItemAdditionalData NOTIFY itemAdditionalDataChanged)
+
 public:
     explicit FilesModel(QObject *parent = 0);
 
@@ -44,10 +47,14 @@ public:
 public:
     int count() const {return rowCount();}
 
+    inline QQmlComponent *itemAdditionalData() const {return _itemAdditionalData;}
+    void setItemAdditionalData(QQmlComponent *itemAdditionalData);
+
 signals:
     void countChanged();
     void filesSumSizeChanged();
     void filesDownloadedSumSizeChanged();
+    void itemAdditionalDataChanged();
 
 private slots:
     void itemDataChanged();
@@ -59,11 +66,13 @@ private:
         Path,
         Name,
         Size,
-        DowloadedSize
+        DowloadedSize,
+        AdditionalData
     };
 
     QList<File *> _items;
     QHash<int, QByteArray> _roles;
+    QQmlComponent *_itemAdditionalData;
 
     qint64 newId() const;
 };

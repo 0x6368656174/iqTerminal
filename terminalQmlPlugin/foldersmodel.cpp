@@ -9,12 +9,13 @@ FoldersModel::FoldersModel(QObject *parent) :
     QAbstractListModel(parent),
     _source(QUrl()),
     _parentElement(""),
-    _folderAdditionalData(NULL)
+    _itemAdditionalData(NULL),
+    _fileAdditionalData(NULL)
 {
     _roles[Id] = "folder_id";
     _roles[Name] = "folder_name";
     _roles[SidsAvailability] = "folder_sids_availability";
-    _roles[LoadingInProcess] = "folder_loading_in_process";
+    _roles[InProcess] = "folder_in_process";
     _roles[AdditionalData] = "folder_additional_data";
     _roles[FilesModel] = "folder_files_model";
     _roles[Size] = "folder_size";
@@ -45,13 +46,23 @@ void FoldersModel::setParentElement(const QString &parentElement)
     }
 }
 
-void FoldersModel::setFolderAdditionalData(QQmlComponent *folderAdditionalData)
+void FoldersModel::setItemAdditionalData(QQmlComponent *folderAdditionalData)
 {
-    if (_folderAdditionalData != folderAdditionalData)
+    if (_itemAdditionalData != folderAdditionalData)
     {
-        _folderAdditionalData = folderAdditionalData;
+        _itemAdditionalData = folderAdditionalData;
 
-        emit folderAdditionalDataChanged();
+        emit itemAdditionalDataChanged();
+    }
+}
+
+void FoldersModel::setFileAdditionalData(QQmlComponent *fileAdditionalData)
+{
+    if (_fileAdditionalData != fileAdditionalData)
+    {
+        _fileAdditionalData = fileAdditionalData;
+
+        emit fileAdditionalDataChanged();
     }
 }
 
@@ -327,18 +338,20 @@ bool FoldersModel::insertRows(int row, int count, const QModelIndex &parent)
         newItem->setId(newId());
         connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
         connect(newItem, SIGNAL(sidsAvailabilityChanged()), this, SLOT(itemDataChanged()));
-        connect(newItem, SIGNAL(loadingInProcessChanged()), this, SLOT(itemDataChanged()));
+        connect(newItem, SIGNAL(inProcessChanged()), this, SLOT(itemDataChanged()));
         connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
         connect(newItem, SIGNAL(sizeChanged()), this, SLOT(itemDataChanged()));
         connect(newItem, SIGNAL(downloadedSizeChanged()), this, SLOT(itemDataChanged()));
 
-        if (_folderAdditionalData)
+        if (_itemAdditionalData)
         {
             QQmlContext *qmlContext = QQmlEngine::contextForObject(this);
 
-            QObject *newFolderAdditionalData = _folderAdditionalData->create(qmlContext);
-            newItem->setAdditionalData(newFolderAdditionalData);
+            QObject *newItemAdditionalData = _itemAdditionalData->create(qmlContext);
+            newItem->setAdditionalData(newItemAdditionalData);
         }
+
+        newItem->filesModel()->setItemAdditionalData(_fileAdditionalData);
         _items.insert(row + i, newItem);
     }
     endInsertRows();
@@ -388,8 +401,8 @@ QVariant FoldersModel::data(const QModelIndex &index, int role) const
     case SidsAvailability:
         return item->sidsAvailability();
         break;
-    case LoadingInProcess:
-        return item->loadingInProcess();
+    case InProcess:
+        return item->inProcess();
         break;
     case AdditionalData:
         return QVariant::fromValue(item->additionalData());

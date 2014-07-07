@@ -14,7 +14,7 @@ class Folder : public QObject
     Q_PROPERTY(qint64 id READ id WRITE setId NOTIFY idChanged)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(qint32 sidsAvailability READ sidsAvailability WRITE setSidsAvailability NOTIFY sidsAvailabilityChanged)
-    Q_PROPERTY(bool loadingInProcess READ loadingInProcess WRITE setLoadingInProcess NOTIFY loadingInProcessChanged)
+    Q_PROPERTY(bool inProcess READ inProcess WRITE setInProcess NOTIFY inProcessChanged)
     Q_PROPERTY(QObject* additionalData READ additionalData WRITE setAdditionalData NOTIFY additionalDataChanged)
     Q_PROPERTY(qint64 size READ size NOTIFY sizeChanged)
     Q_PROPERTY(qint64 downloadedSize READ downloadedSize NOTIFY downloadedSizeChanged)
@@ -40,8 +40,8 @@ public:
     inline qint32 sidsAvailability() const {return _sidsAvailability;}
     void setSidsAvailability(const qint32 sidsAvailability);
 
-    inline bool loadingInProcess() const {return _loadingInProcess;}
-    void setLoadingInProcess(const bool loadingInProcess);
+    inline bool inProcess() const {return _inProcess;}
+    void setInProcess(const bool inProcess);
 
     inline QObject *additionalData() const {return _additionalData;}
     void setAdditionalData(QObject *additionalData);
@@ -54,7 +54,7 @@ signals:
     void idChanged();
     void nameChanged();
     void sidsAvailabilityChanged();
-    void loadingInProcessChanged();
+    void inProcessChanged();
     void additionalDataChanged();
     void sizeChanged();
     void downloadedSizeChanged();
@@ -68,7 +68,7 @@ private:
     qint64 _id;
     QString _name;
     qint32 _sidsAvailability;
-    bool _loadingInProcess;
+    bool _inProcess;
     QObject *_additionalData;
     qint64 _size;
     qint64 _downloadedSize;

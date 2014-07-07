@@ -13,7 +13,9 @@ class FoldersModel : public QAbstractListModel
 
     Q_PROPERTY(QUrl source READ source WRITE setSource NOTIFY sourceChanged)
     Q_PROPERTY(QString parentElement READ parentElement WRITE setParentElement NOTIFY parentElementChanged)
-    Q_PROPERTY(QQmlComponent* folderAdditionalData READ folderAdditionalData WRITE setFolderAdditionalData NOTIFY folderAdditionalDataChanged)
+    Q_PROPERTY(QQmlComponent* itemAdditionalData READ itemAdditionalData WRITE setItemAdditionalData NOTIFY itemAdditionalDataChanged)
+    Q_PROPERTY(QQmlComponent* folderAdditionalData READ itemAdditionalData WRITE setItemAdditionalData NOTIFY itemAdditionalDataChanged)
+    Q_PROPERTY(QQmlComponent* fileAdditionalData READ fileAdditionalData WRITE setFileAdditionalData NOTIFY fileAdditionalDataChanged)
 
 public:
     explicit FoldersModel(QObject *parent = 0);
@@ -56,14 +58,18 @@ public:
     inline QString parentElement() const {return _parentElement;}
     void setParentElement(const QString &parentElement);
 
-    inline QQmlComponent *folderAdditionalData() const {return _folderAdditionalData;}
-    void setFolderAdditionalData(QQmlComponent *folderAdditionalData);
+    inline QQmlComponent *itemAdditionalData() const {return _itemAdditionalData;}
+    void setItemAdditionalData(QQmlComponent *itemAdditionalData);
+
+    inline QQmlComponent *fileAdditionalData() const {return _fileAdditionalData;}
+    void setFileAdditionalData(QQmlComponent *fileAdditionalData);
 
 signals:
     void countChanged();
     void sourceChanged();
     void parentElementChanged();
-    void folderAdditionalDataChanged();
+    void itemAdditionalDataChanged();
+    void fileAdditionalDataChanged();
 
 private slots:
     void itemDataChanged();
@@ -74,7 +80,7 @@ private:
         Id = Qt::UserRole,
         Name,
         SidsAvailability,
-        LoadingInProcess,
+        InProcess,
         AdditionalData,
         FilesModel,
         Size,
@@ -88,7 +94,8 @@ private:
 
     QUrl _source;
     QString _parentElement;
-    QQmlComponent *_folderAdditionalData;
+    QQmlComponent *_itemAdditionalData;
+    QQmlComponent *_fileAdditionalData;
 };
 
 #endif // FOLDERSMODEL_H

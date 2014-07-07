@@ -8,7 +8,7 @@ import "../../../elements"
 
 Page {
     id: downloadPage
-    name: "torrent_download"
+    name: "torrent_upload"
 
     property string torrentXmlPath
 
@@ -20,7 +20,7 @@ Page {
     FoldersModel {
         id: folderModel
         source: torrentXmlPath
-        parentElement: "torrent/download"
+        parentElement: "torrent/upload"
         folderAdditionalData: QtObject {
             property bool collapsed: false
             property bool isEdited: false
@@ -55,8 +55,17 @@ Page {
         height: Core.dp(90)
     }
 
+    CreateNewButton {
+        id: createNewButton
+        enabled: !privateData.isEdited
+        onClicked: fileDialog.open()
+    }
+
     ListView {
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: createNewButton.bottom
+        anchors.bottom: parent.bottom
         anchors.bottomMargin: Core.dp(22) + editBar.anchors.bottomMargin - 1
         model: folderModel
         interactive: contentHeight > height
@@ -163,27 +172,6 @@ Page {
                         font.bold: true
                         text: Core.humanReadableSize(folder_size)
                     }
-
-                    //СТАТУС
-                    Text {
-                        id: folderStateTitle
-                        anchors.left: folderText.left
-                        anchors.leftMargin: Core.dp(60)
-                        anchors.top: folderText.bottom
-                        font.pixelSize: Core.dp(6)
-                        color: folderText.color
-                        text: qsTr("Статус")
-                    }
-
-                    Text {
-                        id: folderStateText
-                        anchors.verticalCenter: folderStateTitle.verticalCenter
-                        anchors.left: folderStateTitle.right
-                        anchors.leftMargin: Core.dp(3)
-                        font.pixelSize: folderStateTitle.font.pixelSize
-                        color: folderText.color
-                        text: folder_size> 0?(folder_downloaded_size/folder_size*100).toFixed(0) + "%":"0%"
-                    }
                 }
 
                 SequentialAnimation {
@@ -235,7 +223,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: availibleImage.left
                     anchors.rightMargin: Core.dp(4)
-                    source: folder_in_process?"../../../images/99a.png":"../../../images/99.png"
+                    source: folder_in_process?"../../../images/100a.png":"../../../images/100.png"
                 }
 
                 //ДОСТУПНОСТЬ
@@ -420,6 +408,18 @@ Page {
 
             editBar.editRole = ""
             folderModel.save()
+        }
+    }
+
+    FileDialog {
+        id: fileDialog
+        selectExisting: true
+        selectFolder: true
+        selectMultiple: false
+        title: qsTr("Выбирите папку")
+
+        onAccepted: {
+            folderModel.insertNew(0, fileUrl)
         }
     }
 }

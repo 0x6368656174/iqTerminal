@@ -9,7 +9,7 @@ Folder::Folder(QObject *parent) :
     _id(-1),
     _name(""),
     _sidsAvailability(0),
-    _loadingInProcess(false),
+    _inProcess(false),
     _additionalData(NULL),
     _size(0),
     _downloadedSize(0)
@@ -22,7 +22,7 @@ void Folder::reset()
 {
     setName("");
     setSidsAvailability(0);
-    setLoadingInProcess(false);
+    setInProcess(false);
     _filesModel->removeRows(0, _filesModel->rowCount());
 }
 
@@ -56,13 +56,13 @@ void Folder::setSidsAvailability(const qint32 sidsAvailability)
     }
 }
 
-void Folder::setLoadingInProcess(const bool loadingInProcess)
+void Folder::setInProcess(const bool loadingInProcess)
 {
-    if (_loadingInProcess != loadingInProcess)
+    if (_inProcess != loadingInProcess)
     {
-        _loadingInProcess = loadingInProcess;
+        _inProcess = loadingInProcess;
 
-        emit loadingInProcessChanged();
+        emit inProcessChanged();
     }
 }
 
@@ -186,14 +186,14 @@ bool Folder::loadFromDomElement(const QDomElement &domElement)
         setSidsAvailability(0);
     }
 
-    QDomElement loadingInProcessElement = domElement.firstChildElement("loading");
-    if (!loadingInProcessElement.isNull())
+    QDomElement inProcessElement = domElement.firstChildElement("inProcess");
+    if (!inProcessElement.isNull())
     {
-        setLoadingInProcess(loadingInProcessElement.text().compare("true", Qt::CaseInsensitive) == 0);
+        setInProcess(inProcessElement.text().compare("true", Qt::CaseInsensitive) == 0);
     }
     else
     {
-        setLoadingInProcess(false);
+        setInProcess(false);
     }
 
     return _filesModel->loadFromDomElement(domElement);
@@ -214,10 +214,10 @@ QDomElement Folder::toDomElement(QDomDocument &domDocument) const
     QDomText sidsAvailabilityText = domDocument.createTextNode(QString::number(sidsAvailability()));
     sidsAvailabilityElement.appendChild(sidsAvailabilityText);
 
-    QDomElement loadingInProcessElement = domDocument.createElement("loading");
-    rootElement.appendChild(loadingInProcessElement);
-    QDomText loadingInProcessText = domDocument.createTextNode(loadingInProcess()?"true":"false");
-    loadingInProcessElement.appendChild(loadingInProcessText);
+    QDomElement inProcessElement = domDocument.createElement("inProcess");
+    rootElement.appendChild(inProcessElement);
+    QDomText inProcessText = domDocument.createTextNode(inProcess()?"true":"false");
+    inProcessElement.appendChild(inProcessText);
 
     _filesModel->toDomElement(rootElement, domDocument);
 

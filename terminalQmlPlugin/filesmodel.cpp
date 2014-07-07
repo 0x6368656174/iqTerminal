@@ -1,13 +1,27 @@
 #include "filesmodel.h"
+#include <QQmlContext>
+#include <QQmlEngine>
 
 FilesModel::FilesModel(QObject *parent) :
-    QAbstractListModel(parent)
+    QAbstractListModel(parent),
+    _itemAdditionalData(NULL)
 {
     _roles[Id] = "file_id";
     _roles[Path] = "file_path";
     _roles[Name] = "file_name";
     _roles[Size] = "file_size";
     _roles[DowloadedSize] = "file_downloaded_size";
+    _roles[AdditionalData] = "file_additional_data";
+}
+
+void FilesModel::setItemAdditionalData(QQmlComponent *folderAdditionalData)
+{
+    if (_itemAdditionalData != folderAdditionalData)
+    {
+        _itemAdditionalData = folderAdditionalData;
+
+        emit itemAdditionalDataChanged();
+    }
 }
 
 bool FilesModel::loadFromDomElement(const QDomElement &domElement)
@@ -158,6 +172,23 @@ bool FilesModel::insertRows(int row, int count, const QModelIndex &parent)
         connect(newItem, SIGNAL(sizeChanged()), this, SIGNAL(filesSumSizeChanged()));
         connect(newItem, SIGNAL(downloadedSizeChanged()), this, SLOT(itemDataChanged()));
         connect(newItem, SIGNAL(downloadedSizeChanged()), this, SIGNAL(filesDownloadedSumSizeChanged()));
+
+        if (_itemAdditionalData)
+        {
+            QQmlContext *qmlContext = QQmlEngine::contextForObject(this);
+
+            QObject *newItemAdditionalData = _itemAdditionalData->create(qmlContext);
+            newItem->setAdditionalData(newItemAdditionalData);
+        }
+
+        if (_itemAdditionalData)
+        {
+            QQmlContext *qmlContext = QQmlEngine::contextForObject(this);
+
+            QObject *newFolderAdditionalData = _itemAdditionalData->create(qmlContext);
+            newItem->setAdditionalData(newFolderAdditionalData);
+        }
+
         _items.insert(row + i, newItem);
     }
     endInsertRows();
@@ -216,6 +247,9 @@ QVariant FilesModel::data(const QModelIndex &index, int role) const
         break;
     case DowloadedSize:
         return item->downloadedSize();
+        break;
+    case AdditionalData:
+        return QVariant::fromValue(item->additionalData());
         break;
     }
 

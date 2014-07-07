@@ -326,7 +326,7 @@ Page {
             anchors.left: parent.left
             anchors.right: parent.right
             //            anchors.bottom: parent.bottom
-            height: infoPage.height - nameContainter.height - stateTextContainer.height - stateSpacer.height - photoRect.height + flickItem.contentY
+            height: infoPage.height - nameContainter.height - stateTextContainer.height - stateSpacer.height - photoRect.height + flickItem.contentY - Core.dp(22) - statusesEditBar.anchors.bottomMargin + 1
             model: statusesModel
 
             add: Transition {

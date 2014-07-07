@@ -9,7 +9,8 @@ File::File(QObject *parent) :
     _path(""),
     _size(0),
     _downloadedSize(0),
-    _name("")
+    _name(""),
+    _additionalData(NULL)
 {
 }
 
@@ -70,6 +71,17 @@ void File::setName(const QString &name)
         _name = name;
 
         emit nameChanged();
+    }
+}
+
+void File::setAdditionalData(QObject *additionalData)
+{
+    if (_additionalData != additionalData)
+    {
+        _additionalData = additionalData;
+        _additionalData->setParent(this);
+
+        emit additionalDataChanged();
     }
 }
 

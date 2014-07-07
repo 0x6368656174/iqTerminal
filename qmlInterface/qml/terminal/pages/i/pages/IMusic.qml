@@ -190,6 +190,7 @@ Page {
         anchors.right: parent.right
         anchors.top: spacer.bottom
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: Core.dp(22) + editBar.anchors.bottomMargin - 1
         interactive: contentHeight > height
         spacing: Core.dp(5)
         clip: true

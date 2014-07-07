@@ -140,4 +140,12 @@ Item {
             }
         }
     }
+
+    Rectangle {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: barRow.top
+        height: 1
+        color: "#c6c1c7"
+    }
 }

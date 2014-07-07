@@ -165,7 +165,6 @@
         <file>qml/terminal/pages/i/Header.qml</file>
         <file>qml/terminal/pages/i/I.qml</file>
         <file>qml/terminal/pages/i/MediaButtons.qml</file>
-        <file>qml/terminal/pages/i/SaveBar.qml</file>
         <file>qml/terminal/pages/i/pages/IInfo.qml</file>
         <file>qml/terminal/pages/i/pages/IMusic.qml</file>
         <file>qml/terminal/pages/i/pages/IPhoto.qml</file>
@@ -203,5 +202,7 @@
         <file>qml/terminal/elements/EditBar.qml</file>
         <file>qml/terminal/elements/EditButton.qml</file>
         <file>qml/terminal/images/51b.png</file>
+        <file>qml/terminal/pages/torrent/pages/TorrentsUpload.qml</file>
+        <file>qml/terminal/elements/CreateNewButton.qml</file>
     </qresource>
 </RCC>
