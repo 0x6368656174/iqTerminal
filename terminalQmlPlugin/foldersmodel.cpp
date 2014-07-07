@@ -311,12 +311,12 @@ void FoldersModel::toDomElement(QDomElement &rootElement, QDomDocument &domDocum
     }
 }
 
-Folder * FoldersModel::appendNew(const QString &path)
+Folder * FoldersModel::appendNew(const QUrl &path)
 {
     return insertNew(rowCount(), path);
 }
 
-Folder * FoldersModel::insertNew(int row, const QString &path)
+Folder * FoldersModel::insertNew(int row, const QUrl &path)
 {
     insertRow(row);
     Folder *newItem = get(row);

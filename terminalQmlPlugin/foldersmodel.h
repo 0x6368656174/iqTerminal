@@ -18,6 +18,18 @@ class FoldersModel : public QAbstractListModel
     Q_PROPERTY(QQmlComponent* fileAdditionalData READ fileAdditionalData WRITE setFileAdditionalData NOTIFY fileAdditionalDataChanged)
 
 public:
+    enum Roles
+    {
+        Id = Qt::UserRole,
+        Name,
+        SidsAvailability,
+        InProcess,
+        AdditionalData,
+        FilesModel,
+        Size,
+        DownloadedSize
+    };
+
     explicit FoldersModel(QObject *parent = 0);
 
     Q_INVOKABLE bool reload();
@@ -28,9 +40,9 @@ public:
 
     Q_INVOKABLE Folder * find(const qint64 id) const;
 
-    Q_INVOKABLE Folder * appendNew(const QString &path);
+    Q_INVOKABLE Folder * appendNew(const QUrl &path = QUrl());
 
-    Q_INVOKABLE Folder * insertNew(int row, const QString &path);
+    Q_INVOKABLE Folder * insertNew(int row, const QUrl &path = QUrl());
 
     Q_INVOKABLE bool remove(int row);
 
@@ -75,18 +87,6 @@ private slots:
     void itemDataChanged();
 
 private:
-    enum Roles
-    {
-        Id = Qt::UserRole,
-        Name,
-        SidsAvailability,
-        InProcess,
-        AdditionalData,
-        FilesModel,
-        Size,
-        DownloadedSize
-    };
-
     QList<Folder *> _items;
     QHash<int, QByteArray> _roles;
 

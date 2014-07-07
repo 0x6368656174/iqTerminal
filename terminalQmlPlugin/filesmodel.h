@@ -13,15 +13,25 @@ class FilesModel : public QAbstractListModel
     Q_PROPERTY(QQmlComponent* itemAdditionalData READ itemAdditionalData WRITE setItemAdditionalData NOTIFY itemAdditionalDataChanged)
 
 public:
+    enum Roles
+    {
+        Id = Qt::UserRole,
+        Path,
+        Name,
+        Size,
+        DowloadedSize,
+        AdditionalData
+    };
+
     explicit FilesModel(QObject *parent = 0);
 
     Q_INVOKABLE File * get(const int row) const;
 
     Q_INVOKABLE File * find(const qint64 id) const;
 
-    Q_INVOKABLE File * appendNew(const QUrl &path);
+    Q_INVOKABLE File * appendNew(const QUrl &path = QUrl());
 
-    Q_INVOKABLE File * insertNew(int row, const QUrl &path);
+    Q_INVOKABLE File * insertNew(int row, const QUrl &path = QUrl());
 
     Q_INVOKABLE bool remove(int row);
 
@@ -60,16 +70,6 @@ private slots:
     void itemDataChanged();
 
 private:
-    enum Roles
-    {
-        Id = Qt::UserRole,
-        Path,
-        Name,
-        Size,
-        DowloadedSize,
-        AdditionalData
-    };
-
     QList<File *> _items;
     QHash<int, QByteArray> _roles;
     QQmlComponent *_itemAdditionalData;

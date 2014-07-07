@@ -46,7 +46,10 @@ Item {
     Behavior on opacity {NumberAnimation { duration: 200} }
     Behavior on anchors.bottomMargin {NumberAnimation {duration: 200} }
 
-    anchors.fill: parent
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    anchors.left: parent.left
 
     signal buttonClicked(var buttonType)
     signal hidenClicked()
@@ -90,6 +93,7 @@ Item {
             EditButton {
                 type: "selectAll"
                 enabled: selectAllButtonEnabled
+                mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: getButtonWidth()
                 onClicked: bar.buttonClicked(type)
             }
@@ -97,6 +101,7 @@ Item {
             EditButton {
                 type: "deselectAll"
                 enabled: deselectAllButtonEnabled
+                mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: getButtonWidth()
                 onClicked: bar.buttonClicked(type)
             }
@@ -104,6 +109,7 @@ Item {
             EditButton {
                 type: "add"
                 enabled: addButtonEnabled
+                mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: getButtonWidth()
                 onClicked: bar.buttonClicked(type)
             }
@@ -111,6 +117,7 @@ Item {
             EditButton {
                 type: "edit"
                 enabled: editButtonEnabled
+                mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: getButtonWidth()
                 onClicked: bar.buttonClicked(type)
             }
@@ -118,6 +125,7 @@ Item {
             EditButton {
                 type: "remove"
                 enabled: removeButtonEnabled
+                mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: getButtonWidth()
                 onClicked: bar.buttonClicked(type)
             }
@@ -129,12 +137,14 @@ Item {
             visible: isEditedSate
             EditButton {
                 type: "submit"
+                mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: parent.width / 2
                 onClicked: bar.buttonClicked("submit")
             }
 
             EditButton {
                 type: "back"
+                mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: parent.width / 2
                 onClicked: bar.buttonClicked("cancel")
             }

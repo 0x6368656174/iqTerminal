@@ -17,23 +17,6 @@ Page {
         property bool isEdited: false
     }
 
-    FoldersModel {
-        id: folderModel
-        source: torrentXmlPath
-        parentElement: "torrent/download"
-        folderAdditionalData: QtObject {
-            property bool collapsed: false
-            property bool isEdited: false
-            property bool isSelect: false
-
-            onIsEditedChanged: privateData.isEdited = isEdited
-        }
-
-        fileAdditionalData: QtObject {
-            property bool isSelect: false
-        }
-    }
-
     Image {
         id: dog1
         anchors.left: parent.left
@@ -58,7 +41,7 @@ Page {
     ListView {
         anchors.fill: parent
         anchors.bottomMargin: Core.dp(22) + editBar.anchors.bottomMargin - 1
-        model: folderModel
+        model: torrentDownloadModel
         interactive: contentHeight > height
         spacing: Core.dp(5)
         clip: true
@@ -221,8 +204,8 @@ Page {
                     anchors.rightMargin: Core.dp(4)
                     source: folder_in_process?"../../../images/51b.png":"../../../images/51a.png"
                     onClicked: {
-                        folderModel.get(index).inProcess = !folderModel.get(index).inProcess
-                        folderModel.save()
+                        torrentDownloadModel.get(index).inProcess = !torrentDownloadModel.get(index).inProcess
+                        torrentDownloadModel.save()
                     }
                 }
 
@@ -386,17 +369,17 @@ Page {
 
         onButtonClicked: {
             if (buttonType === "selectAll") {
-                for (var i = 0; i < folderModel.count; i++) {
-                    folderModel.get(i).additionalData.isSelect = true
-                    for (var j = 0; j < folderModel.get(i).filesModel.count; j++) {
-                        folderModel.get(i).filesModel.get(j).additionalData.isSelect = true
+                for (var i = 0; i < torrentDownloadModel.count; i++) {
+                    torrentDownloadModel.get(i).additionalData.isSelect = true
+                    for (var j = 0; j < torrentDownloadModel.get(i).filesModel.count; j++) {
+                        torrentDownloadModel.get(i).filesModel.get(j).additionalData.isSelect = true
                     }
                 }
             } else if (buttonType === "deselectAll") {
-                for (i = 0; i < folderModel.count; i++) {
-                    folderModel.get(i).additionalData.isSelect = false
-                    for (j = 0; j < folderModel.get(i).filesModel.count; j++) {
-                        folderModel.get(i).filesModel.get(j).additionalData.isSelect = false
+                for (i = 0; i < torrentDownloadModel.count; i++) {
+                    torrentDownloadModel.get(i).additionalData.isSelect = false
+                    for (j = 0; j < torrentDownloadModel.get(i).filesModel.count; j++) {
+                        torrentDownloadModel.get(i).filesModel.get(j).additionalData.isSelect = false
                     }
                 }
             }
@@ -406,20 +389,20 @@ Page {
         }
 
         onSubmit: {
-            for (var i = folderModel.count - 1; i > -1; i--) {
-                if (folderModel.get(i).additionalData.isSelect) {
-                    folderModel.remove(i)
+            for (var i = torrentDownloadModel.count - 1; i > -1; i--) {
+                if (torrentDownloadModel.get(i).additionalData.isSelect) {
+                    torrentDownloadModel.remove(i)
                 } else {
-                    for (var j = folderModel.get(i).filesModel.count - 1; j > -1; j--) {
-                        if (folderModel.get(i).filesModel.get(j).additionalData.isSelect) {
-                            folderModel.get(i).filesModel.remove(j)
+                    for (var j = torrentDownloadModel.get(i).filesModel.count - 1; j > -1; j--) {
+                        if (torrentDownloadModel.get(i).filesModel.get(j).additionalData.isSelect) {
+                            torrentDownloadModel.get(i).filesModel.remove(j)
                         }
                     }
                 }
             }
 
             editBar.editRole = ""
-            folderModel.save()
+            torrentDownloadModel.save()
         }
     }
 }

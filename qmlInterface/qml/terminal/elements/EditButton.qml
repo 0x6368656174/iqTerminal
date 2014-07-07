@@ -5,6 +5,7 @@ Rectangle {
     id: button
     property string type
     property bool enabled: true
+    property bool mouseAreaActive: false
 
     visible: enabled
 
@@ -51,6 +52,7 @@ Rectangle {
     TerminalMouseArea {
         id: ma
         anchors.fill: parent
+        visible: button.mouseAreaActive
         hoverEnabled: true
         onContainsMouseChanged: {
             if (containsMouse) {

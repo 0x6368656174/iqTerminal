@@ -25,10 +25,12 @@ HEADERS += \
     ../terminalQmlPlugin/folder.h \
     ../terminalQmlPlugin/file.h \
     ../terminalQmlPlugin/filesmodel.h \
-    ../terminalQmlPlugin/foldersmodel.h
+    ../terminalQmlPlugin/foldersmodel.h \
+    ../terminalQmlPlugin/foldersfiltermodel.h
 
 SOURCES += \
     ../terminalQmlPlugin/folder.cpp \
     ../terminalQmlPlugin/file.cpp \
     ../terminalQmlPlugin/filesmodel.cpp \
-    ../terminalQmlPlugin/foldersmodel.cpp
+    ../terminalQmlPlugin/foldersmodel.cpp \
+    ../terminalQmlPlugin/foldersfiltermodel.cpp

@@ -100,14 +100,17 @@ void Folder::setDownloadedSize(const qint64 downloadedSize)
 bool Folder::loadFromPath(const QUrl &path)
 {
     reset();
-    QDir dir(path.toLocalFile());
-    if (dir.exists())
+    if (path.isValid())
     {
-        setName(dir.dirName());
+        QDir dir(path.toLocalFile());
+        if (dir.exists())
+        {
+            setName(dir.dirName());
 
-        loadFromDir(path);
+            loadFromDir(path);
 
-        return true;
+            return true;
+        }
     }
     return false;
 }
@@ -124,18 +127,21 @@ void Folder::updateDownloadedSize()
 
 void Folder::loadFromDir(const QUrl &path)
 {
-    QDir dir(path.toLocalFile());
-    if (dir.exists())
+    if (path.isValid())
     {
-        foreach (QFileInfo fileInfo, dir.entryInfoList(QDir::AllEntries | QDir::NoDotAndDotDot))
+        QDir dir(path.toLocalFile());
+        if (dir.exists())
         {
-            if (fileInfo.isDir())
+            foreach (QFileInfo fileInfo, dir.entryInfoList(QDir::AllEntries | QDir::NoDotAndDotDot))
             {
-                loadFromDir(QUrl::fromLocalFile(fileInfo.absoluteFilePath()));
-            }
-            else
-            {
-                _filesModel->appendNew(QUrl::fromLocalFile(fileInfo.absoluteFilePath()));
+                if (fileInfo.isDir())
+                {
+                    loadFromDir(QUrl::fromLocalFile(fileInfo.absoluteFilePath()));
+                }
+                else
+                {
+                    _filesModel->appendNew(QUrl::fromLocalFile(fileInfo.absoluteFilePath()));
+                }
             }
         }
     }

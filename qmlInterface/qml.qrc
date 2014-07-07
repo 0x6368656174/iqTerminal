@@ -204,5 +204,6 @@
         <file>qml/terminal/images/51b.png</file>
         <file>qml/terminal/pages/torrent/pages/TorrentsUpload.qml</file>
         <file>qml/terminal/elements/CreateNewButton.qml</file>
+        <file>qml/terminal/elements/SearchBar.qml</file>
     </qresource>
 </RCC>

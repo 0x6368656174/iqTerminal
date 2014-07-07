@@ -87,13 +87,16 @@ void File::setAdditionalData(QObject *additionalData)
 
 bool File::loadFromPath(const QUrl &path)
 {
-    QFileInfo info (path.toLocalFile());
-    if (info.exists())
+    if (path.isValid())
     {
-        setPath(path.toLocalFile());
-        setSize(info.size());
-        setDownloadedSize(0);
-        return true;
+        QFileInfo info (path.toLocalFile());
+        if (info.exists())
+        {
+            setPath(path.toLocalFile());
+            setSize(info.size());
+            setDownloadedSize(0);
+            return true;
+        }
     }
     return false;
 }

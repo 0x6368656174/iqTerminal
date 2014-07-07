@@ -12,6 +12,7 @@
 #include "filesmodel.h"
 #include "folder.h"
 #include "foldersmodel.h"
+#include "foldersfiltermodel.h"
 
 static QObject *core_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
@@ -62,6 +63,8 @@ public:
         qmlRegisterType<Folder>(uri, 1, 0, "Folder");
         // @uri TerminalQmlPlugin
         qmlRegisterType<FoldersModel>(uri, 1, 0, "FoldersModel");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<FoldersFilterModel>(uri, 1, 0, "FoldersFilterModel");
     }
 };
 
