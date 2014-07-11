@@ -4,13 +4,11 @@
 #include <QUrl>
 
 Folder::Folder(QObject *parent) :
-    QObject(parent),
+    AbstractXmlItemObject(parent),
     _filesModel(new FilesModel(this)),
-    _id(-1),
     _name(""),
     _sidsAvailability(0),
     _inProcess(false),
-    _additionalData(NULL),
     _size(0),
     _downloadedSize(0)
 {
@@ -24,16 +22,6 @@ void Folder::reset()
     setSidsAvailability(0);
     setInProcess(false);
     _filesModel->removeRows(0, _filesModel->rowCount());
-}
-
-void Folder::setId(const qint64 id)
-{
-    if (_id != id)
-    {
-        _id = id;
-
-        emit idChanged();
-    }
 }
 
 void Folder::setName(const QString &name)
@@ -63,17 +51,6 @@ void Folder::setInProcess(const bool loadingInProcess)
         _inProcess = loadingInProcess;
 
         emit inProcessChanged();
-    }
-}
-
-void Folder::setAdditionalData(QObject *additionalData)
-{
-    if (_additionalData != additionalData)
-    {
-        _additionalData = additionalData;
-        _additionalData->setParent(this);
-
-        emit additionalDataChanged();
     }
 }
 

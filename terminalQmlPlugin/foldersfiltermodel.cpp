@@ -48,7 +48,7 @@ Folder * FoldersFilterModel::get(const int row) const
     if (!_foldersModel)
         return NULL;
 
-    return _foldersModel->get(mapToSource(index(row, 0)).row());
+    return qobject_cast<Folder *>(_foldersModel->get(mapToSource(index(row, 0)).row()));
 }
 
 bool FoldersFilterModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
@@ -57,16 +57,16 @@ bool FoldersFilterModel::filterAcceptsRow(int source_row, const QModelIndex &sou
 
     if (!_foldersModel)
         return false;
-    Folder * folder = _foldersModel->get(source_row);
+    Folder * folder = qobject_cast<Folder *>(_foldersModel->get(source_row));
     if (folder->name().contains(_filterString, filterCaseSensitivity()))
     {
         return true;
     }
     else
     {
-        for(int i = 0; i < folder->filesModel()->count(); i++)
+        for(int i = 0; i < folder->filesModel()->rowCount(); i++)
         {
-            File* file = folder->filesModel()->get(i);
+            File* file = qobject_cast<File*>(folder->filesModel()->get(i));
             if (file->name().contains(_filterString, filterCaseSensitivity()))
                 return true;
         }

@@ -8,6 +8,8 @@
 #include "base64.h"
 #include "filevalidator.h"
 
+#include "abstractxmlitemobject.h"
+#include "abstractxmlitemsmodel.h"
 #include "file.h"
 #include "filesmodel.h"
 #include "folder.h"
@@ -55,6 +57,10 @@ public:
         qmlRegisterSingletonType<Base64>(uri, 1, 0, "Base64", base64_singletontype_provider);
         // @uri TerminalQmlPlugin
         qmlRegisterSingletonType<FileValidator>(uri, 1, 0, "FileValidator", fileValidator_singletontype_provider);
+        // @uri TerminalQmlPlugin
+        qmlRegisterUncreatableType<AbstractXmlItemObject>(uri, 1, 0, "AbstractXmlItemObject", "AbstractXmlItemObject is uncreatable abstract type.");
+        // @uri TerminalQmlPlugin
+        qmlRegisterUncreatableType<AbstractXmlItemsModel>(uri, 1, 0, "AbstractXmlItemsModel", "AbstractXmlItemObject is uncreatable abstract type.");
         // @uri TerminalQmlPlugin
         qmlRegisterType<File>(uri, 1, 0, "File");
         // @uri TerminalQmlPlugin

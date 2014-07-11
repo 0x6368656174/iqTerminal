@@ -3,5 +3,16 @@
         <file>data/i.xml</file>
         <file>data/menu.xml</file>
         <file>data/torrent.xml</file>
+        <file>data/users/1.xml</file>
+        <file>data/users/2.xml</file>
+        <file>data/users/3.xml</file>
+        <file>data/users/4.xml</file>
+        <file>data/users/9.xml</file>
+        <file>data/users/10.xml</file>
+        <file>data/users/5.xml</file>
+        <file>data/users/6.xml</file>
+        <file>data/users/7.xml</file>
+        <file>data/users/8.xml</file>
+        <file>data/all.xml</file>
     </qresource>
 </RCC>

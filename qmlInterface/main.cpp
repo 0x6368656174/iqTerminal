@@ -17,7 +17,17 @@ void initialData()
         dataDir.mkdir(Core::dataDir().toLocalFile());
     }
 
-    QStringList dataFiles = QStringList() << "i.xml" << "menu.xml" << "torrent.xml";
+    if (!QFileInfo::exists(Core::dataDir().toLocalFile() + "users/"))
+    {
+        QDir usersDir;
+        usersDir.mkdir(Core::dataDir().toLocalFile() + "users/");
+    }
+
+    QStringList dataFiles = QStringList() << "i.xml" << "menu.xml" << "torrent.xml" << "all.xml"
+                                          << "users/1.xml" << "users/2.xml" << "users/3.xml"
+                                          << "users/4.xml" << "users/5.xml" << "users/6.xml"
+                                          << "users/7.xml" << "users/8.xml" << "users/9.xml"
+                                          << "users/10.xml";
     foreach (QString dataFile, dataFiles)
     {
         QString dataFilePath = Core::dataDir().toLocalFile() + dataFile;

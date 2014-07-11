@@ -4,13 +4,11 @@
 #include <QDebug>
 
 File::File(QObject *parent) :
-    QObject(parent),
-    _id(-1),
+    AbstractXmlItemObject(parent),
     _path(""),
     _size(0),
     _downloadedSize(0),
-    _name(""),
-    _additionalData(NULL)
+    _name("")
 {
 }
 
@@ -19,16 +17,6 @@ void File::reset()
     setPath("");
     setSize(0);
     setDownloadedSize(0);
-}
-
-void File::setId(const qint64 id)
-{
-    if (_id != id)
-    {
-        _id = id;
-
-        emit idChanged();
-    }
 }
 
 void File::setPath(const QString &path)
@@ -71,17 +59,6 @@ void File::setName(const QString &name)
         _name = name;
 
         emit nameChanged();
-    }
-}
-
-void File::setAdditionalData(QObject *additionalData)
-{
-    if (_additionalData != additionalData)
-    {
-        _additionalData = additionalData;
-        _additionalData->setParent(this);
-
-        emit additionalDataChanged();
     }
 }
 

@@ -6,10 +6,9 @@
 #include <QQmlEngine>
 
 FoldersModel::FoldersModel(QObject *parent) :
-    QAbstractListModel(parent),
+    AbstractXmlItemsModel(parent),
     _source(QUrl()),
     _parentElement(""),
-    _itemAdditionalData(NULL),
     _fileAdditionalData(NULL)
 {
     _roles[Id] = "folder_id";
@@ -20,6 +19,26 @@ FoldersModel::FoldersModel(QObject *parent) :
     _roles[FilesModel] = "folder_files_model";
     _roles[Size] = "folder_size";
     _roles[DownloadedSize] = "folder_downloaded_size";
+
+    connect(this, SIGNAL(itemAdditionalDataChanged()), this, SIGNAL(folderAdditionalDataChanged()));
+}
+
+QString FoldersModel::itemTagName() const
+{
+    return "folder";
+}
+
+AbstractXmlItemObject * FoldersModel::newItem()
+{
+    Folder *newItem = new Folder(this);
+    connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(sidsAvailabilityChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(inProcessChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(sizeChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(downloadedSizeChanged()), this, SLOT(itemDataChanged()));
+    newItem->filesModel()->setItemAdditionalData(_fileAdditionalData);
+    return newItem;
 }
 
 void FoldersModel::setSource(const QUrl &source)
@@ -43,16 +62,6 @@ void FoldersModel::setParentElement(const QString &parentElement)
         emit parentElementChanged();
 
         reload();
-    }
-}
-
-void FoldersModel::setItemAdditionalData(QQmlComponent *folderAdditionalData)
-{
-    if (_itemAdditionalData != folderAdditionalData)
-    {
-        _itemAdditionalData = folderAdditionalData;
-
-        emit itemAdditionalDataChanged();
     }
 }
 
@@ -216,101 +225,6 @@ bool FoldersModel::save()
     return true;
 }
 
-bool FoldersModel::loadFromDomElement(const QDomElement &domElement)
-{
-    if (domElement.isNull())
-        return false;
-
-    QDomElement itemElement = domElement.firstChildElement("folder");
-
-    //Удалим все итемы, которых нет в новом XML-файле
-    QList<qint64> itemIds;
-    while (!itemElement.isNull())
-    {
-        qint64 itemId = itemElement.attribute("id", "-1").toLongLong();
-        if (itemId != -1)
-        {
-            itemIds << itemId;
-        }
-        itemElement = itemElement.nextSiblingElement("folder");
-    }
-    for (int i = rowCount() - 1; i > -1; i--)
-    {
-        Folder * file = get(i);
-        if (itemIds.contains(file->id()))
-            continue;
-
-        removeRow(i);
-    }
-
-    //Пройдемся по новому XML-файлу
-    itemElement = domElement.firstChildElement("folder");
-    int row = 0;
-    while (!itemElement.isNull())
-    {
-        qint64 itemId = itemElement.attribute("id", "-1").toLongLong();
-        if (itemId != -1)
-        {
-            Folder *oldItem = find(itemId);
-            if (!oldItem)
-            {
-                //Создадим новый файл
-                insertRow(row);
-                Folder *newItem = get(row);
-                newItem->loadFromDomElement(itemElement);
-            }
-            else
-            {
-                //Перезагрузим старый файл
-                oldItem->loadFromDomElement(itemElement);
-
-                //Переместим его, если он вдруг передвинулся
-                int oldItemRow = _items.indexOf(oldItem);
-                if (oldItemRow != row)
-                {
-                    emit beginMoveRows(QModelIndex(), oldItemRow, oldItemRow, QModelIndex(), row);
-                    _items.move(oldItemRow, row);
-                    emit endMoveRows();
-                }
-            }
-        }
-        itemElement = itemElement.nextSiblingElement("folder");
-        row++;
-    }
-
-    return true;
-}
-
-void FoldersModel::itemDataChanged()
-{
-    Folder *item = qobject_cast<Folder *>(sender());
-    if (item)
-    {
-        int fileRow = _items.indexOf(item);
-
-        emit dataChanged(index(fileRow, 0), index(fileRow, 0));
-    }
-}
-
-Folder * FoldersModel::find(const qint64 id) const
-{
-    foreach (Folder * item, _items)
-    {
-        if (item && item->id() == id)
-            return item;
-    }
-
-    return NULL;
-}
-
-void FoldersModel::toDomElement(QDomElement &rootElement, QDomDocument &domDocument) const
-{
-    foreach (Folder *item, _items)
-    {
-        rootElement.appendChild(item->toDomElement(domDocument));
-    }
-}
-
 Folder * FoldersModel::appendNew(const QUrl &path)
 {
     return insertNew(rowCount(), path);
@@ -318,75 +232,14 @@ Folder * FoldersModel::appendNew(const QUrl &path)
 
 Folder * FoldersModel::insertNew(int row, const QUrl &path)
 {
-    insertRow(row);
-    Folder *newItem = get(row);
+    Folder *newItem = qobject_cast<Folder *>(AbstractXmlItemsModel::insertNew(row));
     newItem->loadFromPath(path);
     return newItem;
 }
 
-bool FoldersModel::remove(int row)
-{
-    return removeRow(row);
-}
-
-bool FoldersModel::insertRows(int row, int count, const QModelIndex &parent)
-{
-    beginInsertRows(parent, row, row + count-1);
-    for (int i = 0; i < count; i++)
-    {
-        Folder *newItem = new Folder(this);
-        newItem->setId(newId());
-        connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
-        connect(newItem, SIGNAL(sidsAvailabilityChanged()), this, SLOT(itemDataChanged()));
-        connect(newItem, SIGNAL(inProcessChanged()), this, SLOT(itemDataChanged()));
-        connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
-        connect(newItem, SIGNAL(sizeChanged()), this, SLOT(itemDataChanged()));
-        connect(newItem, SIGNAL(downloadedSizeChanged()), this, SLOT(itemDataChanged()));
-
-        if (_itemAdditionalData)
-        {
-            QQmlContext *qmlContext = QQmlEngine::contextForObject(this);
-
-            QObject *newItemAdditionalData = _itemAdditionalData->create(qmlContext);
-            newItem->setAdditionalData(newItemAdditionalData);
-        }
-
-        newItem->filesModel()->setItemAdditionalData(_fileAdditionalData);
-        _items.insert(row + i, newItem);
-    }
-    endInsertRows();
-    emit countChanged();
-    return true;
-}
-
-bool FoldersModel::removeRows(int row, int count, const QModelIndex &parent)
-{
-    beginRemoveRows(parent, row, row+count-1);
-    for (int i = row + count - 1; i > row - 1; i--)
-    {
-        Folder *item = get(i);
-        item->deleteLater();
-        _items.removeAt(i);
-    }
-    endRemoveRows();
-    emit countChanged();
-    return true;
-}
-
-qint64 FoldersModel::newId() const
-{
-    qint64 result = -1;
-    foreach (Folder *item, _items)
-    {
-        if (item->id() > result)
-            result = item->id();
-    }
-    return result + 1;
-}
-
 QVariant FoldersModel::data(const QModelIndex &index, int role) const
 {
-    Folder * item = get(index.row());
+    Folder * item = qobject_cast<Folder *>(get(index.row()));
     if (!item)
         return QVariant();
 
@@ -419,12 +272,4 @@ QVariant FoldersModel::data(const QModelIndex &index, int role) const
     }
 
     return QVariant();
-}
-
-Folder * FoldersModel::get(const int row) const
-{
-    if (row < 0 || row > rowCount() - 1)
-        return NULL;
-
-    return _items.at(row);
 }
