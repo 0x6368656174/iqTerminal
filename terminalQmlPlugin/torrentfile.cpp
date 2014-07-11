@@ -1,9 +1,9 @@
-#include "file.h"
+#include "torrentfile.h"
 #include <QFileInfo>
 #include <QUrl>
 #include <QDebug>
 
-File::File(QObject *parent) :
+TorrentFile::TorrentFile(QObject *parent) :
     AbstractXmlItemObject(parent),
     _path(""),
     _size(0),
@@ -12,14 +12,14 @@ File::File(QObject *parent) :
 {
 }
 
-void File::reset()
+void TorrentFile::reset()
 {
     setPath("");
     setSize(0);
     setDownloadedSize(0);
 }
 
-void File::setPath(const QString &path)
+void TorrentFile::setPath(const QString &path)
 {
     if (_path != path)
     {
@@ -32,7 +32,7 @@ void File::setPath(const QString &path)
     }
 }
 
-void File::setSize(const qint64 size)
+void TorrentFile::setSize(const qint64 size)
 {
     if (_size != size)
     {
@@ -42,7 +42,7 @@ void File::setSize(const qint64 size)
     }
 }
 
-void File::setDownloadedSize(const qint64 downloadedSize)
+void TorrentFile::setDownloadedSize(const qint64 downloadedSize)
 {
     if (_downloadedSize != downloadedSize)
     {
@@ -52,7 +52,7 @@ void File::setDownloadedSize(const qint64 downloadedSize)
     }
 }
 
-void File::setName(const QString &name)
+void TorrentFile::setName(const QString &name)
 {
     if (_name != name)
     {
@@ -62,7 +62,7 @@ void File::setName(const QString &name)
     }
 }
 
-bool File::loadFromPath(const QUrl &path)
+bool TorrentFile::loadFromPath(const QUrl &path)
 {
     if (path.isValid())
     {
@@ -78,7 +78,7 @@ bool File::loadFromPath(const QUrl &path)
     return false;
 }
 
-bool File::loadFromDomElement(const QDomElement &domElement)
+bool TorrentFile::loadFromDomElement(const QDomElement &domElement)
 {
     if (domElement.isNull())
     {
@@ -136,7 +136,7 @@ bool File::loadFromDomElement(const QDomElement &domElement)
     return true;
 }
 
-QDomElement File::toDomElement(QDomDocument &domDocument) const
+QDomElement TorrentFile::toDomElement(QDomDocument &domDocument) const
 {
     QDomElement rootElement = domDocument.createElement("file");
     rootElement.setAttribute("id", id());

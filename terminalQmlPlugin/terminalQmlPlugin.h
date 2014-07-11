@@ -10,11 +10,12 @@
 
 #include "abstractxmlitemobject.h"
 #include "abstractxmlitemsmodel.h"
-#include "file.h"
-#include "filesmodel.h"
-#include "folder.h"
-#include "foldersmodel.h"
-#include "foldersfiltermodel.h"
+
+#include "torrentfile.h"
+#include "torrentfilesmodel.h"
+#include "torrentfolder.h"
+#include "torrentfoldersmodel.h"
+#include "torrentfoldersfiltermodel.h"
 
 static QObject *core_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
@@ -62,15 +63,15 @@ public:
         // @uri TerminalQmlPlugin
         qmlRegisterUncreatableType<AbstractXmlItemsModel>(uri, 1, 0, "AbstractXmlItemsModel", "AbstractXmlItemObject is uncreatable abstract type.");
         // @uri TerminalQmlPlugin
-        qmlRegisterType<File>(uri, 1, 0, "File");
+        qmlRegisterType<TorrentFile>(uri, 1, 0, "TorrentFile");
         // @uri TerminalQmlPlugin
-        qmlRegisterType<FilesModel>(uri, 1, 0, "FilesModel");
+        qmlRegisterType<TorrentFilesModel>(uri, 1, 0, "TorrentFilesModel");
         // @uri TerminalQmlPlugin
-        qmlRegisterType<Folder>(uri, 1, 0, "Folder");
+        qmlRegisterType<TorrentFolder>(uri, 1, 0, "TorrentFolder");
         // @uri TerminalQmlPlugin
-        qmlRegisterType<FoldersModel>(uri, 1, 0, "FoldersModel");
+        qmlRegisterType<TorrentFoldersModel>(uri, 1, 0, "TorrentFoldersModel");
         // @uri TerminalQmlPlugin
-        qmlRegisterType<FoldersFilterModel>(uri, 1, 0, "FoldersFilterModel");
+        qmlRegisterType<TorrentFoldersFilterModel>(uri, 1, 0, "TorrentFoldersFilterModel");
     }
 };
 

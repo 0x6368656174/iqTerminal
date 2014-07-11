@@ -1,11 +1,11 @@
-#ifndef FILE_H
-#define FILE_H
+#ifndef TORRENTFILE_H
+#define TORRENTFILE_H
 
 #include <QObject>
 #include <QDomElement>
 #include "abstractxmlitemobject.h"
 
-class File : public AbstractXmlItemObject
+class TorrentFile : public AbstractXmlItemObject
 {
     Q_OBJECT
     Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
@@ -13,7 +13,7 @@ class File : public AbstractXmlItemObject
     Q_PROPERTY(qint64 downloadedSize READ downloadedSize WRITE setDownloadedSize NOTIFY downloadedSizeChanged)
     Q_PROPERTY(QString name READ name NOTIFY nameChanged)
 public:
-    explicit File(QObject *parent = 0);
+    explicit TorrentFile(QObject *parent = 0);
 
     bool loadFromPath(const QUrl &path);
 
@@ -51,4 +51,4 @@ private:
     void reset();
 };
 
-#endif // FILE_H
+#endif // TORRENTFILE_H

@@ -1,10 +1,10 @@
-#ifndef FILESMODEL_H
-#define FILESMODEL_H
+#ifndef TORRENTFILESMODEL_H
+#define TORRENTFILESMODEL_H
 
 #include "abstractxmlitemsmodel.h"
-#include "file.h"
+#include "torrentfile.h"
 
-class FilesModel : public AbstractXmlItemsModel
+class TorrentFilesModel : public AbstractXmlItemsModel
 {
     Q_OBJECT
 
@@ -19,11 +19,11 @@ public:
         AdditionalData
     };
 
-    explicit FilesModel(QObject *parent = 0);
+    explicit TorrentFilesModel(QObject *parent = 0);
 
-    Q_INVOKABLE File * appendNew(const QUrl &path = QUrl());
+    Q_INVOKABLE TorrentFile * appendNew(const QUrl &path = QUrl());
 
-    Q_INVOKABLE File * insertNew(int row, const QUrl &path = QUrl());
+    Q_INVOKABLE TorrentFile * insertNew(int row, const QUrl &path = QUrl());
 
     qint64 filesSumSize() const;
 
@@ -48,4 +48,4 @@ private:
     QHash<int, QByteArray> _roles;
 };
 
-#endif // FILESMODEL_H
+#endif // TORRENTFILESMODEL_H

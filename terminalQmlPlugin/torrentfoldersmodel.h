@@ -1,10 +1,10 @@
-#ifndef FOLDERSMODEL_H
-#define FOLDERSMODEL_H
+#ifndef TORRENTFOLDERSMODEL_H
+#define TORRENTFOLDERSMODEL_H
 
-#include "folder.h"
+#include "torrentfolder.h"
 #include "abstractxmlitemsmodel.h"
 
-class FoldersModel : public AbstractXmlItemsModel
+class TorrentFoldersModel : public AbstractXmlItemsModel
 {
     Q_OBJECT
     Q_PROPERTY(QUrl source READ source WRITE setSource NOTIFY sourceChanged)
@@ -25,15 +25,15 @@ public:
         DownloadedSize
     };
 
-    explicit FoldersModel(QObject *parent = 0);
+    explicit TorrentFoldersModel(QObject *parent = 0);
 
     Q_INVOKABLE bool reload();
 
     Q_INVOKABLE bool save();
 
-    Q_INVOKABLE Folder * appendNew(const QUrl &path = QUrl());
+    Q_INVOKABLE TorrentFolder * appendNew(const QUrl &path = QUrl());
 
-    Q_INVOKABLE Folder * insertNew(int row, const QUrl &path = QUrl());
+    Q_INVOKABLE TorrentFolder * insertNew(int row, const QUrl &path = QUrl());
 
 public:
     virtual inline QHash<int, QByteArray> roleNames() const {return _roles;}
@@ -69,4 +69,4 @@ private:
     QQmlComponent *_fileAdditionalData;
 };
 
-#endif // FOLDERSMODEL_H
+#endif // TORRENTFOLDERSMODEL_H

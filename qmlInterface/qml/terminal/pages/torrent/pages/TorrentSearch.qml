@@ -17,7 +17,7 @@ Page {
         property bool isEdited: false
     }
 
-    FoldersFilterModel {
+    TorrentFoldersFilterModel {
         id: folderModel
         foldersModel: torrentSearchModel
     }

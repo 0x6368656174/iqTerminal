@@ -30,7 +30,7 @@ Page {
         TorrentSearch {
             id: torrentSearch
 
-            FoldersModel {
+            TorrentFoldersModel {
                 id: torrentSearchModel
                 source: torrentXmlPath
                 parentElement: "torrent/upload"
@@ -54,7 +54,7 @@ Page {
         TorrentDownload {
             id: torrentDownload
 
-            FoldersModel {
+            TorrentFoldersModel {
                 id: torrentDownloadModel
                 source: torrentXmlPath
                 parentElement: "torrent/download"
@@ -78,7 +78,7 @@ Page {
         TorrentsUpload {
             id: torrentUpload
 
-            FoldersModel {
+            TorrentFoldersModel {
                 id: torrentUploadModel
                 source: torrentXmlPath
                 parentElement: "torrent/upload"

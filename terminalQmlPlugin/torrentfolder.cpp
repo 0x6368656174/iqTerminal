@@ -1,11 +1,11 @@
-#include "folder.h"
+#include "torrentfolder.h"
 #include <QDebug>
 #include <QDir>
 #include <QUrl>
 
-Folder::Folder(QObject *parent) :
+TorrentFolder::TorrentFolder(QObject *parent) :
     AbstractXmlItemObject(parent),
-    _filesModel(new FilesModel(this)),
+    _filesModel(new TorrentFilesModel(this)),
     _name(""),
     _sidsAvailability(0),
     _inProcess(false),
@@ -16,7 +16,7 @@ Folder::Folder(QObject *parent) :
     connect(_filesModel, SIGNAL(filesDownloadedSumSizeChanged()), this, SLOT(updateDownloadedSize()));
 }
 
-void Folder::reset()
+void TorrentFolder::reset()
 {
     setName("");
     setSidsAvailability(0);
@@ -24,7 +24,7 @@ void Folder::reset()
     _filesModel->removeRows(0, _filesModel->rowCount());
 }
 
-void Folder::setName(const QString &name)
+void TorrentFolder::setName(const QString &name)
 {
     if (_name != name)
     {
@@ -34,7 +34,7 @@ void Folder::setName(const QString &name)
     }
 }
 
-void Folder::setSidsAvailability(const qint32 sidsAvailability)
+void TorrentFolder::setSidsAvailability(const qint32 sidsAvailability)
 {
     if (_sidsAvailability != sidsAvailability)
     {
@@ -44,7 +44,7 @@ void Folder::setSidsAvailability(const qint32 sidsAvailability)
     }
 }
 
-void Folder::setInProcess(const bool loadingInProcess)
+void TorrentFolder::setInProcess(const bool loadingInProcess)
 {
     if (_inProcess != loadingInProcess)
     {
@@ -54,7 +54,7 @@ void Folder::setInProcess(const bool loadingInProcess)
     }
 }
 
-void Folder::setSize(const qint64 size)
+void TorrentFolder::setSize(const qint64 size)
 {
     if (_size != size)
     {
@@ -64,7 +64,7 @@ void Folder::setSize(const qint64 size)
     }
 }
 
-void Folder::setDownloadedSize(const qint64 downloadedSize)
+void TorrentFolder::setDownloadedSize(const qint64 downloadedSize)
 {
     if (_downloadedSize != downloadedSize)
     {
@@ -74,7 +74,7 @@ void Folder::setDownloadedSize(const qint64 downloadedSize)
     }
 }
 
-bool Folder::loadFromPath(const QUrl &path)
+bool TorrentFolder::loadFromPath(const QUrl &path)
 {
     reset();
     if (path.isValid())
@@ -92,17 +92,17 @@ bool Folder::loadFromPath(const QUrl &path)
     return false;
 }
 
-void Folder::updateSize()
+void TorrentFolder::updateSize()
 {
     setSize(_filesModel->filesSumSize());
 }
 
-void Folder::updateDownloadedSize()
+void TorrentFolder::updateDownloadedSize()
 {
     setDownloadedSize(_filesModel->filesDownloadedSumSize());
 }
 
-void Folder::loadFromDir(const QUrl &path)
+void TorrentFolder::loadFromDir(const QUrl &path)
 {
     if (path.isValid())
     {
@@ -124,7 +124,7 @@ void Folder::loadFromDir(const QUrl &path)
     }
 }
 
-bool Folder::loadFromDomElement(const QDomElement &domElement)
+bool TorrentFolder::loadFromDomElement(const QDomElement &domElement)
 {
     if (domElement.isNull())
     {
@@ -182,7 +182,7 @@ bool Folder::loadFromDomElement(const QDomElement &domElement)
     return _filesModel->loadFromDomElement(domElement);
 }
 
-QDomElement Folder::toDomElement(QDomDocument &domDocument) const
+QDomElement TorrentFolder::toDomElement(QDomDocument &domDocument) const
 {
     QDomElement rootElement = domDocument.createElement("folder");
     rootElement.setAttribute("id", id());

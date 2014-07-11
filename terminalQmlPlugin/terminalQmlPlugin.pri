@@ -22,19 +22,19 @@
 }
 
 HEADERS += \
-    ../terminalQmlPlugin/folder.h \
-    ../terminalQmlPlugin/file.h \
-    ../terminalQmlPlugin/filesmodel.h \
-    ../terminalQmlPlugin/foldersmodel.h \
-    ../terminalQmlPlugin/foldersfiltermodel.h \
     ../terminalQmlPlugin/abstractxmlitemobject.h \
-    ../terminalQmlPlugin/abstractxmlitemsmodel.h
+    ../terminalQmlPlugin/abstractxmlitemsmodel.h \
+    ../terminalQmlPlugin/torrentfile.h \
+    ../terminalQmlPlugin/torrentfolder.h \
+    ../terminalQmlPlugin/torrentfilesmodel.h \
+    ../terminalQmlPlugin/torrentfoldersmodel.h \
+    ../terminalQmlPlugin/torrentfoldersfiltermodel.h
 
 SOURCES += \
-    ../terminalQmlPlugin/folder.cpp \
-    ../terminalQmlPlugin/file.cpp \
-    ../terminalQmlPlugin/filesmodel.cpp \
-    ../terminalQmlPlugin/foldersmodel.cpp \
-    ../terminalQmlPlugin/foldersfiltermodel.cpp \
     ../terminalQmlPlugin/abstractxmlitemobject.cpp \
-    ../terminalQmlPlugin/abstractxmlitemsmodel.cpp
+    ../terminalQmlPlugin/abstractxmlitemsmodel.cpp \
+    ../terminalQmlPlugin/torrentfile.cpp \
+    ../terminalQmlPlugin/torrentfolder.cpp \
+    ../terminalQmlPlugin/torrentfilesmodel.cpp \
+    ../terminalQmlPlugin/torrentfoldersmodel.cpp \
+    ../terminalQmlPlugin/torrentfoldersfiltermodel.cpp

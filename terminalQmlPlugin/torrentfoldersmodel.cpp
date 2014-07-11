@@ -1,11 +1,10 @@
-#include "foldersmodel.h"
-#include "folder.h"
+#include "torrentfoldersmodel.h"
 #include <QDebug>
 #include <QFile>
 #include <QQmlContext>
 #include <QQmlEngine>
 
-FoldersModel::FoldersModel(QObject *parent) :
+TorrentFoldersModel::TorrentFoldersModel(QObject *parent) :
     AbstractXmlItemsModel(parent),
     _source(QUrl()),
     _parentElement(""),
@@ -23,14 +22,14 @@ FoldersModel::FoldersModel(QObject *parent) :
     connect(this, SIGNAL(itemAdditionalDataChanged()), this, SIGNAL(folderAdditionalDataChanged()));
 }
 
-QString FoldersModel::itemTagName() const
+QString TorrentFoldersModel::itemTagName() const
 {
     return "folder";
 }
 
-AbstractXmlItemObject * FoldersModel::newItem()
+AbstractXmlItemObject * TorrentFoldersModel::newItem()
 {
-    Folder *newItem = new Folder(this);
+    TorrentFolder *newItem = new TorrentFolder(this);
     connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(sidsAvailabilityChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(inProcessChanged()), this, SLOT(itemDataChanged()));
@@ -41,7 +40,7 @@ AbstractXmlItemObject * FoldersModel::newItem()
     return newItem;
 }
 
-void FoldersModel::setSource(const QUrl &source)
+void TorrentFoldersModel::setSource(const QUrl &source)
 {
     if(_source != source)
     {
@@ -53,7 +52,7 @@ void FoldersModel::setSource(const QUrl &source)
     }
 }
 
-void FoldersModel::setParentElement(const QString &parentElement)
+void TorrentFoldersModel::setParentElement(const QString &parentElement)
 {
     if (_parentElement != parentElement)
     {
@@ -65,7 +64,7 @@ void FoldersModel::setParentElement(const QString &parentElement)
     }
 }
 
-void FoldersModel::setFileAdditionalData(QQmlComponent *fileAdditionalData)
+void TorrentFoldersModel::setFileAdditionalData(QQmlComponent *fileAdditionalData)
 {
     if (_fileAdditionalData != fileAdditionalData)
     {
@@ -75,7 +74,7 @@ void FoldersModel::setFileAdditionalData(QQmlComponent *fileAdditionalData)
     }
 }
 
-bool FoldersModel::reload()
+bool TorrentFoldersModel::reload()
 {
     if (!_source.isValid())
     {
@@ -137,7 +136,7 @@ bool FoldersModel::reload()
     return loadFromDomElement(rootElement);
 }
 
-bool FoldersModel::save()
+bool TorrentFoldersModel::save()
 {
     if (!_source.isValid())
     {
@@ -225,21 +224,21 @@ bool FoldersModel::save()
     return true;
 }
 
-Folder * FoldersModel::appendNew(const QUrl &path)
+TorrentFolder * TorrentFoldersModel::appendNew(const QUrl &path)
 {
     return insertNew(rowCount(), path);
 }
 
-Folder * FoldersModel::insertNew(int row, const QUrl &path)
+TorrentFolder * TorrentFoldersModel::insertNew(int row, const QUrl &path)
 {
-    Folder *newItem = qobject_cast<Folder *>(AbstractXmlItemsModel::insertNew(row));
+    TorrentFolder *newItem = qobject_cast<TorrentFolder *>(AbstractXmlItemsModel::insertNew(row));
     newItem->loadFromPath(path);
     return newItem;
 }
 
-QVariant FoldersModel::data(const QModelIndex &index, int role) const
+QVariant TorrentFoldersModel::data(const QModelIndex &index, int role) const
 {
-    Folder * item = qobject_cast<Folder *>(get(index.row()));
+    TorrentFolder * item = qobject_cast<TorrentFolder *>(get(index.row()));
     if (!item)
         return QVariant();
 

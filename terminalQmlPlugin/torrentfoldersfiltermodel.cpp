@@ -1,12 +1,12 @@
-#include "foldersfiltermodel.h"
+#include "torrentfoldersfiltermodel.h"
 #include <QDebug>
 
-FoldersFilterModel::FoldersFilterModel(QObject *parent) :
+TorrentFoldersFilterModel::TorrentFoldersFilterModel(QObject *parent) :
     QSortFilterProxyModel(parent),
     _foldersModel(NULL),
     _filterString("")
 {
-    setFilterRole(FoldersModel::Name);
+    setFilterRole(TorrentFoldersModel::Name);
     setFilterKeyColumn(1);
     setFilterCaseSensitivity(Qt::CaseInsensitive);
 
@@ -14,7 +14,7 @@ FoldersFilterModel::FoldersFilterModel(QObject *parent) :
     connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SIGNAL(countChanged()));
 }
 
-void FoldersFilterModel::setFoldersModel(FoldersModel *foldersModel)
+void TorrentFoldersFilterModel::setFoldersModel(TorrentFoldersModel *foldersModel)
 {
     if (_foldersModel != foldersModel)
     {
@@ -28,7 +28,7 @@ void FoldersFilterModel::setFoldersModel(FoldersModel *foldersModel)
     }
 }
 
-void FoldersFilterModel::setFilterString(const QString &filterString)
+void TorrentFoldersFilterModel::setFilterString(const QString &filterString)
 {
     if (_filterString != filterString)
     {
@@ -40,7 +40,7 @@ void FoldersFilterModel::setFilterString(const QString &filterString)
     }
 }
 
-Folder * FoldersFilterModel::get(const int row) const
+TorrentFolder * TorrentFoldersFilterModel::get(const int row) const
 {
     if (row < 0 || row > rowCount() - 1)
         return NULL;
@@ -48,16 +48,16 @@ Folder * FoldersFilterModel::get(const int row) const
     if (!_foldersModel)
         return NULL;
 
-    return qobject_cast<Folder *>(_foldersModel->get(mapToSource(index(row, 0)).row()));
+    return qobject_cast<TorrentFolder *>(_foldersModel->get(mapToSource(index(row, 0)).row()));
 }
 
-bool FoldersFilterModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
+bool TorrentFoldersFilterModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     Q_UNUSED(source_parent);
 
     if (!_foldersModel)
         return false;
-    Folder * folder = qobject_cast<Folder *>(_foldersModel->get(source_row));
+    TorrentFolder * folder = qobject_cast<TorrentFolder *>(_foldersModel->get(source_row));
     if (folder->name().contains(_filterString, filterCaseSensitivity()))
     {
         return true;
@@ -66,7 +66,7 @@ bool FoldersFilterModel::filterAcceptsRow(int source_row, const QModelIndex &sou
     {
         for(int i = 0; i < folder->filesModel()->rowCount(); i++)
         {
-            File* file = qobject_cast<File*>(folder->filesModel()->get(i));
+            TorrentFile* file = qobject_cast<TorrentFile*>(folder->filesModel()->get(i));
             if (file->name().contains(_filterString, filterCaseSensitivity()))
                 return true;
         }

@@ -1,17 +1,15 @@
-#ifndef FOLDER_H
-#define FOLDER_H
+#ifndef TORRENTFOLDER_H
+#define TORRENTFOLDER_H
 
 #include <QObject>
-#include "filesmodel.h"
+#include "torrentfilesmodel.h"
 #include "abstractxmlitemobject.h"
 #include <QDomElement>
 
-class FilesModel;
-
-class Folder : public AbstractXmlItemObject
+class TorrentFolder : public AbstractXmlItemObject
 {
     Q_OBJECT
-    Q_PROPERTY(FilesModel * filesModel READ filesModel CONSTANT)
+    Q_PROPERTY(TorrentFilesModel * filesModel READ filesModel CONSTANT)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(qint32 sidsAvailability READ sidsAvailability WRITE setSidsAvailability NOTIFY sidsAvailabilityChanged)
     Q_PROPERTY(bool inProcess READ inProcess WRITE setInProcess NOTIFY inProcessChanged)
@@ -19,7 +17,7 @@ class Folder : public AbstractXmlItemObject
     Q_PROPERTY(qint64 downloadedSize READ downloadedSize NOTIFY downloadedSizeChanged)
 
 public:
-    explicit Folder(QObject *parent = 0);
+    explicit TorrentFolder(QObject *parent = 0);
 
     bool loadFromPath(const QUrl &path);
 
@@ -29,7 +27,7 @@ public:
     virtual QDomElement toDomElement(QDomDocument &domDocument) const;
 
 public:
-    inline FilesModel * filesModel() const {return _filesModel;}
+    inline TorrentFilesModel * filesModel() const {return _filesModel;}
 
     inline QString name() const {return _name;}
     void setName(const QString &name);
@@ -56,7 +54,7 @@ private slots:
     void updateDownloadedSize();
 
 private:
-    FilesModel *_filesModel;
+    TorrentFilesModel *_filesModel;
     QString _name;
     qint32 _sidsAvailability;
     bool _inProcess;
@@ -69,4 +67,4 @@ private:
     void setDownloadedSize(const qint64 downloadedSize);
 };
 
-#endif // FOLDER_H
+#endif // TORRENTFOLDER_H

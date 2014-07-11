@@ -1,23 +1,23 @@
-#ifndef FOLDERSFILTERMODEL_H
-#define FOLDERSFILTERMODEL_H
+#ifndef TORRENTFOLDERSFILTERMODEL_H
+#define TORRENTFOLDERSFILTERMODEL_H
 
 #include <QSortFilterProxyModel>
-#include "foldersmodel.h"
+#include "torrentfoldersmodel.h"
 
-class FoldersFilterModel : public QSortFilterProxyModel
+class TorrentFoldersFilterModel : public QSortFilterProxyModel
 {
     Q_OBJECT
-    Q_PROPERTY(FoldersModel* foldersModel READ foldersModel WRITE setFoldersModel NOTIFY foldersModelChanged)
+    Q_PROPERTY(TorrentFoldersModel* foldersModel READ foldersModel WRITE setFoldersModel NOTIFY foldersModelChanged)
     Q_PROPERTY(QString filterString READ filterString WRITE setFilterString NOTIFY filterStringChanged)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
 public:
-    explicit FoldersFilterModel(QObject *parent = 0);
+    explicit TorrentFoldersFilterModel(QObject *parent = 0);
 
-    Q_INVOKABLE Folder * get(const int row) const;
+    Q_INVOKABLE TorrentFolder * get(const int row) const;
 
 public:
-    inline FoldersModel *foldersModel() const {return _foldersModel;}
-    void setFoldersModel(FoldersModel* foldersModel);
+    inline TorrentFoldersModel *foldersModel() const {return _foldersModel;}
+    void setFoldersModel(TorrentFoldersModel* foldersModel);
 
     inline QString filterString() const {return _filterString;}
     void setFilterString(const QString &filterString);
@@ -33,8 +33,8 @@ protected:
     bool filterAcceptsRow (int source_row, const QModelIndex &source_parent) const;
 
 private:
-    FoldersModel *_foldersModel;
+    TorrentFoldersModel *_foldersModel;
     QString _filterString;
 };
 
-#endif // FOLDERSFILTERMODEL_H
+#endif // TORRENTFOLDERSFILTERMODEL_H
