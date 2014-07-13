@@ -4,7 +4,8 @@
 
 AbstractXmlItemsModel::AbstractXmlItemsModel(QObject *parent) :
     QAbstractListModel(parent),
-    _itemAdditionalData(NULL)
+    _itemAdditionalData(NULL),
+    _itemTagName("")
 {
 }
 
@@ -105,7 +106,7 @@ AbstractXmlItemObject * AbstractXmlItemsModel::find(const qint64 id) const
     return NULL;
 }
 
-void AbstractXmlItemsModel::toDomElement(QDomElement &rootElement, QDomDocument &domDocument) const
+void AbstractXmlItemsModel::appendItemsToDomElement(QDomElement &rootElement, QDomDocument &domDocument) const
 {
     foreach (AbstractXmlItemObject *item, _items)
     {
@@ -192,4 +193,20 @@ AbstractXmlItemObject * AbstractXmlItemsModel::get(const int row) const
         return NULL;
 
     return _items.at(row);
+}
+
+QString AbstractXmlItemsModel::itemTagName() const
+{
+    if (!_itemTagName.isEmpty())
+    {
+        return _itemTagName;
+    }
+    else
+    {
+        AbstractXmlItemObject *newObject = const_cast<AbstractXmlItemsModel *>(this)->newItem();
+        _itemTagName = newObject->tagName();
+        delete newObject;
+        return _itemTagName;
+    }
+    return "";
 }

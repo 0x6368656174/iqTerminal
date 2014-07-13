@@ -1,4 +1,5 @@
 #include "abstractxmlitemobject.h"
+#include <QDebug>
 
 AbstractXmlItemObject::AbstractXmlItemObject(QObject *parent) :
     QObject(parent),
@@ -26,4 +27,48 @@ void AbstractXmlItemObject::setAdditionalData(QObject *additionalData)
 
         emit additionalDataChanged();
     }
+}
+
+void AbstractXmlItemObject::reset()
+{
+    setId(-1);
+}
+
+bool AbstractXmlItemObject::loadFromDomElement(const QDomElement &domElement)
+{
+    if (domElement.isNull())
+    {
+        reset();
+        return false;
+    }
+
+    if (domElement.tagName() != tagName())
+    {
+        qWarning() << QString("Dom Element is not \"%0\"")
+                      .arg(tagName());
+        reset();
+        return false;
+    }
+
+    if (domElement.hasAttribute("id"))
+    {
+        setId(domElement.attribute("id").toLongLong());
+    }
+    else
+    {
+        qWarning() << QString("In parsing \"%0\" element found element without id, skipped...")
+                      .arg(tagName());
+        reset();
+        return false;
+    }
+
+    return true;
+}
+
+QDomElement AbstractXmlItemObject::toDomElement(QDomDocument &domDocument) const
+{
+    QDomElement rootElement = domDocument.createElement(tagName());
+    rootElement.setAttribute("id", id());
+
+    return rootElement;
 }

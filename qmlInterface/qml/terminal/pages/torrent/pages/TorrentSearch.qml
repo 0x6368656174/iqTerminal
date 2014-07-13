@@ -383,6 +383,7 @@ Page {
                         var oldFile = oldFolder.filesModel.get(j)
                         if (oldFile.additionalData.isSelect) {
                             var newFile = newFolder.filesModel.appendNew()
+                            newFile.name = oldFile.name
                             newFile.path = oldFile.path
                             newFile.size = oldFile.size
                         }

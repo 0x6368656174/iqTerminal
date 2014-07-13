@@ -28,7 +28,17 @@ HEADERS += \
     ../terminalQmlPlugin/torrentfolder.h \
     ../terminalQmlPlugin/torrentfilesmodel.h \
     ../terminalQmlPlugin/torrentfoldersmodel.h \
-    ../terminalQmlPlugin/torrentfoldersfiltermodel.h
+    ../terminalQmlPlugin/torrentfoldersfiltermodel.h \
+    ../terminalQmlPlugin/file.h \
+    ../terminalQmlPlugin/folder.h \
+    ../terminalQmlPlugin/filesmodel.h \
+    ../terminalQmlPlugin/foldersmodel.h \
+    ../terminalQmlPlugin/userprofile.h \
+    ../terminalQmlPlugin/userstate.h \
+    ../terminalQmlPlugin/userstatesmodel.h \
+    ../terminalQmlPlugin/xmlinterface.h \
+    ../terminalQmlPlugin/user.h \
+    ../terminalQmlPlugin/usersmodel.h
 
 SOURCES += \
     ../terminalQmlPlugin/abstractxmlitemobject.cpp \
@@ -37,4 +47,14 @@ SOURCES += \
     ../terminalQmlPlugin/torrentfolder.cpp \
     ../terminalQmlPlugin/torrentfilesmodel.cpp \
     ../terminalQmlPlugin/torrentfoldersmodel.cpp \
-    ../terminalQmlPlugin/torrentfoldersfiltermodel.cpp
+    ../terminalQmlPlugin/torrentfoldersfiltermodel.cpp \
+    ../terminalQmlPlugin/file.cpp \
+    ../terminalQmlPlugin/folder.cpp \
+    ../terminalQmlPlugin/filesmodel.cpp \
+    ../terminalQmlPlugin/foldersmodel.cpp \
+    ../terminalQmlPlugin/userprofile.cpp \
+    ../terminalQmlPlugin/userstate.cpp \
+    ../terminalQmlPlugin/userstatesmodel.cpp \
+    ../terminalQmlPlugin/xmlinterface.cpp \
+    ../terminalQmlPlugin/user.cpp \
+    ../terminalQmlPlugin/usersmodel.cpp

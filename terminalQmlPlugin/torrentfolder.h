@@ -2,15 +2,12 @@
 #define TORRENTFOLDER_H
 
 #include <QObject>
-#include "torrentfilesmodel.h"
-#include "abstractxmlitemobject.h"
+#include "folder.h"
 #include <QDomElement>
 
-class TorrentFolder : public AbstractXmlItemObject
+class TorrentFolder : public Folder
 {
     Q_OBJECT
-    Q_PROPERTY(TorrentFilesModel * filesModel READ filesModel CONSTANT)
-    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(qint32 sidsAvailability READ sidsAvailability WRITE setSidsAvailability NOTIFY sidsAvailabilityChanged)
     Q_PROPERTY(bool inProcess READ inProcess WRITE setInProcess NOTIFY inProcessChanged)
     Q_PROPERTY(qint64 size READ size NOTIFY sizeChanged)
@@ -19,19 +16,17 @@ class TorrentFolder : public AbstractXmlItemObject
 public:
     explicit TorrentFolder(QObject *parent = 0);
 
-    bool loadFromPath(const QUrl &path);
-
 public:
     virtual bool loadFromDomElement(const QDomElement &domElement);
 
     virtual QDomElement toDomElement(QDomDocument &domDocument) const;
 
+protected:
+    virtual AbstractXmlItemsModel * newFilesModel() const;
+
+    virtual void reset();
+
 public:
-    inline TorrentFilesModel * filesModel() const {return _filesModel;}
-
-    inline QString name() const {return _name;}
-    void setName(const QString &name);
-
     inline qint32 sidsAvailability() const {return _sidsAvailability;}
     void setSidsAvailability(const qint32 sidsAvailability);
 
@@ -43,7 +38,6 @@ public:
     inline qint64 downloadedSize() const {return _downloadedSize;}
 
 signals:
-    void nameChanged();
     void sidsAvailabilityChanged();
     void inProcessChanged();
     void sizeChanged();
@@ -54,15 +48,11 @@ private slots:
     void updateDownloadedSize();
 
 private:
-    TorrentFilesModel *_filesModel;
-    QString _name;
     qint32 _sidsAvailability;
     bool _inProcess;
     qint64 _size;
     qint64 _downloadedSize;
 
-    void reset();
-    void loadFromDir(const QUrl &path);
     void setSize(const qint64 size);
     void setDownloadedSize(const qint64 downloadedSize);
 };

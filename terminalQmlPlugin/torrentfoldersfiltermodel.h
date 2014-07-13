@@ -3,6 +3,7 @@
 
 #include <QSortFilterProxyModel>
 #include "torrentfoldersmodel.h"
+#include "torrentfolder.h"
 
 class TorrentFoldersFilterModel : public QSortFilterProxyModel
 {

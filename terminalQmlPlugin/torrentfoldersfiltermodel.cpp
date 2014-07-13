@@ -1,4 +1,5 @@
 #include "torrentfoldersfiltermodel.h"
+#include "file.h"
 #include <QDebug>
 
 TorrentFoldersFilterModel::TorrentFoldersFilterModel(QObject *parent) :
@@ -66,8 +67,8 @@ bool TorrentFoldersFilterModel::filterAcceptsRow(int source_row, const QModelInd
     {
         for(int i = 0; i < folder->filesModel()->rowCount(); i++)
         {
-            TorrentFile* file = qobject_cast<TorrentFile*>(folder->filesModel()->get(i));
-            if (file->name().contains(_filterString, filterCaseSensitivity()))
+            File* file = qobject_cast<File *>(folder->filesModel()->get(i));
+            if (file && file->name().contains(_filterString, filterCaseSensitivity()))
                 return true;
         }
     }

@@ -1,7 +1,8 @@
 #include "torrentfilesmodel.h"
+#include "torrentfile.h"
 
 TorrentFilesModel::TorrentFilesModel(QObject *parent) :
-    AbstractXmlItemsModel(parent)
+    FilesModel(parent)
 {
     _roles[Id] = "file_id";
     _roles[Path] = "file_path";
@@ -14,14 +15,10 @@ TorrentFilesModel::TorrentFilesModel(QObject *parent) :
     connect(this, SIGNAL(countChanged()), this, SIGNAL(filesSumSizeChanged()));
 }
 
-QString TorrentFilesModel::itemTagName() const
-{
-    return "file";
-}
-
 AbstractXmlItemObject * TorrentFilesModel::newItem()
 {
     TorrentFile *newItem = new TorrentFile(this);
+    connect(newItem, SIGNAL(idChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(pathChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(sizeChanged()), this, SLOT(itemDataChanged()));
@@ -53,18 +50,6 @@ qint64 TorrentFilesModel::filesDownloadedSumSize() const
     }
 
     return result;
-}
-
-TorrentFile * TorrentFilesModel::appendNew(const QUrl &path)
-{
-    return insertNew(rowCount(), path);
-}
-
-TorrentFile * TorrentFilesModel::insertNew(int row, const QUrl &path)
-{
-    TorrentFile *newItem = qobject_cast<TorrentFile *>(AbstractXmlItemsModel::insertNew(row));
-    newItem->loadFromPath(path);
-    return newItem;
 }
 
 QVariant TorrentFilesModel::data(const QModelIndex &index, int role) const

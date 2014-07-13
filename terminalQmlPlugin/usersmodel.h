@@ -1,25 +1,19 @@
-#ifndef TORRENTFOLDERSMODEL_H
-#define TORRENTFOLDERSMODEL_H
+#ifndef USERSMODEL_H
+#define USERSMODEL_H
 
-#include "foldersmodel.h"
+#include "abstractxmlitemsmodel.h"
 
-class TorrentFoldersModel : public FoldersModel
+class UsersModel : public AbstractXmlItemsModel
 {
     Q_OBJECT
 public:
     enum Roles
     {
         Id = Qt::UserRole,
-        Name,
-        SidsAvailability,
-        InProcess,
-        AdditionalData,
-        FilesModel,
-        Size,
-        DownloadedSize
+        AdditionalData
     };
 
-    explicit TorrentFoldersModel(QObject *parent = 0);
+    explicit UsersModel(QObject *parent = 0);
 
 public:
     virtual inline QHash<int, QByteArray> roleNames() const {return _roles;}
@@ -33,4 +27,4 @@ private:
     QHash<int, QByteArray> _roles;
 };
 
-#endif // TORRENTFOLDERSMODEL_H
+#endif // USERSMODEL_H

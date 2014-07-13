@@ -11,6 +11,15 @@
 #include "abstractxmlitemobject.h"
 #include "abstractxmlitemsmodel.h"
 
+#include "userprofile.h"
+#include "userstate.h"
+#include "userstatesmodel.h"
+
+#include "file.h"
+#include "filesmodel.h"
+#include "folder.h"
+#include "foldersmodel.h"
+
 #include "torrentfile.h"
 #include "torrentfilesmodel.h"
 #include "torrentfolder.h"
@@ -58,10 +67,28 @@ public:
         qmlRegisterSingletonType<Base64>(uri, 1, 0, "Base64", base64_singletontype_provider);
         // @uri TerminalQmlPlugin
         qmlRegisterSingletonType<FileValidator>(uri, 1, 0, "FileValidator", fileValidator_singletontype_provider);
+
         // @uri TerminalQmlPlugin
         qmlRegisterUncreatableType<AbstractXmlItemObject>(uri, 1, 0, "AbstractXmlItemObject", "AbstractXmlItemObject is uncreatable abstract type.");
         // @uri TerminalQmlPlugin
         qmlRegisterUncreatableType<AbstractXmlItemsModel>(uri, 1, 0, "AbstractXmlItemsModel", "AbstractXmlItemObject is uncreatable abstract type.");
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<UserProfile>(uri, 1, 0, "UserProfile");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<UserState>(uri, 1, 0, "UserState");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<UserStatesModel>(uri, 1, 0, "UserStatesModel");
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<File>(uri, 1, 0, "File");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<FilesModel>(uri, 1, 0, "FilesModel");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<Folder>(uri, 1, 0, "Folder");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<FoldersModel>(uri, 1, 0, "FoldersModel");
+
         // @uri TerminalQmlPlugin
         qmlRegisterType<TorrentFile>(uri, 1, 0, "TorrentFile");
         // @uri TerminalQmlPlugin

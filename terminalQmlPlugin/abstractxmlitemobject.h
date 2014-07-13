@@ -12,9 +12,14 @@ class AbstractXmlItemObject : public QObject
 public:
     explicit AbstractXmlItemObject(QObject *parent = 0);
 
-    virtual bool loadFromDomElement(const QDomElement &domElement) = 0;
+    virtual bool loadFromDomElement(const QDomElement &domElement);
 
-    virtual QDomElement toDomElement(QDomDocument &domDocument) const = 0;
+    virtual QDomElement toDomElement(QDomDocument &domDocument) const ;
+
+    virtual QString tagName() const = 0;
+
+protected:
+    virtual void reset();
 
 public:
     inline qint64 id() const {return _id;}
