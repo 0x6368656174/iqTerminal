@@ -63,27 +63,35 @@ bool UserProfile::reload()
     QDomElement rootElement = findElement(this, source(), parentElement(), domDoc);
     if (!rootElement.isNull())
     {
-        QDomElement nameElement = rootElement.firstChildElement("name");
-        if (!nameElement.isNull())
+        QDomElement infoElement = rootElement.firstChildElement("info");
+        if (!infoElement.isNull())
         {
-            setName(nameElement.text());
-        }
-        else
-        {
-            setName("");
-        }
-
-        QImage nullImage (QSize(1,1), QImage::Format_ARGB32);
-        QDomElement photoElement = rootElement.firstChildElement("photo");
-        if (!photoElement.isNull())
-        {
-            QByteArray photoData = QByteArray::fromBase64(photoElement.text().toLocal8Bit());
-            if (!photoData.isEmpty())
+            QDomElement nameElement = infoElement.firstChildElement("name");
+            if (!nameElement.isNull())
             {
-                QImage photo;
-                if(photo.loadFromData(photoData))
+                setName(nameElement.text());
+            }
+            else
+            {
+                setName("");
+            }
+
+            QImage nullImage (QSize(1,1), QImage::Format_ARGB32);
+            QDomElement photoElement = infoElement.firstChildElement("photo");
+            if (!photoElement.isNull())
+            {
+                QByteArray photoData = QByteArray::fromBase64(photoElement.text().toLocal8Bit());
+                if (!photoData.isEmpty())
                 {
-                    setPhoto(photo);
+                    QImage photo;
+                    if(photo.loadFromData(photoData))
+                    {
+                        setPhoto(photo);
+                    }
+                    else
+                    {
+                        setPhoto(nullImage);
+                    }
                 }
                 else
                 {
@@ -94,24 +102,23 @@ bool UserProfile::reload()
             {
                 setPhoto(nullImage);
             }
-        }
-        else
-        {
-            setPhoto(nullImage);
-        }
 
-        QDomElement statusesElement = rootElement.firstChildElement("statuses");
-        if (!statusesElement.isNull())
-        {
-            _stateModel->loadFromDomElement(statusesElement);
+            QDomElement statusesElement = infoElement.firstChildElement("statuses");
+            if (!statusesElement.isNull())
+            {
+                _stateModel->loadFromDomElement(statusesElement);
+            }
+            else
+            {
+                _stateModel->removeRows(0, _stateModel->rowCount());
+            }
+            return true;
         }
-        else
-        {
-            _stateModel->removeRows(0, _stateModel->rowCount());
-        }
-
-        return true;
     }
+    setName("");
+    QImage nullImage (QSize(1,1), QImage::Format_ARGB32);
+    setPhoto(nullImage);
+    _stateModel->removeRows(0, _stateModel->rowCount());
 
     return false;
 }

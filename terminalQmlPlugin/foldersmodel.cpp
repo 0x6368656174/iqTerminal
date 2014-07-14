@@ -1,8 +1,5 @@
 #include "foldersmodel.h"
 #include <QDebug>
-#include <QFile>
-#include <QQmlContext>
-#include <QQmlEngine>
 
 FoldersModel::FoldersModel(QObject *parent) :
     AbstractXmlItemsModel(parent),
@@ -64,42 +61,12 @@ void FoldersModel::setFileAdditionalData(QQmlComponent *fileAdditionalData)
 
 bool FoldersModel::reload()
 {
-    QDomDocument domDoc;
-    QDomElement rootElement = findElement(this, source(), parentElement(), domDoc);
-    if (!rootElement.isNull())
-    {
-        return loadFromDomElement(rootElement);
-    }
-
-    return false;
+    return reloadModel(this, source(), parentElement());
 }
 
 bool FoldersModel::save()
 {
-    QDomDocument domDoc;
-    QDomElement rootElement = createElement(this, source(), parentElement(), domDoc);
-    if (!rootElement.isNull())
-    {
-        //Пересоздадим основной элемент
-        QDomElement oldRootElement = rootElement;
-        rootElement = domDoc.createElement(rootElement.tagName());
-        oldRootElement.parentNode().appendChild(rootElement);
-        oldRootElement.parentNode().removeChild(oldRootElement);
-
-        appendItemsToDomElement(rootElement, domDoc);
-
-        QFile file (source().toLocalFile());
-        if(file.open(QFile::WriteOnly))
-        {
-            QTextStream ts(&file);
-            ts << domDoc.toString();
-            file.close();
-
-            return true;
-        }
-    }
-
-    return false;
+    return saveModel(this, source(), parentElement());
 }
 
 Folder * FoldersModel::appendNew(const QUrl &path)

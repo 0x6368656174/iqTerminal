@@ -38,7 +38,9 @@ HEADERS += \
     ../terminalQmlPlugin/userstatesmodel.h \
     ../terminalQmlPlugin/xmlinterface.h \
     ../terminalQmlPlugin/user.h \
-    ../terminalQmlPlugin/usersmodel.h
+    ../terminalQmlPlugin/usersmodel.h \
+    ../terminalQmlPlugin/abstractxmlitemsfiltermodel.h \
+    ../terminalQmlPlugin/usersfiltermodel.h
 
 SOURCES += \
     ../terminalQmlPlugin/abstractxmlitemobject.cpp \
@@ -57,4 +59,6 @@ SOURCES += \
     ../terminalQmlPlugin/userstatesmodel.cpp \
     ../terminalQmlPlugin/xmlinterface.cpp \
     ../terminalQmlPlugin/user.cpp \
-    ../terminalQmlPlugin/usersmodel.cpp
+    ../terminalQmlPlugin/usersmodel.cpp \
+    ../terminalQmlPlugin/abstractxmlitemsfiltermodel.cpp \
+    ../terminalQmlPlugin/usersfiltermodel.cpp

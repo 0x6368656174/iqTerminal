@@ -39,7 +39,6 @@ Rectangle {
             }
         }
         console.log("Show page \"" + name + "\"")
-//        showPage(name)
     }
 
     function showLeftPage(name) {
@@ -52,18 +51,7 @@ Rectangle {
             }
         }
         console.log("Show page \"" + name + "\"")
-//        showPage(name)
     }
-
-//    function showPage(name) {
-//        for (var i = 0; i < pages.children.length; i++) {
-//            if (pages.children[i].name === name) {
-//                pages.children[i].opacity = 1
-//            } else {
-//                pages.children[i].opacity = 0
-//            }
-//        }
-//    }
 
     function backPage() {
         var backPageName = privateData.pageHistory.pop()
@@ -74,6 +62,35 @@ Rectangle {
     Item {
         id: pages
         anchors.fill: parent
+
+        //Модели
+
+        UsersModel {
+            id: usersAllModel
+            source: Core.dataDir + "/all.xml"
+            parentElement: "all"
+            itemAdditionalData: QtObject {
+                property bool isSelect: false
+            }
+        }
+
+        UsersModel {
+            id: usersContactsModel
+            source: Core.dataDir + "/contacts.xml"
+            parentElement: "all"
+            itemAdditionalData: QtObject {
+                property bool isSelect: false
+            }
+        }
+
+        UsersModel {
+            id: usersVisitorsModel
+            source: Core.dataDir + "/visitors.xml"
+            parentElement: "all"
+            itemAdditionalData: QtObject {
+                property bool isSelect: false
+            }
+        }
 
         Welcome {
             onSignInCompleted: showRightPage("menu")

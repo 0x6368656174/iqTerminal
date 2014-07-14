@@ -23,7 +23,8 @@ void initialData()
         usersDir.mkdir(Core::dataDir().toLocalFile() + "users/");
     }
 
-    QStringList dataFiles = QStringList() << "i.xml" << "menu.xml" << "torrent.xml" << "all.xml"
+    QStringList dataFiles = QStringList() << "i.xml" << "menu.xml" << "torrent.xml"
+                                          << "all.xml" << "contacts.xml" << "visitors.xml"
                                           << "users/1.xml" << "users/2.xml" << "users/3.xml"
                                           << "users/4.xml" << "users/5.xml" << "users/6.xml"
                                           << "users/7.xml" << "users/8.xml" << "users/9.xml"

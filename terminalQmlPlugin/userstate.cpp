@@ -84,5 +84,4 @@ QDomElement UserState::toDomElement(QDomDocument &domDocument) const
     textElement.appendChild(textText);
 
     return rootElement;
-
 }

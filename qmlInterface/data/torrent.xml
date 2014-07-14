@@ -4,7 +4,7 @@
 		<folder id="0">
 			<name>Rammstein</name>
 			<availability>1</availability>
-			<inProcess>true</inProcess>
+			<in_process>true</in_process>
 			<file id="0">
 				<name>Rammstein - Du hast.mp4</name>
 				<path>file://~/testData/Rammstein - Du hast.mp4</path>
@@ -21,7 +21,7 @@
 		<folder id="1">
 			<name>Louis Armstrong</name>
 			<availability>0</availability>
-			<inProcess>true</inProcess>
+			<in_process>true</in_process>
 			<file id="0">
 				<name>Louis Armstrong - What a wonderful world.mp4</name>
 				<path>file://~/testData/Louis Armstrong - What a wonderful world.mp4</path>
@@ -32,7 +32,7 @@
 		<folder id="2">
 			<name>Blue Stahli</name>
 			<availability>2</availability>
-			<inProcess>true</inProcess>
+			<in_process>true</in_process>
 			<file id="0">
 				<name>Blue Stahli - Anti You.mp3</name>
 				<path>file://~/testData/Blue Stahli - Anti You.mp3</path>
@@ -49,7 +49,7 @@
 		<folder id="3">
 			<name>Scorpions</name>
 			<availability>3</availability>
-			<inProcess>false</inProcess>
+			<in_process>false</in_process>
 			<file id="0">
 				<name>Scorpions - Raised on Rock.mp3</name>
 				<path>file://~/testData/Scorpions - Raised on Rock.mp3</path>
@@ -68,7 +68,7 @@
 		<folder id="0">
 			<name>Rammstein</name>
 			<availability>1</availability>
-			<inProcess>true</inProcess>
+			<in_process>true</in_process>
 			<file id="0">
 				<name>Rammstein - Du hast.mp4</name>
 				<path>file://~/testData/Rammstein - Du hast.mp4</path>
@@ -85,7 +85,7 @@
 		<folder id="1">
 			<name>Louis Armstrong</name>
 			<availability>0</availability>
-			<inProcess>true</inProcess>
+			<in_process>true</in_process>
 			<file id="0">
 				<name>Louis Armstrong - What a wonderful world.mp4</name>
 				<path>file://~/testData/Louis Armstrong - What a wonderful world.mp4</path>
@@ -96,7 +96,7 @@
 		<folder id="2">
 			<name>Blue Stahli</name>
 			<availability>2</availability>
-			<inProcess>true</inProcess>
+			<in_process>true</in_process>
 			<file id="0">
 				<name>Blue Stahli - Anti You.mp3</name>
 				<path>file://~/testData/Blue Stahli - Anti You.mp3</path>
@@ -113,7 +113,7 @@
 		<folder id="3">
 			<name>Scorpions</name>
 			<availability>3</availability>
-			<inProcess>false</inProcess>
+			<in_process>false</in_process>
 			<file id="0">
 				<name>Scorpions - Raised on Rock.mp3</name>
 				<path>file://~/testData/Scorpions - Raised on Rock.mp3</path>

@@ -96,7 +96,7 @@ Page {
     XmlListModel {
         id: foldersModel
         source: iXmlPath
-        query: "/i/photos/folder"
+        query: "/user/photos/folder"
 
         XmlRole {
             name: "folder_name"
@@ -375,7 +375,7 @@ Page {
             XmlListModel {
                 id: childsModel
                 source: iXmlPath
-                query: "/i/photos/folder[@id='" + folderDelegate.folderId + "']/photo"
+                query: "/user/photos/folder[@id='" + folderDelegate.folderId + "']/photo"
 
                 XmlRole {
                     name: "child_name"

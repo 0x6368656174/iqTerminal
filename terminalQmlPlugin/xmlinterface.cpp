@@ -8,7 +8,7 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
 {
     if (!object)
     {
-        qWarning() << "In XmlInterface object can not be NULL.";
+        qWarning() << "In XmlInterface::findElement() object can not be NULL.";
         return QDomElement();
     }
 
@@ -16,19 +16,19 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
 
     if (!source.isValid())
     {
-        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className);
+//        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
+//                      .arg(element)
+//                      .arg(source.toLocalFile())
+//                      .arg(className);
         return QDomElement();
     }
 
     if (element.isEmpty())
     {
-        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Element must be set first.")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className);
+//        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Element must be set first.")
+//                      .arg(element)
+//                      .arg(source.toLocalFile())
+//                      .arg(className);
         return QDomElement();
     }
 
@@ -95,7 +95,7 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
 {
     if (!object)
     {
-        qWarning() << "In XmlInterface object can not be NULL.";
+        qWarning() << "In XmlInterface::createElement() object can not be NULL.";
         return QDomElement();
     }
 
@@ -184,4 +184,56 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
     }
 
     return rootElement;
+}
+
+bool XmlInterface::reloadModel(AbstractXmlItemsModel *model, const QUrl &source, const QString &element)
+{
+    if (!model)
+    {
+        qWarning() << "In XmlInterface::reoladModel() model can not be NULL.";
+        return false;
+    }
+
+    QDomDocument domDoc;
+    QDomElement rootElement = findElement(model, source, element, domDoc);
+    if (!rootElement.isNull())
+    {
+        return model->loadFromDomElement(rootElement);
+    }
+
+    return false;
+}
+
+bool XmlInterface::saveModel(AbstractXmlItemsModel *model, const QUrl &source, const QString &element)
+{
+    if (!model)
+    {
+        qWarning() << "In XmlInterface::saveModel() model can not be NULL.";
+        return false;
+    }
+
+    QDomDocument domDoc;
+    QDomElement rootElement = createElement(model, source, element, domDoc);
+    if (!rootElement.isNull())
+    {
+        //Пересоздадим основной элемент
+        QDomElement oldRootElement = rootElement;
+        rootElement = domDoc.createElement(rootElement.tagName());
+        oldRootElement.parentNode().appendChild(rootElement);
+        oldRootElement.parentNode().removeChild(oldRootElement);
+
+        model->appendItemsToDomElement(rootElement, domDoc);
+
+        QFile file (source.toLocalFile());
+        if(file.open(QFile::WriteOnly))
+        {
+            QTextStream ts(&file);
+            ts << domDoc.toString();
+            file.close();
+
+            return true;
+        }
+    }
+
+    return false;
 }

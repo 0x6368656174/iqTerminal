@@ -7,7 +7,7 @@ import "../../elements"
 
 Page {
     id: torrentPage
-    name: torrent
+    name: "torrent"
     property string torrentXmlPath: Core.dataDir + "/torrent.xml"
 
     Header {

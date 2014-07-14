@@ -91,7 +91,7 @@ bool TorrentFolder::loadFromDomElement(const QDomElement &domElement)
             setSidsAvailability(0);
         }
 
-        QDomElement inProcessElement = domElement.firstChildElement("inProcess");
+        QDomElement inProcessElement = domElement.firstChildElement("in_process");
         if (!inProcessElement.isNull())
         {
             setInProcess(inProcessElement.text().compare("true", Qt::CaseInsensitive) == 0);
@@ -114,7 +114,7 @@ QDomElement TorrentFolder::toDomElement(QDomDocument &domDocument) const
     QDomText sidsAvailabilityText = domDocument.createTextNode(QString::number(sidsAvailability()));
     sidsAvailabilityElement.appendChild(sidsAvailabilityText);
 
-    QDomElement inProcessElement = domDocument.createElement("inProcess");
+    QDomElement inProcessElement = domDocument.createElement("in_process");
     rootElement.appendChild(inProcessElement);
     QDomText inProcessText = domDocument.createTextNode(inProcess()?"true":"false");
     inProcessElement.appendChild(inProcessText);

@@ -81,13 +81,13 @@ Page {
 
     function save() {
         console.log("I::save()")
-        var data = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-        data = data + "<i>\n"
+        var data = "<?xml version='1.0' encoding='utf-8'?>\n"
+        data = data + "<user>\n"
         data = data + iInfo.dataToSave()
         data = data + iPhoto.dataToSave()
         data = data + iVideo.dataToSave()
         data = data + iMusic.dataToSave()
-        data = data + "</i>\n"
+        data = data + "</user>\n"
 
         file.write(data)
 

@@ -9,6 +9,9 @@ Item {
     property bool removeButtonEnabled: true
     property bool selectAllButtonEnabled: false
     property bool deselectAllButtonEnabled: false
+    property bool canselButtonEnabled: false
+    property bool addUserButtonEnabled: false
+    property bool removeUserButtonEnabled: false
 
     property bool hideOnMissClick: true
 
@@ -32,6 +35,10 @@ Item {
             editRole = "remove"
         } else if (buttonType === "add") {
             editRole = "add"
+        } else if (buttonType === "addUser") {
+            editRole = "addUser"
+        } else if (buttonType === "removeUser") {
+            editRole = "removeUser"
         } else if (buttonType === "submit") {
             bar.submit()
         } else if (buttonType === "cancel") {
@@ -89,10 +96,9 @@ Item {
             id: editButtons
             anchors.fill: parent
             visible: !isEditedSate
-
             EditButton {
-                type: "selectAll"
-                enabled: selectAllButtonEnabled
+                type: "cancel"
+                enabled: canselButtonEnabled
                 mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: getButtonWidth()
                 onClicked: bar.buttonClicked(type)
@@ -101,6 +107,14 @@ Item {
             EditButton {
                 type: "deselectAll"
                 enabled: deselectAllButtonEnabled
+                mouseAreaActive: bar.anchors.bottomMargin === 0
+                width: getButtonWidth()
+                onClicked: bar.buttonClicked(type)
+            }
+
+            EditButton {
+                type: "selectAll"
+                enabled: selectAllButtonEnabled
                 mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: getButtonWidth()
                 onClicked: bar.buttonClicked(type)
@@ -129,6 +143,22 @@ Item {
                 width: getButtonWidth()
                 onClicked: bar.buttonClicked(type)
             }
+
+            EditButton {
+                type: "addUser"
+                enabled: addUserButtonEnabled
+                mouseAreaActive: bar.anchors.bottomMargin === 0
+                width: getButtonWidth()
+                onClicked: bar.buttonClicked(type)
+            }
+
+            EditButton {
+                type: "removeUser"
+                enabled: removeUserButtonEnabled
+                mouseAreaActive: bar.anchors.bottomMargin === 0
+                width: getButtonWidth()
+                onClicked: bar.buttonClicked(type)
+            }
         }
 
         Row {
@@ -139,14 +169,14 @@ Item {
                 type: "submit"
                 mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: parent.width / 2
-                onClicked: bar.buttonClicked("submit")
+                onClicked: bar.buttonClicked(type)
             }
 
             EditButton {
-                type: "back"
+                type: "cancel"
                 mouseAreaActive: bar.anchors.bottomMargin === 0
                 width: parent.width / 2
-                onClicked: bar.buttonClicked("cancel")
+                onClicked: bar.buttonClicked(type)
             }
         }
     }

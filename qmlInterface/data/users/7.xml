@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<i>
+<user>
 	<info>
 		<name>Альберт Эйнштейн - 7</name>
 		<statuses>
@@ -105,96 +105,96 @@ n2StFHJ5WwD+HmpbDTLm3e7tluFEYZZB15BfnP7VQiuPIvrmwKq1vFndkctuOBn96s2asyTmJyJY7olA
 	<photos>
 		<folder id="0">
 			<name>В Молодости</name>
-			<photo id="0">
+			<file id="0">
 				<name>В Универе</name>
-				<file>file://~/testData/e_m_1.jpg</file>
-			</photo>
-			<photo id="1">
+				<path>file://~/testData/e_m_1.jpg</path>
+			</file>
+			<file id="1">
 				<name>Отдыхаю</name>
-				<file>file://~/testData/e_m_2.jpg</file>
-			</photo>
-			<photo id="2">
+				<path>file://~/testData/e_m_2.jpg</path>
+			</file>
+			<file id="2">
 				<name>Челка</name>
-				<file>file://~/testData/e_m_3.jpg</file>
-			</photo>
+				<path>file://~/testData/e_m_3.jpg</path>
+			</file>
 		</folder>
 		<folder id="1">
 			<name>Язык</name>
-			<photo id="0">
+			<file id="0">
 				<name></name>
-				<file>file://~/testData/e_i_1.jpg</file>
-			</photo>
-			<photo id="1">
+				<path>file://~/testData/e_i_1.jpg</path>
+			</file>
+			<file id="1">
 				<name>С Друзьями</name>
-				<file>file://~/testData/e_i_2.jpg</file>
-			</photo>
+				<path>file://~/testData/e_i_2.jpg</path>
+			</file>
 		</folder>
 		<folder id="2">
 			<name>Разное</name>
-			<photo id="0">
+			<file id="0">
 				<name>Формула</name>
-				<file>file://~/testData/e_r_1.jpg</file>
-			</photo>
-			<photo id="1">
+				<path>file://~/testData/e_r_1.jpg</path>
+			</file>
+			<file id="1">
 				<name>Учу Считать</name>
-				<file>file://~/testData/e_r_2.jpg</file>
-			</photo>
-			<photo id="2">
+				<path>file://~/testData/e_r_2.jpg</path>
+			</file>
+			<file id="2">
 				<name>Фото</name>
-				<file>file://~/testData/e_r_3.jpg</file>
-			</photo>
-			<photo id="3">
+				<path>file://~/testData/e_r_3.jpg</path>
+			</file>
+			<file id="3">
 				<name>В Кресле</name>
-				<file>file://~/testData/e_r_4.jpg</file>
-			</photo>
-			<photo id="4">
+				<path>file://~/testData/e_r_4.jpg</path>
+			</file>
+			<file id="4">
 				<name>Фото</name>
-				<file>file://~/testData/e_r_5.jpg</file>
-			</photo>
+				<path>file://~/testData/e_r_5.jpg</path>
+			</file>
 		</folder>
 	</photos>
 	<videos>
 		<folder id="0">
 			<name>Rammstein</name>
-			<video id="0">
+			<file id="0">
 				<name>Du hast</name>
-				<file>file://~/testData/Rammstein - Du hast.mp4</file>
-			</video>
-			<video id="1">
+				<path>file://~/testData/Rammstein - Du hast.mp4</path>
+			</file>
+			<file id="1">
 				<name>Mutter</name>
-				<file>file://~/testData/Rammstein - Mutter.mp4</file>
-			</video>
+				<path>file://~/testData/Rammstein - Mutter.mp4</path>
+			</file>
 		</folder>
 		<folder id="1">
 			<name>Louis Armstrong</name>
-			<video id="0">
+			<file id="0">
 				<name>What a wonderful world</name>
-				<file>file://~/testData/Louis Armstrong - What a wonderful world.mp4</file>
-			</video>
+				<path>file://~/testData/Louis Armstrong - What a wonderful world.mp4</path>
+			</file>
 		</folder>
 	</videos>
 	<music>
 		<folder id="0">
 			<name>Blue Stahli</name>
-			<song id="0">
+			<file id="0">
 				<name>Anti You</name>
-				<file>file://~/testData/Blue Stahli - Anti You.mp3</file>
-			</song>
-			<song id="1">
+				<path>file://~/testData/Blue Stahli - Anti You.mp3</path>
+			</file>
+			<file id="1">
 				<name>ULTRAnumb</name>
-				<file>file://~/testData/Blue Stahli - ULTRAnumb.mp3</file>
-			</song>
+				<path>file://~/testData/Blue Stahli - ULTRAnumb.mp3</path>
+			</file>
 		</folder>
 		<folder id="1">
 			<name>Scorpions</name>
-			<song id="0">
+			<file id="0">
 				<name>Raised on Rock</name>
-				<file>file://~/testData/Scorpions - Raised on Rock.mp3</file>
-			</song>
-			<song id="1">
+				<path>file://~/testData/Scorpions - Raised on Rock.mp3</path>
+			</file>
+			<file id="1">
 				<name>Your Last Song</name>
-				<file>file://~/testData/Scorpions - Your Last Song.mp3</file>
-			</song>
+				<path>file://~/testData/Scorpions - Your Last Song.mp3</path>
+			</file>
 		</folder>
 	</music>
-</i>
+</user>

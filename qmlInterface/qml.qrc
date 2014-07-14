@@ -205,5 +205,8 @@
         <file>qml/terminal/pages/torrent/pages/TorrentsUpload.qml</file>
         <file>qml/terminal/elements/CreateNewButton.qml</file>
         <file>qml/terminal/elements/SearchBar.qml</file>
+        <file>qml/terminal/pages/all/All.qml</file>
+        <file>qml/terminal/pages/contacts/Contacts.qml</file>
+        <file>qml/terminal/pages/visitors/Visitors.qml</file>
     </qresource>
 </RCC>

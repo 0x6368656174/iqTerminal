@@ -14,5 +14,7 @@
         <file>data/users/7.xml</file>
         <file>data/users/8.xml</file>
         <file>data/all.xml</file>
+        <file>data/contacts.xml</file>
+        <file>data/visitors.xml</file>
     </qresource>
 </RCC>

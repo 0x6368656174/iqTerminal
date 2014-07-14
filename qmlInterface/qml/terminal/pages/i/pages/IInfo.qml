@@ -24,7 +24,7 @@ Page {
     XmlListModel {
         id: infoModel
         source: iXmlPath
-        query: "/i/info"
+        query: "/user/info"
 
         XmlRole {
             name: "user_photo"
@@ -38,7 +38,7 @@ Page {
 
         onCountChanged: {
             if (count === 1) {
-                photoImage.source = infoModel.get(0).user_photo !== ""?"image://xml/" + Core.dataDirPath + "/i.xml":""
+                photoImage.source = infoModel.get(0).user_photo !== ""?"image://xml/file://" + Core.dataDirPath + "i.xml":""
             }
         }
     }
@@ -46,7 +46,7 @@ Page {
     XmlListModel {
         id: statusesModel
         source: iXmlPath
-        query: "/i/info/statuses/state"
+        query: "/user/info/statuses/state"
 
         XmlRole {
             name: "state_name"
@@ -108,7 +108,7 @@ Page {
                     cache: false
                     anchors.fill: parent
                     fillMode: Image.PreserveAspectFit
-                    source: "image://xml/" + Core.dataDirPath + "/i.xml"
+                    source: "image://xml/file://" + Core.dataDirPath + "i.xml"
                 }
             }
 
@@ -196,7 +196,7 @@ Page {
                     anchors.bottom: parent.bottom
                     anchors.margins: Core.dp(2)
                     fillMode: Image.PreserveAspectFit
-                    source: "image://xml/" + Core.dataDirPath + "/i.xml"
+                    source: "image://xml/file://" + Core.dataDirPath + "i.xml"
                     scale: {
                         if (flickItem.contentY < photoRect.height - height)
                             return 0

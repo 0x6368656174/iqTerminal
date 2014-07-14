@@ -34,12 +34,16 @@ Rectangle {
                     return "../images/45.png"
                 } else if (type === "submit") {
                     return "../images/34b.png"
-                } else if (type === "back") {
+                } else if (type === "cancel") {
                     return "../images/22b.png"
                 } else if (type === "selectAll") {
                     return "../images/34b.png"
                 } else if (type === "deselectAll") {
                     return "../images/34.png"
+                } else if (type === "addUser") {
+                    return "../images/23.png"
+                } else if (type === "removeUser") {
+                    return "../images/36.png"
                 }
 
                 return ""

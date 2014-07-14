@@ -13,25 +13,21 @@ QImage TerminalImageProvider::requestImage(const QString &id, QSize *size, const
 {
     qDebug() << "Request image with id: " << id;
     Q_UNUSED(requestedSize);
-    if (id.right(6) == "/i.xml")
+
+    QImage nullImage (QSize(1,1), QImage::Format_ARGB32);
+    if (id.right(4) == ".xml")
     {
-        QString osValidId = id;
-#ifdef Q_OS_WIN
-        while (osValidId.left(1) == "\\" || osValidId.left(1) == "/")
+        QUrl path = QUrl(id);
+        if (!QFile::exists(path.toLocalFile()))
         {
-            osValidId = osValidId.mid(1);
+            qWarning() << QObject::tr("File %0 not found.").arg(path.toLocalFile());
+            return nullImage;
         }
-#endif
-        if (!QFile::exists(osValidId))
-        {
-            qWarning() << QObject::tr("File %0 not found.").arg(osValidId);
-            return QImage(QSize(1,1), QImage::Format_ARGB32);
-        }
-        QFile file (osValidId);
+        QFile file (path.toLocalFile());
         if (!file.open(QFile::ReadOnly))
         {
-            qWarning() << QObject::tr("Unable to open the file %0.").arg(osValidId);
-            return QImage(QSize(1,1), QImage::Format_ARGB32);
+            qWarning() << QObject::tr("Unable to open the file %0.").arg(path.toLocalFile());
+            return nullImage;
         }
 
         QDomDocument domDoc;
@@ -41,33 +37,36 @@ QImage TerminalImageProvider::requestImage(const QString &id, QSize *size, const
         {
             qWarning() << QObject::tr("Error on parse \"%0\": \"%1\".").arg(id).arg(errorMessage);
             file.close();
-            return QImage(QSize(1,1), QImage::Format_ARGB32);
+            return nullImage;
         }
         file.close();
 
-        QDomElement photoElement = domDoc.documentElement().firstChildElement("info").firstChildElement("photo");
-        if (photoElement.isNull())
+        if (domDoc.documentElement().tagName() == "user")
         {
-            qWarning() << QObject::tr("Not found <info><photo> in \"%0\".").arg(id);
-            return QImage(QSize(1,1), QImage::Format_ARGB32);
+            QDomElement photoElement = domDoc.documentElement().firstChildElement("info").firstChildElement("photo");
+            if (photoElement.isNull())
+            {
+                qWarning() << QObject::tr("Not found <info><photo> in \"%0\".").arg(id);
+                return nullImage;
+            }
+
+            QByteArray imgData = QByteArray::fromBase64(photoElement.text().toLocal8Bit());
+            if (imgData.isEmpty())
+            {
+                return nullImage;
+            }
+
+            QImage img;
+            img.loadFromData(imgData);
+
+            if (size)
+            {
+                size->setHeight(img.height());
+                size->setWidth(img.width());
+            }
+
+            return img;
         }
-
-        QByteArray imgData = QByteArray::fromBase64(photoElement.text().toLocal8Bit());
-        if (imgData.isEmpty())
-        {
-            return QImage(QSize(1,1), QImage::Format_ARGB32);
-        }
-
-        QImage img;
-        img.loadFromData(imgData);
-
-        if (size)
-        {
-            size->setHeight(img.height());
-            size->setWidth(img.width());
-        }
-
-        return img;
     }
-    return QImage();
+    return nullImage;
 }

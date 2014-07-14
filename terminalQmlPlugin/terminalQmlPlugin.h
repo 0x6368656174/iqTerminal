@@ -10,10 +10,15 @@
 
 #include "abstractxmlitemobject.h"
 #include "abstractxmlitemsmodel.h"
+#include "abstractxmlitemsfiltermodel.h"
 
 #include "userprofile.h"
 #include "userstate.h"
 #include "userstatesmodel.h"
+
+#include "user.h"
+#include "usersmodel.h"
+#include "usersfiltermodel.h"
 
 #include "file.h"
 #include "filesmodel.h"
@@ -72,6 +77,9 @@ public:
         qmlRegisterUncreatableType<AbstractXmlItemObject>(uri, 1, 0, "AbstractXmlItemObject", "AbstractXmlItemObject is uncreatable abstract type.");
         // @uri TerminalQmlPlugin
         qmlRegisterUncreatableType<AbstractXmlItemsModel>(uri, 1, 0, "AbstractXmlItemsModel", "AbstractXmlItemObject is uncreatable abstract type.");
+        // @uri TerminalQmlPlugin
+        qmlRegisterUncreatableType<AbstractXmlItemsFilterModel>(uri, 1, 0, "AbstractXmlItemsFilterModel", "AbstractXmlItemsFilterModel is uncreatable abstract type.");
+
 
         // @uri TerminalQmlPlugin
         qmlRegisterType<UserProfile>(uri, 1, 0, "UserProfile");
@@ -79,6 +87,14 @@ public:
         qmlRegisterType<UserState>(uri, 1, 0, "UserState");
         // @uri TerminalQmlPlugin
         qmlRegisterType<UserStatesModel>(uri, 1, 0, "UserStatesModel");
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<User>(uri, 1, 0, "User");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<UsersModel>(uri, 1, 0, "UsersModel");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<UsersFilterModel>(uri, 1, 0, "UsersFilterModel");
+
 
         // @uri TerminalQmlPlugin
         qmlRegisterType<File>(uri, 1, 0, "File");
