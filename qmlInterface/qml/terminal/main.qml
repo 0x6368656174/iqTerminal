@@ -1,8 +1,10 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
+import QtQuick.Dialogs 1.1
 
 import "pages/welcome"
 import "pages/menu"
+import "pages/userInfo"
 
 Rectangle {
     id: main
@@ -106,5 +108,14 @@ Rectangle {
                 page.parent = pages
             }
         }
+
+        UserInfo {
+            id: userInfo
+            visible: false
+        }
+    }
+
+    FileDialog {
+        id: globalFileDialog
     }
 }

@@ -23,7 +23,8 @@ void AbstractXmlItemObject::setAdditionalData(QObject *additionalData)
     if (_additionalData != additionalData)
     {
         _additionalData = additionalData;
-        _additionalData->setParent(this);
+        if(_additionalData)
+            _additionalData->setParent(this);
 
         emit additionalDataChanged();
     }
@@ -31,7 +32,7 @@ void AbstractXmlItemObject::setAdditionalData(QObject *additionalData)
 
 void AbstractXmlItemObject::reset()
 {
-    setId(-1);
+    //НЕ СБРАСЫВАЙ id!!!
 }
 
 bool AbstractXmlItemObject::loadFromDomElement(const QDomElement &domElement)

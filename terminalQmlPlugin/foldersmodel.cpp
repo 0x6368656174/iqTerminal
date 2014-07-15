@@ -64,7 +64,7 @@ bool FoldersModel::reload()
     return reloadModel(this, source(), parentElement());
 }
 
-bool FoldersModel::save()
+bool FoldersModel::save() const
 {
     return saveModel(this, source(), parentElement());
 }

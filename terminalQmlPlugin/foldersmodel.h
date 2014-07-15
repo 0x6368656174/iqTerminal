@@ -25,7 +25,7 @@ public:
 
     Q_INVOKABLE bool reload();
 
-    Q_INVOKABLE bool save();
+    Q_INVOKABLE bool save() const;
 
     Q_INVOKABLE Folder * appendNew(const QUrl &path = QUrl());
 

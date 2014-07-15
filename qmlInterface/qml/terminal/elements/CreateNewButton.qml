@@ -56,11 +56,14 @@ Item {
             id: createNewButtonMA
             anchors.fill: parent
             platformIndependentHoverEnabled: true
-            enabled: enabled && !enableButtonTimer.running
+            enabled: createNewButton.enabled
 
             onClicked: {
-                createButtonClickAnimation.restart()
-                createNewButton.clicked()
+                if (!enableButtonTimer.running) {
+                    enableButtonTimer.restart()
+                    createButtonClickAnimation.restart()
+                    createNewButton.clicked()
+                }
             }
         }
     }

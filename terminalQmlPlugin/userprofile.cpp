@@ -6,7 +6,7 @@
 UserProfile::UserProfile(QObject *parent) :
     QObject(parent),
     _source(QUrl()),
-    _parentElement(""),
+    _parentElement("user/info"),
     _name(""),
     _photo(QImage()),
     _stateModel(new UserStatesModel(this))
@@ -63,35 +63,27 @@ bool UserProfile::reload()
     QDomElement rootElement = findElement(this, source(), parentElement(), domDoc);
     if (!rootElement.isNull())
     {
-        QDomElement infoElement = rootElement.firstChildElement("info");
-        if (!infoElement.isNull())
+        QDomElement nameElement = rootElement.firstChildElement("name");
+        if (!nameElement.isNull())
         {
-            QDomElement nameElement = infoElement.firstChildElement("name");
-            if (!nameElement.isNull())
-            {
-                setName(nameElement.text());
-            }
-            else
-            {
-                setName("");
-            }
+            setName(nameElement.text());
+        }
+        else
+        {
+            setName("");
+        }
 
-            QImage nullImage (QSize(1,1), QImage::Format_ARGB32);
-            QDomElement photoElement = infoElement.firstChildElement("photo");
-            if (!photoElement.isNull())
+        QImage nullImage;
+        QDomElement photoElement = rootElement.firstChildElement("photo");
+        if (!photoElement.isNull())
+        {
+            QByteArray photoData = QByteArray::fromBase64(photoElement.text().toLocal8Bit());
+            if (!photoData.isEmpty())
             {
-                QByteArray photoData = QByteArray::fromBase64(photoElement.text().toLocal8Bit());
-                if (!photoData.isEmpty())
+                QImage photo;
+                if(photo.loadFromData(photoData))
                 {
-                    QImage photo;
-                    if(photo.loadFromData(photoData))
-                    {
-                        setPhoto(photo);
-                    }
-                    else
-                    {
-                        setPhoto(nullImage);
-                    }
+                    setPhoto(photo);
                 }
                 else
                 {
@@ -102,18 +94,22 @@ bool UserProfile::reload()
             {
                 setPhoto(nullImage);
             }
-
-            QDomElement statusesElement = infoElement.firstChildElement("statuses");
-            if (!statusesElement.isNull())
-            {
-                _stateModel->loadFromDomElement(statusesElement);
-            }
-            else
-            {
-                _stateModel->removeRows(0, _stateModel->rowCount());
-            }
-            return true;
         }
+        else
+        {
+            setPhoto(nullImage);
+        }
+
+        QDomElement statusesElement = rootElement.firstChildElement("statuses");
+        if (!statusesElement.isNull())
+        {
+            _stateModel->loadFromDomElement(statusesElement);
+        }
+        else
+        {
+            _stateModel->removeRows(0, _stateModel->rowCount());
+        }
+        return true;
     }
     setName("");
     QImage nullImage (QSize(1,1), QImage::Format_ARGB32);
@@ -123,7 +119,7 @@ bool UserProfile::reload()
     return false;
 }
 
-bool UserProfile::save()
+bool UserProfile::save() const
 {
     QDomDocument domDoc;
     QDomElement rootElement = createElement(this, source(), parentElement(), domDoc);
@@ -135,6 +131,7 @@ bool UserProfile::save()
         oldRootElement.parentNode().appendChild(rootElement);
         oldRootElement.parentNode().removeChild(oldRootElement);
 
+
         QDomElement nameElement = domDoc.createElement("name");
         rootElement.appendChild(nameElement);
         QDomText nameText = domDoc.createTextNode(name());
@@ -144,8 +141,11 @@ bool UserProfile::save()
         rootElement.appendChild(photoElement);
         QByteArray ba;
         QBuffer buffer(&ba);
-        buffer.open(QIODevice::WriteOnly);
-        photo().save(&buffer, "PNG");
+        if (!photo().isNull())
+        {
+            buffer.open(QIODevice::WriteOnly);
+            photo().save(&buffer, "PNG");
+        }
         QDomText photoText = domDoc.createTextNode(ba.toBase64());
         photoElement.appendChild(photoText);
 
@@ -165,4 +165,21 @@ bool UserProfile::save()
     }
 
     return false;
+}
+
+void UserProfile::removePhoto()
+{
+    QImage nullImage;
+    setPhoto(nullImage);
+}
+
+void UserProfile::setPhoto(const QUrl &filePath)
+{
+    QImage photo (filePath.toLocalFile());
+    setPhoto(photo);
+}
+
+bool UserProfile::photoIsNull() const
+{
+    return photo().isNull();
 }

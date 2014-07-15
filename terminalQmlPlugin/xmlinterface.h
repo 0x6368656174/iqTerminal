@@ -15,7 +15,7 @@ protected:
 
     bool reloadModel(AbstractXmlItemsModel* model, const QUrl& source, const QString &element);
 
-    bool saveModel(AbstractXmlItemsModel* model, const QUrl& source, const QString &element);
+    bool saveModel(const AbstractXmlItemsModel *model, const QUrl& source, const QString &element) const;
 };
 
 #endif // XMLINTERFACE_H

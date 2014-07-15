@@ -174,6 +174,7 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
 
         rootElement = domDocument.createElement(domPath.first());
         domDocument.appendChild(rootElement);
+        domPath.removeFirst();
 
         foreach (QString domPathString, domPath)
         {
@@ -204,7 +205,7 @@ bool XmlInterface::reloadModel(AbstractXmlItemsModel *model, const QUrl &source,
     return false;
 }
 
-bool XmlInterface::saveModel(AbstractXmlItemsModel *model, const QUrl &source, const QString &element)
+bool XmlInterface::saveModel(const AbstractXmlItemsModel *model, const QUrl &source, const QString &element) const
 {
     if (!model)
     {

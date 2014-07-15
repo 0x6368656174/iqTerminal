@@ -1,5 +1,4 @@
 import QtQuick 2.0
-import QtQuick.Dialogs 1.1
 import TerminalQmlPlugin 1.0
 import QtQuick.XmlListModel 2.0
 import "../.."
@@ -396,7 +395,6 @@ Page {
 
     FileDialog {
         id: fileDialog
-        selectExisting: true
         selectFolder: true
         selectMultiple: false
         title: qsTr("Выбирите папку")

@@ -16,6 +16,7 @@ AbstractXmlItemObject * UserStatesModel::newItem()
     connect(newItem, SIGNAL(idChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(textChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
     return newItem;
 }
 

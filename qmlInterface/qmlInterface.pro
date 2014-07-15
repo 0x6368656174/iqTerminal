@@ -37,4 +37,5 @@ RESOURCES += \
     qml.qrc
 
 OTHER_FILES += \
-    qml/terminal/elements/BaseHeader.qml
+    qml/terminal/elements/BaseHeader.qml \
+    qml/terminal/pages/userInfo/pages/Photo.qml

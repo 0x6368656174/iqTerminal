@@ -20,7 +20,13 @@ public:
 
     Q_INVOKABLE bool reload();
 
-    Q_INVOKABLE bool save();
+    Q_INVOKABLE bool save() const;
+
+    Q_INVOKABLE void setPhoto(const QUrl &filePath);
+
+    Q_INVOKABLE void removePhoto();
+
+    Q_INVOKABLE bool photoIsNull() const;
 
 public:
     inline QUrl source() const {return _source;}

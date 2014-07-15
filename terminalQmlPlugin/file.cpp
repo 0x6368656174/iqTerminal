@@ -50,7 +50,7 @@ bool File::loadFromPath(const QUrl &path)
         if (info.exists())
         {
             setName(info.fileName());
-            setPath(path.toLocalFile());
+            setPath(path.toString());
             return true;
         }
     }

@@ -57,7 +57,7 @@ Rectangle {
         id: ma
         anchors.fill: parent
         visible: button.mouseAreaActive
-        hoverEnabled: true
+        platformIndependentHoverEnabled: true
         onContainsMouseChanged: {
             if (containsMouse) {
 //                button.color = "#b0ff5d1b"

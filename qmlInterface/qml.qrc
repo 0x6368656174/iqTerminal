@@ -161,16 +161,7 @@
         <file>qml/terminal/images/89.png</file>
         <file>qml/terminal/images/90.png</file>
         <file>qml/terminal/images/91.png</file>
-        <file>qml/terminal/pages/i/AudioPlayer.qml</file>
-        <file>qml/terminal/pages/i/Header.qml</file>
         <file>qml/terminal/pages/i/I.qml</file>
-        <file>qml/terminal/pages/i/MediaButtons.qml</file>
-        <file>qml/terminal/pages/i/pages/IInfo.qml</file>
-        <file>qml/terminal/pages/i/pages/IMusic.qml</file>
-        <file>qml/terminal/pages/i/pages/IPhoto.qml</file>
-        <file>qml/terminal/pages/i/pages/IVideo.qml</file>
-        <file>qml/terminal/pages/i/pages/PhotoSlider.qml</file>
-        <file>qml/terminal/pages/i/pages/VideoPlayer.qml</file>
         <file>qml/terminal/pages/Page.qml</file>
         <file>qml/terminal/elements/TerminalMouseArea.qml</file>
         <file>qml/terminal/elements/BaseHeader.qml</file>
@@ -208,5 +199,16 @@
         <file>qml/terminal/pages/all/All.qml</file>
         <file>qml/terminal/pages/contacts/Contacts.qml</file>
         <file>qml/terminal/pages/visitors/Visitors.qml</file>
+        <file>qml/terminal/pages/userInfo/Header.qml</file>
+        <file>qml/terminal/pages/userInfo/UserInfo.qml</file>
+        <file>qml/terminal/pages/userInfo/pages/Info.qml</file>
+        <file>qml/terminal/elements/AudioPlayer.qml</file>
+        <file>qml/terminal/elements/PhotoSlider.qml</file>
+        <file>qml/terminal/elements/VideoPlayer.qml</file>
+        <file>qml/terminal/pages/userInfo/pages/Video.qml</file>
+        <file>qml/terminal/pages/userInfo/pages/Photo.qml</file>
+        <file>qml/terminal/elements/MediaButtons.qml</file>
+        <file>qml/terminal/pages/userInfo/pages/Music.qml</file>
+        <file>qml/terminal/elements/FileDialog.qml</file>
     </qresource>
 </RCC>

@@ -39,6 +39,7 @@ AbstractXmlItemObject * UsersModel::newItem()
     User *newItem = new User(this);
     connect(newItem, SIGNAL(idChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(profileChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
     return newItem;
 }
 

@@ -32,7 +32,7 @@ Page {
         property int columnCount: width / Core.dp(60) < 1?1:width / Core.dp(60)
         interactive: contentHeight > height
         anchors.left: parent.left
-        anchors.leftMargin: Core.dp(2)
+        anchors.rightMargin: -Core.dp(2)
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: searchBar.top
@@ -58,7 +58,7 @@ Page {
             UserProfile {
                 id: userProfile
                 source: Core.dataDir + "/users/" + user_profile
-                parentElement: "user"
+                parentElement: "user/info"
             }
 
             Item
@@ -139,6 +139,8 @@ Page {
 
                 visible: !privateData.isEdited
                 onClicked: {
+                    userInfo.userProfile = userProfile.source
+                    showRightPage(userInfo.name)
                 }
                 onPressedChanged: {
                     if (pressed) {

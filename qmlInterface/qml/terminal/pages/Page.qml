@@ -3,6 +3,7 @@ import QtQuick 2.0
 Item {
     id: page
     property string name
+    clip: true
 
     width: parent.width
     height: parent.height

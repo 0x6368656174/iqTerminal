@@ -24,7 +24,7 @@ bool AbstractXmlItemsModel::loadFromDomElement(const QDomElement &domElement)
     if (domElement.isNull())
         return false;
 
-    QDomElement itemElement = domElement.firstChildElement("file");
+    QDomElement itemElement = domElement.firstChildElement(itemTagName());
 
     //Удалим все итемы, которых нет в новом XML-файле
     QList<qint64> itemIds;
@@ -35,7 +35,7 @@ bool AbstractXmlItemsModel::loadFromDomElement(const QDomElement &domElement)
         {
             itemIds << itemId;
         }
-        itemElement = itemElement.nextSiblingElement("file");
+        itemElement = itemElement.nextSiblingElement(itemTagName());
     }
     for (int i = rowCount() - 1; i > -1; i--)
     {
@@ -57,14 +57,14 @@ bool AbstractXmlItemsModel::loadFromDomElement(const QDomElement &domElement)
             AbstractXmlItemObject *oldItem = find(itemId);
             if (!oldItem)
             {
-                //Создадим новый файл
+                //Создадим новый
                 insertRow(row);
                 AbstractXmlItemObject *newItem = get(row);
                 newItem->loadFromDomElement(itemElement);
             }
             else
             {
-                //Перезагрузим старый файл
+                //Перезагрузим старый
                 oldItem->loadFromDomElement(itemElement);
 
                 //Переместим его, если он вдруг передвинулся
@@ -76,9 +76,9 @@ bool AbstractXmlItemsModel::loadFromDomElement(const QDomElement &domElement)
                     emit endMoveRows();
                 }
             }
+            row++;
         }
         itemElement = itemElement.nextSiblingElement(itemTagName());
-        row++;
     }
 
     return true;
@@ -89,9 +89,9 @@ void AbstractXmlItemsModel::itemDataChanged()
     AbstractXmlItemObject *item = qobject_cast<AbstractXmlItemObject *>(sender());
     if (item)
     {
-        int fileRow = _items.indexOf(item);
-
-        emit dataChanged(index(fileRow, 0), index(fileRow, 0));
+        int itemRow = _items.indexOf(item);
+        if (itemRow > -1)
+            emit dataChanged(index(itemRow, 0), index(itemRow, 0));
     }
 }
 
@@ -145,14 +145,6 @@ bool AbstractXmlItemsModel::insertRows(int row, int count, const QModelIndex &pa
 
             QObject *newItemAdditionalData = _itemAdditionalData->create(qmlContext);
             item->setAdditionalData(newItemAdditionalData);
-        }
-
-        if (_itemAdditionalData)
-        {
-            QQmlContext *qmlContext = QQmlEngine::contextForObject(this);
-
-            QObject *newFolderAdditionalData = _itemAdditionalData->create(qmlContext);
-            item->setAdditionalData(newFolderAdditionalData);
         }
 
         _items.insert(row + i, item);
