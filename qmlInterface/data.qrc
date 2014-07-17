@@ -16,5 +16,15 @@
         <file>data/all.xml</file>
         <file>data/contacts.xml</file>
         <file>data/visitors.xml</file>
+        <file>data/chats/1.xml</file>
+        <file>data/chats/2.xml</file>
+        <file>data/chats/3.xml</file>
+        <file>data/chats/4.xml</file>
+        <file>data/chats/9.xml</file>
+        <file>data/chats/10.xml</file>
+        <file>data/chats/5.xml</file>
+        <file>data/chats/6.xml</file>
+        <file>data/chats/7.xml</file>
+        <file>data/chats/8.xml</file>
     </qresource>
 </RCC>

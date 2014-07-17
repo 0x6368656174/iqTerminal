@@ -26,9 +26,21 @@ Page {
         anchors.topMargin: Core.dp(70)
     }
 
+    UserProfile {
+        id: userProfileModel
+        source: Core.dataDir + "/users/" + userInfoPage.userProfile
+        parentElement: "user/info"
+
+        stateModel.itemAdditionalData: QtObject {
+            property bool isEdited: false
+            property string nameToSave: ""
+            property string textToSave: ""
+        }
+    }
+
     FoldersModel {
         id: photoFolderModel
-        source: userProfile
+        source: Core.dataDir + "/users/" + userInfoPage.userProfile
         parentElement: "user/photos"
         folderAdditionalData: QtObject {
             property bool isEdited: false
@@ -43,7 +55,7 @@ Page {
 
     FoldersModel {
         id: videoFolderModel
-        source: userProfile
+        source: Core.dataDir + "/users/" + userInfoPage.userProfile
         parentElement: "user/videos"
         folderAdditionalData: QtObject {
             property bool isEdited: false
@@ -58,7 +70,7 @@ Page {
 
     FoldersModel {
         id: musicFolderModel
-        source: userProfile
+        source: Core.dataDir + "/users/" + userInfoPage.userProfile
         parentElement: "user/music"
         folderAdditionalData: QtObject {
             property bool isEdited: false
@@ -80,7 +92,6 @@ Page {
 
         Info {
             id: infoPage
-            userProfile: userInfoPage.userProfile
             opacity: header.activeTab === "info"?1:0
             visible: opacity !== 0
             Behavior on opacity {NumberAnimation {duration: 300} }
@@ -88,7 +99,6 @@ Page {
 
         Photo {
             id: photoPage
-            userProfile: userInfoPage.userProfile
             opacity: header.activeTab === "photo"?1:0
             visible: opacity !== 0
             Behavior on opacity {NumberAnimation {duration: 300} }
@@ -96,7 +106,6 @@ Page {
 
         Video {
             id: videoPage
-            userProfile: userInfoPage.userProfile
             opacity: header.activeTab === "video"?1:0
             visible: opacity !== 0
             Behavior on opacity {NumberAnimation {duration: 300} }
@@ -104,7 +113,6 @@ Page {
 
         Music {
             id: mucisPage
-            userProfile: userInfoPage.userProfile
             opacity: header.activeTab === "music"?1:0
             visible: opacity !== 0
             Behavior on opacity {NumberAnimation {duration: 300} }

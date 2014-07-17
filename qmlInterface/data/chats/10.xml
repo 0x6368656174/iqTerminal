@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<chat>
+	<message id="0" direction="outgoing" type="text" read="false">
+		Привет=)
+	</message>
+	<message id="1" direction="incoming" type="text" read="false">
+		Привет=)
+	</message>
+	<message id="2" direction="outgoing" type="image" read="false" filePath="file:///home/pashok/testData/e_r_1.jpg">
+		Вот тебе фотка
+	</message>
+	<message id="3" direction="outgoing" type="video" read="true" filePath="file:///home/pashok/testData/Rammstein - Du hast.mp4">
+		Вот тебе видео
+	</message>
+	<message id="4" direction="outgoing" type="audio" read="false" filePath="file:///home/pashok/testData/Blue Stahli - ULTRAnumb.mp3">
+		Вот тебе песня
+	</message>
+	<message id="5" direction="incoming" type="text" read="false">
+		Спасибо!
+	</message>
+	<message id="6" direction="outgoing" type="text" read="true">
+		Не за что...
+	</message>
+	<message id="7" direction="outgoing" type="image" read="true" filePath="file:///home/pashok/testData/e_r_1.jpg">
+		Вот тебе фотка
+	</message>
+	<message id="8" direction="outgoing" type="video" read="false" filePath="file:///home/pashok/testData/Rammstein - Du hast.mp4">
+		Вот тебе видео
+	</message>
+	<message id="9" direction="outgoing" type="audio" read="true" filePath="file:///home/pashok/testData/Blue Stahli - ULTRAnumb.mp3">
+		Вот тебе песня
+	</message>
+	<message id="10" direction="outgoing" type="text" read="false">
+Длиннный длинный текст. Который не помещается на экране.
+И на несколько строчек.
+Третья строка.
+	</message>
+		<message id="11" direction="outgoing" type="file" read="false" filePath="file:///home/pashok/testData/Blue Stahli - ULTRAnumb.mp3">
+		Вот тебе песня
+	</message>
+</chat>

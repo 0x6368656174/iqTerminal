@@ -16,19 +16,19 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
 
     if (!source.isValid())
     {
-//        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
-//                      .arg(element)
-//                      .arg(source.toLocalFile())
-//                      .arg(className);
+        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
+                      .arg(element)
+                      .arg(source.toLocalFile())
+                      .arg(className);
         return QDomElement();
     }
 
     if (element.isEmpty())
     {
-//        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Element must be set first.")
-//                      .arg(element)
-//                      .arg(source.toLocalFile())
-//                      .arg(className);
+        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Element must be set first.")
+                      .arg(element)
+                      .arg(source.toLocalFile())
+                      .arg(className);
         return QDomElement();
     }
 

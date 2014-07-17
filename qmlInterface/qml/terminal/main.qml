@@ -5,6 +5,7 @@ import QtQuick.Dialogs 1.1
 import "pages/welcome"
 import "pages/menu"
 import "pages/userInfo"
+import "pages/chat"
 
 Rectangle {
     id: main
@@ -112,6 +113,28 @@ Rectangle {
         UserInfo {
             id: userInfo
             visible: false
+        }
+
+        Chat {
+            id: chat
+            visible: false
+        }
+    }
+
+    MouseArea {
+        id: disableMouse
+        visible: {
+            for (var i = 0; i < pages.children.length; i++) {
+                if (pages.children[i].showHideAnimationRunning)
+                    return true
+            }
+            return false
+        }
+
+        anchors.fill: parent
+        onClicked: {
+        }
+        onPressAndHold: {
         }
     }
 

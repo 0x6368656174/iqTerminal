@@ -7,8 +7,6 @@ import "../../../elements"
 
 Page {
     id: musicPage
-    property string userProfile
-
     name: "userInfo_music"
 
     QtObject {

@@ -40,7 +40,9 @@ HEADERS += \
     ../terminalQmlPlugin/user.h \
     ../terminalQmlPlugin/usersmodel.h \
     ../terminalQmlPlugin/abstractxmlitemsfiltermodel.h \
-    ../terminalQmlPlugin/usersfiltermodel.h
+    ../terminalQmlPlugin/usersfiltermodel.h \
+    ../terminalQmlPlugin/message.h \
+    ../terminalQmlPlugin/messagesmodel.h
 
 SOURCES += \
     ../terminalQmlPlugin/abstractxmlitemobject.cpp \
@@ -61,4 +63,6 @@ SOURCES += \
     ../terminalQmlPlugin/user.cpp \
     ../terminalQmlPlugin/usersmodel.cpp \
     ../terminalQmlPlugin/abstractxmlitemsfiltermodel.cpp \
-    ../terminalQmlPlugin/usersfiltermodel.cpp
+    ../terminalQmlPlugin/usersfiltermodel.cpp \
+    ../terminalQmlPlugin/message.cpp \
+    ../terminalQmlPlugin/messagesmodel.cpp

@@ -98,30 +98,6 @@
         <file>qml/terminal/images/55a.png</file>
         <file>qml/terminal/images/56.png</file>
         <file>qml/terminal/images/56a.png</file>
-        <file>qml/terminal/images/57.png</file>
-        <file>qml/terminal/images/57a.png</file>
-        <file>qml/terminal/images/58.png</file>
-        <file>qml/terminal/images/58a.png</file>
-        <file>qml/terminal/images/59.png</file>
-        <file>qml/terminal/images/59a.png</file>
-        <file>qml/terminal/images/60.png</file>
-        <file>qml/terminal/images/60a.png</file>
-        <file>qml/terminal/images/61.png</file>
-        <file>qml/terminal/images/61a.png</file>
-        <file>qml/terminal/images/62.png</file>
-        <file>qml/terminal/images/62a.png</file>
-        <file>qml/terminal/images/63.png</file>
-        <file>qml/terminal/images/63a.png</file>
-        <file>qml/terminal/images/64.png</file>
-        <file>qml/terminal/images/64a.png</file>
-        <file>qml/terminal/images/65.png</file>
-        <file>qml/terminal/images/65a.png</file>
-        <file>qml/terminal/images/66.png</file>
-        <file>qml/terminal/images/66a.png</file>
-        <file>qml/terminal/images/67.png</file>
-        <file>qml/terminal/images/67a.png</file>
-        <file>qml/terminal/images/68.png</file>
-        <file>qml/terminal/images/68a.png</file>
         <file>qml/terminal/images/69.png</file>
         <file>qml/terminal/images/69a.png</file>
         <file>qml/terminal/images/69b.png</file>
@@ -210,5 +186,17 @@
         <file>qml/terminal/elements/MediaButtons.qml</file>
         <file>qml/terminal/pages/userInfo/pages/Music.qml</file>
         <file>qml/terminal/elements/FileDialog.qml</file>
+        <file>qml/terminal/pages/chat/Chat.qml</file>
+        <file>qml/terminal/pages/chat/ChatButton.qml</file>
+        <file>qml/terminal/images/51c.png</file>
+        <file>qml/terminal/images/pngConvert.sh</file>
+        <file>qml/terminal/images/72b.png</file>
+        <file>qml/terminal/images/72c.png</file>
+        <file>qml/terminal/images/73b.png</file>
+        <file>qml/terminal/images/73c.png</file>
+        <file>qml/terminal/images/74b.png</file>
+        <file>qml/terminal/images/74c.png</file>
+        <file>qml/terminal/images/75b.png</file>
+        <file>qml/terminal/images/75c.png</file>
     </qresource>
 </RCC>

@@ -5,5 +5,5 @@ import "../userInfo"
 UserInfo {
     id:iPage
     name: "i"
-    userProfile: Core.dataDir + "/i.xml"
+    userProfile: "../i.xml"
 }

@@ -31,6 +31,9 @@
 #include "torrentfoldersmodel.h"
 #include "torrentfoldersfiltermodel.h"
 
+#include "message.h"
+#include "messagesmodel.h"
+
 static QObject *core_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine)
@@ -115,6 +118,12 @@ public:
         qmlRegisterType<TorrentFoldersModel>(uri, 1, 0, "TorrentFoldersModel");
         // @uri TerminalQmlPlugin
         qmlRegisterType<TorrentFoldersFilterModel>(uri, 1, 0, "TorrentFoldersFilterModel");
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<Message>(uri, 1, 0, "Message");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<MessagesModel>(uri, 1, 0, "MessagesModel");
+
     }
 };
 

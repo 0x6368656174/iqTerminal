@@ -3,6 +3,10 @@ import QtQuick 2.0
 Item {
     id: page
     property string name
+    property bool showHideAnimationRunning: {
+        return hideLeftAnimations.running || showLeftAnimations.running || hideRightAnimations.running || showRightAnimations.running
+    }
+
     clip: true
 
     width: parent.width

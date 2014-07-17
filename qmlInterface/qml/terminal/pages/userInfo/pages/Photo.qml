@@ -7,8 +7,6 @@ import "../../../elements"
 
 Page {
     id: photosPage
-    property string userProfile
-
     name: "userInfo_photo"
 
     QtObject {

@@ -139,6 +139,8 @@ Page {
 
                 visible: !privateData.isEdited
                 onClicked: {
+                    userInfo.userProfile = user_profile
+                    showRightPage(userInfo.name)
                 }
                 onPressedChanged: {
                     if (pressed) {
@@ -175,6 +177,7 @@ Page {
         editButtonEnabled: false
         canselButtonEnabled: true
         addUserButtonEnabled: true
+        removeUserButtonEnabled: true
         selectAllButtonEnabled: true
         deselectAllButtonEnabled: true
         hideOnMissClick: false
@@ -200,27 +203,44 @@ Page {
         }
 
         onSubmit: {
-            for (var i = 0; i < usersModel.count; i++) {
-                var oldUser = usersModel.get(i)
-                if(oldUser.additionalData.isSelect) {
-                    //Найдем данного пользователя в контактах
-                    var found = false
-                    for (var j = 0; j < usersContactsModel.count; j++) {
-                        if (usersContactsModel.get(j).profile === oldUser.profile) {
-                            found = true
-                            break
+            if (editRole === "addUser") {
+                for (var i = 0; i < usersModel.count; i++) {
+                    var oldUser = usersModel.get(i)
+                    if(oldUser.additionalData.isSelect) {
+                        //Найдем данного пользователя в контактах
+                        var found = false
+                        for (var j = 0; j < usersContactsModel.count; j++) {
+                            if (usersContactsModel.get(j).profile === oldUser.profile) {
+                                found = true
+                                break
+                            }
+                        }
+
+                        //Если не нашли пользователя
+                        if (!found) {
+                            var newUser = usersContactsModel.appendNew()
+                            newUser.profile = oldUser.profile
                         }
                     }
-
-                    //Если не нашли пользователя
-                    if (!found) {
-                        var newUser = usersContactsModel.appendNew()
-                        newUser.profile = oldUser.profile
-                    }
+                    oldUser.additionalData.isSelect = false
                 }
-                oldUser.additionalData.isSelect = false
+                usersContactsModel.save()
+            } else if (editRole === "removeUser") {
+                for (i = 0; i < usersModel.count; i++) {
+                    oldUser = usersModel.get(i)
+                    if(oldUser.additionalData.isSelect) {
+                        //Найдем данного пользователя в контактах
+                        for (j = 0; j < usersContactsModel.count; j++) {
+                            if (usersContactsModel.get(j).profile === oldUser.profile) {
+                                usersContactsModel.remove(j)
+                                break
+                            }
+                        }
+                    }
+                    oldUser.additionalData.isSelect = false
+                }
+                usersContactsModel.save()
             }
-            usersContactsModel.save()
             privateData.isEdited = false
         }
     }

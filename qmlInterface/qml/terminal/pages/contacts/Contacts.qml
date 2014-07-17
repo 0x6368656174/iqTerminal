@@ -140,6 +140,8 @@ Page {
 
                 visible: !privateData.isEdited
                 onClicked: {
+                    chat.userProfile = user_profile
+                    showRightPage(chat.name)
                 }
                 onPressedChanged: {
                     if (pressed) {
