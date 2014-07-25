@@ -4,7 +4,7 @@
 #include <QFile>
 #include <QStringList>
 
-QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source, const QString &element, QDomDocument &domDocument) const
+QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source, const QString &element, QDomDocument &domDocument)
 {
     if (!object)
     {
@@ -91,7 +91,7 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
     return rootElement;
 }
 
-QDomElement XmlInterface::createElement(const QObject* object, const QUrl &source, const QString &element, QDomDocument &domDocument) const
+QDomElement XmlInterface::createElement(const QObject* object, const QUrl &source, const QString &element, QDomDocument &domDocument)
 {
     if (!object)
     {
@@ -205,7 +205,7 @@ bool XmlInterface::reloadModel(AbstractXmlItemsModel *model, const QUrl &source,
     return false;
 }
 
-bool XmlInterface::saveModel(const AbstractXmlItemsModel *model, const QUrl &source, const QString &element) const
+bool XmlInterface::saveModel(const AbstractXmlItemsModel *model, const QUrl &source, const QString &element)
 {
     if (!model)
     {

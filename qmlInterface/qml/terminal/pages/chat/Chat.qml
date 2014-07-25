@@ -37,6 +37,7 @@ Page {
 
         itemAdditionalData: QtObject {
             property bool collapsed: false
+            property bool isPlaying: false
         }
     }
 
@@ -100,7 +101,15 @@ Page {
                 anchors.right: parent.right
                 anchors.leftMargin: message_direction === Message.Incoming?0:parent.width/3
                 anchors.rightMargin: message_direction === Message.Outgoing?0:parent.width/3
-                height: !message_additional_data.collapsed?Core.dp(36):collapsedText.height + Core.dp(20)
+                clip: true
+                height: {
+                    if (message_additional_data.isPlaying) {
+                        return Core.dp(74)
+                    } else if (message_additional_data.collapsed) {
+                        return collapsedText.height + Core.dp(20)
+                    }
+                    return Core.dp(36)
+                }
                 Image {
                     id: triangleOne
                     anchors.left: parent.left
@@ -120,7 +129,7 @@ Page {
 
                     Image {
                         id: typeImage
-                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.verticalCenter: text.verticalCenter
                         anchors.left: parent.left
                         width: Core.dp(28)
                         height: width
@@ -128,7 +137,7 @@ Page {
                         source: {
                             if (message_was_read) {
                                 if (message_type === Message.Image) {
-                                    return "../../images/72c.png"
+                                    return "../../images/61c.png"
                                 } else if (message_type === Message.Audio) {
                                     return "../../images/74c.png"
                                 } else if (message_type === Message.Video) {
@@ -138,7 +147,7 @@ Page {
                                 }
                             }else {
                                     if (message_type === Message.Image) {
-                                        return "../../images/72b.png"
+                                        return "../../images/61b.png"
                                     } else if (message_type === Message.Audio) {
                                         return "../../images/74b.png"
                                     } else if (message_type === Message.Video) {
@@ -160,7 +169,7 @@ Page {
                         verticalAlignment: Text.AlignVCenter
                         maximumLineCount: 1
                         anchors.top: parent.top
-                        anchors.bottom: parent.bottom
+                        height: Core.dp(36)
                         elide: Text.ElideRight
                         text: message_text
                         font.pixelSize: Core.dp(8)
@@ -180,6 +189,23 @@ Page {
                         color: "white"
                     }
 
+                    Connections {
+                        target: message_additional_data
+                        onIsPlayingChanged: {
+                            if (message_additional_data.isPlaying) {
+                                audioPlayer.source = message_file_path
+                                audioPlayer.play()
+                            } else {
+                                audioPlayer.stop()
+                                audioPlayer.source = ""
+                            }
+                        }
+                    }
+
+                    ListView.onRemove:{
+                        if (mediaButtons.isPlay)
+                            audioPlayer.stop()
+                    }
 
                     TerminalMouseArea {
                         anchors.fill: parent
@@ -196,7 +222,50 @@ Page {
                             if (message_type === Message.Text) {
                                 if (collapsedText.lineCount > 1)
                                     message_additional_data.collapsed = !message_additional_data.collapsed
+                            } else if (message_type === Message.Image) {
+                                photoView.text = message_text
+                                photoView.source = message_file_path
+                                photoView.show()
+                            } else if (message_type === Message.Video) {
+                                videoPlayer.text = message_text
+                                videoPlayer.source = message_file_path
+                                videoPlayer.show()
+                            } else if (message_type === Message.Audio) {
+                                var newIsPlayin = !message_additional_data.isPlaying
+                                for (var i = 0; i < messagesModel.count; i++) {
+                                    messagesModel.get(i).additionalData.isPlaying = false
+                                }
+
+                                message_additional_data.isPlaying = newIsPlayin
                             }
+                        }
+                    }
+
+                    MediaButtons {
+                        id: mediaButtons
+                        visible: message_type === Message.Audio
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.top: text.bottom
+                        position: audioPlayer.position
+                        duration: audioPlayer.duration
+                        isPlay: message_additional_data.isPlaying && audioPlayer.isPlay
+                        isPause: message_additional_data.isPlaying && audioPlayer.isPause
+
+                        onPlayClicked: {
+                            audioPlayer.play()
+                        }
+
+                        onPauseClicked: {
+                            audioPlayer.pause()
+                        }
+
+                        onStopClicked: {
+                            audioPlayer.stop()
+                        }
+
+                        onPositionSliderClicked: {
+                            audioPlayer.seek(newPosition)
                         }
                     }
                 }
@@ -338,6 +407,29 @@ Page {
                 height: parent.height
                 imageNumber: 75
             }
+        }
+    }
+
+    PhotoView {
+        id: photoView
+        anchors.fill: parent
+    }
+
+    VideoPlayer {
+        id: videoPlayer
+        property url source
+        anchors.fill: parent
+
+        Behavior on opacity {NumberAnimation {duration: 200} }
+        visible: opacity !== 0
+        opacity: 0
+        file: source
+
+        onHiden: opacity = 0
+
+        function show() {
+            opacity = 1
+            play()
         }
     }
 }

@@ -25,7 +25,7 @@ Item {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.topMargin: Core.dp(6)
-        anchors.leftMargin: playerNameText.anchors.leftMargin
+        anchors.leftMargin: Core.dp(19)
         width: Core.dp(10)
         height: width
         source: buttons.isPlay||buttons.isPause||position>0?"../images/50a.png":"../images/50.png"
@@ -83,7 +83,7 @@ Item {
         anchors.left: parent.left
         anchors.top: playButton.bottom
         anchors.topMargin: Core.dp(6)
-        anchors.leftMargin: playerNameText.anchors.leftMargin
+        anchors.leftMargin: playButton.anchors.leftMargin
         width: Core.dp(10)
         height: width
         source: position > 0?"../images/49.png":"../images/49c.png"
@@ -113,7 +113,7 @@ Item {
     Text {
         id: positionText
         anchors.right: parent.right
-        anchors.rightMargin: playerNameText.anchors.leftMargin
+        anchors.rightMargin: playButton.anchors.leftMargin
         anchors.verticalCenter: endImage.verticalCenter
         font.pixelSize: Core.dp(8)
         text: {

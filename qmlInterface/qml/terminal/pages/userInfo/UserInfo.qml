@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
-import QtMultimedia 5.2
 import ".."
 import "pages"
 import "../../elements"
@@ -138,35 +137,16 @@ Page {
         anchors.fill: parent
         visible: opacity > 0
         onHiden: opacity = 0
-        onIsPlayChanged: {
-            if (isPlay)
-                audioPlayer.stop()
-        }
 
         Behavior on opacity { NumberAnimation { duration: 200; } }
         z: 2
     }
 
-    Audio {
-        id: audioPlayer
-        property bool isPlay: false
-        property bool isPause: false
+    Connections {
+        target: audioPlayer
         onIsPlayChanged: {
-            if (isPlay)
+            if (audioPlayer.isPlay)
                 videoPlayer.stop()
-        }
-
-        onPlaying: {
-            isPlay = true
-            isPause = false
-        }
-        onPaused:  {
-            isPlay = false
-            isPause = true
-        }
-        onStopped: {
-            isPlay = false
-            isPause = false
         }
     }
 }

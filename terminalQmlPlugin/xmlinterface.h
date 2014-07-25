@@ -9,13 +9,13 @@
 class XmlInterface
 {
 protected:
-    QDomElement findElement(const QObject* object, const QUrl& source, const QString &element, QDomDocument &domDocument) const;
+    static QDomElement findElement(const QObject* object, const QUrl& source, const QString &element, QDomDocument &domDocument);
 
-    QDomElement createElement(const QObject* object, const QUrl& source, const QString &element, QDomDocument &domDocument) const;
+    static QDomElement createElement(const QObject* object, const QUrl& source, const QString &element, QDomDocument &domDocument);
 
-    bool reloadModel(AbstractXmlItemsModel* model, const QUrl& source, const QString &element);
+    static bool reloadModel(AbstractXmlItemsModel* model, const QUrl& source, const QString &element);
 
-    bool saveModel(const AbstractXmlItemsModel *model, const QUrl& source, const QString &element) const;
+    static bool saveModel(const AbstractXmlItemsModel *model, const QUrl& source, const QString &element);
 };
 
 #endif // XMLINTERFACE_H

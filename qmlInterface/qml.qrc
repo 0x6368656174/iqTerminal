@@ -198,5 +198,8 @@
         <file>qml/terminal/images/74c.png</file>
         <file>qml/terminal/images/75b.png</file>
         <file>qml/terminal/images/75c.png</file>
+        <file>qml/terminal/elements/PhotoView.qml</file>
+        <file>qml/terminal/images/61b.png</file>
+        <file>qml/terminal/images/61c.png</file>
     </qresource>
 </RCC>

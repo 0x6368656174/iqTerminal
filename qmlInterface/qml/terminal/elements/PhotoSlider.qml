@@ -22,7 +22,7 @@ Page {
 
     signal hiden()
 
-    name: "photo_view"
+    name: "photo_slider"
 
     Rectangle {
         anchors.fill: parent

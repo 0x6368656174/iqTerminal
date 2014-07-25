@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
 import QtQuick.Dialogs 1.1
+import QtMultimedia 5.2
 
 import "pages/welcome"
 import "pages/menu"
@@ -140,5 +141,24 @@ Rectangle {
 
     FileDialog {
         id: globalFileDialog
+    }
+
+    Audio {
+        id: audioPlayer
+        property bool isPlay: false
+        property bool isPause: false
+
+        onPlaying: {
+            isPlay = true
+            isPause = false
+        }
+        onPaused:  {
+            isPlay = false
+            isPause = true
+        }
+        onStopped: {
+            isPlay = false
+            isPause = false
+        }
     }
 }

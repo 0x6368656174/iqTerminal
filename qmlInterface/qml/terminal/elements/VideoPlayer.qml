@@ -21,6 +21,11 @@ Page {
         stop()
     }
 
+    onIsPlayChanged: {
+        if (isPlay)
+            audioPlayer.stop()
+    }
+
     function play() {
         video.play()
     }
