@@ -29,7 +29,6 @@ void initialData()
         usersDir.mkdir(Core::dataDir().toLocalFile() + "chats/");
     }
 
-
     QStringList dataFiles = QStringList() << "i.xml" << "menu.xml" << "torrent.xml"
                                           << "all.xml" << "contacts.xml" << "visitors.xml"
                                           << "users/1.xml" << "users/2.xml" << "users/3.xml"
@@ -56,6 +55,7 @@ void initialData()
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+    app.setApplicationName("Terminal");
 
     QtQuick2ApplicationViewer viewer;
 

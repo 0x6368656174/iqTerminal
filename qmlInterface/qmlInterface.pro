@@ -38,4 +38,7 @@ RESOURCES += \
 
 OTHER_FILES += \
     qml/terminal/elements/BaseHeader.qml \
-    qml/terminal/pages/userInfo/pages/Photo.qml
+    qml/terminal/pages/userInfo/pages/Photo.qml \
+    android/AndroidManifest.xml
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

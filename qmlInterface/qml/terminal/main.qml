@@ -7,6 +7,7 @@ import "pages/welcome"
 import "pages/menu"
 import "pages/userInfo"
 import "pages/chat"
+import "elements"
 
 Rectangle {
     id: main

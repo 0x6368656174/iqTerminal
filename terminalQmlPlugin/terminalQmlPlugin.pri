@@ -42,7 +42,8 @@ HEADERS += \
     ../terminalQmlPlugin/abstractxmlitemsfiltermodel.h \
     ../terminalQmlPlugin/usersfiltermodel.h \
     ../terminalQmlPlugin/message.h \
-    ../terminalQmlPlugin/messagesmodel.h
+    ../terminalQmlPlugin/messagesmodel.h \
+    ../terminalQmlPlugin/audiorecorder.h
 
 SOURCES += \
     ../terminalQmlPlugin/abstractxmlitemobject.cpp \
@@ -65,4 +66,5 @@ SOURCES += \
     ../terminalQmlPlugin/abstractxmlitemsfiltermodel.cpp \
     ../terminalQmlPlugin/usersfiltermodel.cpp \
     ../terminalQmlPlugin/message.cpp \
-    ../terminalQmlPlugin/messagesmodel.cpp
+    ../terminalQmlPlugin/messagesmodel.cpp \
+    ../terminalQmlPlugin/audiorecorder.cpp

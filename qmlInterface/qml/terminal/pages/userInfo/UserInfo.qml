@@ -27,7 +27,7 @@ Page {
 
     UserProfile {
         id: userProfileModel
-        source: Core.dataDir + "/users/" + userInfoPage.userProfile
+        source: userInfoPage.userProfile !==""?Core.dataDir + "users/" + userInfoPage.userProfile:""
         parentElement: "user/info"
 
         stateModel.itemAdditionalData: QtObject {
@@ -39,7 +39,7 @@ Page {
 
     FoldersModel {
         id: photoFolderModel
-        source: Core.dataDir + "/users/" + userInfoPage.userProfile
+        source: userInfoPage.userProfile !==""?Core.dataDir + "users/" + userInfoPage.userProfile:""
         parentElement: "user/photos"
         folderAdditionalData: QtObject {
             property bool isEdited: false
@@ -54,7 +54,7 @@ Page {
 
     FoldersModel {
         id: videoFolderModel
-        source: Core.dataDir + "/users/" + userInfoPage.userProfile
+        source: userInfoPage.userProfile !==""?Core.dataDir + "users/" + userInfoPage.userProfile:""
         parentElement: "user/videos"
         folderAdditionalData: QtObject {
             property bool isEdited: false
@@ -69,7 +69,7 @@ Page {
 
     FoldersModel {
         id: musicFolderModel
-        source: Core.dataDir + "/users/" + userInfoPage.userProfile
+        source: userInfoPage.userProfile !==""?Core.dataDir + "users/" + userInfoPage.userProfile:""
         parentElement: "user/music"
         folderAdditionalData: QtObject {
             property bool isEdited: false

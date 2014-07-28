@@ -7,6 +7,7 @@ Item {
     property int duration: 0
     property bool isPlay: false
     property bool isPause: false
+    property string style: "orange"
 
     height: Core.dp(38)
 
@@ -28,7 +29,15 @@ Item {
         anchors.leftMargin: Core.dp(19)
         width: Core.dp(10)
         height: width
-        source: buttons.isPlay||buttons.isPause||position>0?"../images/50a.png":"../images/50.png"
+        source: {
+            if(buttons.isPlay||buttons.isPause||position>0) {
+                if(style === "orange"){
+                    return "../images/50a.png"
+                } else {
+                    return "../images/50b.png"
+                }
+            } else return "../images/50.png"
+        }
 
         onClicked: playClicked()
     }
@@ -75,7 +84,13 @@ Item {
         width: duration > 0?(endImage.x - startImage.x) * position / duration:0
         Behavior on width {NumberAnimation {duration: 200; easing.type: Easing.OutQuad;} }
         height: Core.dp(4)
-        source: "../images/49b.png"
+        source: {
+            if (style === "orange") {
+                return "../images/49b.png"
+            } else {
+                return "../images/49bbb.png"
+            }
+        }
     }
 
     Image {
@@ -86,7 +101,17 @@ Item {
         anchors.leftMargin: playButton.anchors.leftMargin
         width: Core.dp(10)
         height: width
-        source: position > 0?"../images/49.png":"../images/49c.png"
+        source: {
+            if (position > 0) {
+                if (style === "orange") {
+                    return "../images/49.png"
+                } else {
+                    return "../images/49bb.png"
+                }
+            }else {
+                return "../images/49c.png"
+            }
+        }
     }
 
     Image {
@@ -97,7 +122,17 @@ Item {
         width: Core.dp(10)
         height: width
         rotation: 180
-        source: positionImage.width>barImage.width-Core.dp(6.5)?"../images/49.png":"../images/49c.png"
+        source: {
+            if (positionImage.width>barImage.width-Core.dp(6.5)) {
+                if (style === "orange") {
+                    return "../images/49.png"
+                } else {
+                    return "../images/49bb.png"
+                }
+            }else {
+                return "../images/49c.png"
+            }
+        }
     }
 
     Image {
@@ -107,7 +142,13 @@ Item {
         visible: position > 0
         width: Core.dp(8)
         height: width
-        source: "../images/49.png"
+        source: {
+            if (style === "orange") {
+                return "../images/49.png"
+            } else {
+                return "../images/49bb.png"
+            }
+        }
     }
 
     Text {

@@ -14,7 +14,7 @@ Page {
 
     function send() {
         console.log("send")
-        if (attachmentBar.role === "" && textInputText.text === "")
+        if (attachmentBar.role === "" && audioRecordBar.role === "" && textInputText.text === "")
             return
         var newMessage = messagesModel.appendNew()
         newMessage.direction = Message.Outgoing
@@ -22,14 +22,23 @@ Page {
         if (attachmentBar.role === "file") {
             newMessage.type = Message.File
             newMessage.filePath = attachmentBar.attachmentFileName
-        } else {
+        } else if (audioRecordBar.role !== "" && audioRecordBar.role !== "record") {
+            audioRecorder.stop()
+            newMessage.type = Message.Audio
+            newMessage.filePath = audioRecordBar.source
+        } else
+        {
             newMessage.type = Message.Text
         }
 
         attachmentBar.role = ""
+        audioRecordBar.role = ""
+        audioRecordBar.source = ""
         attachmentBar.attachmentFileName = ""
         textInputText.text = ""
         addButton.checked = false
+
+        messagesModel.save()
     }
 
     BackButton {
@@ -40,7 +49,7 @@ Page {
 
     UserProfile {
         id: userProfileModel
-        source: Core.dataDir + "/users/" + chatPage.userProfile
+        source: Core.dataDir + "users/" + chatPage.userProfile
         parentElement: "user/info"
 
         stateModel.itemAdditionalData: QtObject {
@@ -53,7 +62,7 @@ Page {
     MessagesModel {
         id: messagesModel
         parentElement: "chat"
-        source: Core.dataDir + "/chats/" + chatPage.userProfile
+        source: Core.dataDir + "chats/" + chatPage.userProfile
 
         itemAdditionalData: QtObject {
             property bool collapsed: false
@@ -125,7 +134,7 @@ Page {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: titleRect.bottom
-        anchors.bottom: firstButtonRow.top
+        anchors.bottom: audioRecordBar.top
         interactive: contentHeight > height
         model: messagesModel
         spacing: Core.dp(2)
@@ -268,8 +277,11 @@ Page {
                         }
 
                         if (message_type === Message.Text) {
-                            if (collapsedText.lineCount > 1)
+                            if (collapsedText.lineCount > 1) {
                                 message_additional_data.collapsed = !message_additional_data.collapsed
+                                if (message_additional_data.collapsed && index === messagesModel.count - 1)
+                                    chatView.positionViewAtIndex(index)
+                            }
                         } else if (message_type === Message.Image) {
                             photoView.text = message_text
                             photoView.source = message_file_path
@@ -285,12 +297,16 @@ Page {
                             }
 
                             message_additional_data.isPlaying = newIsPlayin
+                            if (message_additional_data.isPlaying && index === messagesModel.count - 1)
+                                chatView.positionViewAtIndex(index)
+
                         }
                     }
                 }
 
                 MediaButtons {
                     id: mediaButtons
+                    style: message_was_read?"orange":"white"
                     visible: message_type === Message.Audio
                     anchors.left: parent.left
                     anchors.right: parent.right
@@ -333,7 +349,78 @@ Page {
     }
 
 
+    Rectangle {
+        id: audioRecordBar
+        property string role: ""
+        property url source
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: firstButtonRow.top
+        color: "#868686"
 
+        height: audioRecordBar.role !== ""?Core.dp(38):0
+        Behavior on height {NumberAnimation { duration: 200;} }
+
+        AudioRecorder {
+            id: audioRecorder
+        }
+
+        ChatButton {
+            id: recordButton
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            width: Core.dp(38)
+            imageNumber: audioRecordBar.role !== "recording"?74:80
+            onClicked: {
+                if (audioRecordBar.role !== "recording") {
+                    audioRecordBar.role = "recording"
+                    console.log("Start record... ")
+                    audioRecorder.record()
+                } else {
+                    audioRecorder.stop()
+                    audioRecordBar.role = "finish"
+                    audioRecordBar.source = audioRecorder.outputLocation
+                    console.log("End record in " + audioRecordBar.source)
+                }
+            }
+        }
+
+        MediaButtons {
+            id: recordMediaButtons
+            anchors.top: parent.top
+            anchors.right: parent.right
+            anchors.left: parent.left
+            anchors.leftMargin: Core.dp(38)
+            position: audioPlayer.position
+            duration: audioPlayer.duration
+            isPlay: audioPlayer.isPlay
+            isPause: audioPlayer.isPause
+
+            onPlayClicked: {
+                audioPlayer.source = audioRecordBar.source
+                audioPlayer.play()
+            }
+
+            onPauseClicked: {
+                audioPlayer.pause()
+            }
+
+            onStopClicked: {
+                audioPlayer.stop()
+            }
+
+            onPositionSliderClicked: {
+                audioPlayer.seek(newPosition)
+            }
+        }
+
+        MouseArea {
+            visible: audioRecordBar.role !== "finish"
+            anchors.fill: recordMediaButtons
+            onClicked: {}
+        }
+    }
 
 
     Rectangle {
@@ -480,19 +567,24 @@ Page {
             anchors.margins: 1
             spacing: 1
             ChatButton {
+                id: photoButton
                 width: (parent.width - 3)/4
                 height: parent.height
                 imageNumber: 72
+                onClicked: photoCamera.show()
             }
             ChatButton {
+                id: videoButton
                 width: (parent.width - 3)/4
                 height: parent.height
                 imageNumber: 73
             }
             ChatButton {
+                id: audioButton
                 width: (parent.width - 3)/4
                 height: parent.height
                 imageNumber: 74
+                onClicked: audioRecordBar.role = "record"
             }
             ChatButton {
                 id: attachmentButton
@@ -542,5 +634,10 @@ Page {
             attachmentBar.role = ""
             attachmentBar.attachmentFileName = ""
         }
+    }
+
+    PhotoCamera {
+        id: photoCamera
+        anchors.fill: parent
     }
 }

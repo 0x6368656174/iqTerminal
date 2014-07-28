@@ -34,6 +34,8 @@
 #include "message.h"
 #include "messagesmodel.h"
 
+#include "audiorecorder.h"
+
 static QObject *core_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine)
@@ -124,6 +126,8 @@ public:
         // @uri TerminalQmlPlugin
         qmlRegisterType<MessagesModel>(uri, 1, 0, "MessagesModel");
 
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<AudioRecorder>(uri, 1, 0, "AudioRecorder");
     }
 };
 

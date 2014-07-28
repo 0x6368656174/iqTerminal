@@ -116,7 +116,15 @@ bool Message::loadFromDomElement(const QDomElement &domElement)
 
         setWasRead(domElement.attribute("read", "false") == "true");
 
-        setFilePath(QUrl(domElement.attribute("filePath", "")));
+        QString filePathStr = domElement.attribute("filePath", "");
+        if (!filePathStr.isEmpty())
+        {
+            setFilePath(QUrl(filePathStr));
+        }
+        else
+        {
+            setFilePath(QUrl());
+        }
 
         setText(domElement.text().trimmed());
 
@@ -168,7 +176,7 @@ QDomElement Message::toDomElement(QDomDocument &domDocument) const
         rootElement.setAttribute("read", "false");
     }
 
-    rootElement.setAttribute("filePath", filePath().toLocalFile());
+    rootElement.setAttribute("filePath", filePath().toString());
 
     QDomText textText = domDocument.createTextNode(text());
     rootElement.appendChild(textText);

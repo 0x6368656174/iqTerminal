@@ -201,5 +201,10 @@
         <file>qml/terminal/elements/PhotoView.qml</file>
         <file>qml/terminal/images/61b.png</file>
         <file>qml/terminal/images/61c.png</file>
+        <file>qml/terminal/elements/PhotoCamera.qml</file>
+        <file>qml/terminal/images/49bb.png</file>
+        <file>qml/terminal/images/49bbb.png</file>
+        <file>qml/terminal/images/50b.png</file>
+        <file>qml/terminal/images/52b.png</file>
     </qresource>
 </RCC>

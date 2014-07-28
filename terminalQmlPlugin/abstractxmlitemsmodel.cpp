@@ -156,6 +156,8 @@ bool AbstractXmlItemsModel::insertRows(int row, int count, const QModelIndex &pa
 
 bool AbstractXmlItemsModel::removeRows(int row, int count, const QModelIndex &parent)
 {
+    if (rowCount() == 0)
+        return false;
     beginRemoveRows(parent, row, row+count-1);
     for (int i = row + count - 1; i > row - 1; i--)
     {

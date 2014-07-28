@@ -229,6 +229,7 @@ bool XmlInterface::saveModel(const AbstractXmlItemsModel *model, const QUrl &sou
         if(file.open(QFile::WriteOnly))
         {
             QTextStream ts(&file);
+            ts.setCodec("UTF-8");
             ts << domDoc.toString();
             file.close();
 

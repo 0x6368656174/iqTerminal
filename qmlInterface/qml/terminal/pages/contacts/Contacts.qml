@@ -58,7 +58,7 @@ Page {
 
             UserProfile {
                 id: userProfile
-                source: Core.dataDir + "/users/" + user_profile
+                source: Core.dataDir + "users/" + user_profile
                 parentElement: "user/info"
             }
 
