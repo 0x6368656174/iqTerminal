@@ -206,5 +206,13 @@
         <file>qml/terminal/images/49bbb.png</file>
         <file>qml/terminal/images/50b.png</file>
         <file>qml/terminal/images/52b.png</file>
+        <file>qml/terminal/images/51cb.png</file>
+        <file>qml/terminal/smiles/1.png</file>
+        <file>qml/terminal/smiles/1a.png</file>
+        <file>qml/terminal/images/200.png</file>
+        <file>qml/terminal/images/200a.png</file>
+        <file>qml/terminal/images/40a.png</file>
+        <file>qml/terminal/images/98a.png</file>
+        <file>qml/terminal/images/201.png</file>
     </qresource>
 </RCC>

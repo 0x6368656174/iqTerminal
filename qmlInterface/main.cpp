@@ -29,6 +29,12 @@ void initialData()
         usersDir.mkdir(Core::dataDir().toLocalFile() + "chats/");
     }
 
+    if (!QFileInfo::exists(Core::dataDir().toLocalFile() + "smiles/"))
+    {
+        QDir usersDir;
+        usersDir.mkdir(Core::dataDir().toLocalFile() + "smiles/");
+    }
+
     QStringList dataFiles = QStringList() << "i.xml" << "menu.xml" << "torrent.xml"
                                           << "all.xml" << "contacts.xml" << "visitors.xml"
                                           << "users/1.xml" << "users/2.xml" << "users/3.xml"
@@ -49,6 +55,17 @@ void initialData()
         }
         QFile file (dataFilePath);
         file.setPermissions(file.permissions() | QFile::WriteOwner);
+    }
+
+    QDir smilesDir ("://qml/terminal/smiles/");
+    foreach (QFileInfo smileFile, smilesDir.entryInfoList())
+    {
+        QString localSmileFilePath = Core::dataDir().toLocalFile() + "smiles/" + smileFile.fileName();
+        if (!QFileInfo::exists(localSmileFilePath))
+        {
+            qDebug() << QString("Copy \"%0\" to \"%1\".").arg(smileFile.filePath()).arg(localSmileFilePath);
+            QFile::copy(smileFile.filePath(), localSmileFilePath);
+        }
     }
 }
 

@@ -36,6 +36,12 @@
 
 #include "audiorecorder.h"
 
+#include "textdecorator.h"
+
+#include "urlhelper.h"
+
+#include "filesystem.h"
+
 static QObject *core_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine)
@@ -58,6 +64,30 @@ static QObject *fileValidator_singletontype_provider(QQmlEngine *engine, QJSEngi
     Q_UNUSED(scriptEngine)
 
     return new FileValidator();
+}
+
+static QObject *textDecorator_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+    return new TextDecorator();
+}
+
+static QObject *urlHelper_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+    return new UrlHelper();
+}
+
+static QObject *fileSystem_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+    return new FileSystem();
 }
 
 class TerminalQmlPlugin : public QQmlExtensionPlugin
@@ -128,6 +158,15 @@ public:
 
         // @uri TerminalQmlPlugin
         qmlRegisterType<AudioRecorder>(uri, 1, 0, "AudioRecorder");
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterSingletonType<TextDecorator>(uri, 1, 0, "TextDecorator", textDecorator_singletontype_provider);
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterSingletonType<UrlHelper>(uri, 1, 0, "UrlHelper", urlHelper_singletontype_provider);
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterSingletonType<FileSystem>(uri, 1, 0, "FileSystem", fileSystem_singletontype_provider);
     }
 };
 

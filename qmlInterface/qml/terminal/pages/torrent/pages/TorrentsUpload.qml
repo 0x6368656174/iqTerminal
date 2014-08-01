@@ -396,6 +396,7 @@ Page {
     FileDialog {
         id: fileDialog
         selectFolder: true
+        showFiles: false
         selectMultiple: false
         title: qsTr("Выбирите папку")
 

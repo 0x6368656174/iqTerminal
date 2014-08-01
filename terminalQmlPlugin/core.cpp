@@ -7,7 +7,7 @@ Core::Core(QObject *parent) :
 {
 }
 
-qreal Core::dp(const qreal px) const
+qreal Core::dp(const qreal px)
 {
 #ifdef Q_OS_ANDROID
     return px*3;
@@ -21,12 +21,22 @@ QUrl Core::dataDir()
     return QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/");
 }
 
-QString Core::dataDirPath() const
+QUrl Core::homeDir()
+{
+    return QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/");
+}
+
+QUrl Core::musicDir()
+{
+    return QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MusicLocation) + "/");
+}
+
+QString Core::dataDirPath()
 {
     return dataDir().path();
 }
 
-Core::OS Core::operatingSystem() const
+Core::OS Core::operatingSystem()
 {
 #ifdef Q_OS_ANDROID
     return Android;

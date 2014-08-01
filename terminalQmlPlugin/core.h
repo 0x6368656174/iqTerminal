@@ -9,6 +9,8 @@ class Core : public QObject
     Q_OBJECT
     Q_PROPERTY(QUrl dataDir READ dataDir CONSTANT)
     Q_PROPERTY(QString dataDirPath READ dataDirPath CONSTANT)
+    Q_PROPERTY(QUrl homeDir READ homeDir CONSTANT)
+    Q_PROPERTY(QUrl musicDir READ musicDir CONSTANT)
     Q_PROPERTY(OS operatingSystem READ operatingSystem CONSTANT)
     Q_ENUMS(OS)
 public:
@@ -22,13 +24,15 @@ public:
 
     explicit Core(QObject *parent = 0);
 
-    Q_INVOKABLE qreal dp(const qreal px) const;
+    Q_INVOKABLE static qreal dp(const qreal px);
 
-    Q_INVOKABLE QString humanReadableSize(const qint64 size);
+    Q_INVOKABLE static QString humanReadableSize(const qint64 size);
 public:
-    OS operatingSystem() const;
+    static OS operatingSystem();
     static QUrl dataDir();
-    QString dataDirPath() const;
+    static QUrl homeDir();
+    static QUrl musicDir();
+    static QString dataDirPath();
 };
 
 #endif // CORE_H

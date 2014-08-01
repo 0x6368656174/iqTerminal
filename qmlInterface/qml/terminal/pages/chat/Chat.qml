@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import TerminalQmlPlugin 1.0
 import QtMultimedia 5.2
 import ".."
@@ -14,11 +14,13 @@ Page {
 
     function send() {
         console.log("send")
-        if (attachmentBar.role === "" && audioRecordBar.role === "" && textInputText.text === "")
+        var plainText = TextDecorator.toPlainText(textInputText.getFormattedText(0, textInputText.length))
+        if (attachmentBar.role === "" && audioRecordBar.role === "" && plainText === "")
             return
         var newMessage = messagesModel.appendNew()
+        newMessage.sendDateTime = new Date()
         newMessage.direction = Message.Outgoing
-        newMessage.text = textInputText.text
+        newMessage.text = plainText
         if (attachmentBar.role === "file") {
             newMessage.type = Message.File
             newMessage.filePath = attachmentBar.attachmentFileName
@@ -34,6 +36,7 @@ Page {
         attachmentBar.role = ""
         audioRecordBar.role = ""
         audioRecordBar.source = ""
+        audioButton.checked = false
         attachmentBar.attachmentFileName = ""
         textInputText.text = ""
         addButton.checked = false
@@ -70,13 +73,7 @@ Page {
         }
 
         onCountChanged: {
-            var pos = chatView.contentY;
-            var destPos;
-            chatView.positionViewAtEnd()
-            destPos = chatView.contentY
-            scrollAnimation.from = pos
-            scrollAnimation.to = destPos
-            scrollAnimation.restart()
+            chatView.animatedPosition(count - 1)
         }
     }
 
@@ -122,13 +119,6 @@ Page {
         }
     }
 
-    NumberAnimation {
-        id: scrollAnimation
-        target: chatView
-        property: "contentY"
-        duration: 250
-    }
-
     ListView {
         id: chatView
         anchors.left: parent.left
@@ -149,22 +139,40 @@ Page {
             NumberAnimation { properties: "x,y"; duration: 1000 }
         }
 
+        function animatedPosition(index) {
+            chatView.positionViewAtIndex(index, ListView.Contain)
+        }
+
         delegate:
             Item {
             id: messageDelegate
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.leftMargin: message_direction === Message.Incoming?0:parent.width/3
-            anchors.rightMargin: message_direction === Message.Outgoing?0:parent.width/3
+            anchors.leftMargin: message_direction === Message.Incoming?0:parent.width/10
+            anchors.rightMargin: message_direction === Message.Outgoing?0:parent.width/10
             clip: true
 
             height: {
-                if (message_additional_data.isPlaying) {
+                if (message_text === "") {
+                    return Core.dp(36)
+                } else if (message_additional_data.isPlaying) {
                     return Core.dp(74)
                 } else if (message_additional_data.collapsed) {
-                    return collapsedText.height + Core.dp(20)
+                    return collapsedText.height + Core.dp(28)
                 }
                 return Core.dp(36)
+            }
+            onHeightChanged: {
+                if (height > Core.dp(36)) {
+                    posTimer.start()
+                }
+            }
+
+            Timer {
+                id: posTimer
+                interval: 10
+                repeat: false
+                onTriggered: chatView.animatedPosition(index)
             }
 
             Image {
@@ -174,7 +182,7 @@ Page {
                 width: height
                 height: message_direction === Message.Incoming?Core.dp(4):0
                 anchors.leftMargin: Core.dp(4)
-                source: message_was_read?"../../images/51c.png":"../../images/51b.png"
+                source: "../../images/51cb.png"
             }
 
             Rectangle {
@@ -182,17 +190,17 @@ Page {
                 anchors.right: parent.right
                 anchors.top: triangleOne.bottom
                 anchors.bottom: triangleTwo.top
-                color: message_was_read?"#cdcdcd":"#f25d26"
+                color: message_direction === Message.Incoming?"#f25d26":"#cdcdcd"
 
                 Image {
                     id: typeImage
-                    anchors.verticalCenter: text.verticalCenter
+                    anchors.verticalCenter: message_text!==""?text.verticalCenter:parent.verticalCenter
                     anchors.left: parent.left
-                    width: Core.dp(28)
+                    width: message_type !== Message.Text?Core.dp(28):0
                     height: width
                     visible: message_type !== Message.Text
                     source: {
-                        if (message_was_read) {
+                        if (message_direction === Message.Outgoing) {
                             if (message_type === Message.Image) {
                                 return "../../images/61c.png"
                             } else if (message_type === Message.Audio) {
@@ -213,6 +221,7 @@ Page {
                                 return "../../images/75b.png"
                             }
                         }
+
                         return ""
                     }
                 }
@@ -221,29 +230,55 @@ Page {
                     id: text
                     visible: !message_additional_data.collapsed
                     anchors.left: typeImage.right
+                    anchors.leftMargin: message_type !== Message.Text?0:Core.dp(8)
                     anchors.right: parent.right
-                    anchors.rightMargin: Core.dp(8)
+                    anchors.rightMargin: Core.dp(12)
                     verticalAlignment: Text.AlignVCenter
                     maximumLineCount: 1
                     anchors.top: parent.top
-                    height: Core.dp(36)
+                    height: message_text!==""?Core.dp(28):0
                     elide: Text.ElideRight
-                    text: message_text
+                    clip: true
+                    text: TextDecorator.toFormattedText(message_text)
                     font.pixelSize: Core.dp(8)
                     color: "white"
                 }
 
                 Text {
+                    id: dotText
+                    anchors.verticalCenter: text.verticalCenter
+                    anchors.left: text.right
+                    font.pixelSize: Core.dp(8)
+                    color: message_direction !== Message.Incoming?"#f25d26":"white"
+                    visible: collapsedText.lineCount > 1 && !message_additional_data.collapsed
+                    text: "..."
+                }
+
+                Text {
                     id: collapsedText
                     visible: message_additional_data.collapsed
-                    anchors.left: typeImage.right
+                    anchors.left: text.left
                     anchors.right: parent.right
                     anchors.rightMargin: Core.dp(8)
-                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: (Core.dp(28)-text.paintedHeight)/2
                     wrapMode: Text.WordWrap
-                    text: message_text
+                    text: TextDecorator.toFormattedText(message_text)
                     font.pixelSize: Core.dp(8)
                     color: "white"
+                }
+
+                Text {
+                    id: sendTimeText
+                    anchors.left: message_direction === Message.Incoming?undefined:parent.left
+                    anchors.right: message_direction === Message.Outgoing?undefined:parent.right
+                    anchors.bottom: parent.bottom
+                    anchors.leftMargin: Core.dp(8)
+                    anchors.rightMargin: Core.dp(8)
+                    anchors.bottomMargin: Core.dp(2)
+                    font.pixelSize: Core.dp(5)
+                    color: "white"
+                    text: qsTr("сообщение от ") + Qt.formatDateTime(message_send_date_time, "dd.MM.yy hh:mm")
                 }
 
                 Connections {
@@ -260,7 +295,7 @@ Page {
                 }
 
                 ListView.onRemove:{
-                    if (mediaButtons.isPlay)
+                    if (message_additional_data.isPlaying)
                         audioPlayer.stop()
                 }
 
@@ -274,13 +309,12 @@ Page {
                             } else {
                                 messagesModel.get(index).wasRead = true
                             }
+                            messagesModel.save()
                         }
 
                         if (message_type === Message.Text) {
                             if (collapsedText.lineCount > 1) {
                                 message_additional_data.collapsed = !message_additional_data.collapsed
-                                if (message_additional_data.collapsed && index === messagesModel.count - 1)
-                                    chatView.positionViewAtIndex(index)
                             }
                         } else if (message_type === Message.Image) {
                             photoView.text = message_text
@@ -292,44 +326,70 @@ Page {
                             videoPlayer.show()
                         } else if (message_type === Message.Audio) {
                             var newIsPlayin = !message_additional_data.isPlaying
+                            if (newIsPlayin) {
+                                audioPlayer.stop()
+                                audioPlayer.source = ""
+                            }
                             for (var i = 0; i < messagesModel.count; i++) {
                                 messagesModel.get(i).additionalData.isPlaying = false
                             }
 
                             message_additional_data.isPlaying = newIsPlayin
-                            if (message_additional_data.isPlaying && index === messagesModel.count - 1)
-                                chatView.positionViewAtIndex(index)
-
+                        } else if (message_type === Message.File) {
+                            fileSaveDialog.fileToSave = message_file_path
+                            fileSaveDialog.open()
                         }
                     }
                 }
 
                 MediaButtons {
                     id: mediaButtons
-                    style: message_was_read?"orange":"white"
-                    visible: message_type === Message.Audio
+                    style: message_direction === Message.Outgoing?"orange":"white"
+                    visible: {
+                        if (message_type !== Message.Audio) {
+                            return false
+                        } else if (message_text !== "" && message_additional_data.isPlaying) {
+                            return true
+                        } else if (message_text === "") {
+                            return true
+                        }
+
+                        return false
+                    }
                     anchors.left: parent.left
+                    anchors.leftMargin: message_text!==""?0:Core.dp(8)
                     anchors.right: parent.right
                     anchors.top: text.bottom
-                    position: audioPlayer.position
-                    duration: audioPlayer.duration
+                    position: message_additional_data.isPlaying?audioPlayer.position:0
+                    duration: message_additional_data.isPlaying?audioPlayer.duration:0
                     isPlay: message_additional_data.isPlaying && audioPlayer.isPlay
                     isPause: message_additional_data.isPlaying && audioPlayer.isPause
 
                     onPlayClicked: {
-                        audioPlayer.play()
+                        if (!message_additional_data.isPlaying) {
+                            for (var i = 0; i < messagesModel.count; i++) {
+                                messagesModel.get(i).additionalData.isPlaying = false
+                            }
+
+                            message_additional_data.isPlaying = true
+                        } else {
+                            audioPlayer.play()
+                        }
                     }
 
                     onPauseClicked: {
-                        audioPlayer.pause()
+                        if (message_additional_data.isPlaying)
+                            audioPlayer.pause()
                     }
 
                     onStopClicked: {
-                        audioPlayer.stop()
+                        if (message_additional_data.isPlaying)
+                            audioPlayer.stop()
                     }
 
                     onPositionSliderClicked: {
-                        audioPlayer.seek(newPosition)
+                        if (message_additional_data.isPlaying)
+                            audioPlayer.seek(newPosition)
                     }
                 }
             }
@@ -342,7 +402,7 @@ Page {
                 width: height
                 height: message_direction === Message.Outgoing?Core.dp(4):0
                 anchors.rightMargin: Core.dp(4)
-                source: triangleOne.source
+                source: "../../images/51c.png"
             }
 
         }
@@ -352,13 +412,13 @@ Page {
     Rectangle {
         id: audioRecordBar
         property string role: ""
-        property url source
+        property url source: audioRecorder.outputLocation
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: firstButtonRow.top
         color: "#868686"
 
-        height: audioRecordBar.role !== ""?Core.dp(38):0
+        height: audioButton.checked?Core.dp(38):0
         Behavior on height {NumberAnimation { duration: 200;} }
 
         AudioRecorder {
@@ -368,9 +428,8 @@ Page {
         ChatButton {
             id: recordButton
             anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
             width: Core.dp(38)
+            height: width
             imageNumber: audioRecordBar.role !== "recording"?74:80
             onClicked: {
                 if (audioRecordBar.role !== "recording") {
@@ -380,7 +439,6 @@ Page {
                 } else {
                     audioRecorder.stop()
                     audioRecordBar.role = "finish"
-                    audioRecordBar.source = audioRecorder.outputLocation
                     console.log("End record in " + audioRecordBar.source)
                 }
             }
@@ -422,45 +480,6 @@ Page {
         }
     }
 
-
-    Rectangle {
-        id: firstButtonRow
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: attachmentBar.top
-        height: textInput.height
-        color: "#b4b4b4"
-        Row {
-            anchors.fill: parent
-            anchors.margins: 1
-            spacing: 1
-            ChatButton {
-                id: addButton
-                width: (parent.width - 3)/4
-                height: parent.height
-                imageNumber: 53
-                onClicked: addButton.checked = !addButton.checked
-            }
-            ChatButton {
-                width: (parent.width - 3)/4
-                height: parent.height
-                imageNumber: 54
-            }
-            ChatButton {
-                width: (parent.width - 3)/4
-                height: parent.height
-                imageNumber: 55
-            }
-            ChatButton {
-                id: sendButton
-                width: (parent.width - 3)/4
-                height: parent.height
-                imageNumber: 56
-                onClicked: chatPage.send()
-            }
-        }
-    }
-
     Item {
         id: attachmentBar
         property string role
@@ -468,6 +487,7 @@ Page {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: textInput.top
+        visible: height > 0
 
         height: {
             if (role === "file") {
@@ -505,10 +525,172 @@ Page {
     }
 
     Rectangle {
+        id: smilesRow
+        property int smilesCount: 15
+        property int columnCount: (width - 2*smilesGrid.anchors.margins) / Core.dp(20) < 1?1:(width - 2*smilesGrid.anchors.margins) / Core.dp(20)
+        property int rowCountInt: smilesCount / columnCount
+        property int rowCount:  {
+            if (smilesCount / columnCount - rowCountInt !== 0) {
+                return rowCountInt + 1
+            }
+            return rowCountInt
+        }
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: firstButtonRow.top
+        height: smileButton.checked?smilesRow.collapcedHeight():0
+        visible: height > 0
+        color: "#848484"
+
+        function collapcedHeight() {
+            return 2*smilesGrid.anchors.margins + rowCount*smilesGrid.cellHeight
+        }
+
+        Behavior on height {NumberAnimation { duration: 200;} }
+
+        function insertSmile(smileImage) {
+            textInputText.insert(textInputText.cursorPosition, "<img src=\""+ Core.dataDir +"smiles/"+smileImage+"\" "
+                                 +"height=\""+Core.dp(8) + "\""
+                                 +"width=\""+Core.dp(8)+"\"/>")
+            smileButton.checked = false
+        }
+
+        GridView {
+            id: smilesGrid
+            anchors.fill: parent
+            anchors.margins: Core.dp(4)
+            cellHeight: cellWidth
+            cellWidth: width/smilesRow.columnCount
+            model: smilesRow.smilesCount
+            delegate: Item {
+                width: smilesGrid.cellWidth
+                height: smilesGrid.cellHeight
+                ChatButton {
+                    width: parent.width - Core.dp(4)
+                    height: parent.height - Core.dp(4)
+                    anchors.centerIn: parent
+                    hoverColor: backgroundColor
+                    clip: false
+                    imageFolder: "../../smiles/"
+                    imageNumber: 1
+                    platformIndependentHoverEnabled: smilesRow.height === smilesRow.collapcedHeight()
+                    onClicked: smilesRow.insertSmile("1.png")
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: firstButtonRow
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: attachmentBar.top
+        height: textInput.height
+        color: "#b4b4b4"
+        clip: true
+        ChatButton {
+            id: addButton
+            width: (parent.width - 3)/4
+            height: parent.height
+            anchors.left: parent.left
+            imageNumber: 200
+            onClicked: addButton.checked = !addButton.checked
+        }
+        Item {
+            id: subRows
+            width: (parent.width - 3)/2
+            anchors.left: addButton.right
+            anchors.leftMargin: 1
+            height: firstButtonRow.height * 2
+            anchors.top: parent.top
+            anchors.topMargin: !addButton.checked?0:-firstButtonRow.height
+            Behavior on anchors.topMargin { NumberAnimation {duration: 200} }
+
+            Row {
+                id: firstButtonSubRow
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.left: parent.left
+                width: (parent.width - 3)/2
+                height: firstButtonRow.height
+                spacing: 1
+                visible: subRows.anchors.topMargin !== -firstButtonRow.height
+                ChatButton {
+                    id: audioConferenceButton
+                    width: (parent.width - 2)/3
+                    height: parent.height
+                    imageNumber: 54
+                }
+                ChatButton {
+                    id: videoConferenceButton
+                    width: (parent.width - 2)/3
+                    height: parent.height
+                    imageNumber: 55
+                }
+                ChatButton {
+                    id: smileButton
+                    width: (parent.width - 2)/3
+                    height: parent.height
+                    imageNumber: 78
+                    onClicked: smileButton.checked = !smileButton.checked
+                }
+            }
+            Row {
+                id: secondButtonSubRow
+                anchors.bottom: parent.bottom
+                anchors.right: parent.right
+                anchors.left: parent.left
+                width: (parent.width - 3)/2
+                height: firstButtonRow.height
+                spacing: 1
+                visible: subRows.anchors.topMargin !== 0
+                ChatButton {
+                    id: photoButton
+                    width: (parent.width - 3)/4
+                    height: parent.height
+                    imageNumber: 72
+                }
+                ChatButton {
+                    id: videoButton
+                    width: (parent.width - 3)/4
+                    height: parent.height
+                    imageNumber: 73
+                }
+                ChatButton {
+                    id: audioButton
+                    width: (parent.width - 3)/4
+                    height: parent.height
+                    imageNumber: 74
+                    onClicked: {
+                        audioButton.checked = !audioButton.checked
+                        audioRecordBar.role = "record"
+                    }
+                }
+                ChatButton {
+                    id: attachmentButton
+                    width: (parent.width - 3)/4
+                    height: parent.height
+                    imageNumber: 75
+                    onClicked: fileChoiceDialog.open()
+                }
+            }
+        }
+        ChatButton {
+            id: sendButton
+            height: parent.height
+            anchors.left: subRows.right
+            anchors.leftMargin: 1
+            anchors.right: parent.right
+            imageNumber: 56
+            onClicked: chatPage.send()
+        }
+    }
+
+    Rectangle {
         id: textInput
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: secondButtonRow.top
+        anchors.bottom: parent.bottom
         height: Core.dp(22)
         color: "white"
 
@@ -520,28 +702,46 @@ Page {
             opacity: textInputText.text === "" && !textInputText.focus?1:0.5
         }
 
-        TextInput {
-            id: textInputText
+        Flickable {
+            id: textInputFlick
             clip: true
             anchors.left: parent.left
-            anchors.right: smileButton.left
+            anchors.right: parent.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.leftMargin: Core.dp(8)
             anchors.rightMargin: Core.dp(8)
-            font.pixelSize: Core.dp(8)
-            verticalAlignment: Text.AlignVCenter
-            selectByMouse: true
-            selectionColor: "#c00d0d"
-            onAccepted: chatPage.send()
+            interactive: textInputText.lineCount > 0
+            contentHeight: textInputText.paintedHeight + Core.dp(14)
+            function ensureVisible(r) {
+                if (contentY >= r.y)
+                    contentY = r.y;
+                else if (contentY+height <= r.y+r.height + Core.dp(7))
+                    contentY = r.y+r.height-height + Core.dp(13);
+            }
+
+            TextEdit {
+                id: textInputText
+                anchors.left: parent.left
+                anchors.right: parent.right
+                textFormat: TextEdit.RichText
+                y: Core.dp(7)
+                font.pixelSize: Core.dp(8)
+                wrapMode: TextEdit.WordWrap
+                onCursorRectangleChanged: textInputFlick.ensureVisible(cursorRectangle)
+
+                Keys.onPressed: {
+                    if (event.modifiers === Qt.ControlModifier && event.key === Qt.Key_Return) {
+                        chatPage.send()
+                    }
+                }
+            }
         }
 
-        ChatButton {
-            id: smileButton
-            width: height
-            anchors.right: parent.right
-            height: parent.height
-            imageNumber: 78
+        MouseArea {
+            anchors.fill: parent
+            visible: !textInputText.focus
+            onClicked: textInputText.forceActiveFocus()
         }
 
         Rectangle {
@@ -550,49 +750,6 @@ Page {
             anchors.top: parent.top
             height: 1
             color: "#c6c1c7"
-        }
-    }
-
-    Rectangle {
-        id: secondButtonRow
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: addButton.checked?0:-height
-        height: textInput.height
-        color: "#b4b4b4"
-        Behavior on anchors.bottomMargin {NumberAnimation { duration: 200} }
-        Row {
-            anchors.fill: parent
-            anchors.margins: 1
-            spacing: 1
-            ChatButton {
-                id: photoButton
-                width: (parent.width - 3)/4
-                height: parent.height
-                imageNumber: 72
-                onClicked: photoCamera.show()
-            }
-            ChatButton {
-                id: videoButton
-                width: (parent.width - 3)/4
-                height: parent.height
-                imageNumber: 73
-            }
-            ChatButton {
-                id: audioButton
-                width: (parent.width - 3)/4
-                height: parent.height
-                imageNumber: 74
-                onClicked: audioRecordBar.role = "record"
-            }
-            ChatButton {
-                id: attachmentButton
-                width: (parent.width - 3)/4
-                height: parent.height
-                imageNumber: 75
-                onClicked: fileChoiceDialog.open()
-            }
         }
     }
 
@@ -616,6 +773,18 @@ Page {
         function show() {
             opacity = 1
             play()
+        }
+    }
+
+    FileDialog {
+        id: fileSaveDialog
+        property url fileToSave
+        selectFolder: false
+        selectFile: false
+        selfSelect: true
+
+        onAccepted: {
+            FileSystem.cp(fileToSave, fileUrl)
         }
     }
 

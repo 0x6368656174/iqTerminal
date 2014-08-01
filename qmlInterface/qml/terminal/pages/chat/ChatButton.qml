@@ -6,15 +6,19 @@ Rectangle {
     id: button
     property int imageNumber
     property bool checked: false
+    property bool platformIndependentHoverEnabled: true
+    property string imageFolder: "../../images/"
+    property color hoverColor: "#f25d26"
+    property color backgroundColor: "#848484"
     onCheckedChanged: updateButtonColor()
     signal clicked()
     clip: true
-    color: "#848484"
+    color: backgroundColor
     Image {
         id: buttonImage
         anchors.fill: parent
         fillMode: Image.PreserveAspectFit
-        source: "../../images/" + imageNumber + ".png"
+        source: imageFolder + imageNumber + ".png"
 
         SequentialAnimation {
             id: buttonClickAnimation
@@ -35,7 +39,7 @@ Rectangle {
         TerminalMouseArea {
             id: ma
             anchors.fill: parent
-            platformIndependentHoverEnabled: true
+            platformIndependentHoverEnabled: button.platformIndependentHoverEnabled
             onClicked: {
                 button.clicked()
                 buttonClickAnimation.restart()
@@ -46,11 +50,11 @@ Rectangle {
 
     function updateButtonColor() {
         if (checked || ma.containsMouse) {
-            button.color = "#f25d26"
-            buttonImage.source = "../../images/" + imageNumber + "a.png"
+            button.color = button.hoverColor
+            buttonImage.source = imageFolder + imageNumber + "a.png"
         } else {
-            button.color = "#848484"
-            buttonImage.source = "../../images/" + imageNumber + ".png"
+            button.color = button.backgroundColor
+            buttonImage.source = imageFolder + imageNumber + ".png"
         }
     }
 }

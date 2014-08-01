@@ -8,63 +8,68 @@
         $$PWD/core.h \
         $$PWD/fileio.h \
         $$PWD/base64.h \
-        $$PWD/filevalidator.h
+        $$PWD/filevalidator.h \
+        $$PWD/abstractxmlitemobject.h \
+        $$PWD/abstractxmlitemsmodel.h \
+        $$PWD/torrentfile.h \
+        $$PWD/torrentfolder.h \
+        $$PWD/torrentfilesmodel.h \
+        $$PWD/torrentfoldersmodel.h \
+        $$PWD/torrentfoldersfiltermodel.h \
+        $$PWD/file.h \
+        $$PWD/folder.h \
+        $$PWD/filesmodel.h \
+        $$PWD/foldersmodel.h \
+        $$PWD/userprofile.h \
+        $$PWD/userstate.h \
+        $$PWD/userstatesmodel.h \
+        $$PWD/xmlinterface.h \
+        $$PWD/user.h \
+        $$PWD/usersmodel.h \
+        $$PWD/abstractxmlitemsfiltermodel.h \
+        $$PWD/usersfiltermodel.h \
+        $$PWD/message.h \
+        $$PWD/messagesmodel.h \
+        $$PWD/audiorecorder.h \
+        $$PWD/textdecorator.h \
+        $$PWD/urlhelper.h \
+        $$PWD/filesystem.h
+
 
     SOURCES += \
         $$PWD/core.cpp \
         $$PWD/fileio.cpp \
         $$PWD/base64.cpp \
-        $$PWD/filevalidator.cpp
+        $$PWD/filevalidator.cpp \
+        $$PWD/abstractxmlitemobject.cpp \
+        $$PWD/abstractxmlitemsmodel.cpp \
+        $$PWD/torrentfile.cpp \
+        $$PWD/torrentfolder.cpp \
+        $$PWD/torrentfilesmodel.cpp \
+        $$PWD/torrentfoldersmodel.cpp \
+        $$PWD/torrentfoldersfiltermodel.cpp \
+        $$PWD/file.cpp \
+        $$PWD/folder.cpp \
+        $$PWD/filesmodel.cpp \
+        $$PWD/foldersmodel.cpp \
+        $$PWD/userprofile.cpp \
+        $$PWD/userstate.cpp \
+        $$PWD/userstatesmodel.cpp \
+        $$PWD/xmlinterface.cpp \
+        $$PWD/user.cpp \
+        $$PWD/usersmodel.cpp \
+        $$PWD/abstractxmlitemsfiltermodel.cpp \
+        $$PWD/usersfiltermodel.cpp \
+        $$PWD/message.cpp \
+        $$PWD/messagesmodel.cpp \
+        $$PWD/audiorecorder.cpp \
+        $$PWD/textdecorator.cpp \
+        $$PWD/urlhelper.cpp \
+        $$PWD/filesystem.cpp
+
 
     OTHER_FILES += \
         $$PWD/imports/TerminalQmlPlugin\TerminalMouseArea.qml \
         $$PWD/imports/TerminalQmlPlugin/qmldir
 }
 
-HEADERS += \
-    ../terminalQmlPlugin/abstractxmlitemobject.h \
-    ../terminalQmlPlugin/abstractxmlitemsmodel.h \
-    ../terminalQmlPlugin/torrentfile.h \
-    ../terminalQmlPlugin/torrentfolder.h \
-    ../terminalQmlPlugin/torrentfilesmodel.h \
-    ../terminalQmlPlugin/torrentfoldersmodel.h \
-    ../terminalQmlPlugin/torrentfoldersfiltermodel.h \
-    ../terminalQmlPlugin/file.h \
-    ../terminalQmlPlugin/folder.h \
-    ../terminalQmlPlugin/filesmodel.h \
-    ../terminalQmlPlugin/foldersmodel.h \
-    ../terminalQmlPlugin/userprofile.h \
-    ../terminalQmlPlugin/userstate.h \
-    ../terminalQmlPlugin/userstatesmodel.h \
-    ../terminalQmlPlugin/xmlinterface.h \
-    ../terminalQmlPlugin/user.h \
-    ../terminalQmlPlugin/usersmodel.h \
-    ../terminalQmlPlugin/abstractxmlitemsfiltermodel.h \
-    ../terminalQmlPlugin/usersfiltermodel.h \
-    ../terminalQmlPlugin/message.h \
-    ../terminalQmlPlugin/messagesmodel.h \
-    ../terminalQmlPlugin/audiorecorder.h
-
-SOURCES += \
-    ../terminalQmlPlugin/abstractxmlitemobject.cpp \
-    ../terminalQmlPlugin/abstractxmlitemsmodel.cpp \
-    ../terminalQmlPlugin/torrentfile.cpp \
-    ../terminalQmlPlugin/torrentfolder.cpp \
-    ../terminalQmlPlugin/torrentfilesmodel.cpp \
-    ../terminalQmlPlugin/torrentfoldersmodel.cpp \
-    ../terminalQmlPlugin/torrentfoldersfiltermodel.cpp \
-    ../terminalQmlPlugin/file.cpp \
-    ../terminalQmlPlugin/folder.cpp \
-    ../terminalQmlPlugin/filesmodel.cpp \
-    ../terminalQmlPlugin/foldersmodel.cpp \
-    ../terminalQmlPlugin/userprofile.cpp \
-    ../terminalQmlPlugin/userstate.cpp \
-    ../terminalQmlPlugin/userstatesmodel.cpp \
-    ../terminalQmlPlugin/xmlinterface.cpp \
-    ../terminalQmlPlugin/user.cpp \
-    ../terminalQmlPlugin/usersmodel.cpp \
-    ../terminalQmlPlugin/abstractxmlitemsfiltermodel.cpp \
-    ../terminalQmlPlugin/usersfiltermodel.cpp \
-    ../terminalQmlPlugin/message.cpp \
-    ../terminalQmlPlugin/messagesmodel.cpp \
-    ../terminalQmlPlugin/audiorecorder.cpp

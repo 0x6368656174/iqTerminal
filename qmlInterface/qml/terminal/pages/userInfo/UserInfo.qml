@@ -8,6 +8,7 @@ import "../../elements"
 Page {
     id: userInfoPage
     property string userProfile
+    property bool readOnly: false
     onUserProfileChanged: {
         header.activeTab = "info"
     }
@@ -93,6 +94,7 @@ Page {
             id: infoPage
             opacity: header.activeTab === "info"?1:0
             visible: opacity !== 0
+            readOnly: userInfoPage.readOnly
             Behavior on opacity {NumberAnimation {duration: 300} }
         }
 
@@ -100,6 +102,7 @@ Page {
             id: photoPage
             opacity: header.activeTab === "photo"?1:0
             visible: opacity !== 0
+            readOnly: userInfoPage.readOnly
             Behavior on opacity {NumberAnimation {duration: 300} }
         }
 
@@ -107,6 +110,7 @@ Page {
             id: videoPage
             opacity: header.activeTab === "video"?1:0
             visible: opacity !== 0
+            readOnly: userInfoPage.readOnly
             Behavior on opacity {NumberAnimation {duration: 300} }
         }
 
@@ -114,6 +118,7 @@ Page {
             id: mucisPage
             opacity: header.activeTab === "music"?1:0
             visible: opacity !== 0
+            readOnly: userInfoPage.readOnly
             Behavior on opacity {NumberAnimation {duration: 300} }
         }
     }

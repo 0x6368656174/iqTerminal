@@ -19,7 +19,8 @@ public:
         Type,
         Direction,
         WasRead,
-        FilePath
+        FilePath,
+        SendDateTime
     };
 
     explicit MessagesModel(QObject *parent = 0);

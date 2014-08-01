@@ -7,6 +7,7 @@ import "../../../elements"
 
 Page {
     id: musicPage
+    property bool readOnly: false
     name: "userInfo_music"
 
     QtObject {
@@ -16,6 +17,7 @@ Page {
 
     CreateNewButton {
         id: createNewButton
+        visible: !musicPage.readOnly
         enabled: !privateData.isEdited
         onClicked: {
             var folder = musicFolderModel.insertNew(0)
@@ -26,6 +28,7 @@ Page {
 
     Rectangle {
         id: spacer
+        visible: !musicPage.readOnly
         anchors.top: createNewButton.bottom
         anchors.left: parent.left
         anchors.right: parent.right
@@ -38,7 +41,7 @@ Page {
 
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.top: spacer.bottom
+        anchors.top: !musicPage.readOnly?spacer.bottom:parent.top
         anchors.bottom: parent.bottom
         anchors.bottomMargin: Core.dp(22) + editBar.anchors.bottomMargin - 1
         interactive: contentHeight > height
@@ -171,6 +174,8 @@ Page {
                         folder_additional_data.collapsed = !folder_additional_data.collapsed
                     }
                     onPressedChanged: {
+                        if (musicPage.readOnly)
+                            return
                         if (pressed && !privateData.isEdited) {
                             folderPressAndHoldAmiation.restart()
                         } else {
@@ -180,6 +185,8 @@ Page {
                     }
 
                     onPressAndHold: {
+                        if (musicPage.readOnly)
+                            return
                         if (!privateData.isEdited) {
                             folder_additional_data.isEdited = true
                             privateData.isEdited = true
@@ -326,6 +333,8 @@ Page {
                                 file_additional_data.isPlaying = newIsPlayin
                             }
                             onPressedChanged: {
+                                if (musicPage.readOnly)
+                                    return
                                 if (pressed && !privateData.isEdited) {
                                     childPressAndHoldAmiation.restart()
                                 } else {
@@ -335,6 +344,8 @@ Page {
                             }
 
                             onPressAndHold: {
+                                if (musicPage.readOnly)
+                                    return
                                 if (!privateData.isEdited) {
                                     file_additional_data.isEdited = true
                                     privateData.isEdited = true

@@ -1,14 +1,11 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
-import QtQuick.XmlListModel 2.0
 import "../pages"
 
 Page {
     id: photoView
     property url source
     property string text
-
-    onSourceChanged: console.log(source)
 
     signal hiden()
 

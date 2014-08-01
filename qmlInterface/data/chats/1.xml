@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <chat>
-	<message id="0" direction="outgoing" type="text" read="false">
+	<message id="0" direction="outgoing" type="text" read="false" send_date_time="2014-07-30T15:49:10">
 		Привет=)
 	</message>
-	<message id="1" direction="incoming" type="text" read="false">
+	<message id="1" direction="incoming" type="text" read="false" send_date_time="2014-07-30T15:50:10">
 		Привет=)
 	</message>
-	<message id="2" direction="outgoing" type="image" read="false" filePath="file:///home/pashok/testData/e_r_1.jpg">
+	<message id="2" direction="outgoing" type="image" read="false" file_path="file:///home/pashok/testData/e_r_1.jpg" send_date_time="2014-07-30T15:50:10">
 		Вот тебе фотка
 	</message>
-	<message id="3" direction="outgoing" type="video" read="true" filePath="file:///home/pashok/testData/Rammstein - Du hast.mp4">
+	<message id="3" direction="outgoing" type="video" read="true" file_path="file:///home/pashok/testData/Rammstein - Du hast.mp4" send_date_time="2014-07-30T15:54:10">
 		Вот тебе видео
 	</message>
-	<message id="4" direction="outgoing" type="audio" read="false" filePath="file:///home/pashok/testData/Blue Stahli - ULTRAnumb.mp3">
+	<message id="4" direction="outgoing" type="audio" read="false" file_path="file:///home/pashok/testData/Blue Stahli - ULTRAnumb.mp3" send_date_time="2014-07-30T15:55:10">
 		Вот тебе песня
 	</message>
-	<message id="5" direction="incoming" type="text" read="false">
+	<message id="5" direction="incoming" type="text" read="false" send_date_time="2014-07-30T15:56:10">
 		Спасибо!
 	</message>
-	<message id="6" direction="outgoing" type="text" read="true">
+	<message id="6" direction="outgoing" type="text" read="true" send_date_time="2014-07-30T15:57:10">
 		Не за что...
 	</message>
-	<message id="7" direction="outgoing" type="image" read="true" filePath="file:///home/pashok/testData/e_r_1.jpg">
+	<message id="7" direction="outgoing" type="image" read="true" file_path="file:///home/pashok/testData/e_r_1.jpg" send_date_time="2014-07-30T15:57:10">
 		Вот тебе фотка
 	</message>
-	<message id="8" direction="outgoing" type="video" read="false" filePath="file:///home/pashok/testData/Rammstein - Du hast.mp4">
+	<message id="8" direction="outgoing" type="video" read="false" file_path="file:///home/pashok/testData/Rammstein - Du hast.mp4" send_date_time="2014-07-30T16:00:10">
 		Вот тебе видео
 	</message>
-	<message id="9" direction="outgoing" type="audio" read="true" filePath="file:///home/pashok/testData/Blue Stahli - ULTRAnumb.mp3">
+	<message id="9" direction="outgoing" type="audio" read="true" file_path="file:///home/pashok/testData/Blue Stahli - ULTRAnumb.mp3" send_date_time="2014-07-30T16:02:10">
 		Вот тебе песня
 	</message>
-	<message id="10" direction="outgoing" type="text" read="false">
+	<message id="10" direction="outgoing" type="text" read="false" send_date_time="2014-07-30T16:06:10">
 Длиннный длинный текст. Который не помещается на экране.
 И на несколько строчек.
 Третья строка.
 	</message>
-		<message id="11" direction="outgoing" type="file" read="false" filePath="file:///home/pashok/testData/Blue Stahli - ULTRAnumb.mp3">
+		<message id="11" direction="outgoing" type="file" read="false" file_path="file:///home/pashok/testData/Blue Stahli - ULTRAnumb.mp3" send_date_time="2014-07-30T16:06:10">
 		Вот тебе песня
 	</message>
 </chat>

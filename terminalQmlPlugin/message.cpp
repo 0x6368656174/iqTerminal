@@ -75,6 +75,16 @@ void Message::setFilePath(const QUrl &filePath)
     }
 }
 
+void Message::setSendDateTime(const QDateTime &dateTime)
+{
+    if (_sendDateTime != dateTime)
+    {
+        _sendDateTime = dateTime;
+
+        emit sendDateTimeChanged();
+    }
+}
+
 bool Message::loadFromDomElement(const QDomElement &domElement)
 {
     if (AbstractXmlItemObject::loadFromDomElement(domElement))
@@ -116,7 +126,7 @@ bool Message::loadFromDomElement(const QDomElement &domElement)
 
         setWasRead(domElement.attribute("read", "false") == "true");
 
-        QString filePathStr = domElement.attribute("filePath", "");
+        QString filePathStr = domElement.attribute("file_path", "");
         if (!filePathStr.isEmpty())
         {
             setFilePath(QUrl(filePathStr));
@@ -124,6 +134,16 @@ bool Message::loadFromDomElement(const QDomElement &domElement)
         else
         {
             setFilePath(QUrl());
+        }
+
+        QString sendDateTimeStr = domElement.attribute("send_date_time", "");
+        if (!sendDateTimeStr.isEmpty())
+        {
+            setSendDateTime(QDateTime::fromString(sendDateTimeStr, Qt::ISODate));
+        }
+        else
+        {
+            setSendDateTime(QDateTime());
         }
 
         setText(domElement.text().trimmed());
@@ -176,7 +196,9 @@ QDomElement Message::toDomElement(QDomDocument &domDocument) const
         rootElement.setAttribute("read", "false");
     }
 
-    rootElement.setAttribute("filePath", filePath().toString());
+    rootElement.setAttribute("file_path", filePath().toString());
+
+    rootElement.setAttribute("send_date_time", sendDateTime().toString(Qt::ISODate));
 
     QDomText textText = domDocument.createTextNode(text());
     rootElement.appendChild(textText);

@@ -13,6 +13,7 @@ MessagesModel::MessagesModel(QObject *parent) :
     _roles[Direction] = "message_direction";
     _roles[WasRead] = "message_was_read";
     _roles[FilePath] = "message_file_path";
+    _roles[SendDateTime] = "message_send_date_time";
 }
 
 void MessagesModel::setSource(const QUrl &source)
@@ -80,6 +81,9 @@ QVariant MessagesModel::data(const QModelIndex &index, int role) const
         break;
     case FilePath:
         return item->filePath();
+        break;
+    case SendDateTime:
+        return item->sendDateTime();
         break;
     }
 

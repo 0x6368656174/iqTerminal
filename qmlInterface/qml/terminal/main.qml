@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
-import QtQuick.Dialogs 1.1
 import QtMultimedia 5.2
 
 import "pages/welcome"
@@ -115,6 +114,7 @@ Rectangle {
         UserInfo {
             id: userInfo
             visible: false
+            readOnly: true
         }
 
         Chat {
@@ -138,10 +138,6 @@ Rectangle {
         }
         onPressAndHold: {
         }
-    }
-
-    FileDialog {
-        id: globalFileDialog
     }
 
     Audio {

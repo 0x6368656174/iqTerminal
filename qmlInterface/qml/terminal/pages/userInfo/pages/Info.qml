@@ -8,6 +8,7 @@ import "../../../elements"
 
 Page {
     id: infoPage
+    property bool readOnly: false
     QtObject {
         id: privateData
         property bool isEdited: false
@@ -74,7 +75,7 @@ Page {
             TerminalMouseArea {
                 id: photoRectMa
                 anchors.fill: parent
-                visible: !privateData.isEdited
+                visible: !privateData.isEdited && !infoPage.readOnly
                 onPressedChanged: {
                     if (pressed) {
                         photoPressAndHoldAnimation.restart()
@@ -175,6 +176,8 @@ Page {
                 anchors.fill: parent
                 visible: !privateData.isEdited
                 onPressedChanged: {
+                    if (infoPage.readOnly)
+                        return
                     if (pressed) {
                         namePressAndHoldAnimation.restart()
                     } else {
@@ -184,6 +187,8 @@ Page {
                 }
 
                 onPressAndHold: {
+                    if (infoPage.readOnly)
+                        return
                     privateData.isEdited = true
                     privateData.nameIsEdited = true
                 }
@@ -361,7 +366,7 @@ Page {
                     TerminalMouseArea {
                         id: ma
                         anchors.fill: parent
-                        visible: !privateData.isEdited
+                        visible: !privateData.isEdited && !infoPage.readOnly
                         onPressedChanged: {
                             if (pressed) {
                                 stateItemPressAndHoldAnimation.restart()
