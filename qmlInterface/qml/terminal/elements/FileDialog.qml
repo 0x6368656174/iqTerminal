@@ -47,6 +47,7 @@ Page {
             id: staticPathItem
             anchors.fill: parent
             Text {
+                id: parentFolderText
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.left: parent.left
@@ -59,8 +60,17 @@ Page {
                 horizontalAlignment: Text.AlignHCenter
                 text: UrlHelper.dirName(UrlHelper.containingFolder(privateData.currentFolder))
 
-                MouseArea {
+                TerminalMouseArea {
                     anchors.fill: parent
+                    platformIndependentHoverEnabled: true
+                    onContainsMouseChanged: {
+                        if (containsMouse) {
+                            parentFolderText.font.pixelSize = Core.dp(10)
+                        } else {
+                            parentFolderText.font.pixelSize = Core.dp(8)
+                        }
+                    }
+
                     onClicked:{
                         animatePathItem.currentFolder = privateData.currentFolder
                         backAnimation.start()
@@ -310,7 +320,7 @@ Page {
                 text: fileIsDir?UrlHelper.dirEntryCount("file://" + filePath):""
             }
 
-            MouseArea {
+            TerminalMouseArea {
                 anchors.fill: parent
                 onClicked: {
                     if (fileIsDir) {
@@ -331,9 +341,9 @@ Page {
                 fillMode: Image.PreserveAspectFit
                 source: "../images/34.png"
 
-                MouseArea {
+                TerminalMouseArea {
                     anchors.fill: parent
-                    hoverEnabled: true
+                    platformIndependentHoverEnabled: true
                     onClicked: {
                         fileDialog.fileUrl = "file://" + filePath
                         fileDialog.accepted()

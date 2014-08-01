@@ -33,6 +33,7 @@
 
 #include "message.h"
 #include "messagesmodel.h"
+#include "messagesfiltermodel.h"
 
 #include "audiorecorder.h"
 
@@ -155,6 +156,9 @@ public:
         qmlRegisterType<Message>(uri, 1, 0, "Message");
         // @uri TerminalQmlPlugin
         qmlRegisterType<MessagesModel>(uri, 1, 0, "MessagesModel");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<MessagesFilterModel>(uri, 1, 0, "MessagesFilterModel");
+
 
         // @uri TerminalQmlPlugin
         qmlRegisterType<AudioRecorder>(uri, 1, 0, "AudioRecorder");

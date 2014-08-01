@@ -77,7 +77,10 @@ Page {
         }
     }
 
-
+    MessagesFilterModel {
+        id: messageFilterModel
+        messagesModel: messagesModel
+    }
 
 
     Rectangle {
@@ -126,7 +129,7 @@ Page {
         anchors.top: titleRect.bottom
         anchors.bottom: audioRecordBar.top
         interactive: contentHeight > height
-        model: messagesModel
+        model: messageFilterModel
         spacing: Core.dp(2)
         clip: true
 
@@ -305,9 +308,9 @@ Page {
                         if (message_direction === Message.Incoming) {
                             if (collapsedText.lineCount > 1) {
                                 if (message_additional_data.collapse)
-                                    messagesModel.get(index).wasRead = true
+                                    message_was_read = true
                             } else {
-                                messagesModel.get(index).wasRead = true
+                                message_was_read = true
                             }
                             messagesModel.save()
                         }
@@ -473,7 +476,7 @@ Page {
             }
         }
 
-        MouseArea {
+        TerminalMouseArea {
             visible: audioRecordBar.role !== "finish"
             anchors.fill: recordMediaButtons
             onClicked: {}
@@ -590,7 +593,7 @@ Page {
         clip: true
         ChatButton {
             id: addButton
-            width: (parent.width - 3)/4
+            width: (parent.width - 3)/6
             height: parent.height
             anchors.left: parent.left
             imageNumber: 200
@@ -598,7 +601,7 @@ Page {
         }
         Item {
             id: subRows
-            width: (parent.width - 3)/2
+            width: (parent.width - 3)*4/6
             anchors.left: addButton.right
             anchors.leftMargin: 1
             height: firstButtonRow.height * 2
@@ -617,22 +620,29 @@ Page {
                 visible: subRows.anchors.topMargin !== -firstButtonRow.height
                 ChatButton {
                     id: audioConferenceButton
-                    width: (parent.width - 2)/3
+                    width: (parent.width - 3)/4
                     height: parent.height
                     imageNumber: 54
                 }
                 ChatButton {
                     id: videoConferenceButton
-                    width: (parent.width - 2)/3
+                    width: (parent.width - 3)/4
                     height: parent.height
                     imageNumber: 55
                 }
                 ChatButton {
                     id: smileButton
-                    width: (parent.width - 2)/3
+                    width: (parent.width - 3)/4
                     height: parent.height
                     imageNumber: 78
                     onClicked: smileButton.checked = !smileButton.checked
+                }
+                ChatButton {
+                    id: searchButton
+                    width: (parent.width - 3)/4
+                    height: parent.height
+                    imageNumber: 202
+                    onClicked: messageFilterModel.filterString = TextDecorator.toPlainText(textInputText.getFormattedText(0, textInputText.length))
                 }
             }
             Row {
@@ -640,7 +650,7 @@ Page {
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
                 anchors.left: parent.left
-                width: (parent.width - 3)/2
+                width: (parent.width - 3)*4/6
                 height: firstButtonRow.height
                 spacing: 1
                 visible: subRows.anchors.topMargin !== 0
@@ -738,7 +748,7 @@ Page {
             }
         }
 
-        MouseArea {
+        TerminalMouseArea {
             anchors.fill: parent
             visible: !textInputText.focus
             onClicked: textInputText.forceActiveFocus()

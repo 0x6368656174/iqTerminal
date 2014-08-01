@@ -33,7 +33,8 @@
         $$PWD/audiorecorder.h \
         $$PWD/textdecorator.h \
         $$PWD/urlhelper.h \
-        $$PWD/filesystem.h
+        $$PWD/filesystem.h \
+        $$PWD/messagesfiltermodel.h
 
 
     SOURCES += \
@@ -65,11 +66,11 @@
         $$PWD/audiorecorder.cpp \
         $$PWD/textdecorator.cpp \
         $$PWD/urlhelper.cpp \
-        $$PWD/filesystem.cpp
+        $$PWD/filesystem.cpp \
+        $$PWD/messagesfiltermodel.cpp
 
 
     OTHER_FILES += \
         $$PWD/imports/TerminalQmlPlugin\TerminalMouseArea.qml \
         $$PWD/imports/TerminalQmlPlugin/qmldir
 }
-
