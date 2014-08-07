@@ -1,19 +1,22 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
 
-Item {
+Rectangle {
     id: createNewButton
     property bool enabled: true
+    property string text: qsTr("Создать новую")
+    property bool spacerVisible: true
 
     signal clicked()
 
     anchors.left: parent.left
     anchors.right: parent.right
     height: Core.dp(24)
+    color: "white"
 
     Rectangle {
         anchors.fill: parent
-        anchors.bottomMargin: Core.dp(2)
+        anchors.bottomMargin: createNewButton.spacerVisible?Core.dp(2):0
         color: createNewButtonMA.containsMouse?"#da4504":"#c6c1c7"
 
         Item {
@@ -26,7 +29,7 @@ Item {
                 id: createNewButtonText
                 anchors.centerIn: parent
                 font.pixelSize: Core.dp(8)
-                text: qsTr("Создать новую")
+                text: createNewButton.text
                 color: createNewButtonMA.containsMouse?"white":"black"
             }
         }
@@ -66,13 +69,5 @@ Item {
                 }
             }
         }
-    }
-
-    Rectangle {
-        id: spacer
-        anchors.bottom: createNewButton.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: Core.dp(2)
     }
 }

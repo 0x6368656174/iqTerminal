@@ -25,6 +25,7 @@ Item {
     }
 
     onVisibleChanged: {
+        if (!visible)
             editRole = ""
     }
 

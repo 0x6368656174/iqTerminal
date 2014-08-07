@@ -26,6 +26,7 @@ Page {
         id: privateData
         property bool active: false
         property url currentFolder: Core.homeDir
+        onCurrentFolderChanged: console.log(currentFolder)
     }
 
     function open() {
@@ -317,14 +318,31 @@ Page {
                 font.pixelSize: folderEntryTitle.font.pixelSize
                 color: itemNameText.color
                 visible: fileIsDir
-                text: fileIsDir?UrlHelper.dirEntryCount("file://" + filePath):""
+                text: {
+                    if (fileIsDir) {
+                        if (Core.operatingSystem === Core.Windows) {
+                            return UrlHelper.dirEntryCount("file:///" + filePath)
+                        } else {
+                            return UrlHelper.dirEntryCount("file://" + filePath)
+                        }
+                    }
+                    return ""
+                }
             }
 
             TerminalMouseArea {
                 anchors.fill: parent
                 onClicked: {
                     if (fileIsDir) {
-                        animatePathItem.currentFolder = "file://" + filePath
+                        if (Core.operatingSystem === Core.Windows) {
+                            var windowsPath = filePath
+                            var windowsDrive = windowsPath.substring(0, 1)
+                            windowsDrive = windowsDrive.toUpperCase()
+                            windowsPath = windowsDrive + windowsPath.substring(1)
+                            animatePathItem.currentFolder = "file:///" + windowsPath
+                        } else {
+                            animatePathItem.currentFolder = "file://" + filePath
+                        }
                         forwardAnimation.start()
                     }
                 }
@@ -345,7 +363,15 @@ Page {
                     anchors.fill: parent
                     platformIndependentHoverEnabled: true
                     onClicked: {
-                        fileDialog.fileUrl = "file://" + filePath
+                        if (Core.operatingSystem === Core.Windows) {
+                            var windowsPath = filePath
+                            var windowsDrive = windowsPath.substring(0, 1)
+                            windowsDrive = windowsDrive.toUpperCase()
+                            windowsPath = windowsDrive + windowsPath.substring(1)
+                            fileDialog.fileUrl = "file:///" + windowsPath
+                        } else {
+                            fileDialog.fileUrl = "file://" + filePath
+                        }
                         fileDialog.accepted()
                     }
                     onContainsMouseChanged: {

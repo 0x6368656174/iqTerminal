@@ -28,6 +28,10 @@ QString UrlHelper::dirName(const QUrl &url)
     }
     if (dir.path() == "/")
         return "/";
+#ifdef Q_OS_WIN
+    if (dir.dirName() == "")
+        return dir.absolutePath();
+#endif
     return dir.dirName();
 }
 
@@ -80,7 +84,7 @@ int UrlHelper::dirEntryCount(const QUrl &url)
     QFileInfo fi (url.toLocalFile());
     QDir dir;
 
-    dir.setPath(fi.filePath() + "/");
+    dir.setPath(fi.absoluteFilePath() + "/");
 
 
     return dir.entryList(QDir::AllEntries | QDir::NoDotAndDotDot).count();

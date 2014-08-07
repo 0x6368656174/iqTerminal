@@ -14,25 +14,25 @@ void initialData()
     if (!QFileInfo::exists(Core::dataDir().toLocalFile()))
     {
         QDir dataDir;
-        dataDir.mkdir(Core::dataDir().toLocalFile());
+        dataDir.mkpath(Core::dataDir().toLocalFile());
     }
 
     if (!QFileInfo::exists(Core::dataDir().toLocalFile() + "users/"))
     {
         QDir usersDir;
-        usersDir.mkdir(Core::dataDir().toLocalFile() + "users/");
+        usersDir.mkpath(Core::dataDir().toLocalFile() + "users/");
     }
 
     if (!QFileInfo::exists(Core::dataDir().toLocalFile() + "chats/"))
     {
         QDir usersDir;
-        usersDir.mkdir(Core::dataDir().toLocalFile() + "chats/");
+        usersDir.mkpath(Core::dataDir().toLocalFile() + "chats/");
     }
 
     if (!QFileInfo::exists(Core::dataDir().toLocalFile() + "smiles/"))
     {
         QDir usersDir;
-        usersDir.mkdir(Core::dataDir().toLocalFile() + "smiles/");
+        usersDir.mkpath(Core::dataDir().toLocalFile() + "smiles/");
     }
 
     QStringList dataFiles = QStringList() << "i.xml" << "menu.xml" << "torrent.xml"
@@ -45,6 +45,12 @@ void initialData()
                                           << "chats/4.xml" << "chats/5.xml" << "chats/6.xml"
                                           << "chats/7.xml" << "chats/8.xml" << "chats/9.xml"
                                           << "chats/10.xml";
+//    QStringList dataFiles = QStringList() << "menu.xml" << "all.xml" << "visitors.xml"
+//                                          << "users/1.xml" << "users/2.xml" << "users/3.xml"
+//                                          << "users/4.xml" << "users/5.xml" << "users/6.xml"
+//                                          << "users/7.xml" << "users/8.xml" << "users/9.xml"
+//                                          << "users/10.xml";
+
     foreach (QString dataFile, dataFiles)
     {
         QString dataFilePath = Core::dataDir().toLocalFile() + dataFile;
@@ -72,7 +78,8 @@ void initialData()
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    app.setApplicationName("Terminal");
+    app.setOrganizationName("itQuasar");
+    app.setApplicationName("iqTerminal");
 
     QtQuick2ApplicationViewer viewer;
 
@@ -83,6 +90,7 @@ int main(int argc, char *argv[])
 
     viewer.engine()->addImageProvider("xml", new TerminalImageProvider);
     viewer.setSource(QUrl("qrc:/qml/terminal/main.qml"));
+    viewer.setTitle("iqTerminal");
 
 #ifdef Q_OS_ANDROID
     viewer.showFullScreen();

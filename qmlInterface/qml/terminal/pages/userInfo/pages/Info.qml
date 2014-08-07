@@ -229,6 +229,18 @@ Page {
             color: "#c6c1c7"
         }
 
+        CreateNewButton {
+            id: createNewButton
+            anchors.top: stateSpacer.bottom
+            visible: userProfileModel.stateModel.count === 0
+            enabled: !privateData.isEdited
+            text: qsTr("Новый")
+            spacerVisible: false
+            onClicked: {
+                var newSatate = userProfileModel.stateModel.appendNew()
+            }
+        }
+
 
         ListView {
             id: statesView
@@ -313,7 +325,7 @@ Page {
                         text: state_name
                         onTextChanged: state_additional_data.nameToSave = text
                         clip: true
-                        onAccepted: editBar.onSubmit()
+                        onAccepted: editBar.submit()
                         KeyNavigation.tab: detailTextEditor
                     }
 

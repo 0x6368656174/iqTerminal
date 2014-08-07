@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='utf-8'?>
-<manifest android:installLocation="auto" android:versionCode="1" xmlns:android="http://schemas.android.com/apk/res/android" package="org.qtproject.example" android:versionName="1.0">
-    <application android:label="@string/app_name" android:hardwareAccelerated="true" android:name="org.qtproject.qt5.android.bindings.QtApplication">
+<?xml version="1.0"?>
+<manifest android:installLocation="auto" android:versionCode="1" xmlns:android="http://schemas.android.com/apk/res/android" package="ru.itQuasar.iqTerminal" android:versionName="1.0">
+    <application android:label="iqTerminal" android:hardwareAccelerated="true" android:name="org.qtproject.qt5.android.bindings.QtApplication">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation" android:label="@string/app_name" android:screenOrientation="unspecified" android:name="org.qtproject.qt5.android.bindings.QtActivity" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

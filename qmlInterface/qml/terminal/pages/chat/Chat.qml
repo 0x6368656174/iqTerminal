@@ -490,6 +490,7 @@ Page {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: textInput.top
+        clip: true
         visible: height > 0
 
         height: {
@@ -499,12 +500,13 @@ Page {
             return 0
         }
 
-        Behavior on height {NumberAnimation { duration: 200;} }
+        Behavior on height {NumberAnimation {duration: 200;} }
 
         Rectangle {
             id: fileAttachment
-            anchors.fill: parent
-            visible: attachmentBar.role === "file"
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: Core.dp(22)
             color: "#cdcdcd"
 
             Image {
@@ -549,7 +551,7 @@ Page {
             return 2*smilesGrid.anchors.margins + rowCount*smilesGrid.cellHeight
         }
 
-        Behavior on height {NumberAnimation { duration: 200;} }
+        Behavior on height {NumberAnimation {duration: 200;} }
 
         function insertSmile(smileImage) {
             textInputText.insert(textInputText.cursorPosition, "<img src=\""+ Core.dataDir +"smiles/"+smileImage+"\" "
@@ -806,7 +808,6 @@ Page {
         onAccepted: {
             attachmentBar.role = "file"
             attachmentBar.attachmentFileName = fileUrl
-            addButton.checked = false
         }
 
         onRejected: {

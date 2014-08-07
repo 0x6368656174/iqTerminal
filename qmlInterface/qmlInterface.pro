@@ -2,6 +2,8 @@ QT += xml xmlpatterns multimedia
 
 DESTDIR = ../bin/
 
+TARGET = iqTerminal
+
 include(../terminalQmlPlugin/terminalQmlPlugin.pri)
 
 #Не настоящая цель. Просто для удобства работы в QtCreator, чтоб была видна папка QML.

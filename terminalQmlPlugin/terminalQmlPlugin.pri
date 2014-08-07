@@ -71,6 +71,6 @@
 
 
     OTHER_FILES += \
-        $$PWD/imports/TerminalQmlPlugin\TerminalMouseArea.qml \
+        $$PWD/imports/TerminalQmlPlugin/TerminalMouseArea.qml \
         $$PWD/imports/TerminalQmlPlugin/qmldir
 }
