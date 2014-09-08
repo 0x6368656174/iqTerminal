@@ -41,5 +41,6 @@ Rectangle {
         selectByMouse: true
         selectionColor: "#c00d0d"
         onAccepted: lineEdit.submit()
+        horizontalAlignment: Text.AlignHCenter
     }
 }

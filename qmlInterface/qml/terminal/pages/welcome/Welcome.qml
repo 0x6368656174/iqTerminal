@@ -1,34 +1,55 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
+import Qt.labs.settings 1.0
 
 import ".."
 import "." as Welcome
+import "../../elements" as Elements
 
 Page {
     id: welcomePage
 
-    signal signInCompleted()
+    function showError (error) {
+        progressBar.runing = false
+        errorText.text = error
+        errorMessage.opacity = 1
+        errorMessage.visible = true
+        flickableItem.contentY = flickableItem.contentHeight - flickableItem.height
+        showErrorAmination.restart()
+    }
 
     function signIn(login, password) {
 //        return "Bad login or password"
-        welcomePage.signInCompleted()
+        main.autorized = false
+        progressBar.runing = true
+        main.autorized = true
         return ""
     }
 
     function register (login, email, name) {
-
+        progressBar.runing = true
     }
 
     function remindPassword(email) {
-
+        progressBar.runing = true
     }
 
     function changePassword(oldPassword, newPassword) {
+        progressBar.runing = true
+    }
 
+    Connections {
+        target: main
+        onAutorizedChanged: {
+            progressBar.runing = false
+            errorText.text = ""
+            errorMessage.opacity = 0
+            errorMessage.visible = false
+        }
     }
 
     name: "welcome"
-    state: "start"
+    state: "signInPage"
 
     Rectangle {
         anchors.fill: parent
@@ -37,14 +58,10 @@ Page {
 
     states: [
         State {
-            name: "start"
-        },
-        State {
             name: "signInPage"
-            StateChangeScript {
-                script: {
-                    hideStartRows.start()
-                }
+            PropertyChanges {
+                target: buttonTitleText
+                text: qsTr("Sign In")
             }
             PropertyChanges {
                 target: signInPage
@@ -86,10 +103,9 @@ Page {
         },
         State {
             name: "registerPage"
-            StateChangeScript {
-                script: {
-                    hideStartRows.start()
-                }
+            PropertyChanges {
+                target: buttonTitleText
+                text: qsTr("Register")
             }
             PropertyChanges {
                 target: signInPage
@@ -131,10 +147,9 @@ Page {
         },
         State {
             name: "remindPage"
-            StateChangeScript {
-                script: {
-                    hideStartRows.start()
-                }
+            PropertyChanges {
+                target: buttonTitleText
+                text: qsTr("Remind Password")
             }
             PropertyChanges {
                 target: signInPage
@@ -176,10 +191,9 @@ Page {
         },
         State {
             name: "changePage"
-            StateChangeScript {
-                script: {
-                    hideStartRows.start()
-                }
+            PropertyChanges {
+                target: buttonTitleText
+                text: qsTr("Change Password")
             }
             PropertyChanges {
                 target: signInPage
@@ -221,60 +235,9 @@ Page {
         }
     ]
 
-    SequentialAnimation {
-        id: hideStartRows
-        ScriptAction {
-            script: {
-                signInRow.state = "hiden"
-                registerRow.state = "hiden"
-                remindRow.state = "hiden"
-                changeRow.state = "hiden"
-            }
-        }
-        PauseAnimation { duration: 200 }
-        ScriptAction {
-            script: {
-                startView.visible = false
-                buttonsRow.visible = true
-                pages.visible = true
-                signInButton.hide = false
-//                signInButton.widthAnimationEnabled = false
-                registerButton.hide = false
-//                registerButton.widthAnimationEnabled = false
-                remindButton.hide = false
-//                remindButton.widthAnimationEnabled = false
-                changeButton.hide = false
-//                changeButton.widthAnimationEnabled = false
-            }
-        }
-    }
-
-    Image {
-        id: border1
-        anchors.left: parent.left
-        anchors.leftMargin: Core.dp(27)
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        width: Core.dp(5)
-        source: "../../images/3.png"
-        fillMode: Image.TileVertically
-    }
-    Image {
-        id: border2
-        rotation: 180
-        anchors.left: border1.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        width: border1.width
-        source: "../../images/3.png"
-        fillMode: Image.TileVertically
-    }
-
     Item {
-        anchors.top: parent.top
-        anchors.left: border2.right
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.fill: parent
+        enabled: !progressBar.runing
 
         Image {
             id: bakgrounImage
@@ -296,112 +259,134 @@ Page {
             fillMode: Image.PreserveAspectFit
         }
 
-        Flickable {
+        Elements.ProgressBar {
+            id: progressBar
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: terminalLogo.paintedWidth
+            anchors.top: terminalLogo.bottom
+            anchors.topMargin: Core.dp(8)
+            height: runing?Core.dp(2):0
+            Behavior on height {NumberAnimation {duration: 200 } }
+            onFinished: showError(qsTr("No connection"))
+        }
+
+        Item {
+            id: buttonTitle
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: terminalLogo.bottom
-            anchors.bottom: parent.bottom
-            anchors.topMargin: Core.dp(11)
-            contentWidth: parent.width
-            contentHeight: Core.dp(200)
-            interactive: contentHeight > height
-            clip: true
+            anchors.top: progressBar.bottom
+            anchors.topMargin: progressBar.runing?Core.dp(8):0
+            Behavior on anchors.topMargin {NumberAnimation {duration: 200 } }
+            height: Core.dp(12)
 
-            Column {
-                id: startView
-                anchors.top: parent.top
-                anchors.topMargin: Core.dp(4)
-                anchors.bottom: parent.bottom
-                anchors.horizontalCenter: parent.horizontalCenter
-                width: Core.dp(150)
-                spacing: Core.dp(4)
-                StartViewRow {
-                    id: signInRow
-                    text: qsTr("Sign In")
-                    iconSource: "../../images/5.png"
+            Text {
+                id: buttonTitleText
+                anchors.centerIn: parent
+                color: "white"
+                font.pixelSize: Core.dp(8)
+            }
+            Elements.TerminalMouseArea {
+                id: buttonTitleMA
+                anchors.fill: parent
+                platformIndependentHoverEnabled: true
+                onContainsMouseChanged:  {
+                    if (containsMouse) {
+                        buttonTitleText.font.pixelSize = Core.dp(10)
+                    } else {
+                        buttonTitleText.font.pixelSize = Core.dp(8)
+                    }
+                }
+
+                function click() {
+                    if (welcomePage.state === "signInPage") {
+                        var signInResult = welcomePage.signIn(signInLogin.text, signInPassword.text)
+                        if (signInResult !== "") {
+                            showError(signInResult)
+                        }
+                    } else if (welcomePage.state === "registerPage") {
+                        welcomePage.register(registerLogin.text, registerEmail.text, registerName.text);
+                    } else if (welcomePage.state === "remindPage") {
+                        welcomePage.remindPassword(remindEmal.text);
+                    } else if (welcomePage.state === "changePage") {
+                        if (changeNewPassword.text !== changeRepeatPassword.text) {
+                            showError(qsTr("Passwords do not match"))
+                        } else {
+                            welcomePage.changePassword(changeOldPassword.text, changeNewPassword.text)
+                        }
+                    }
+                }
+
+                onClicked: click()
+            }
+        }
+
+        Row {
+            id: buttonsRow
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: buttonTitle.bottom
+            anchors.topMargin: Core.dp(4)
+            height: Core.dp(28)
+            width: Core.dp(28)*4+Core.dp(4)*3
+            spacing: Core.dp(4)
+
+            Item {
+                width: Core.dp(28)
+                height: width
+                Welcome.Button {
+                    id: signInButton
+                    anchors.centerIn: parent
+                    source: "../../images/5.png"
                     onClicked: welcomePage.state = "signInPage"
                 }
-                StartViewRow {
-                    id: registerRow
-                    text: qsTr("Register")
-                    iconSource: "../../images/6.png"
+            }
+            Item {
+                width: Core.dp(28)
+                height: width
+                Welcome.Button {
+                    id: registerButton
+                    anchors.centerIn: parent
+                    source: "../../images/6.png"
                     onClicked: welcomePage.state = "registerPage"
                 }
-                StartViewRow {
-                    id: remindRow
-                    text: qsTr("Remind Password")
-                    iconSource: "../../images/7.png"
+
+            }Item {
+                width: Core.dp(28)
+                height: width
+                Welcome.Button {
+                    id: remindButton
+                    anchors.centerIn: parent
+                    source: "../../images/7.png"
                     onClicked: welcomePage.state = "remindPage"
                 }
-                StartViewRow {
-                    id: changeRow
-                    text: qsTr("Change Password")
-                    iconSource: "../../images/8.png"
+            }Item {
+                width: Core.dp(28)
+                height: width
+                enabled: main.autorized
+                Welcome.Button {
+                    id: changeButton
+                    anchors.centerIn: parent
+                    source: "../../images/8.png"
                     onClicked: welcomePage.state = "changePage"
                 }
             }
+        }
 
-            Row {
-                id: buttonsRow
-                visible: false
-                anchors.top: parent.top
-                anchors.topMargin: Core.dp(4)
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: Core.dp(4)
-
-                Item {
-                    width: Core.dp(28)
-                    height: width
-                    Welcome.Button {
-                        id: signInButton
-                        anchors.centerIn: parent
-                        source: "../../images/5.png"
-                        hide: true
-                        onClicked: welcomePage.state = "signInPage"
-                    }
-                }
-                Item {
-                    width: Core.dp(28)
-                    height: width
-                    Welcome.Button {
-                        id: registerButton
-                        anchors.centerIn: parent
-                        source: "../../images/6.png"
-                        hide: true
-                        onClicked: welcomePage.state = "registerPage"
-                    }
-
-                }Item {
-                    width: Core.dp(28)
-                    height: width
-                    Welcome.Button {
-                        id: remindButton
-                        anchors.centerIn: parent
-                        source: "../../images/7.png"
-                        hide: true
-                        onClicked: welcomePage.state = "remindPage"
-                    }
-                }Item {
-                    width: Core.dp(28)
-                    height: width
-                    Welcome.Button {
-                        id: changeButton
-                        anchors.centerIn: parent
-                        source: "../../images/8.png"
-                        hide: true
-                        onClicked: welcomePage.state = "changePage"
-                    }
-                }
-            }
+        Flickable {
+            id: flickableItem
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: buttonsRow.bottom
+            anchors.topMargin: Core.dp(8)
+            anchors.bottom: saveUser.top
+            anchors.bottomMargin: Core.dp(4)
+            contentWidth: parent.width
+            contentHeight: form.height + errorMessage.height*errorMessage.visible + errorMessage.anchors.topMargin*errorMessage.visible
+            interactive: contentHeight > height
+            clip: true
 
             Item {
                 id: pages
-                visible: false
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.top: buttonsRow.bottom
-                anchors.bottom: parent.bottom
-                anchors.topMargin: Core.dp(15)
+                anchors.fill: parent
 
                 Item {
                     id: form
@@ -422,6 +407,12 @@ Page {
                         spacing: Core.dp(12)
                         anchors.left: parent.left
                         anchors.right: parent.right
+                        onVisibleChanged: {
+                            if (!saveUser.passwordSaved) {
+                                signInLogin.text = ""
+                                signInPassword.text = ""
+                            }
+                        }
 
                         Behavior on opacity {NumberAnimation {duration: 200;} }
 
@@ -430,7 +421,7 @@ Page {
                             placeholderText: qsTr("LOGIN")
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: signInPassword
-                            onSubmit: submitButton.click()
+                            onSubmit: buttonTitleMA.click()
                         }
                         Welcome.LineEdit {
                             id: signInPassword
@@ -438,7 +429,7 @@ Page {
                             anchors.horizontalCenter: parent.horizontalCenter
                             password: true
                             KeyNavigation.tab: signInLogin
-                            onSubmit: submitButton.click()
+                            onSubmit: buttonTitleMA.click()
                         }
                     }
 
@@ -449,6 +440,11 @@ Page {
                         spacing: Core.dp(12)
                         anchors.left: parent.left
                         anchors.right: parent.right
+                        onVisibleChanged: {
+                            registerLogin.text = ""
+                            registerEmail.text = ""
+                            registerName.text = ""
+                        }
 
                         Behavior on opacity {NumberAnimation {duration: 200;} }
 
@@ -457,21 +453,21 @@ Page {
                             placeholderText: qsTr("LOGIN")
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: registerEmail
-                            onSubmit: submitButton.click()
+                            onSubmit: buttonTitleMA.click()
                         }
                         Welcome.LineEdit {
                             id: registerEmail
                             placeholderText: qsTr("EMAIL")
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: registerName
-                            onSubmit: submitButton.click()
+                            onSubmit: buttonTitleMA.click()
                         }
                         Welcome.LineEdit {
                             id: registerName
                             placeholderText: qsTr("YOUR NAME")
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: registerLogin
-                            onSubmit: submitButton.click()
+                            onSubmit: buttonTitleMA.click()
                         }
                     }
 
@@ -482,6 +478,9 @@ Page {
                         spacing: Core.dp(12)
                         anchors.left: parent.left
                         anchors.right: parent.right
+                        onVisibleChanged: {
+                            remindEmal.text = ""
+                        }
 
                         Behavior on opacity {NumberAnimation {duration: 200;} }
 
@@ -489,7 +488,7 @@ Page {
                             id: remindEmal
                             placeholderText: qsTr("EMAIL")
                             anchors.horizontalCenter: parent.horizontalCenter
-                            onSubmit: submitButton.click()
+                            onSubmit: buttonTitleMA.click()
                         }
                     }
 
@@ -500,6 +499,11 @@ Page {
                         spacing: Core.dp(12)
                         anchors.left: parent.left
                         anchors.right: parent.right
+                        onVisibleChanged: {
+                            changeOldPassword.text = ""
+                            changeNewPassword.text = ""
+                            changeRepeatPassword.text = ""
+                        }
 
                         Behavior on opacity {NumberAnimation {duration: 200;} }
 
@@ -509,7 +513,7 @@ Page {
                             anchors.horizontalCenter: parent.horizontalCenter
                             password: true
                             KeyNavigation.tab: changeNewPassword
-                            onSubmit: submitButton.click()
+                            onSubmit: buttonTitleMA.click()
                         }
                         Welcome.LineEdit {
                             id: changeNewPassword
@@ -517,7 +521,7 @@ Page {
                             anchors.horizontalCenter: parent.horizontalCenter
                             password: true
                             KeyNavigation.tab: changeRepeatPassword
-                            onSubmit: submitButton.click()
+                            onSubmit: buttonTitleMA.click()
                         }
                         Welcome.LineEdit {
                             id: changeRepeatPassword
@@ -525,16 +529,9 @@ Page {
                             anchors.horizontalCenter: parent.horizontalCenter
                             password: true
                             KeyNavigation.tab: changeOldPassword
-                            onSubmit: submitButton.click()
+                            onSubmit: buttonTitleMA.click()
                         }
                     }
-                }
-
-                function showError (error) {
-                    errorText.text = error
-                    errorMessage.opacity = 1
-                    errorMessage.visible = true
-                    showErrorAmination.restart()
                 }
 
                 PropertyAnimation {
@@ -557,15 +554,22 @@ Page {
                     anchors.right: parent.right
                     anchors.top: form.bottom
                     anchors.topMargin: Core.dp(12)
+                    height: errorText.lineCount * Core.dp(16)
                     Behavior on opacity {NumberAnimation {duration: 200} }
+
+                    onVisibleChanged: {
+                        if (!visible) {
+                            errorText.text = ""
+                        }
+                    }
 
                     Rectangle {
                         id: errorBox
                         anchors.horizontalCenter: parent.horizontalCenter
+                        height: parent.height
                         border.color: "#FF0000"
                         color: "#FBEFEF"
                         width: Core.dp(125)
-                        height: errorText.lineCount * Core.dp(16)
 
                         Text {
                             id: errorText
@@ -580,41 +584,44 @@ Page {
                         }
                     }
                 }
+            }
+        }
 
-                Item {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.top: parent.top
-                    anchors.horizontalCenterOffset: Core.dp(66)
-                    anchors.topMargin: Core.dp(130)
+        Item {
+            id: saveUser
+            property bool passwordSaved: false
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: Core.dp(10)
+            Behavior on anchors.topMargin {NumberAnimation {duration: 200 } }
+            height: Core.dp(12)
 
-                    Welcome.Button {
-                        id: submitButton
-                        anchors.centerIn: parent
-                        baseWidth: Core.dp(18)
-                        source: "../../images/10.png"
+            Settings {
+                property alias saveUserAndPassword: saveUser.passwordSaved
+                property alias userName: signInLogin.text
+                property alias userPassword: signInPassword.text
+            }
 
-                        function processClicked() {
-                            if (welcomePage.state === "signInPage") {
-                                var signInResult = welcomePage.signIn(signInLogin.text, signInPassword.text)
-                                if (signInResult !== "") {
-                                    pages.showError(signInResult)
-                                }
-                            } else if (welcomePage.state === "registerPage") {
-                                welcomePage.register(registerLogin.text, registerEmail.text, registerName.text);
-                            } else if (welcomePage.state === "remingPage") {
-                                welcomePage.remindPassword(remindEmal.text);
-                            } else if (welcomePage.state === "changePage") {
-                                if (changeNewPassword.text !== changeRepeatPassword.text) {
-                                    pages.showError(qsTr("Passwords do not match"))
-                                } else {
-                                    welcomePage.changePassword(changeOldPassword.text, changeNewPassword.text)
-                                }
-                            }
-                        }
-
-                        onClicked: processClicked()
+            Text {
+                id: saveUserText
+                anchors.centerIn: parent
+                color: "white"
+                font.pixelSize: Core.dp(8)
+                text: saveUser.passwordSaved?qsTr("Not save User & Password"):qsTr("Save User & Password")
+            }
+            Elements.TerminalMouseArea {
+                id: saveUserMA
+                anchors.fill: parent
+                platformIndependentHoverEnabled: true
+                onContainsMouseChanged:  {
+                    if (containsMouse) {
+                        saveUserText.font.pixelSize = Core.dp(10)
+                    } else {
+                        saveUserText.font.pixelSize = Core.dp(8)
                     }
                 }
+                onClicked: saveUser.passwordSaved = !saveUser.passwordSaved
             }
         }
     }

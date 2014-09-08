@@ -13,6 +13,16 @@ Rectangle {
     width: Core.dp(208)
     height: Core.dp(285)
 
+    property bool autorized: false
+
+    onAutorizedChanged: {
+        if (autorized) {
+            showRightPage("menu")
+        } else {
+            showLeftPage("welcome")
+        }
+    }
+
     Image {
         anchors.fill: parent
         fillMode: Image.PreserveAspectCrop
@@ -97,7 +107,6 @@ Rectangle {
         }
 
         Welcome {
-            onSignInCompleted: showRightPage("menu")
         }
 
         Menu {

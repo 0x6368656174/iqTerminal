@@ -216,5 +216,6 @@
         <file>qml/terminal/images/201.png</file>
         <file>qml/terminal/images/202.png</file>
         <file>qml/terminal/images/202a.png</file>
+        <file>qml/terminal/elements/ProgressBar.qml</file>
     </qresource>
 </RCC>

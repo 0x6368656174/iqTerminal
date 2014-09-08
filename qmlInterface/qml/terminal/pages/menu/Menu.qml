@@ -13,60 +13,20 @@ Page {
 
     name: "menu"
 
+    BackButton {
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.topMargin: Core.dp(70)
+    }
+
     Rectangle {
         anchors.fill: parent
         color: "#da4504"
     }
 
-//    Rectangle {
-//        id: leftBackground
-//        anchors.top: parent.top
-//        anchors.bottom: parent.bottom
-//        anchors.left: parent.left
-//        width: Core.dp(150)
-//        clip: true
-
-//        Column {
-//            anchors.fill: parent
-//            spacing: Core.dp(60)
-//            Repeater {
-//                model: parent.height / Core.dp(260) + 1
-
-//                Rectangle {
-//                    width: Core.dp(150)
-//                    height: Core.dp(200)
-//                    color: "#6e6c77"
-//                }
-//            }
-//        }
-//    }
-
-    Image {
-        id: border1
-        anchors.left: parent.left
-        anchors.leftMargin: Core.dp(27)
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        width: Core.dp(5)
-        source: "../../images/3.png"
-        fillMode: Image.TileVertically
-    }
-    Image {
-        id: border2
-        rotation: 180
-        anchors.left: border1.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        width: border1.width
-        source: "../../images/3.png"
-        fillMode: Image.TileVertically
-    }
-
     Item {
-        anchors.top: parent.top
-        anchors.left: border2.right
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.fill: parent
+        anchors.leftMargin: Core.dp(27)
         Image {
             id: terminalLogo
             anchors.horizontalCenter: parent.horizontalCenter
