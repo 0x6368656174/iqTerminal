@@ -42,6 +42,7 @@
 #include "urlhelper.h"
 
 #include "filesystem.h"
+#include "filewatcher.h"
 
 static QObject *core_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
@@ -171,6 +172,10 @@ public:
 
         // @uri TerminalQmlPlugin
         qmlRegisterSingletonType<FileSystem>(uri, 1, 0, "FileSystem", fileSystem_singletontype_provider);
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<FileWatcher>(uri, 1, 0, "FileWatcher");
+
     }
 };
 

@@ -286,7 +286,7 @@ Page {
                     id: dataItem
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    height: detailText.paintedHeight+Core.dp(12)
+                    height: Math.max(detailText.paintedHeight, stateText.paintedHeight) + Core.dp(12)
 
                     Rectangle {
                         id: checkRect
@@ -303,10 +303,10 @@ Page {
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
                         width: Core.dp(50)
-                        elide: Text.ElideRight
                         verticalAlignment: Text.AlignVCenter
                         font.pixelSize: Core.dp(8)
                         text: state_name
+                        wrapMode: Text.Wrap
                     }
                     TextInput {
                         id: stateTextEditor
@@ -327,12 +327,13 @@ Page {
                         clip: true
                         onAccepted: editBar.submit()
                         KeyNavigation.tab: detailTextEditor
+                        wrapMode: TextInput.Wrap
                     }
 
                     Text {
                         id: detailText
                         visible: !state_additional_data.isEdited || editBar.editRole !== "edit"
-                        wrapMode: Text.WordWrap
+                        wrapMode: Text.Wrap
                         anchors.left: parent.left
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
@@ -353,7 +354,7 @@ Page {
                                 forceActiveFocus()
                             }
                         }
-                        wrapMode: Text.WordWrap
+                        wrapMode: Text.Wrap
                         anchors.fill: detailText
                         selectByMouse: true
                         selectionColor: "#c00d0d"

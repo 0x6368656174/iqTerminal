@@ -21,6 +21,7 @@ Page {
     }
 
     BackButton {
+        id: userInfoPageBackButton
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.topMargin: Core.dp(70)

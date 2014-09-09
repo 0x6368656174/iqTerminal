@@ -74,3 +74,9 @@
         $$PWD/imports/TerminalQmlPlugin/TerminalMouseArea.qml \
         $$PWD/imports/TerminalQmlPlugin/qmldir
 }
+
+HEADERS += \
+    $$PWD/filewatcher.h
+
+SOURCES += \
+    $$PWD/filewatcher.cpp

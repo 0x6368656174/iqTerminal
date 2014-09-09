@@ -68,6 +68,15 @@ Page {
             }
         }
 
+        MouseArea {
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.right: previousFolderButton.right
+            anchors.rightMargin: -Core.dp(12)
+            anchors.bottom: folderCounter.verticalCenter
+            onClicked: previousFolderButton.clicked()
+        }
+
         Text {
             id: folderCounter
             anchors.horizontalCenter: previousFolderButton.horizontalCenter
@@ -107,6 +116,15 @@ Page {
             }
         }
 
+        MouseArea {
+            anchors.left: parent.left
+            anchors.top: folderCounter.verticalCenter
+            anchors.right: nextFolderButton.right
+            anchors.rightMargin: -Core.dp(12)
+            anchors.bottom: parent.bottom
+            onClicked: nextFolderButton.clicked()
+        }
+
         Text {
             id: photoName
             anchors.left: previousPhotoButton.left
@@ -140,6 +158,15 @@ Page {
             }
         }
 
+        MouseArea {
+            anchors.left: parent.left
+            anchors.right: photoCounter.horizontalCenter
+            anchors.top: previousPhotoButton.top
+            anchors.topMargin: -Core.dp(12)
+            anchors.bottom: parent.bottom
+            onClicked: previousPhotoButton.clicked()
+        }
+
         Text {
             id: photoCounter
             anchors.verticalCenter: previousPhotoButton.verticalCenter
@@ -149,9 +176,9 @@ Page {
             font.pixelSize: Core.dp(8)
             text: {
                 if (folderIndex !== -1 && photoIndex !== -1 && photosModel.get(folderIndex).filesModel.count > 0) {
-                    return (photoIndex + 1) + "(" + photosModel.get(folderIndex).filesModel.count + ")"
+                    return (photoIndex + 1) + "/" +  photosModel.get(folderIndex).filesModel.count
                 }
-                return "0(0)"
+                return "0/0"
             }
         }
 
@@ -169,6 +196,15 @@ Page {
                     photoIndex++
                 }
             }
+        }
+
+        MouseArea {
+            anchors.left: photoCounter.horizontalCenter
+            anchors.right: parent.right
+            anchors.top: nextPhotoButton.top
+            anchors.topMargin: -Core.dp(12)
+            anchors.bottom: parent.bottom
+            onClicked: nextPhotoButton.clicked()
         }
     }
 }

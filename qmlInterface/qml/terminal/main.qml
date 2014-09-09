@@ -45,6 +45,8 @@ Rectangle {
     function showRightPage(name) {
         for (var i = 0; i < pages.children.length; i++) {
             if (pages.children[i].visible) {
+                if (pages.children[i].name === name)
+                    return
                 privateData.pageHistory.push(pages.children[i].name)
                 pages.children[i].hideLeft()
             }
@@ -58,6 +60,8 @@ Rectangle {
     function showLeftPage(name) {
         for (var i = 0; i < pages.children.length; i++) {
             if (pages.children[i].visible) {
+                if (pages.children[i].name === name)
+                    return
                 pages.children[i].hideRight()
             }
             if (pages.children[i].name === name) {

@@ -9,6 +9,7 @@ Page {
     id: photosPage
     name: "userInfo_photo"
     property bool readOnly: false
+    clip: false
 
     QtObject {
         id: privateData
@@ -427,6 +428,9 @@ Page {
         id: fileDialog
         selectMultiple: false
         title: qsTr("Выбирите изображени")
+        anchors.bottom: parent.bottom
+        height: userInfoPage.height
+        onVisibleChanged: userInfoPageBackButton.visible = !visible
 
         onAccepted: {
             for (var i = 0; i < photoFolderModel.count; i++) {

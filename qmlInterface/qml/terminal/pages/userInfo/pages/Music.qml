@@ -9,6 +9,7 @@ Page {
     id: musicPage
     property bool readOnly: false
     name: "userInfo_music"
+    clip: false
 
     QtObject {
         id: privateData
@@ -510,6 +511,9 @@ Page {
         id: fileDialog
         selectMultiple: false
         title: qsTr("Выбирите аудио")
+        anchors.bottom: parent.bottom
+        height: userInfoPage.height
+        onVisibleChanged: userInfoPageBackButton.visible = !visible
 
         onAccepted: {
             for (var i = 0; i < musicFolderModel.count; i++) {

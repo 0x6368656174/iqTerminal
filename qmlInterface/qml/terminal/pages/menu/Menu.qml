@@ -5,6 +5,7 @@ import ".."
 import "../../elements"
 
 Page {
+    enabled: !progressBar.runing
     id: menuPage
 
     signal pageLoaded(var page)
@@ -36,6 +37,18 @@ Page {
             width: parent.width / 3 * 2
             fillMode: Image.PreserveAspectFit
         }
+
+        ProgressBar {
+            id: progressBar
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: terminalLogo.paintedWidth
+            anchors.top: terminalLogo.bottom
+            anchors.topMargin: Core.dp(8)
+            height: runing?Core.dp(2):0
+            Behavior on height {NumberAnimation {duration: 200 } }
+            onFinished: showError(qsTr("No connection"))
+        }
+
 
         Component {
             id: menuDelegate
@@ -73,6 +86,17 @@ Page {
                     }
                 }
 
+                FileWatcher {
+                    id: fileWatcher
+                    file: Core.dataDirPath + expected_file
+                    onCreated: {
+                        if (progressBar.runing) {
+                            menuPage.pageClicked(page_name)
+                            progressBar.runing = false
+                        }
+                    }
+                }
+
                 TerminalMouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
@@ -84,13 +108,21 @@ Page {
                         }
                     }
 
-                    onClicked: menuPage.pageClicked(pageName)
+                    onClicked: if (expected_file === "") {
+                                   menuPage.pageClicked(page_name)
+                               } else {
+                                   if (fileWatcher.exist()) {
+                                       menuPage.pageClicked(page_name)
+                                   } else {
+                                       progressBar.runing = true
+                                   }
+                               }
                 }
 
                 Loader {
                     source: "../" + qml_page
                     onLoaded: {
-                        item.name = pageName
+                        item.name = page_name
                         menuPage.pageLoaded(item)
                     }
                 }
@@ -118,15 +150,19 @@ Page {
             }
 
             XmlRole {
-                name: "pageName"
+                name: "page_name"
                 query: "name/string()"
+            }
+            XmlRole {
+                name: "expected_file"
+                query: "expected_file/string()"
             }
         }
 
         Item {
             anchors.horizontalCenter: parent.horizontalCenter
             width: Core.dp(125)
-            anchors.top: terminalLogo.bottom
+            anchors.top: progressBar.bottom
             anchors.bottom: parent.bottom
             anchors.margins: Core.dp(5)
             anchors.horizontalCenterOffset: Core.dp(-25)

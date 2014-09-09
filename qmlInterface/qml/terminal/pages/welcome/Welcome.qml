@@ -11,16 +11,20 @@ Page {
 
     function showError (error) {
         progressBar.runing = false
-        errorText.text = error
-        errorMessage.opacity = 1
+        errorMessage.visible = false
+        errorMessage.text = error
         errorMessage.visible = true
-        flickableItem.contentY = flickableItem.contentHeight - flickableItem.height
-        showErrorAmination.restart()
+        flickableItem.contentY = Math.max(flickableItem.contentHeight - flickableItem.height, 0)
     }
 
     function signIn(login, password) {
 //        return "Bad login or password"
-        main.autorized = false
+        //Если авторизованы, то просто войдем
+        if (autorized) {
+            showRightPage("menu")
+            return ""
+        }
+
         progressBar.runing = true
         main.autorized = true
         return ""
@@ -42,9 +46,14 @@ Page {
         target: main
         onAutorizedChanged: {
             progressBar.runing = false
-            errorText.text = ""
-            errorMessage.opacity = 0
+            errorMessage.text = ""
             errorMessage.visible = false
+        }
+    }
+
+    Component.onCompleted: {
+        if (!saveUser.passwordSaved) {
+            signInPassword.text = ""
         }
     }
 
@@ -97,7 +106,6 @@ Page {
             }
             PropertyChanges {
                 target: errorMessage
-                opacity: 0
                 visible: false
             }
         },
@@ -141,7 +149,6 @@ Page {
             }
             PropertyChanges {
                 target: errorMessage
-                opacity: 0
                 visible: false
             }
         },
@@ -185,7 +192,6 @@ Page {
             }
             PropertyChanges {
                 target: errorMessage
-                opacity: 0
                 visible: false
             }
         },
@@ -229,7 +235,6 @@ Page {
             }
             PropertyChanges {
                 target: errorMessage
-                opacity: 0
                 visible: false
             }
         }
@@ -407,12 +412,6 @@ Page {
                         spacing: Core.dp(12)
                         anchors.left: parent.left
                         anchors.right: parent.right
-                        onVisibleChanged: {
-                            if (!saveUser.passwordSaved) {
-                                signInLogin.text = ""
-                                signInPassword.text = ""
-                            }
-                        }
 
                         Behavior on opacity {NumberAnimation {duration: 200;} }
 
@@ -422,6 +421,7 @@ Page {
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: signInPassword
                             onSubmit: buttonTitleMA.click()
+                            onTextChanged: autorized = false
                         }
                         Welcome.LineEdit {
                             id: signInPassword
@@ -430,6 +430,7 @@ Page {
                             password: true
                             KeyNavigation.tab: signInLogin
                             onSubmit: buttonTitleMA.click()
+                            onTextChanged: autorized = false
                         }
                     }
 
@@ -534,55 +535,13 @@ Page {
                     }
                 }
 
-                PropertyAnimation {
-                    id: showErrorAmination
-                    target: errorBox
-                    property: "anchors.horizontalCenterOffset"
-                    from: Core.dp(12)
-                    to: 0
-                    easing.type: Easing.OutElastic
-                    easing.amplitude: Core.dp(2)
-                    duration: 800
-                }
-
-
-                Item {
+                Elements.ErrorMessage {
                     id: errorMessage
-                    opacity: 0
                     visible: false
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: form.bottom
                     anchors.topMargin: Core.dp(12)
-                    height: errorText.lineCount * Core.dp(16)
-                    Behavior on opacity {NumberAnimation {duration: 200} }
-
-                    onVisibleChanged: {
-                        if (!visible) {
-                            errorText.text = ""
-                        }
-                    }
-
-                    Rectangle {
-                        id: errorBox
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        height: parent.height
-                        border.color: "#FF0000"
-                        color: "#FBEFEF"
-                        width: Core.dp(125)
-
-                        Text {
-                            id: errorText
-                            color: "#FF0000"
-                            font.pixelSize: Core.dp(8)
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.margins: Core.dp(8)
-                            anchors.verticalCenter: parent.verticalCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            wrapMode: Text.WordWrap
-                        }
-                    }
                 }
             }
         }

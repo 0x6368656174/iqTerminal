@@ -5,6 +5,9 @@ Item {
     id: button
     property alias source: buttonImage.source
     signal clicked()
+
+    onClicked: buttonClickAnimation.restart()
+
     Image {
         id: buttonImage
         anchors.fill: parent
@@ -28,10 +31,7 @@ Item {
 
         TerminalMouseArea {
             anchors.fill: parent
-            onClicked: {
-                button.clicked()
-                buttonClickAnimation.restart()
-            }
+            onClicked: button.clicked()
         }
     }
 }

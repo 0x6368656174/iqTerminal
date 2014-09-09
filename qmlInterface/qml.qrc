@@ -6,160 +6,11 @@
         <file>qml/terminal/pages/welcome/StartViewRow.qml</file>
         <file>qml/terminal/pages/welcome/Welcome.qml</file>
         <file>qml/terminal/pages/menu/Menu.qml</file>
-        <file>qml/terminal/images/1.png</file>
-        <file>qml/terminal/images/1a.png</file>
-        <file>qml/terminal/images/2.png</file>
-        <file>qml/terminal/images/3.png</file>
-        <file>qml/terminal/images/3a.png</file>
-        <file>qml/terminal/images/4.png</file>
-        <file>qml/terminal/images/5.png</file>
-        <file>qml/terminal/images/5a.png</file>
-        <file>qml/terminal/images/6.png</file>
-        <file>qml/terminal/images/6a.png</file>
-        <file>qml/terminal/images/7.png</file>
-        <file>qml/terminal/images/7a.png</file>
-        <file>qml/terminal/images/8.png</file>
-        <file>qml/terminal/images/8a.png</file>
-        <file>qml/terminal/images/9.png</file>
-        <file>qml/terminal/images/9a.png</file>
-        <file>qml/terminal/images/10.png</file>
-        <file>qml/terminal/images/10a.png</file>
-        <file>qml/terminal/images/11.png</file>
-        <file>qml/terminal/images/11a.png</file>
-        <file>qml/terminal/images/12.png</file>
-        <file>qml/terminal/images/12a.png</file>
-        <file>qml/terminal/images/13.png</file>
-        <file>qml/terminal/images/14.png</file>
-        <file>qml/terminal/images/15.png</file>
-        <file>qml/terminal/images/16.png</file>
-        <file>qml/terminal/images/17.png</file>
-        <file>qml/terminal/images/18.png</file>
-        <file>qml/terminal/images/19.png</file>
-        <file>qml/terminal/images/20.png</file>
-        <file>qml/terminal/images/21.png</file>
-        <file>qml/terminal/images/22.png</file>
-        <file>qml/terminal/images/22b.png</file>
-        <file>qml/terminal/images/23.png</file>
-        <file>qml/terminal/images/24.png</file>
-        <file>qml/terminal/images/25.png</file>
-        <file>qml/terminal/images/25a.png</file>
-        <file>qml/terminal/images/26.png</file>
-        <file>qml/terminal/images/26a.png</file>
-        <file>qml/terminal/images/27.png</file>
-        <file>qml/terminal/images/27a.png</file>
-        <file>qml/terminal/images/28.png</file>
-        <file>qml/terminal/images/28a.png</file>
-        <file>qml/terminal/images/29.png</file>
-        <file>qml/terminal/images/30.png</file>
-        <file>qml/terminal/images/31.png</file>
-        <file>qml/terminal/images/32.png</file>
-        <file>qml/terminal/images/33.png</file>
-        <file>qml/terminal/images/34.png</file>
-        <file>qml/terminal/images/34a.png</file>
-        <file>qml/terminal/images/34b.png</file>
-        <file>qml/terminal/images/35.png</file>
-        <file>qml/terminal/images/36.png</file>
-        <file>qml/terminal/images/37.png</file>
-        <file>qml/terminal/images/38.png</file>
-        <file>qml/terminal/images/38a.png</file>
-        <file>qml/terminal/images/39.png</file>
-        <file>qml/terminal/images/39a.png</file>
-        <file>qml/terminal/images/40.png</file>
-        <file>qml/terminal/images/41.png</file>
-        <file>qml/terminal/images/41a.png</file>
-        <file>qml/terminal/images/41b.png</file>
-        <file>qml/terminal/images/41c.png</file>
-        <file>qml/terminal/images/42.png</file>
-        <file>qml/terminal/images/42a.png</file>
-        <file>qml/terminal/images/43.png</file>
-        <file>qml/terminal/images/44.png</file>
-        <file>qml/terminal/images/45.png</file>
-        <file>qml/terminal/images/46.png</file>
-        <file>qml/terminal/images/47.png</file>
-        <file>qml/terminal/images/47a.png</file>
-        <file>qml/terminal/images/48.png</file>
-        <file>qml/terminal/images/48a.png</file>
-        <file>qml/terminal/images/49.png</file>
-        <file>qml/terminal/images/49a.png</file>
-        <file>qml/terminal/images/49b.png</file>
-        <file>qml/terminal/images/49c.png</file>
-        <file>qml/terminal/images/49d.png</file>
-        <file>qml/terminal/images/50.png</file>
-        <file>qml/terminal/images/50a.png</file>
-        <file>qml/terminal/images/51.png</file>
-        <file>qml/terminal/images/51a.png</file>
-        <file>qml/terminal/images/52.png</file>
-        <file>qml/terminal/images/52a.png</file>
-        <file>qml/terminal/images/53.png</file>
-        <file>qml/terminal/images/53a.png</file>
-        <file>qml/terminal/images/54.png</file>
-        <file>qml/terminal/images/54a.png</file>
-        <file>qml/terminal/images/55.png</file>
-        <file>qml/terminal/images/55a.png</file>
-        <file>qml/terminal/images/56.png</file>
-        <file>qml/terminal/images/56a.png</file>
-        <file>qml/terminal/images/69.png</file>
-        <file>qml/terminal/images/69a.png</file>
-        <file>qml/terminal/images/69b.png</file>
-        <file>qml/terminal/images/70.png</file>
-        <file>qml/terminal/images/70a.png</file>
-        <file>qml/terminal/images/71.png</file>
-        <file>qml/terminal/images/72.png</file>
-        <file>qml/terminal/images/72a.png</file>
-        <file>qml/terminal/images/73.png</file>
-        <file>qml/terminal/images/73a.png</file>
-        <file>qml/terminal/images/74.png</file>
-        <file>qml/terminal/images/74a.png</file>
-        <file>qml/terminal/images/75.png</file>
-        <file>qml/terminal/images/75a.png</file>
-        <file>qml/terminal/images/76.png</file>
-        <file>qml/terminal/images/76a.png</file>
-        <file>qml/terminal/images/77.png</file>
-        <file>qml/terminal/images/77a.png</file>
-        <file>qml/terminal/images/78.png</file>
-        <file>qml/terminal/images/78a.png</file>
-        <file>qml/terminal/images/79.png</file>
-        <file>qml/terminal/images/79a.png</file>
-        <file>qml/terminal/images/80.png</file>
-        <file>qml/terminal/images/80a.png</file>
-        <file>qml/terminal/images/81.png</file>
-        <file>qml/terminal/images/81a.png</file>
-        <file>qml/terminal/images/82.png</file>
-        <file>qml/terminal/images/83.png</file>
-        <file>qml/terminal/images/84.png</file>
-        <file>qml/terminal/images/85.png</file>
-        <file>qml/terminal/images/86.png</file>
-        <file>qml/terminal/images/86a.png</file>
-        <file>qml/terminal/images/87.png</file>
-        <file>qml/terminal/images/87a.png</file>
-        <file>qml/terminal/images/87b.png</file>
-        <file>qml/terminal/images/88.png</file>
-        <file>qml/terminal/images/89.png</file>
-        <file>qml/terminal/images/90.png</file>
-        <file>qml/terminal/images/91.png</file>
         <file>qml/terminal/pages/i/I.qml</file>
         <file>qml/terminal/pages/Page.qml</file>
         <file>qml/terminal/elements/TerminalMouseArea.qml</file>
         <file>qml/terminal/elements/BaseHeader.qml</file>
         <file>qml/terminal/elements/HeaderButton.qml</file>
-        <file>qml/terminal/images/92.png</file>
-        <file>qml/terminal/images/93.png</file>
-        <file>qml/terminal/images/93a.png</file>
-        <file>qml/terminal/images/94.png</file>
-        <file>qml/terminal/images/94a.png</file>
-        <file>qml/terminal/images/95.png</file>
-        <file>qml/terminal/images/95a.png</file>
-        <file>qml/terminal/images/96.png</file>
-        <file>qml/terminal/images/96a.png</file>
-        <file>qml/terminal/images/97.png</file>
-        <file>qml/terminal/images/97a.png</file>
-        <file>qml/terminal/images/97b.png</file>
-        <file>qml/terminal/images/97c.png</file>
-        <file>qml/terminal/images/98.png</file>
-        <file>qml/terminal/images/99.png</file>
-        <file>qml/terminal/images/99a.png</file>
-        <file>qml/terminal/images/100.png</file>
-        <file>qml/terminal/images/100a.png</file>
         <file>qml/terminal/pages/torrent/Header.qml</file>
         <file>qml/terminal/pages/torrent/Torrent.qml</file>
         <file>qml/terminal/elements/Button.qml</file>
@@ -168,7 +19,6 @@
         <file>qml/terminal/pages/torrent/pages/TorrentSearch.qml</file>
         <file>qml/terminal/elements/EditBar.qml</file>
         <file>qml/terminal/elements/EditButton.qml</file>
-        <file>qml/terminal/images/51b.png</file>
         <file>qml/terminal/pages/torrent/pages/TorrentsUpload.qml</file>
         <file>qml/terminal/elements/CreateNewButton.qml</file>
         <file>qml/terminal/elements/SearchBar.qml</file>
@@ -188,34 +38,9 @@
         <file>qml/terminal/elements/FileDialog.qml</file>
         <file>qml/terminal/pages/chat/Chat.qml</file>
         <file>qml/terminal/pages/chat/ChatButton.qml</file>
-        <file>qml/terminal/images/51c.png</file>
-        <file>qml/terminal/images/pngConvert.sh</file>
-        <file>qml/terminal/images/72b.png</file>
-        <file>qml/terminal/images/72c.png</file>
-        <file>qml/terminal/images/73b.png</file>
-        <file>qml/terminal/images/73c.png</file>
-        <file>qml/terminal/images/74b.png</file>
-        <file>qml/terminal/images/74c.png</file>
-        <file>qml/terminal/images/75b.png</file>
-        <file>qml/terminal/images/75c.png</file>
         <file>qml/terminal/elements/PhotoView.qml</file>
-        <file>qml/terminal/images/61b.png</file>
-        <file>qml/terminal/images/61c.png</file>
         <file>qml/terminal/elements/PhotoCamera.qml</file>
-        <file>qml/terminal/images/49bb.png</file>
-        <file>qml/terminal/images/49bbb.png</file>
-        <file>qml/terminal/images/50b.png</file>
-        <file>qml/terminal/images/52b.png</file>
-        <file>qml/terminal/images/51cb.png</file>
-        <file>qml/terminal/smiles/1.png</file>
-        <file>qml/terminal/smiles/1a.png</file>
-        <file>qml/terminal/images/200.png</file>
-        <file>qml/terminal/images/200a.png</file>
-        <file>qml/terminal/images/40a.png</file>
-        <file>qml/terminal/images/98a.png</file>
-        <file>qml/terminal/images/201.png</file>
-        <file>qml/terminal/images/202.png</file>
-        <file>qml/terminal/images/202a.png</file>
         <file>qml/terminal/elements/ProgressBar.qml</file>
+        <file>qml/terminal/elements/ErrorMessage.qml</file>
     </qresource>
 </RCC>

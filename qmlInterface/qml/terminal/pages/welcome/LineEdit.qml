@@ -20,11 +20,10 @@ Rectangle {
 
     Text {
         id: placeholder
-        color: "white"
+        color: "#b1b1b1"
         font.pixelSize: Core.dp(8)
         anchors.centerIn: parent
-//        visible: textInput.text === "" && !textInput.focus
-        opacity: textInput.text === "" && !textInput.focus?1:0.1
+        visible: textInput.text === "" && !textInput.focus
     }
 
     TextInput {

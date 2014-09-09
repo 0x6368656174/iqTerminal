@@ -9,6 +9,7 @@ Page {
     id: videoPage
     property bool readOnly: false
     name: "userInfo_video"
+    clip: false
 
     QtObject {
         id: privateData
@@ -421,6 +422,9 @@ Page {
         id: fileDialog
         selectMultiple: false
         title: qsTr("Выбирите видео")
+        anchors.bottom: parent.bottom
+        height: userInfoPage.height
+        onVisibleChanged: userInfoPageBackButton.visible = !visible
 
         onAccepted: {
             for (var i = 0; i < videoFolderModel.count; i++) {
