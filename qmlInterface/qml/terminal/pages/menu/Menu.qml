@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
 import QtQuick.XmlListModel 2.0
+import QtGraphicalEffects 1.0
 import ".."
 import "../../elements"
 
@@ -11,6 +12,11 @@ Page {
     signal pageLoaded(var page)
 
     signal pageClicked(var pageName)
+
+    function showError(errorText) {
+        errorMessage.text = errorText
+        errorBox.visible = true
+    }
 
     name: "menu"
 
@@ -26,6 +32,7 @@ Page {
     }
 
     Item {
+        id: items
         anchors.fill: parent
         anchors.leftMargin: Core.dp(27)
         Image {
@@ -177,6 +184,43 @@ Page {
                 anchors.topMargin: Core.dp(4)
                 anchors.bottomMargin: Core.dp(4)
             }
+        }
+    }
+
+    Item {
+        anchors.fill: parent
+        id: errorBox
+        visible: false
+
+        Rectangle {
+            anchors.fill: parent
+            color: "#da4504"
+        }
+
+        FastBlur {
+            anchors.fill: parent
+            anchors.leftMargin: Core.dp(27)
+            source: items
+            radius: 24
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            color: "black"
+            opacity: errorBox.visible?0.4:0
+            Behavior on opacity {NumberAnimation { duration: 200; } }
+        }
+
+
+        ErrorMessage {
+            id: errorMessage
+            width: parent.width / 3 * 2
+            anchors.centerIn: parent
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: errorBox.visible = false
         }
     }
 }
