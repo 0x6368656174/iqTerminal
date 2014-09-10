@@ -7,6 +7,7 @@ Item {
     property int duration: 0
     property bool isPlay: false
     property bool isPause: false
+    property bool isStop: false
     property string style: "orange"
 
     height: Core.dp(38)
@@ -15,6 +16,12 @@ Item {
     signal stopClicked()
     signal pauseClicked()
     signal positionSliderClicked(var newPosition)
+    signal finished()
+
+    onIsPlayChanged: {
+        if (!isPlay && position >= duration)
+            finished()
+    }
 
     MouseArea {
         anchors.fill: parent

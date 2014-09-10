@@ -240,6 +240,10 @@ Page {
                         anchors.right: parent.right
                         height: !file_additional_data.isPlaying?Core.dp(22):Core.dp(70)
 
+                        function play() {
+
+                        }
+
                         Behavior on height {NumberAnimation {duration: 200} }
 
                         Rectangle {
@@ -293,15 +297,6 @@ Page {
                             onAccepted: editBar.submit()
                         }
 
-                        Image {
-                            anchors.verticalCenter: childNameText.verticalCenter
-                            anchors.right: parent.right
-                            anchors.rightMargin: Core.dp(16)
-                            width: Core.dp(15)
-                            height: width
-                            source: "../../../images/48.png"
-                        }
-
                         Rectangle {
                             anchors.left: parent.left
                             anchors.right: parent.right
@@ -322,17 +317,7 @@ Page {
                         TerminalMouseArea {
                             anchors.fill: parent
 
-                            onClicked: {
-                                var newIsPlayin = !file_additional_data.isPlaying
-                                for (var i = 0; i < musicFolderModel.count; i++) {
-                                    var folder = musicFolderModel.get(i)
-                                    for (var j = 0; j < folder.filesModel.count; j++) {
-                                        folder.filesModel.get(j).additionalData.isPlaying = false
-                                    }
-                                }
-
-                                file_additional_data.isPlaying = newIsPlayin
-                            }
+                            onClicked: file_additional_data.isPlaying = !file_additional_data.isPlaying
                             onPressedChanged: {
                                 if (musicPage.readOnly)
                                     return
@@ -358,6 +343,15 @@ Page {
                             target: file_additional_data
                             onIsPlayingChanged: {
                                 if (file_additional_data.isPlaying) {
+                                    for (var i = 0; i < musicFolderModel.count; i++) {
+                                        var folder = musicFolderModel.get(i)
+                                        for (var j = 0; j < folder.filesModel.count; j++) {
+                                            if (i !== folderIndex || j !== fileIndex) {
+                                                folder.filesModel.get(j).additionalData.isPlaying = false
+                                            }
+                                        }
+                                    }
+
                                     audioPlayer.source = file_path
                                     audioPlayer.play()
                                 } else {
@@ -376,29 +370,8 @@ Page {
                             anchors.top: childNameText.bottom
                             anchors.left: parent.left
                             anchors.right: parent.right
-                            height: Core.dp(48)
+                            height: Core.dp(38)
                             clip: true
-
-                            Rectangle {
-                                anchors.left: parent.left
-                                anchors.right: parent.right
-                                height: 1
-                                color: "#c6c1c7"
-                            }
-
-                            Text {
-                                id: playerNameText
-                                anchors.left: parent.left
-                                anchors.right: parent.right
-                                anchors.top: parent.top
-                                elide: Text.ElideRight
-                                verticalAlignment: Text.AlignVCenter
-                                anchors.leftMargin: Core.dp(19)
-                                anchors.rightMargin: Core.dp(8)
-                                anchors.topMargin: Core.dp(5)
-                                font.pixelSize: Core.dp(8)
-                                text: file_name
-                            }
 
                             MediaButtons {
                                 id: mediaButtons
@@ -409,6 +382,7 @@ Page {
                                 duration: audioPlayer.duration
                                 isPlay: file_additional_data.isPlaying && audioPlayer.isPlay
                                 isPause: file_additional_data.isPlaying && audioPlayer.isPause
+                                isStop: file_additional_data.isPlaying && audioPlayer.isStop
 
                                 onPlayClicked: {
                                     audioPlayer.play()
@@ -424,6 +398,49 @@ Page {
 
                                 onPositionSliderClicked: {
                                     audioPlayer.seek(newPosition)
+                                }
+
+                                onFinished: {
+                                    //Дошли до конца, включим следующую
+                                    var nextFolder = folderIndex
+                                    var nextFile = fileIndex + 1
+                                    if (nextFile >= folder_files_model.count) {
+                                        nextFile = 0
+                                        //Найдем следующую непустую папку
+                                        var found = false
+                                        for (var i = folderIndex + 1; i < foldersView.model.count; i++) {
+                                            if (foldersView.model.get(folderIndex).filesModel.count > 0) {
+                                                nextFolder = i
+                                                found = true
+                                                break
+                                            }
+                                        }
+                                        if (!found) {
+                                            for (i = 0; i < folderIndex + 1; i++) {
+                                                if (foldersView.model.get(folderIndex).filesModel.count > 0) {
+                                                    nextFolder = i
+                                                    found = true
+                                                    break
+                                                }
+                                            }
+                                        }
+                                        if (!found)
+                                            return
+                                    }
+
+                                    //Если следующий - это текущий
+                                    if (nextFolder === folderIndex && nextFile === fileIndex) {
+                                        audioPlayer.seek(0)
+                                        audioPlayer.play()
+                                        return
+                                    }
+
+                                    //Включим следующий
+                                    foldersView.positionViewAtIndex(nextFolder, ListView.Beginning)
+                                    childsView.positionViewAtIndex(nextFile, ListView.Center)
+                                    var folder = musicFolderModel.get(nextFolder)
+                                    folder.additionalData.collapsed = true
+                                    folder.filesModel.get(nextFile).additionalData.isPlaying = true
                                 }
                             }
                         }

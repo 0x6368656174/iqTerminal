@@ -283,15 +283,6 @@ Page {
                             onAccepted: editBar.submit()
                         }
 
-                        Image {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.right: parent.right
-                            anchors.rightMargin: Core.dp(16)
-                            width: Core.dp(15)
-                            height: width
-                            source: "../../../images/48.png"
-                        }
-
                         Rectangle {
                             anchors.left: parent.left
                             anchors.right: parent.right
