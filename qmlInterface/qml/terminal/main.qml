@@ -25,7 +25,7 @@ Rectangle {
 
     Image {
         anchors.fill: parent
-        fillMode: Image.PreserveAspectCrop
+        fillMode: Image.Tile
         source: "images/1a.png"
     }
 

@@ -37,7 +37,6 @@ Page {
         id: dog2
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -dog1.anchors.bottomMargin
         source: "../../../images/96a.png"
         fillMode: Image.PreserveAspectFit
         height: Core.dp(90)
@@ -169,12 +168,45 @@ Page {
                     }
                 }
 
+                Rectangle {
+                    id: folderPressAndHoldRect
+                    anchors.fill: parent
+                    border.color: folder_additional_data.collapsed?"white":"#da4504"
+                    border.width: 2
+                    anchors.margins: 2
+                    opacity: 0
+                    color: "transparent"
+                }
+
+                PropertyAnimation {
+                    id: folderPressAndHoldAmiation
+                    target: folderPressAndHoldRect
+                    property: "opacity"
+                    from: 0
+                    to: 1
+                    duration: 800
+                }
+
                 TerminalMouseArea {
                     anchors.fill: parent
-                    visible: !privateData.isEdited
                     onClicked: {
                         folderClickAmination.restart()
                         folder_additional_data.collapsed = !folder_additional_data.collapsed
+                    }
+
+                    onPressedChanged: {
+                        if (pressed && !privateData.isEdited) {
+                            folderPressAndHoldAmiation.restart()
+                        } else {
+                            folderPressAndHoldAmiation.stop()
+                            folderPressAndHoldRect.opacity = 0
+                        }
+                    }
+
+                    onPressAndHold: {
+                        if (!privateData.isEdited) {
+                            privateData.isEdited = true
+                        }
                     }
                 }
 
@@ -206,8 +238,9 @@ Page {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.rightMargin: Core.dp(6)
-                    width: Core.dp(14)
+                    width: privateData.isEdited?Core.dp(14):0
                     height: width
+                    Behavior on width {NumberAnimation {duration: 200 } }
                     source: folder_additional_data.isSelect?"../../../images/34a.png":"../../../images/34.png"
 
                     function selectAllChild(select) {
@@ -285,14 +318,33 @@ Page {
                                 text: file_name
                             }
 
+                            TerminalMouseArea {
+                                anchors.fill: parent
+                                onPressedChanged: {
+                                    if (pressed && !privateData.isEdited) {
+                                        childPressAndHoldAmiation.restart()
+                                    } else {
+                                        childPressAndHoldAmiation.stop()
+                                        childDelegate.color = "white"
+                                    }
+                                }
+
+                                onPressAndHold: {
+                                    if (!privateData.isEdited) {
+                                        privateData.isEdited = true
+                                    }
+                                }
+                            }
+
                             //ВЫБОР
                             Button {
                                 id: fileCheckButton
                                 anchors.right: parent.right
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.rightMargin: Core.dp(6)
-                                width: Core.dp(14)
+                                width: privateData.isEdited?Core.dp(14):0
                                 height: width
+                                Behavior on width {NumberAnimation {duration: 200 } }
                                 source: file_additional_data.isSelect?"../../../images/34a.png":"../../../images/34.png"
                                 onClicked: {
                                     file_additional_data.isSelect = !file_additional_data.isSelect
@@ -318,6 +370,15 @@ Page {
                                 height: 1
                                 color: "#c6c1c7"
                             }
+
+                            ColorAnimation {
+                                id: childPressAndHoldAmiation
+                                target: childDelegate
+                                property: "color"
+                                from: "white"
+                                to: "#da4504"
+                                duration: 800
+                            }
                         }
                     }
                 }
@@ -340,14 +401,18 @@ Page {
         editButtonEnabled: false
         selectAllButtonEnabled: true
         deselectAllButtonEnabled: true
+        canselButtonEnabled: true
+        opacity: privateData.isEdited?1:0
 
         hideOnMissClick: false
 
-        visible: anchors.bottomMargin > -Core.dp(22)
+        visible: anchors.bottomMargin > -Core.dp(22) && opacity !== 0
 
         anchors.bottom: searchBar.top
         anchors.bottomMargin: {
-            folderModel.count > 0?0:-Core.dp(22)
+            if (privateData.isEdited && folderModel.count > 0)
+                    return 0
+            return -Core.dp(22)
         }
 
         onButtonClicked: {
@@ -368,7 +433,15 @@ Page {
             }
         }
         onCansel: {
+            privateData.isEdited = false
             editBar.editRole = ""
+            for (var i = 0; i < folderModel.count; i++) {
+                folderModel.get(i).additionalData.isSelect = false
+                for (var j = 0; j < folderModel.get(i).filesModel.count; j++) {
+                    folderModel.get(i).filesModel.get(j).additionalData.isSelect = false
+                }
+            }
+
         }
 
         onSubmit: {
@@ -391,8 +464,15 @@ Page {
                 }
             }
 
+            privateData.isEdited = false
             editBar.editRole = ""
             torrentDownloadModel.save()
+            for (i = 0; i < folderModel.count; i++) {
+                folderModel.get(i).additionalData.isSelect = false
+                for (j = 0; j < folderModel.get(i).filesModel.count; j++) {
+                    folderModel.get(i).filesModel.get(j).additionalData.isSelect = false
+                }
+            }
         }
     }
 }

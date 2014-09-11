@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import TerminalQmlPlugin 1.0
 
 Item {
     id: page
@@ -14,7 +15,8 @@ Item {
 
     Image {
         anchors.fill: parent
-        fillMode: Image.PreserveAspectCrop
+        fillMode: Image.Tile
+        height: width
         source: "../images/1a.png"
     }
 

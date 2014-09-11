@@ -17,12 +17,17 @@ Page {
         property bool isEdited: false
     }
 
+    TorrentFoldersFilterModel {
+        id: folderModel
+        foldersModel: torrentDownloadModel
+    }
+
     Image {
         id: dog1
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         anchors.leftMargin: Core.dp(11)
-        anchors.bottomMargin: Core.dp(22) + editBar.anchors.bottomMargin
+        anchors.bottomMargin: Core.dp(22)*2 + editBar.anchors.bottomMargin
         source: "../../../images/96.png"
         fillMode: Image.PreserveAspectFit
         width: Core.dp(90)
@@ -32,7 +37,6 @@ Page {
         id: dog2
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -dog1.anchors.bottomMargin
         source: "../../../images/96a.png"
         fillMode: Image.PreserveAspectFit
         height: Core.dp(90)
@@ -41,7 +45,7 @@ Page {
     ListView {
         anchors.fill: parent
         anchors.bottomMargin: Core.dp(22) + editBar.anchors.bottomMargin - 1
-        model: torrentDownloadModel
+        model: folderModel
         interactive: contentHeight > height
         spacing: Core.dp(5)
         clip: true
@@ -169,6 +173,25 @@ Page {
                     }
                 }
 
+                Rectangle {
+                    id: folderPressAndHoldRect
+                    anchors.fill: parent
+                    border.color: folder_additional_data.collapsed?"white":"#da4504"
+                    border.width: 2
+                    anchors.margins: 2
+                    opacity: 0
+                    color: "transparent"
+                }
+
+                PropertyAnimation {
+                    id: folderPressAndHoldAmiation
+                    target: folderPressAndHoldRect
+                    property: "opacity"
+                    from: 0
+                    to: 1
+                    duration: 800
+                }
+
                 SequentialAnimation {
                     id: folderClickAmination
                     PropertyAnimation {
@@ -187,11 +210,26 @@ Page {
 
                 TerminalMouseArea {
                     anchors.fill: parent
-                    visible: !privateData.isEdited
                     onClicked: {
                         folderClickAmination.restart()
                         folder_additional_data.collapsed = !folder_additional_data.collapsed
                     }
+
+                    onPressedChanged: {
+                        if (pressed && !privateData.isEdited) {
+                            folderPressAndHoldAmiation.restart()
+                        } else {
+                            folderPressAndHoldAmiation.stop()
+                            folderPressAndHoldRect.opacity = 0
+                        }
+                    }
+
+                    onPressAndHold: {
+                        if (!privateData.isEdited) {
+                            privateData.isEdited = true
+                        }
+                    }
+
                 }
 
                 //ПАУЗА
@@ -204,7 +242,7 @@ Page {
                     anchors.rightMargin: Core.dp(4)
                     source: folder_in_process?"../../../images/51b.png":"../../../images/51a.png"
                     onClicked: {
-                        torrentDownloadModel.get(index).inProcess = !torrentDownloadModel.get(index).inProcess
+                        folderModel.get(index).inProcess = !folderModel.get(index).inProcess
                         torrentDownloadModel.save()
                     }
                 }
@@ -249,8 +287,9 @@ Page {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.rightMargin: Core.dp(6)
-                    width: Core.dp(14)
+                    width: privateData.isEdited?Core.dp(14):0
                     height: width
+                    Behavior on width {NumberAnimation {duration: 200 } }
                     source: folder_additional_data.isSelect?"../../../images/34a.png":"../../../images/34.png"
 
                     function selectAllChild(select) {
@@ -328,14 +367,33 @@ Page {
                                 text: file_name
                             }
 
+                            TerminalMouseArea {
+                                anchors.fill: parent
+                                onPressedChanged: {
+                                    if (pressed && !privateData.isEdited) {
+                                        childPressAndHoldAmiation.restart()
+                                    } else {
+                                        childPressAndHoldAmiation.stop()
+                                        childDelegate.color = "white"
+                                    }
+                                }
+
+                                onPressAndHold: {
+                                    if (!privateData.isEdited) {
+                                        privateData.isEdited = true
+                                    }
+                                }
+                            }
+
                             //ВЫБОР
                             Button {
                                 id: fileCheckButton
                                 anchors.right: parent.right
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.rightMargin: Core.dp(6)
-                                width: Core.dp(14)
+                                width: privateData.isEdited?Core.dp(14):0
                                 height: width
+                                Behavior on width {NumberAnimation {duration: 200 } }
                                 source: file_additional_data.isSelect?"../../../images/34a.png":"../../../images/34.png"
                                 onClicked: file_additional_data.isSelect = !file_additional_data.isSelect
                             }
@@ -350,10 +408,27 @@ Page {
                                 height: 1
                                 color: "#c6c1c7"
                             }
+
+                            ColorAnimation {
+                                id: childPressAndHoldAmiation
+                                target: childDelegate
+                                property: "color"
+                                from: "white"
+                                to: "#da4504"
+                                duration: 800
+                            }
                         }
                     }
                 }
             }
+        }
+    }
+
+    SearchBar {
+        id: searchBar
+        z: 2
+        onSearch: {
+            folderModel.filterString = text
         }
     }
 
@@ -364,45 +439,65 @@ Page {
         editButtonEnabled: false
         selectAllButtonEnabled: true
         deselectAllButtonEnabled: true
+        canselButtonEnabled: true
+        visible: opacity !== 0
+        opacity: privateData.isEdited?1:0
+
+        anchors.bottom: searchBar.top
+        anchors.bottomMargin: privateData.isEdited?0:-Core.dp(22)
 
         hideOnMissClick: false
 
         onButtonClicked: {
             if (buttonType === "selectAll") {
-                for (var i = 0; i < torrentDownloadModel.count; i++) {
-                    torrentDownloadModel.get(i).additionalData.isSelect = true
-                    for (var j = 0; j < torrentDownloadModel.get(i).filesModel.count; j++) {
-                        torrentDownloadModel.get(i).filesModel.get(j).additionalData.isSelect = true
+                for (var i = 0; i < folderModel.count; i++) {
+                    folderModel.get(i).additionalData.isSelect = true
+                    for (var j = 0; j < folderModel.get(i).filesModel.count; j++) {
+                        folderModel.get(i).filesModel.get(j).additionalData.isSelect = true
                     }
                 }
             } else if (buttonType === "deselectAll") {
-                for (i = 0; i < torrentDownloadModel.count; i++) {
-                    torrentDownloadModel.get(i).additionalData.isSelect = false
-                    for (j = 0; j < torrentDownloadModel.get(i).filesModel.count; j++) {
-                        torrentDownloadModel.get(i).filesModel.get(j).additionalData.isSelect = false
+                for (i = 0; i < folderModel.count; i++) {
+                    folderModel.get(i).additionalData.isSelect = false
+                    for (j = 0; j < folderModel.get(i).filesModel.count; j++) {
+                        folderModel.get(i).filesModel.get(j).additionalData.isSelect = false
                     }
                 }
             }
         }
         onCansel: {
+            privateData.isEdited = false
             editBar.editRole = ""
+            for (var i = 0; i < folderModel.count; i++) {
+                folderModel.get(i).additionalData.isSelect = false
+                for (var j = 0; j < folderModel.get(i).filesModel.count; j++) {
+                    folderModel.get(i).filesModel.get(j).additionalData.isSelect = false
+                }
+            }
         }
 
         onSubmit: {
-            for (var i = torrentDownloadModel.count - 1; i > -1; i--) {
-                if (torrentDownloadModel.get(i).additionalData.isSelect) {
-                    torrentDownloadModel.remove(i)
+            for (var i = folderModel.count - 1; i > -1; i--) {
+                if (folderModel.get(i).additionalData.isSelect) {
+                    folderModel.remove(i)
                 } else {
-                    for (var j = torrentDownloadModel.get(i).filesModel.count - 1; j > -1; j--) {
-                        if (torrentDownloadModel.get(i).filesModel.get(j).additionalData.isSelect) {
-                            torrentDownloadModel.get(i).filesModel.remove(j)
+                    for (var j = folderModel.get(i).filesModel.count - 1; j > -1; j--) {
+                        if (folderModel.get(i).filesModel.get(j).additionalData.isSelect) {
+                            folderModel.get(i).filesModel.remove(j)
                         }
                     }
                 }
             }
 
+            privateData.isEdited = false
             editBar.editRole = ""
             torrentDownloadModel.save()
+            for (i = 0; i < folderModel.count; i++) {
+                folderModel.get(i).additionalData.isSelect = false
+                for (j = 0; j < folderModel.get(i).filesModel.count; j++) {
+                    folderModel.get(i).filesModel.get(j).additionalData.isSelect = false
+                }
+            }
         }
     }
 }
