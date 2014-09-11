@@ -11,7 +11,6 @@ TerminalImageProvider::TerminalImageProvider():
 
 QImage TerminalImageProvider::requestImage(const QString &id, QSize *size, const QSize &requestedSize)
 {
-    qDebug() << "Request image with id: " << id;
     Q_UNUSED(requestedSize);
 
     QImage nullImage (QSize(1,1), QImage::Format_ARGB32);

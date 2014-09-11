@@ -12,25 +12,25 @@ UsersModel::UsersModel(QObject *parent) :
 
 void UsersModel::setSource(const QUrl &source)
 {
-    if(_source != source)
-    {
+    if(_source != source) {
         _source = source;
 
         emit sourceChanged();
 
-        reload();
+        if (!parentElement().isEmpty())
+            reload();
     }
 }
 
 void UsersModel::setParentElement(const QString &parentElement)
 {
-    if (_parentElement != parentElement)
-    {
+    if (_parentElement != parentElement) {
         _parentElement = parentElement;
 
         emit parentElementChanged();
 
-        reload();
+        if (source().isValid())
+            reload();
     }
 }
 
@@ -49,8 +49,7 @@ QVariant UsersModel::data(const QModelIndex &index, int role) const
     if (!item)
         return QVariant();
 
-    switch (role)
-    {
+    switch (role) {
     case Id:
         return item->id();
         break;

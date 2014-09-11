@@ -18,25 +18,25 @@ MessagesModel::MessagesModel(QObject *parent) :
 
 void MessagesModel::setSource(const QUrl &source)
 {
-    if(_source != source)
-    {
+    if(_source != source) {
         _source = source;
 
         emit sourceChanged();
 
-        reload();
+        if (!parentElement().isEmpty())
+            reload();
     }
 }
 
 void MessagesModel::setParentElement(const QString &parentElement)
 {
-    if (_parentElement != parentElement)
-    {
+    if (_parentElement != parentElement) {
         _parentElement = parentElement;
 
         emit parentElementChanged();
 
-        reload();
+        if (source().isValid())
+            reload();
     }
 }
 
@@ -59,8 +59,7 @@ QVariant MessagesModel::data(const QModelIndex &index, int role) const
     if (!item)
         return QVariant();
 
-    switch (role)
-    {
+    switch (role) {
     case Id:
         return item->id();
         break;

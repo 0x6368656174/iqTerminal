@@ -177,8 +177,8 @@ Page {
         editButtonEnabled: false
         canselButtonEnabled: true
         addUserButtonEnabled: true
-        selectAllButtonEnabled: true
-        deselectAllButtonEnabled: true
+        selectAllButtonEnabled: false
+        deselectAllButtonEnabled: false
         hideOnMissClick: false
         visible: anchors.bottomMargin > - Core.dp(22)
         anchors.bottomMargin: privateData.isEdited?0:-Core.dp(22)

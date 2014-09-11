@@ -49,7 +49,8 @@ void UserProfile::setSource(const QUrl &source)
         m_source = source;
         emit sourceChanged();
 
-        reload();
+        if (!parentElement().isEmpty())
+            reload();
     }
 }
 
@@ -59,7 +60,8 @@ void UserProfile::setParentElement(const QString &parentElement)
         m_parentElement = parentElement;
         emit parentElementChanged();
 
-        reload();
+        if (source().isValid())
+            reload();
     }
 }
 

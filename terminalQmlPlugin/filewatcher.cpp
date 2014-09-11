@@ -21,7 +21,8 @@ void FileWatcher::setFile(const QString &file)
         emit fileChanged();
 
         QFileInfo fileInfo (file);
-        removePaths(directories());
+        if (!directories().isEmpty())
+            removePaths(directories());
         addPath(fileInfo.absoluteDir().absolutePath());
     }
 }

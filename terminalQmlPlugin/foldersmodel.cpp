@@ -27,32 +27,31 @@ AbstractXmlItemObject * FoldersModel::newItem()
 
 void FoldersModel::setSource(const QUrl &source)
 {
-    if(_source != source)
-    {
+    if(_source != source) {
         _source = source;
 
         emit sourceChanged();
 
-        reload();
+        if (!parentElement().isEmpty())
+            reload();
     }
 }
 
 void FoldersModel::setParentElement(const QString &parentElement)
 {
-    if (_parentElement != parentElement)
-    {
+    if (_parentElement != parentElement) {
         _parentElement = parentElement;
 
         emit parentElementChanged();
 
-        reload();
+        if (source().isValid())
+            reload();
     }
 }
 
 void FoldersModel::setFileAdditionalData(QQmlComponent *fileAdditionalData)
 {
-    if (_fileAdditionalData != fileAdditionalData)
-    {
+    if (_fileAdditionalData != fileAdditionalData) {
         _fileAdditionalData = fileAdditionalData;
 
         emit fileAdditionalDataChanged();
@@ -87,8 +86,7 @@ QVariant FoldersModel::data(const QModelIndex &index, int role) const
     if (!item)
         return QVariant();
 
-    switch (role)
-    {
+    switch (role) {
     case Id:
         return item->id();
         break;

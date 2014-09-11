@@ -26,7 +26,6 @@ Page {
         id: privateData
         property bool active: false
         property url currentFolder: Core.homeDir
-        onCurrentFolderChanged: console.log(currentFolder)
     }
 
     function open() {

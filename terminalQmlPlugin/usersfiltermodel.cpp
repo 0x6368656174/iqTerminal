@@ -28,7 +28,7 @@ bool UsersFilterModel::filterAcceptsRow(int source_row, const QModelIndex &sourc
         return false;
 
     UserProfile userProfile;
-    userProfile.setParentElement("user");
+    userProfile.setParentElement("user/info");
     QUrl userProfileFile = QUrl::fromLocalFile(userProfilesDir().toLocalFile() + user->profile());
     userProfile.setSource(userProfileFile);
 

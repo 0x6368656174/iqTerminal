@@ -62,8 +62,6 @@ Item {
         ScriptAction {
             script: {
                 page.z = 0
-                if (!page.visible)
-                    console.log("errror")
                 page.visible = false
             }
         }
@@ -132,7 +130,6 @@ Item {
         id: hideRightAnimations
         ScriptAction {
             script: {
-                console.log("hide right " + name)
                 page.anchors.horizontalCenter = undefined
                 page.anchors.left = parent.left
                 page.anchors.leftMargin = 0

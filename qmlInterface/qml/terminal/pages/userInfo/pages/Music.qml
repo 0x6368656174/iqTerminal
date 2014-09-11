@@ -403,9 +403,7 @@ Page {
                                 Connections {
                                     target: audioPlayer
                                     onFinished: {
-                                        console.log(source)
                                         if (file_additional_data.isPlaying && source.toString() === file_path.toString()) {
-                                            console.log("FFFFFf " + file_path)
                                             //Дошли до конца, включим следующую
                                             var nextFolder = folderIndex
                                             var nextFile = fileIndex + 1
@@ -441,8 +439,6 @@ Page {
                                             }
 
                                             //Включим следующий
-                                            console.log(nextFolder)
-                                            console.log(nextFile)
                                             foldersView.positionViewAtIndex(nextFolder, ListView.Beginning)
                                             childsView.positionViewAtIndex(nextFile, ListView.Center)
                                             var folder = musicFolderModel.get(nextFolder)
