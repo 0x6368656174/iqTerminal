@@ -24,6 +24,7 @@ Rectangle {
         Image {
             id: activeImage
             visible: false
+            fillMode: Image.PreserveAspectFit
             anchors.fill: parent
             source: !inverse?"../images/" + imageNumber + ".png":"../images/" + imageNumber + "a.png"
         }
@@ -31,6 +32,7 @@ Rectangle {
         Image {
             id: unactiveImage
             anchors.centerIn: parent
+            fillMode: Image.PreserveAspectFit
             width: parent.width
             height: parent.height
             source: !inverse?"../images/" + imageNumber + "a.png":"../images/" + imageNumber + ".png"

@@ -31,6 +31,7 @@ Page {
         id: userProfileModel
         source: userInfoPage.userProfile !==""?Core.dataDir + "users/" + userInfoPage.userProfile:""
         parentElement: "user/info"
+        preferredSize: Qt.size(800, 600)
 
         stateModel.itemAdditionalData: QtObject {
             property bool isEdited: false
@@ -128,7 +129,7 @@ Page {
         id: photoSlider
         photosModel: photoFolderModel
         opacity: 0
-        anchors.fill: parent
+        anchors.centerIn: parent
         visible: opacity > 0
         onHiden: opacity = 0
 
@@ -138,11 +139,28 @@ Page {
 
     VideoPlayer {
         id: videoPlayer
+        playlist: {
+            var result = []
+            for (var i = 0; i < videoFolderModel.count; i++) {
+                var folder = videoFolderModel.get(i)
+                for (var j = 0; j < folder.filesModel.count; j++) {
+                    var playlistItem = [folder.filesModel.get(j).name, folder.filesModel.get(j).path]
+                    result.push(playlistItem)
+                }
+            }
+            return result
+        }
+
+        onIsPlayChanged: {
+            if (isPlay)
+                audioPlayer.stop()
+        }
 
         opacity: 0
-        anchors.fill: parent
+        anchors.centerIn: parent
         visible: opacity > 0
         onHiden: opacity = 0
+        onVisibleChanged: userInfoPageBackButton.visible = !visible
 
         Behavior on opacity { NumberAnimation { duration: 200; } }
         z: 2
@@ -155,4 +173,6 @@ Page {
                 videoPlayer.stop()
         }
     }
+
+
 }

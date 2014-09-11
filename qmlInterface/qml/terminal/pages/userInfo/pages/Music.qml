@@ -400,47 +400,56 @@ Page {
                                     audioPlayer.seek(newPosition)
                                 }
 
-                                onFinished: {
-                                    //Дошли до конца, включим следующую
-                                    var nextFolder = folderIndex
-                                    var nextFile = fileIndex + 1
-                                    if (nextFile >= folder_files_model.count) {
-                                        nextFile = 0
-                                        //Найдем следующую непустую папку
-                                        var found = false
-                                        for (var i = folderIndex + 1; i < foldersView.model.count; i++) {
-                                            if (foldersView.model.get(folderIndex).filesModel.count > 0) {
-                                                nextFolder = i
-                                                found = true
-                                                break
-                                            }
-                                        }
-                                        if (!found) {
-                                            for (i = 0; i < folderIndex + 1; i++) {
-                                                if (foldersView.model.get(folderIndex).filesModel.count > 0) {
-                                                    nextFolder = i
-                                                    found = true
-                                                    break
+                                Connections {
+                                    target: audioPlayer
+                                    onFinished: {
+                                        console.log(source)
+                                        if (file_additional_data.isPlaying && source.toString() === file_path.toString()) {
+                                            console.log("FFFFFf " + file_path)
+                                            //Дошли до конца, включим следующую
+                                            var nextFolder = folderIndex
+                                            var nextFile = fileIndex + 1
+                                            if (nextFile >= folder_files_model.count) {
+                                                nextFile = 0
+                                                //Найдем следующую непустую папку
+                                                var found = false
+                                                for (var i = folderIndex + 1; i < foldersView.model.count; i++) {
+                                                    if (foldersView.model.get(folderIndex).filesModel.count > 0) {
+                                                        nextFolder = i
+                                                        found = true
+                                                        break
+                                                    }
                                                 }
+                                                if (!found) {
+                                                    for (i = 0; i < folderIndex + 1; i++) {
+                                                        if (foldersView.model.get(folderIndex).filesModel.count > 0) {
+                                                            nextFolder = i
+                                                            found = true
+                                                            break
+                                                        }
+                                                    }
+                                                }
+                                                if (!found)
+                                                    return
                                             }
+
+                                            //Если следующий - это текущий
+                                            if (nextFolder === folderIndex && nextFile === fileIndex) {
+                                                audioPlayer.seek(0)
+                                                audioPlayer.play()
+                                                return
+                                            }
+
+                                            //Включим следующий
+                                            console.log(nextFolder)
+                                            console.log(nextFile)
+                                            foldersView.positionViewAtIndex(nextFolder, ListView.Beginning)
+                                            childsView.positionViewAtIndex(nextFile, ListView.Center)
+                                            var folder = musicFolderModel.get(nextFolder)
+                                            folder.additionalData.collapsed = true
+                                            folder.filesModel.get(nextFile).additionalData.isPlaying = true
                                         }
-                                        if (!found)
-                                            return
                                     }
-
-                                    //Если следующий - это текущий
-                                    if (nextFolder === folderIndex && nextFile === fileIndex) {
-                                        audioPlayer.seek(0)
-                                        audioPlayer.play()
-                                        return
-                                    }
-
-                                    //Включим следующий
-                                    foldersView.positionViewAtIndex(nextFolder, ListView.Beginning)
-                                    childsView.positionViewAtIndex(nextFile, ListView.Center)
-                                    var folder = musicFolderModel.get(nextFolder)
-                                    folder.additionalData.collapsed = true
-                                    folder.filesModel.get(nextFile).additionalData.isPlaying = true
                                 }
                             }
                         }

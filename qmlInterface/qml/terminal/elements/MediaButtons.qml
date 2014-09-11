@@ -16,12 +16,6 @@ Item {
     signal stopClicked()
     signal pauseClicked()
     signal positionSliderClicked(var newPosition)
-    signal finished()
-
-    onIsPlayChanged: {
-        if (!isPlay && position >= duration)
-            finished()
-    }
 
     MouseArea {
         anchors.fill: parent

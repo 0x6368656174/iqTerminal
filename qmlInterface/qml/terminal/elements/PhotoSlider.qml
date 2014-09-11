@@ -9,6 +9,9 @@ Page {
     property int photoIndex: -1
     property var photosModel
 
+    width: rotation === 0?parent.width:parent.height
+    height: rotation === 0?parent.height:parent.width
+
     onOpacityChanged: {
         if (opacity !== 0) {
             var oldFolderIndex = folderIndex
@@ -205,6 +208,22 @@ Page {
             anchors.topMargin: -Core.dp(12)
             anchors.bottom: parent.bottom
             onClicked: nextPhotoButton.clicked()
+        }
+
+        Button {
+            id: rotateButton
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            height: Core.dp(26)
+            width: Core.dp(48)
+            source: "../images/203.png"
+
+            onClicked: {
+                if(photoSlider.rotation === 0)
+                    photoSlider.rotation = 90
+                else
+                    photoSlider.rotation = 0
+            }
         }
     }
 }

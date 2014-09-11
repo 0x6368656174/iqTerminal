@@ -153,26 +153,7 @@ Rectangle {
         }
     }
 
-    Audio {
+    AudioPlayer {
         id: audioPlayer
-        property bool isPlay: false
-        property bool isPause: false
-        property bool isStop: false
-
-        onPlaying: {
-            isPlay = true
-            isPause = false
-            isStop = false
-        }
-        onPaused:  {
-            isPlay = false
-            isPause = true
-            isStop = false
-        }
-        onStopped: {
-            isPlay = false
-            isPause = false
-            isStop = true
-        }
     }
 }

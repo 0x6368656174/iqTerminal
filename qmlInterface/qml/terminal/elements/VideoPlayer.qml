@@ -14,11 +14,15 @@ Page {
     property bool isPlay: false
     property bool isPause: false
     property alias file: video.source
+    property var playlist: []
 
     signal hiden()
 
+    width: rotation === 0?parent.width:parent.height
+    height: rotation === 0?parent.height:parent.width
+
     onHiden: {
-        stop()
+        video.stop()
     }
 
     onIsPlayChanged: {
@@ -62,6 +66,28 @@ Page {
         onStopped: {
             isPlay = false
             isPause = false
+        }
+
+        onStatusChanged: {
+            if (status === MediaPlayer.EndOfMedia) {
+                //Включим следующий файл из списка
+                if (playlist.length === 0)
+                    return
+                var currentIndex = -1
+                for (var i = 0; i < playlist.length; ++i) {
+                    if (playlist[i][1].toString() === file.toString()) {
+                        currentIndex = i
+                        break
+                    }
+                }
+                ++currentIndex
+                if (currentIndex >= playlist.length)
+                    currentIndex = 0
+                text = playlist[currentIndex][0]
+                file = playlist[currentIndex][1]
+                play()
+
+            }
         }
     }
 
@@ -131,8 +157,7 @@ Page {
                 }
 
                 onStopClicked: {
-                    hideTimer.restart()
-                    video.stop()
+                    videoPlayer.hiden()
                 }
 
                 onPositionSliderClicked: {
@@ -140,6 +165,22 @@ Page {
                     video.seek(newPosition)
                 }
             }
+        }
+    }
+
+    Button {
+        id: rotateButton
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        height: Core.dp(26)
+        width: Core.dp(48)
+        source: "../images/203.png"
+
+        onClicked: {
+            if(videoPlayer.rotation === 0)
+                videoPlayer.rotation = 90
+            else
+                videoPlayer.rotation = 0
         }
     }
 }

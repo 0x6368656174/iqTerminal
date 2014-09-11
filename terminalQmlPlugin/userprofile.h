@@ -14,6 +14,7 @@ class UserProfile : public QObject, public XmlInterface
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QImage photo READ photo WRITE setPhoto NOTIFY photoChanged)
     Q_PROPERTY(UserStatesModel * stateModel READ stateModel CONSTANT)
+    Q_PROPERTY(QSize preferredSize READ preferredSize WRITE setPreferredSize NOTIFY preferredSizeChanged)
 
 public:
     explicit UserProfile(QObject *parent = 0);
@@ -29,32 +30,37 @@ public:
     Q_INVOKABLE bool photoIsNull() const;
 
 public:
-    inline QUrl source() const {return _source;}
+    inline QUrl source() const {return m_source;}
     void setSource(const QUrl &source);
 
-    inline QString parentElement() const {return _parentElement;}
+    inline QString parentElement() const {return m_parentElement;}
     void setParentElement(const QString &parentElement);
 
-    inline QString name() const {return _name;}
+    inline QString name() const {return m_name;}
     void setName(const QString &name);
 
-    inline QImage photo() const {return _photo;}
+    inline QImage photo() const {return m_photo;}
     void setPhoto(QImage &photo);
 
-    inline UserStatesModel *stateModel() const {return _stateModel;}
+    inline UserStatesModel *stateModel() const {return m_stateModel;}
+
+    QSize preferredSize() const;
+    void setPreferredSize(const QSize &preferredSize);
 
 signals:
     void sourceChanged();
     void parentElementChanged();
     void nameChanged();
     void photoChanged();
+    void preferredSizeChanged();
 
 private:
-    QUrl _source;
-    QString _parentElement;
-    QString _name;
-    QImage _photo;
-    UserStatesModel *_stateModel;
+    QUrl m_source;
+    QString m_parentElement;
+    QString m_name;
+    QImage m_photo;
+    UserStatesModel *m_stateModel;
+    QSize m_preferredSize;
 };
 
 #endif // USERPROFILE_H
