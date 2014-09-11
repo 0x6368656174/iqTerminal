@@ -15,6 +15,9 @@ Page {
         opacity = 1
     }
 
+    width: rotation === 0?parent.width:parent.height
+    height: rotation === 0?parent.height:parent.width
+
     name: "photo_view"
 
     Behavior on opacity {NumberAnimation {duration: 200} }
@@ -53,6 +56,22 @@ Page {
             clip: true
             elide: Text.ElideRight
             text: photoView.text
+        }
+
+        Button {
+            id: rotateButton
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            height: Core.dp(26)
+            width: Core.dp(48)
+            source: "../images/203.png"
+
+            onClicked: {
+                if(photoView.rotation === 0)
+                    photoView.rotation = 90
+                else
+                    photoView.rotation = 0
+            }
         }
     }
 }

@@ -88,14 +88,15 @@ Page {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.right: parent.right
-        height: Core.dp(40)
-        Rectangle
+        height: Core.dp(20)
+        color: "#c6c1c7"
+        Item
         {
             id: photoItem
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            color: "#6c676e"
+//            color: "#6c676e"
             width: height
             Item{
                 anchors.centerIn: parent
@@ -113,12 +114,22 @@ Page {
         Text {
             anchors.left: photoItem.right
             anchors.bottom: photoItem.bottom
-            font.pixelSize: Core.dp(6)
+            anchors.top: photoItem.top
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: Core.dp(8)
             anchors.leftMargin: font.pixelSize
-            anchors.bottomMargin: font.pixelSize
+            anchors.rightMargin: font.pixelSize
             anchors.right: parent.right
             elide: Text.ElideRight
             text: userProfileModel.name
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                userInfo.userProfile = userProfile
+                showRightPage(userInfo.name)
+            }
         }
     }
 
@@ -157,18 +168,19 @@ Page {
 
             height: {
                 if (message_text === "") {
+                    if (message_type === Message.Audio)
+                        return Core.dp(50)
                     return Core.dp(36)
                 } else if (message_additional_data.isPlaying) {
                     return Core.dp(74)
-                } else if (message_additional_data.collapsed) {
-                    return collapsedText.height + Core.dp(28)
+                } else if (message_type == Message.Text && messageText.lineCount > 1) {
+                    return messageText.paintedHeight + Core.dp(28)
                 }
-                return Core.dp(36)
+                return Core.dp(38)
             }
-            onHeightChanged: {
-                if (height > Core.dp(36)) {
-                    posTimer.start()
-                }
+            Connections {
+                target: message_additional_data
+                onCollapsedChanged: posTimer.start()
             }
 
             Timer {
@@ -197,7 +209,7 @@ Page {
 
                 Image {
                     id: typeImage
-                    anchors.verticalCenter: message_text!==""?text.verticalCenter:parent.verticalCenter
+                    anchors.verticalCenter: messageText.verticalCenter
                     anchors.left: parent.left
                     width: message_type !== Message.Text?Core.dp(28):0
                     height: width
@@ -230,58 +242,17 @@ Page {
                 }
 
                 Text {
-                    id: text
-                    visible: !message_additional_data.collapsed
+                    id: messageText
                     anchors.left: typeImage.right
                     anchors.leftMargin: message_type !== Message.Text?0:Core.dp(8)
                     anchors.right: parent.right
-                    anchors.rightMargin: Core.dp(12)
-                    verticalAlignment: Text.AlignVCenter
-                    maximumLineCount: 1
-                    anchors.top: parent.top
-                    height: message_text!==""?Core.dp(28):0
-                    elide: Text.ElideRight
-                    clip: true
-                    text: TextDecorator.toFormattedText(message_text)
-                    font.pixelSize: Core.dp(8)
-                    color: "white"
-                }
-
-                Text {
-                    id: dotText
-                    anchors.verticalCenter: text.verticalCenter
-                    anchors.left: text.right
-                    font.pixelSize: Core.dp(8)
-                    color: message_direction !== Message.Incoming?"#f25d26":"white"
-                    visible: collapsedText.lineCount > 1 && !message_additional_data.collapsed
-                    text: "..."
-                }
-
-                Text {
-                    id: collapsedText
-                    visible: message_additional_data.collapsed
-                    anchors.left: text.left
-                    anchors.right: parent.right
                     anchors.rightMargin: Core.dp(8)
+                    anchors.topMargin: Core.dp(12)
                     anchors.top: parent.top
-                    anchors.topMargin: (Core.dp(28)-text.paintedHeight)/2
                     wrapMode: Text.WordWrap
                     text: TextDecorator.toFormattedText(message_text)
                     font.pixelSize: Core.dp(8)
                     color: "white"
-                }
-
-                Text {
-                    id: sendTimeText
-                    anchors.left: message_direction === Message.Incoming?undefined:parent.left
-                    anchors.right: message_direction === Message.Outgoing?undefined:parent.right
-                    anchors.bottom: parent.bottom
-                    anchors.leftMargin: Core.dp(8)
-                    anchors.rightMargin: Core.dp(8)
-                    anchors.bottomMargin: Core.dp(2)
-                    font.pixelSize: Core.dp(5)
-                    color: "white"
-                    text: qsTr("сообщение от ") + Qt.formatDateTime(message_send_date_time, "dd.MM.yy hh:mm")
                 }
 
                 Connections {
@@ -306,7 +277,7 @@ Page {
                     anchors.fill: parent
                     onClicked: {
                         if (message_direction === Message.Incoming) {
-                            if (collapsedText.lineCount > 1) {
+                            if (messageText.lineCount > 1) {
                                 if (message_additional_data.collapse)
                                     message_was_read = true
                             } else {
@@ -316,9 +287,7 @@ Page {
                         }
 
                         if (message_type === Message.Text) {
-                            if (collapsedText.lineCount > 1) {
-                                message_additional_data.collapsed = !message_additional_data.collapsed
-                            }
+
                         } else if (message_type === Message.Image) {
                             photoView.text = message_text
                             photoView.source = message_file_path
@@ -362,7 +331,12 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: message_text!==""?0:Core.dp(8)
                     anchors.right: parent.right
-                    anchors.top: text.bottom
+                    anchors.top: parent.top
+                    anchors.topMargin: {
+                        if (message_text !== "")
+                            return messageText.paintedHeight + Core.dp(14)
+                        return Core.dp(6)
+                    }
                     position: message_additional_data.isPlaying?audioPlayer.position:0
                     duration: message_additional_data.isPlaying?audioPlayer.duration:0
                     isPlay: message_additional_data.isPlaying && audioPlayer.isPlay
@@ -394,6 +368,19 @@ Page {
                         if (message_additional_data.isPlaying)
                             audioPlayer.seek(newPosition)
                     }
+                }
+
+                Text {
+                    id: sendTimeText
+                    anchors.left: message_direction === Message.Incoming?undefined:parent.left
+                    anchors.right: message_direction === Message.Outgoing?undefined:parent.right
+                    anchors.bottom: parent.bottom
+                    anchors.leftMargin: Core.dp(8)
+                    anchors.rightMargin: Core.dp(8)
+                    anchors.bottomMargin: Core.dp(2)
+                    font.pixelSize: Core.dp(5)
+                    color: "white"
+                    text: Qt.formatDateTime(message_send_date_time, "dd.MM.yy hh:mm")
                 }
             }
 
@@ -739,7 +726,7 @@ Page {
                 textFormat: TextEdit.RichText
                 y: Core.dp(7)
                 font.pixelSize: Core.dp(8)
-                wrapMode: TextEdit.WordWrap
+                wrapMode: TextEdit.Wrap
                 onCursorRectangleChanged: textInputFlick.ensureVisible(cursorRectangle)
 
                 Keys.onPressed: {
@@ -767,13 +754,13 @@ Page {
 
     PhotoView {
         id: photoView
-        anchors.fill: parent
+        anchors.centerIn: parent
     }
 
     VideoPlayer {
         id: videoPlayer
         property url source
-        anchors.fill: parent
+        anchors.centerIn: parent
 
         Behavior on opacity {NumberAnimation {duration: 200} }
         visible: opacity !== 0
