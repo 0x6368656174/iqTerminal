@@ -15,6 +15,7 @@ class UserProfile : public QObject, public XmlInterface
     Q_PROPERTY(QImage photo READ photo WRITE setPhoto NOTIFY photoChanged)
     Q_PROPERTY(UserStatesModel * stateModel READ stateModel CONSTANT)
     Q_PROPERTY(QSize preferredSize READ preferredSize WRITE setPreferredSize NOTIFY preferredSizeChanged)
+    Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)
 
 public:
     explicit UserProfile(QObject *parent = 0);
@@ -47,12 +48,16 @@ public:
     QSize preferredSize() const;
     void setPreferredSize(const QSize &preferredSize);
 
+    int id() const;
+    void setId(int id);
+
 signals:
     void sourceChanged();
     void parentElementChanged();
     void nameChanged();
     void photoChanged();
     void preferredSizeChanged();
+    void idChanged();
 
 private:
     QUrl m_source;
@@ -61,6 +66,7 @@ private:
     QImage m_photo;
     UserStatesModel *m_stateModel;
     QSize m_preferredSize;
+    int m_id;
 };
 
 #endif // USERPROFILE_H

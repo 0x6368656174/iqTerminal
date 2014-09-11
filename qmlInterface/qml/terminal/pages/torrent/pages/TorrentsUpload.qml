@@ -8,6 +8,7 @@ import "../../../elements"
 Page {
     id: downloadPage
     name: "torrent_upload"
+    clip: false
 
     property string torrentXmlPath
 
@@ -492,6 +493,13 @@ Page {
         selectFolder: true
         showFiles: false
         selectMultiple: false
+        height: torrentPage.height
+        anchors.bottom: parent.bottom
+        onVisibleChanged: {
+            editBar.visible = !visible
+            searchBar.visible = !visible
+            torrentPageBackButton.visible = !visible
+        }
         title: qsTr("Выбирите папку")
 
         onAccepted: {

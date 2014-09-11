@@ -17,9 +17,10 @@ bool MessagesFilterModel::filterAcceptsRow(int source_row, const QModelIndex &so
     Message * message = qobject_cast<Message *>(filterModel()->get(source_row));
     if (!message)
         return false;
-    if (message->text().contains(filterString(), filterCaseSensitivity())) {
+    if (message->text().contains(filterString(), filterCaseSensitivity()))
         return true;
-    } else {
+
+    {
         QDate date = QDate::fromString(filterString(), "dd.MM.yyyy");
         {
             if (!date.isValid() || !date.year() > 2000) {
@@ -35,5 +36,38 @@ bool MessagesFilterModel::filterAcceptsRow(int source_row, const QModelIndex &so
             }
         }
     }
+
+    {
+        QStringList worlds = filterString().split(" ", QString::SkipEmptyParts);
+        if (worlds.count() == 2) {
+            QDate firstDate = QDate::fromString(worlds.at(0), "dd.MM.yyyy");
+            {
+                if (!firstDate.isValid() || !firstDate.year() > 2000) {
+                    QString dateStr = worlds.at(0);
+                    dateStr.insert(dateStr.length() - 2, "20");
+                    firstDate = QDate::fromString(dateStr, "dd.MM.yyyy");
+                }
+
+                if (firstDate.isValid()) {
+                    QDate secondDate = QDate::fromString(worlds.at(1), "dd.MM.yyyy");
+                    {
+                        if (!secondDate.isValid() || !secondDate.year() > 2000) {
+                            QString dateStr = worlds.at(1);
+                            dateStr.insert(dateStr.length() - 2, "20");
+                            secondDate = QDate::fromString(dateStr, "dd.MM.yyyy");
+                        }
+
+                        if (secondDate.isValid()) {
+                            QDate sendDate = message->sendDateTime().date();
+                            if (firstDate <= sendDate && sendDate <= secondDate) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     return false;
 }

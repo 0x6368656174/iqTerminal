@@ -727,6 +727,8 @@ Page {
                 y: Core.dp(7)
                 font.pixelSize: Core.dp(8)
                 wrapMode: TextEdit.Wrap
+                selectByMouse: true
+                selectionColor: "#c00d0d"
                 onCursorRectangleChanged: textInputFlick.ensureVisible(cursorRectangle)
 
                 Keys.onPressed: {

@@ -10,7 +10,8 @@ UserProfile::UserProfile(QObject *parent) :
     m_name(""),
     m_photo(QImage()),
     m_stateModel(new UserStatesModel(this)),
-    m_preferredSize(QSize(800, 600))
+    m_preferredSize(QSize(800, 600)),
+    m_id(-1)
 {
 }
 
@@ -41,6 +42,19 @@ void UserProfile::setPreferredSize(const QSize &preferredSize)
         emit preferredSizeChanged();
     }
 }
+int UserProfile::id() const
+{
+    return m_id;
+}
+
+void UserProfile::setId(int id)
+{
+    if (m_id != id) {
+        m_id = id;
+        emit idChanged();
+    }
+}
+
 
 
 void UserProfile::setSource(const QUrl &source)
@@ -70,6 +84,13 @@ bool UserProfile::reload()
     QDomDocument domDoc;
     QDomElement rootElement = findElement(this, source(), parentElement(), domDoc);
     if (!rootElement.isNull()) {
+        QDomElement idElement = rootElement.firstChildElement("id");
+        if (!idElement.isNull()) {
+            setId(idElement.text().toInt());
+        } else {
+            setId(-1);
+        }
+
         QDomElement nameElement = rootElement.firstChildElement("name");
         if (!nameElement.isNull()) {
             setName(nameElement.text());
@@ -122,6 +143,10 @@ bool UserProfile::save() const
         oldRootElement.parentNode().appendChild(rootElement);
         oldRootElement.parentNode().removeChild(oldRootElement);
 
+        QDomElement idElement = domDoc.createElement("id");
+        rootElement.appendChild(idElement);
+        QDomText idText = domDoc.createTextNode(QString::number(id()));
+        idElement.appendChild(idText);
 
         QDomElement nameElement = domDoc.createElement("name");
         rootElement.appendChild(nameElement);

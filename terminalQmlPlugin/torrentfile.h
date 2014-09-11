@@ -10,6 +10,7 @@ class TorrentFile : public File
     Q_OBJECT
     Q_PROPERTY(qint64 size READ size WRITE setSize NOTIFY sizeChanged)
     Q_PROPERTY(qint64 downloadedSize READ downloadedSize WRITE setDownloadedSize NOTIFY downloadedSizeChanged)
+    Q_PROPERTY(QString hash READ hash WRITE setHash NOTIFY hashChanged)
 public:
     explicit TorrentFile(QObject *parent = 0);
 
@@ -21,11 +22,14 @@ public:
     virtual bool loadFromPath(const QUrl &path);
 
 public:
-    inline qint64 size() const {return _size;}
+    inline qint64 size() const {return m_size;}
     void setSize(const qint64 size);
 
-    inline qint64 downloadedSize() const {return _downloadedSize;}
+    inline qint64 downloadedSize() const {return m_downloadedSize;}
     void setDownloadedSize(const qint64 downloadedSize);
+
+    QString hash() const;
+    void setHash(const QString &hash);
 
 protected:
     virtual void reset();
@@ -33,10 +37,12 @@ protected:
 signals:
     void sizeChanged();
     void downloadedSizeChanged();
+    void hashChanged();
 
 private:
-    qint64 _size;
-    qint64 _downloadedSize;
+    qint64 m_size;
+    qint64 m_downloadedSize;
+    QString m_hash;
 };
 
 #endif // TORRENTFILE_H

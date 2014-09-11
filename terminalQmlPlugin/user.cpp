@@ -12,6 +12,8 @@ void User::reset()
 {
     AbstractXmlItemObject::reset();
     setProfile("");
+    setOnline(false);
+    setFriendshipAccepted(false);
 }
 
 QString User::tagName() const

@@ -10,12 +10,14 @@
 				<path>file://~/testData/Rammstein - Du hast.mp4</path>
 				<size>15497455</size>
 				<downloaded>2591</downloaded>
+				<hash>f24bca653bd68611c946bdf2409ed024</hash>
 			</file>
 			<file id="1">
 				<name>Rammstein - Mutter.mp4</name>
 				<path>file://~/testData/Rammstein - Mutter.mp4</path>
 				<size>9108175</size>
 				<downloaded>0</downloaded>
+				<hash>aec1fe6b229bdf997d35d6ea5e29dec5</hash>
 			</file>
 		</folder>
 		<folder id="1">
@@ -27,6 +29,7 @@
 				<path>file://~/testData/Louis Armstrong - What a wonderful world.mp4</path>
 				<size>6188310</size>
 				<downloaded>91385</downloaded>
+				<hash>c25afed786144929b2fafb02898ed800</hash>
 			</file>
 		</folder>
 		<folder id="2">
@@ -38,12 +41,14 @@
 				<path>file://~/testData/Blue Stahli - Anti You.mp3</path>
 				<size>8831336</size>
 				<downloaded>8831336</downloaded>
+				<hash>fc073fb4aa5e6fba1c9227fe558a2df0</hash>
 			</file>
 			<file id="1">
 				<name>Blue Stahli - ULTRAnumb.mp3</name>
 				<path>file://~/testData/Blue Stahli - ULTRAnumb.mp3</path>
 				<size>10622601</size>
 				<downloaded>10622601</downloaded>
+				<hash>788c95c4af955a11426aadd240cbf6fd</hash>
 			</file>
 		</folder>
 		<folder id="3">
@@ -55,12 +60,14 @@
 				<path>file://~/testData/Scorpions - Raised on Rock.mp3</path>
 				<size>6176733</size>
 				<downloaded>0</downloaded>
+				<hash>75bf5e71d4696f5f287023d44cdc23dd</hash>
 			</file>
 			<file id="1">
 				<name>Scorpions - Your Last Song.mp3</name>
 				<path>file://~/testData/Scorpions - Your Last Song.mp3</path>
 				<size>5910604</size>
 				<downloaded>0</downloaded>
+				<hash>54397d62e4018cdbdce0addd1fd50e47</hash>
 			</file>
 		</folder>
 	</download>
@@ -74,12 +81,14 @@
 				<path>file://~/testData/Rammstein - Du hast.mp4</path>
 				<size>15497455</size>
 				<downloaded>2591</downloaded>
+				<hash>f24bca653bd68611c946bdf2409ed024</hash>
 			</file>
 			<file id="1">
 				<name>Rammstein - Mutter.mp4</name>
 				<path>file://~/testData/Rammstein - Mutter.mp4</path>
 				<size>9108175</size>
 				<downloaded>0</downloaded>
+				<hash>aec1fe6b229bdf997d35d6ea5e29dec5</hash>
 			</file>
 		</folder>
 		<folder id="1">
@@ -91,6 +100,7 @@
 				<path>file://~/testData/Louis Armstrong - What a wonderful world.mp4</path>
 				<size>6188310</size>
 				<downloaded>91385</downloaded>
+				<hash>c25afed786144929b2fafb02898ed800</hash>
 			</file>
 		</folder>
 		<folder id="2">
@@ -102,12 +112,14 @@
 				<path>file://~/testData/Blue Stahli - Anti You.mp3</path>
 				<size>8831336</size>
 				<downloaded>8831336</downloaded>
+				<hash>fc073fb4aa5e6fba1c9227fe558a2df0</hash>
 			</file>
 			<file id="1">
 				<name>Blue Stahli - ULTRAnumb.mp3</name>
 				<path>file://~/testData/Blue Stahli - ULTRAnumb.mp3</path>
 				<size>10622601</size>
 				<downloaded>10622601</downloaded>
+				<hash>788c95c4af955a11426aadd240cbf6fd</hash>
 			</file>
 		</folder>
 		<folder id="3">
@@ -119,12 +131,14 @@
 				<path>file://~/testData/Scorpions - Raised on Rock.mp3</path>
 				<size>6176733</size>
 				<downloaded>0</downloaded>
+				<hash>75bf5e71d4696f5f287023d44cdc23dd</hash>
 			</file>
 			<file id="1">
 				<name>Scorpions - Your Last Song.mp3</name>
 				<path>file://~/testData/Scorpions - Your Last Song.mp3</path>
 				<size>5910604</size>
 				<downloaded>0</downloaded>
+				<hash>54397d62e4018cdbdce0addd1fd50e47</hash>
 			</file>
 		</folder>
 	</upload>

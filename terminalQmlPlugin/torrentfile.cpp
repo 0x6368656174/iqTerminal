@@ -1,11 +1,13 @@
 #include "torrentfile.h"
 #include <QFileInfo>
 #include <QUrl>
+#include <QCryptographicHash>
 
 TorrentFile::TorrentFile(QObject *parent) :
     File(parent),
-    _size(0),
-    _downloadedSize(0)
+    m_size(0),
+    m_downloadedSize(0),
+    m_hash("")
 {
 }
 
@@ -14,13 +16,26 @@ void TorrentFile::reset()
     File::reset();
     setSize(0);
     setDownloadedSize(0);
+    setHash("");
 }
+QString TorrentFile::hash() const
+{
+    return m_hash;
+}
+
+void TorrentFile::setHash(const QString &hash)
+{
+    if (m_hash != hash) {
+        m_hash = hash;
+        emit hashChanged();
+    }
+}
+
 
 void TorrentFile::setSize(const qint64 size)
 {
-    if (_size != size)
-    {
-        _size = size;
+    if (m_size != size) {
+        m_size = size;
 
         emit sizeChanged();
     }
@@ -28,9 +43,8 @@ void TorrentFile::setSize(const qint64 size)
 
 void TorrentFile::setDownloadedSize(const qint64 downloadedSize)
 {
-    if (_downloadedSize != downloadedSize)
-    {
-        _downloadedSize = downloadedSize;
+    if (m_downloadedSize != downloadedSize) {
+        m_downloadedSize = downloadedSize;
 
         emit downloadedSizeChanged();
     }
@@ -38,9 +52,17 @@ void TorrentFile::setDownloadedSize(const qint64 downloadedSize)
 
 bool TorrentFile::loadFromPath(const QUrl &path)
 {
-    if (File::loadFromPath(path))
-    {
+    if (File::loadFromPath(path)) {
         QFileInfo info (path.toLocalFile());
+
+        QFile file (path.toLocalFile());
+        QString fileHash;
+        if (file.open(QFile::ReadOnly)) {
+            fileHash = QCryptographicHash::hash(file.readAll(), QCryptographicHash::Md5);
+            file.close();
+        }
+
+        setHash(fileHash);
         setSize(info.size());
         setDownloadedSize(0);
         return true;
@@ -54,23 +76,24 @@ bool TorrentFile::loadFromDomElement(const QDomElement &domElement)
         return false;
 
     QDomElement sizeElement = domElement.firstChildElement("size");
-    if (!sizeElement.isNull())
-    {
+    if (!sizeElement.isNull()) {
         setSize(sizeElement.text().toLongLong());
-    }
-    else
-    {
+    } else {
         setSize(0);
     }
 
     QDomElement downloadedSizeElement = domElement.firstChildElement("downloaded");
-    if (!downloadedSizeElement.isNull())
-    {
+    if (!downloadedSizeElement.isNull()) {
         setDownloadedSize(downloadedSizeElement.text().toLongLong());
-    }
-    else
-    {
+    } else {
         setDownloadedSize(0);
+    }
+
+    QDomElement hashElement = domElement.firstChildElement("hash");
+    if (!hashElement.isNull()) {
+        setHash(hashElement.text());
+    } else {
+        setHash("");
     }
 
     return true;
@@ -89,6 +112,11 @@ QDomElement TorrentFile::toDomElement(QDomDocument &domDocument) const
     rootElement.appendChild(downloadedSizeElement);
     QDomText downloadedSizeText = domDocument.createTextNode(QString::number(downloadedSize()));
     downloadedSizeElement.appendChild(downloadedSizeText);
+
+    QDomElement hashElement = domDocument.createElement("hash");
+    rootElement.appendChild(hashElement);
+    QDomText hashText = domDocument.createTextNode(hash());
+    hashElement.appendChild(hashText);
 
     return rootElement;
 }
