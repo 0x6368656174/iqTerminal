@@ -42,5 +42,6 @@
         <file>qml/terminal/elements/PhotoCamera.qml</file>
         <file>qml/terminal/elements/ProgressBar.qml</file>
         <file>qml/terminal/elements/ErrorMessage.qml</file>
+        <file>qml/terminal/elements/ErrorPage.qml</file>
     </qresource>
 </RCC>

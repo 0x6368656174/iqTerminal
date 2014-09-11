@@ -176,5 +176,8 @@
         <file>qml/terminal/images/202.png</file>
         <file>qml/terminal/images/202a.png</file>
         <file>qml/terminal/images/203.png</file>
+        <file>qml/terminal/images/204c.png</file>
+        <file>qml/terminal/images/204a.png</file>
+        <file>qml/terminal/images/204b.png</file>
     </qresource>
 </RCC>

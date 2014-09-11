@@ -8,6 +8,8 @@ UsersModel::UsersModel(QObject *parent) :
     _roles[Id] = "user_id";
     _roles[AdditionalData] = "user_additional_data";
     _roles[Profile] = "user_profile";
+    _roles[Online] = "user_online";
+    _roles[FriendshipAccepted] = "user_friendship_accepted";
 }
 
 void UsersModel::setSource(const QUrl &source)
@@ -40,6 +42,8 @@ AbstractXmlItemObject * UsersModel::newItem()
     connect(newItem, SIGNAL(idChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(profileChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(onlineChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(friendshipAcceptedChanged()), this, SLOT(itemDataChanged()));
     return newItem;
 }
 
@@ -58,6 +62,12 @@ QVariant UsersModel::data(const QModelIndex &index, int role) const
         break;
     case Profile:
         return item->profile();
+        break;
+    case Online:
+        return item->online();
+        break;
+    case FriendshipAccepted:
+        return item->friendshipAccepted();
         break;
     }
 

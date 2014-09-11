@@ -14,8 +14,8 @@ Page {
     signal pageClicked(var pageName)
 
     function showError(errorText) {
-        errorMessage.text = errorText
-        errorBox.visible = true
+        errorPage.text = errorText
+        errorPage.visible = true
     }
 
     name: "menu"
@@ -187,40 +187,11 @@ Page {
         }
     }
 
-    Item {
+    ErrorPage {
         anchors.fill: parent
-        id: errorBox
+        id: errorPage
         visible: false
-
-        Rectangle {
-            anchors.fill: parent
-            color: "#da4504"
-        }
-
-        FastBlur {
-            anchors.fill: parent
-            anchors.leftMargin: Core.dp(27)
-            source: items
-            radius: 24
-        }
-
-        Rectangle {
-            anchors.fill: parent
-            color: "black"
-            opacity: errorBox.visible?0.4:0
-            Behavior on opacity {NumberAnimation { duration: 200; } }
-        }
-
-
-        ErrorMessage {
-            id: errorMessage
-            width: parent.width / 3 * 2
-            anchors.centerIn: parent
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: errorBox.visible = false
-        }
+        blurItem: items
+        blurLeftMargin: Core.dp(27)
     }
 }

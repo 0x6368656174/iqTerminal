@@ -15,7 +15,9 @@ public:
     {
         Id = Qt::UserRole,
         AdditionalData,
-        Profile
+        Profile,
+        Online,
+        FriendshipAccepted
     };
 
     explicit UsersModel(QObject *parent = 0);
