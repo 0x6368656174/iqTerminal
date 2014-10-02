@@ -121,7 +121,8 @@ Page {
                     anchors.leftMargin: Core.dp(6) + userCheckButton.width
                     anchors.rightMargin: Core.dp(6)
                     font.pixelSize: Core.dp(6)
-                    text: userProfile.name
+//                    text: userProfile.name
+                    text: user_profile
                 }
             }
 
@@ -218,6 +219,7 @@ Page {
                     if (!found) {
                         var newUser = usersContactsModel.appendNew()
                         newUser.profile = oldUser.profile
+                        proxy.command("abonadd",oldUser.id)
                     }
                 }
                 oldUser.additionalData.isSelect = false

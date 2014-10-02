@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 Rectangle {
-    property int duration: 3
+    property int duration: 60
     property bool runing: false
     property real progress: 0
 

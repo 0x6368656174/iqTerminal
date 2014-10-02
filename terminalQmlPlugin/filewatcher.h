@@ -2,6 +2,7 @@
 #define FILEWATCHER_H
 
 #include <QFileSystemWatcher>
+#include <QUrl>
 
 class FileWatcher : public QFileSystemWatcher
 {
@@ -14,7 +15,7 @@ public:
 
 public:
     QString file() const;
-    void setFile(const QString &file);
+    void setFile(const QUrl &file);
 
 signals:
     void created();

@@ -20,6 +20,37 @@ Page {
 
     name: "menu"
 
+    Connections {
+        target: proxy
+        onAbonBookLoaded: {
+            usersContactsModel.reload()
+            progressBar.runing=false
+            menuPage.pageClicked("contacts")
+        }
+        onAbonWaitLoaded: {
+            usersVisitorsModel.reload()
+            progressBar.runing=false
+            menuPage.pageClicked("visitors")
+        }
+        onAbonListLoaded: {
+            usersAllModel.reload()
+            progressBar.runing=false
+            menuPage.pageClicked("all")
+        }
+        onAbonBookNotLoaded: {
+            progressBar.runing=false
+            showError("Контакты не загружены")
+        }
+        onAbonWaitNotLoaded: {
+            progressBar.runing=false
+            showError("Посетители не загружены")
+        }
+        onAbonListNotLoaded: {
+            progressBar.runing=false
+            showError("Список не загружен")
+        }
+    }
+
     BackButton {
         anchors.right: parent.right
         anchors.top: parent.top
@@ -95,7 +126,7 @@ Page {
 
                 FileWatcher {
                     id: fileWatcher
-                    file: Core.dataDirPath + expected_file
+                    file: Core.dataDir + expected_file
                     onCreated: {
                         if (progressBar.runing) {
                             menuPage.pageClicked(page_name)
@@ -118,17 +149,26 @@ Page {
                     onClicked: if (expected_file === "") {
                                    menuPage.pageClicked(page_name)
                                } else {
-                                   if (fileWatcher.exist()) {
-                                       menuPage.pageClicked(page_name)
-                                   } else {
-                                       progressBar.runing = true
+                                   if(page_name==="contacts") {
+                                       progressBar.runing=true
+                                       proxy.command("abonbook","")
                                    }
+                                   if(page_name==="visitors")  {
+                                       progressBar.runing=true
+                                       proxy.command("abonwait","")
+                                   }
+                                   if(page_name==="all") {
+                                       progressBar.runing=true
+                                       proxy.command("abonlist","")
+                                   }
+
                                }
                 }
 
                 Loader {
                     source: "../" + qml_page
                     onLoaded: {
+                        console.log("loader "+page_name)
                         item.name = page_name
                         menuPage.pageLoaded(item)
                     }

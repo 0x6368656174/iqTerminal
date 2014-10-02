@@ -18,28 +18,66 @@ Page {
     }
 
     function signIn(login, password) {
-//        return "Bad login or password"
+        errorMessage.visible = false
         //Если авторизованы, то просто войдем
+//        autorized=true;
         if (autorized) {
             showRightPage("menu")
-            return ""
+        } else {
+            proxy.command("logon",login+","+password)
+            progressBar.runing = true
         }
-
-        progressBar.runing = true
-        main.autorized = true
-        return ""
     }
 
     function register (login, email, name) {
+        errorMessage.visible = false
+        proxy.command("register",login+","+email+","+name)
         progressBar.runing = true
     }
 
     function remindPassword(email) {
+        errorMessage.visible = false
+        proxy.command("restore",email)
         progressBar.runing = true
     }
 
     function changePassword(oldPassword, newPassword) {
+        errorMessage.visible = false
+        proxy.command("change",oldPassword+","+newPassword+","+newPassword)
         progressBar.runing = true
+    }
+
+    Connections {
+        target: proxy
+        onLogonOk: autorized=true
+        onLogonError: {
+            progressBar.runing = false
+            welcomePage.showError(result)
+        }
+        onRegistrOk: {
+            progressBar.runing = false
+            welcomePage.showError(result)
+        }
+        onRegistrError: {
+            progressBar.runing = false
+            welcomePage.showError(result)
+        }
+        onRestorePswdOk: {
+            progressBar.runing = false
+            welcomePage.showError(result)
+        }
+        onRestorePswdError: {
+            progressBar.runing = false
+            welcomePage.showError(result)
+        }
+        onChangePswdOk: {
+            progressBar.runing = false
+            welcomePage.showError(result)
+        }
+        onChangePswdError: {
+            progressBar.runing = false
+            welcomePage.showError(result)
+        }
     }
 
     Connections {
@@ -304,10 +342,7 @@ Page {
 
                 function click() {
                     if (welcomePage.state === "signInPage") {
-                        var signInResult = welcomePage.signIn(signInLogin.text, signInPassword.text)
-                        if (signInResult !== "") {
-                            showError(signInResult)
-                        }
+                        welcomePage.signIn(signInLogin.text, signInPassword.text)
                     } else if (welcomePage.state === "registerPage") {
                         welcomePage.register(registerLogin.text, registerEmail.text, registerName.text);
                     } else if (welcomePage.state === "remindPage") {
@@ -347,6 +382,7 @@ Page {
             Item {
                 width: Core.dp(28)
                 height: width
+                enabled: !main.autorized
                 Welcome.Button {
                     id: registerButton
                     anchors.centerIn: parent
@@ -357,6 +393,7 @@ Page {
             }Item {
                 width: Core.dp(28)
                 height: width
+                enabled: !main.autorized
                 Welcome.Button {
                     id: remindButton
                     anchors.centerIn: parent

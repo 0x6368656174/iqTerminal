@@ -6,6 +6,8 @@ TARGET = iqTerminal
 
 include(../terminalQmlPlugin/terminalQmlPlugin.pri)
 
+include(engine/engine.pri)
+
 #Не настоящая цель. Просто для удобства работы в QtCreator, чтоб была видна папка QML.
 #Сами файлы QML будут находиться в ресурсах, т.к. это в разы ускоряет работу приложения
 qml.source = qml/terminal

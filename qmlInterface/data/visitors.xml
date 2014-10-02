@@ -1,33 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <all>
-	<user id="1">
-		<profile>1.xml</profile>
-	</user>
-	<user id="2">
-		<profile>2.xml</profile>
-	</user>
-	<user id="3">
-		<profile>3.xml</profile>
-	</user>
-	<user id="4">
-		<profile>4.xml</profile>
-	</user>
-	<user id="5">
-		<profile>5.xml</profile>
-	</user>
-	<user id="6">
-		<profile>6.xml</profile>
-	</user>
-	<user id="7">
-		<profile>7.xml</profile>
-	</user>
-	<user id="8">
-		<profile>8.xml</profile>
-	</user>
-	<user id="9">
-		<profile>9.xml</profile>
-	</user>
-	<user id="10">
-		<profile>10.xml</profile>
-	</user>
 </all>

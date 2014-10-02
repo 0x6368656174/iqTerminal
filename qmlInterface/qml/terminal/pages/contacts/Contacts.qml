@@ -148,7 +148,8 @@ Page {
                         anchors.leftMargin: Core.dp(16)
                         anchors.rightMargin: Core.dp(6)
                         font.pixelSize: Core.dp(6)
-                        text: userProfile.name
+//                        text: userProfile.name
+                        text: user_profile
                     }
                 }
 
@@ -234,6 +235,7 @@ Page {
                 for (var i = usersModel.count - 1; i > -1; i--) {
                     var user = usersModel.get(i)
                     if(user.additionalData.isSelect) {
+                        proxy.command("abondel",user.id)
                         usersModel.remove(i)
                     }
                 }

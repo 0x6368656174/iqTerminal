@@ -55,6 +55,7 @@ Rectangle {
             }
         }
         console.log("Show page \"" + name + "\"")
+        proxy.command("show",name);
     }
 
     function showLeftPage(name) {
@@ -69,9 +70,11 @@ Rectangle {
             }
         }
         console.log("Show page \"" + name + "\"")
+        proxy.command("show",name);
     }
 
     function backPage() {
+
         var backPageName = privateData.pageHistory.pop()
         console.log("Back to page \"" + backPageName + "\"")
         showLeftPage(backPageName)
@@ -85,7 +88,7 @@ Rectangle {
 
         UsersModel {
             id: usersAllModel
-            source: Core.dataDir + "/all.xml"
+            source: Core.dataDir + "all.xml"
             parentElement: "all"
             itemAdditionalData: QtObject {
                 property bool isSelect: false
@@ -94,7 +97,7 @@ Rectangle {
 
         UsersModel {
             id: usersContactsModel
-            source: Core.dataDir + "/contacts.xml"
+            source: Core.dataDir + "contacts.xml"
             parentElement: "all"
             itemAdditionalData: QtObject {
                 property bool isSelect: false
@@ -103,7 +106,7 @@ Rectangle {
 
         UsersModel {
             id: usersVisitorsModel
-            source: Core.dataDir + "/visitors.xml"
+            source: Core.dataDir + "visitors.xml"
             parentElement: "all"
             itemAdditionalData: QtObject {
                 property bool isSelect: false

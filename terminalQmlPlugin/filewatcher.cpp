@@ -1,6 +1,7 @@
 #include "filewatcher.h"
 #include <QFileInfo>
 #include <QDir>
+#include <QDebug>
 
 FileWatcher::FileWatcher(QObject *parent) :
     QFileSystemWatcher(parent),
@@ -14,13 +15,15 @@ QString FileWatcher::file() const
     return m_file;
 }
 
-void FileWatcher::setFile(const QString &file)
+void FileWatcher::setFile(const QUrl &file)
 {
-    if (m_file != file) {
-        m_file = file;
+    QString str=file.toLocalFile();
+
+    if (m_file != str) {
+        m_file = str;
         emit fileChanged();
 
-        QFileInfo fileInfo (file);
+        QFileInfo fileInfo (str);
         if (!directories().isEmpty())
             removePaths(directories());
         addPath(fileInfo.absoluteDir().absolutePath());
