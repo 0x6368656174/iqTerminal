@@ -23,7 +23,7 @@ public:
     Q_INVOKABLE File * insertNew(int row, const QUrl &path = QUrl());
 
 public:
-    virtual inline QHash<int, QByteArray> roleNames() const {return _roles;}
+    virtual QHash<int, QByteArray> roleNames() const;
 
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
@@ -31,7 +31,7 @@ protected:
     virtual AbstractXmlItemObject * newItem();
 
 private:
-    QHash<int, QByteArray> _roles;
+    QHash<int, QByteArray> m_roles;
 };
 
 #endif // FILESMODEL_H

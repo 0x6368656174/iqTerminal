@@ -127,11 +127,11 @@ Rectangle {
             }
         }
 
-        UserInfo {
-            id: userInfo
-            visible: false
-            readOnly: true
-        }
+//        UserInfoPage {
+//            id: userInfoPage
+//            visible: false
+//            readOnly: true
+//        }
 
         Chat {
             id: chat

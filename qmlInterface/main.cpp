@@ -8,6 +8,7 @@
 #include <QFile>
 #include <QDir>
 #include <QDebug>
+#include "applicationmodel.h"
 
 #include "engine/myproxyengine.h"
 
@@ -90,6 +91,10 @@ int main(int argc, char *argv[])
 
     TerminalQmlPlugin terminalQmlPlugin;
     terminalQmlPlugin.registerTypes("TerminalQmlPlugin");
+
+    //Главная модель данных
+    //В С++ доступ к ней можно получить, используя ApplicationModel::instance() в любом месте кода
+    viewer.engine()->rootContext()->setContextProperty("applicationModel", ApplicationModel::instance());
 
 //----------------------------------------------------------------------------
 // прокси к движку

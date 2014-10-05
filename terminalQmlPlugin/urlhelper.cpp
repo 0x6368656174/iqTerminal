@@ -18,12 +18,9 @@ QString UrlHelper::dirName(const QUrl &url)
 {
     QFileInfo fi (url.toLocalFile());
     QDir dir;
-    if (fi.isDir())
-    {
+    if (fi.isDir()) {
         dir.setPath(fi.filePath());
-    }
-    else
-    {
+    } else {
         dir.setPath(fi.path());
     }
     if (dir.path() == "/")
@@ -39,21 +36,15 @@ QUrl UrlHelper::containingFolder(const QUrl &url)
 {
     QFileInfo fi (url.toLocalFile());
     QDir dir;
-    if (fi.isDir())
-    {
+    if (fi.isDir()) {
         dir.setPath(fi.filePath());
-    }
-    else
-    {
+    } else {
         dir.setPath(fi.path());
     }
     dir.cdUp();
-    if (dir.absolutePath() != "/")
-    {
+    if (dir.absolutePath() != "/") {
         return QUrl::fromLocalFile(dir.absolutePath() + "/");
-    }
-    else
-    {
+    } else {
         return QUrl::fromLocalFile("/");
     }
 }
@@ -62,12 +53,9 @@ bool UrlHelper::hasContainingFolder(const QUrl &url)
 {
     QFileInfo fi (url.toLocalFile());
     QDir dir;
-    if (fi.isDir())
-    {
+    if (fi.isDir()) {
         dir.setPath(fi.filePath());
-    }
-    else
-    {
+    } else {
         dir.setPath(fi.path());
     }
     return dir.cdUp();

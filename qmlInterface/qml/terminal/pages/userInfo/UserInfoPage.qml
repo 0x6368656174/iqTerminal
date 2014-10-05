@@ -7,10 +7,77 @@ import "../../elements"
 
 Page {
     id: userInfoPage
-    property string userProfile
+    property UserInfo userInfo
     property bool readOnly: false
-    onUserProfileChanged: {
+
+    Component {
+        id: userProfileStateModelAdditionalData
+        QtObject {
+            property bool isEdited: false
+            property string nameToSave: ""
+            property string textToSave: ""
+        }
+    }
+
+    Component {
+        id: photosModelFolderAdditionalData
+        QtObject {
+            property bool isEdited: false
+            property bool collapsed: false
+            property string nameToSave: ""
+        }
+    }
+    Component {
+        id: photosModelFileAdditionalData
+        QtObject {
+            property bool isEdited: false
+            property string nameToSave: ""
+        }
+    }
+
+    Component {
+        id: videosModelFolderAdditionalData
+        QtObject {
+            property bool isEdited: false
+            property bool collapsed: false
+            property string nameToSave: ""
+        }
+    }
+    Component {
+        id: videosModelFileAdditionalData
+        QtObject {
+            property bool isEdited: false
+            property string nameToSave: ""
+        }
+    }
+
+    Component {
+        id: musicsModelFolderAdditionalData
+        QtObject {
+            property bool isEdited: false
+            property bool collapsed: false
+            property string nameToSave: ""
+        }
+    }
+    Component {
+        id: musicsModelFileAdditionalData
+        QtObject {
+            property bool isEdited: false
+            property bool isPlaying: false
+            property string nameToSave: ""
+        }
+    }
+
+    onUserInfoChanged: {
         header.activeTab = "info"
+
+        userInfo.userProfile.stateModel.itemAdditionalData = userProfileStateModelAdditionalData
+        userInfo.photosModel.folderAdditionalData = photosModelFolderAdditionalData
+        userInfo.photosModel.fileAdditionalData = photosModelFileAdditionalData
+        userInfo.videosModel.folderAdditionalData = videosModelFolderAdditionalData
+        userInfo.videosModel.fileAdditionalData = videosModelFileAdditionalData
+        userInfo.musicsModel.folderAdditionalData = musicsModelFolderAdditionalData
+        userInfo.musicsModel.fileAdditionalData = musicsModelFileAdditionalData
     }
 
     name: "userInfo"
@@ -25,65 +92,6 @@ Page {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.topMargin: Core.dp(70)
-    }
-
-    UserProfile {
-        id: userProfileModel
-        source: userInfoPage.userProfile !==""?Core.dataDir + "users/" + userInfoPage.userProfile:""
-        parentElement: "user/info"
-        preferredSize: Qt.size(800, 600)
-
-        stateModel.itemAdditionalData: QtObject {
-            property bool isEdited: false
-            property string nameToSave: ""
-            property string textToSave: ""
-        }
-    }
-
-    FoldersModel {
-        id: photoFolderModel
-        source: userInfoPage.userProfile !==""?Core.dataDir + "users/" + userInfoPage.userProfile:""
-        parentElement: "user/photos"
-        folderAdditionalData: QtObject {
-            property bool isEdited: false
-            property bool collapsed: false
-            property string nameToSave: ""
-        }
-        fileAdditionalData: QtObject {
-            property bool isEdited: false
-            property string nameToSave: ""
-        }
-    }
-
-    FoldersModel {
-        id: videoFolderModel
-        source: userInfoPage.userProfile !==""?Core.dataDir + "users/" + userInfoPage.userProfile:""
-        parentElement: "user/videos"
-        folderAdditionalData: QtObject {
-            property bool isEdited: false
-            property bool collapsed: false
-            property string nameToSave: ""
-        }
-        fileAdditionalData: QtObject {
-            property bool isEdited: false
-            property string nameToSave: ""
-        }
-    }
-
-    FoldersModel {
-        id: musicFolderModel
-        source: userInfoPage.userProfile !==""?Core.dataDir + "users/" + userInfoPage.userProfile:""
-        parentElement: "user/music"
-        folderAdditionalData: QtObject {
-            property bool isEdited: false
-            property bool collapsed: false
-            property string nameToSave: ""
-        }
-        fileAdditionalData: QtObject {
-            property bool isEdited: false
-            property bool isPlaying: false
-            property string nameToSave: ""
-        }
     }
 
     Item {
@@ -127,7 +135,7 @@ Page {
 
     PhotoSlider {
         id: photoSlider
-        photosModel: photoFolderModel
+        photosModel: userInfo.photosModel
         opacity: 0
         anchors.centerIn: parent
         visible: opacity > 0
@@ -141,8 +149,8 @@ Page {
         id: videoPlayer
         playlist: {
             var result = []
-            for (var i = 0; i < videoFolderModel.count; i++) {
-                var folder = videoFolderModel.get(i)
+            for (var i = 0; i < userInfo.videosModel.count; i++) {
+                var folder = userInfo.videosModel.get(i)
                 for (var j = 0; j < folder.filesModel.count; j++) {
                     var playlistItem = [folder.filesModel.get(j).name, folder.filesModel.get(j).path]
                     result.push(playlistItem)

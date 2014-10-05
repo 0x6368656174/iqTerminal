@@ -76,7 +76,13 @@
 }
 
 HEADERS += \
-    $$PWD/filewatcher.h
+    $$PWD/filewatcher.h \
+    $$PWD/applicationmodel.h \
+    $$PWD/torrents.h \
+    $$PWD/userinfo.h
 
 SOURCES += \
-    $$PWD/filewatcher.cpp
+    $$PWD/filewatcher.cpp \
+    $$PWD/applicationmodel.cpp \
+    $$PWD/torrents.cpp \
+    $$PWD/userinfo.cpp

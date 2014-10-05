@@ -16,7 +16,7 @@ public:
     Q_INVOKABLE bool write (const QString& data);
 
 public:
-    inline QUrl source() const { return _source; }
+    QUrl source() const;
     void setSource(const QUrl& source);
 
 signals:
@@ -24,7 +24,7 @@ signals:
     void error(const QString& msg);
 
 private:
-    QUrl _source;
+    QUrl m_source;
 };
 
 #endif // FILEIO_H

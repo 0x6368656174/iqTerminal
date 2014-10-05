@@ -4,6 +4,8 @@ DESTDIR = ../bin/
 
 TARGET = iqTerminal
 
+QMAKE_CXXFLAGS += -std=c++0x
+
 include(../terminalQmlPlugin/terminalQmlPlugin.pri)
 
 include(engine/engine.pri)
@@ -44,6 +46,7 @@ RESOURCES += \
 OTHER_FILES += \
     qml/terminal/elements/BaseHeader.qml \
     qml/terminal/pages/userInfo/pages/Photo.qml \
-    android/AndroidManifest.xml
+    android/AndroidManifest.xml \
+    qml/terminal/pages/userInfo/UserInfoPage.qml
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

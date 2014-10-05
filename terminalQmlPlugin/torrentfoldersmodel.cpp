@@ -5,14 +5,19 @@
 TorrentFoldersModel::TorrentFoldersModel(QObject *parent) :
     FoldersModel(parent)
 {
-    _roles[Id] = "folder_id";
-    _roles[Name] = "folder_name";
-    _roles[SidsAvailability] = "folder_sids_availability";
-    _roles[InProcess] = "folder_in_process";
-    _roles[AdditionalData] = "folder_additional_data";
-    _roles[FilesModel] = "folder_files_model";
-    _roles[Size] = "folder_size";
-    _roles[DownloadedSize] = "folder_downloaded_size";
+    m_roles[Id] = "folder_id";
+    m_roles[Name] = "folder_name";
+    m_roles[SidsAvailability] = "folder_sids_availability";
+    m_roles[InProcess] = "folder_in_process";
+    m_roles[AdditionalData] = "folder_additional_data";
+    m_roles[FilesModel] = "folder_files_model";
+    m_roles[Size] = "folder_size";
+    m_roles[DownloadedSize] = "folder_downloaded_size";
+}
+
+QHash<int, QByteArray> TorrentFoldersModel::roleNames() const
+{
+    return m_roles;
 }
 
 AbstractXmlItemObject * TorrentFoldersModel::newItem()
@@ -35,8 +40,7 @@ QVariant TorrentFoldersModel::data(const QModelIndex &index, int role) const
     if (!item)
         return QVariant();
 
-    switch (role)
-    {
+    switch (role) {
     case Id:
         return item->id();
         break;

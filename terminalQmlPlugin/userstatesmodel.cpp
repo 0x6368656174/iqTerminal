@@ -4,10 +4,15 @@
 UserStatesModel::UserStatesModel(QObject *parent) :
     AbstractXmlItemsModel(parent)
 {
-    _roles[Id] = "state_id";
-    _roles[Name] = "state_name";
-    _roles[Text] = "state_text";
-    _roles[AdditionalData] = "state_additional_data";
+    m_roles[Id] = "state_id";
+    m_roles[Name] = "state_name";
+    m_roles[Text] = "state_text";
+    m_roles[AdditionalData] = "state_additional_data";
+}
+
+QHash<int, QByteArray> UserStatesModel::roleNames() const
+{
+    return m_roles;
 }
 
 AbstractXmlItemObject * UserStatesModel::newItem()
@@ -26,8 +31,7 @@ QVariant UserStatesModel::data(const QModelIndex &index, int role) const
     if (!item)
         return QVariant();
 
-    switch (role)
-    {
+    switch (role) {
     case Id:
         return item->id();
         break;

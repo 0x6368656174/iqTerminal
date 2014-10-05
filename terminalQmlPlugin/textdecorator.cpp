@@ -4,7 +4,7 @@
 #include <QDebug>
 #include "core.h"
 
-QHash<QString, QString> TextDecorator::_smiles = QHash<QString, QString>();
+QHash<QString, QString> TextDecorator::m_smiles = QHash<QString, QString>();
 
 TextDecorator::TextDecorator(QObject *parent) :
     QObject(parent)
@@ -13,10 +13,10 @@ TextDecorator::TextDecorator(QObject *parent) :
 
 void TextDecorator::initSmiles()
 {
-    if (!_smiles.isEmpty())
+    if (!m_smiles.isEmpty())
         return;
 
-    _smiles[":-)"] = "1a.png";
+    m_smiles[":-)"] = "1a.png";
 }
 
 QString TextDecorator::toPlainText(const QString &str)
@@ -34,34 +34,25 @@ QString TextDecorator::toPlainText(const QString &str)
     QString result;
 
     QDomElement pElement = bodyElement.firstChildElement("p");
-    while (!pElement.isNull())
-    {
+    while (!pElement.isNull()) {
         QDomNode childNode = pElement.firstChild();
-        while (!childNode.isNull())
-        {
-            if (childNode.isElement())
-            {
+        while (!childNode.isNull()) {
+            if (childNode.isElement()) {
                 QDomElement childElement = childNode.toElement();
-                if (childElement.tagName() == "span")
-                {
+                if (childElement.tagName() == "span") {
                     result += childElement.text();
-                }
-                else if (childElement.tagName() == "img")
-                {
+                } else if (childElement.tagName() == "img") {
                     QString src = childElement.attribute("src");
                     QUrl srcUrl (src);
-                    QString smile = _smiles.key(srcUrl.fileName());
-                    if (smile.isEmpty())
-                    {
+                    QString smile = m_smiles.key(srcUrl.fileName());
+                    if (smile.isEmpty()) {
                         QString whiteSmile = srcUrl.fileName();
                         whiteSmile.insert(whiteSmile.length() - 4, "a");
-                        smile = _smiles.key(whiteSmile);
+                        smile = m_smiles.key(whiteSmile);
                     }
                     result += smile;
                 }
-            }
-            else if (childNode.isText())
-            {
+            } else if (childNode.isText()) {
                 QDomText childText = childNode.toText();
                 result += childText.data();
             }
@@ -84,12 +75,10 @@ QString TextDecorator::toFormattedText(const QString &str)
     QString result;
     QStringList rows = str.split("\n");
 
-    foreach (QString row, rows)
-    {
+    foreach (QString row, rows) {
         QString formatedRow = row;
-        QHashIterator<QString, QString> smileIterator (_smiles);
-        while (smileIterator.hasNext())
-        {
+        QHashIterator<QString, QString> smileIterator (m_smiles);
+        while (smileIterator.hasNext()) {
             smileIterator.next();
             formatedRow.replace(smileIterator.key(), "<img src=\""+ Core::dataDir().toString() +"smiles/" + smileIterator.value() +
                                 "\" width=\"" + QString::number(Core::dp(8)) +

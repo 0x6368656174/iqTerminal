@@ -11,7 +11,7 @@ public:
     explicit UsersFilterModel(QObject *parent = 0);
 
 public:
-    inline QUrl userProfilesDir() const {return _userProfilesDir;}
+    QUrl userProfilesDir() const;
     void setUserProfilesDir(const QUrl &dir);
 
 signals:
@@ -21,7 +21,7 @@ protected:
     bool filterAcceptsRow (int source_row, const QModelIndex &source_parent) const;
 
 private:
-    QUrl _userProfilesDir;
+    QUrl m_userProfilesDir;
 };
 
 #endif // USERSFILTERMODEL_H

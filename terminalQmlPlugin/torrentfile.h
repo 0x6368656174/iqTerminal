@@ -22,10 +22,10 @@ public:
     virtual bool loadFromPath(const QUrl &path);
 
 public:
-    inline qint64 size() const {return m_size;}
+    qint64 size() const;
     void setSize(const qint64 size);
 
-    inline qint64 downloadedSize() const {return m_downloadedSize;}
+    qint64 downloadedSize() const;
     void setDownloadedSize(const qint64 downloadedSize);
 
     QString hash() const;

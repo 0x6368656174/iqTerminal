@@ -46,22 +46,22 @@ protected:
 
 
 public:
-    inline QString text() const {return _text;}
+    QString text() const;
     void setText(const QString &text);
 
-    inline Type type() const {return _type;}
+    Type type() const;
     void setType(const Type type);
 
-    inline Direction direction() const {return _direction;}
+    Direction direction() const;
     void setDirection(const Direction direction);
 
-    inline bool wasRead() const {return _wasRead;}
+    bool wasRead() const;
     void setWasRead(const bool wasRead);
 
-    inline QUrl filePath() const {return _filePath;}
+    QUrl filePath() const;
     void setFilePath(const QUrl &filePath);
 
-    inline QDateTime sendDateTime() const {return _sendDateTime;}
+    QDateTime sendDateTime() const;
     void setSendDateTime(const QDateTime &dateTime);
 
 signals:
@@ -73,12 +73,12 @@ signals:
     void sendDateTimeChanged();
 
 private:
-    QString _text;
-    Type _type;
-    Direction _direction;
-    bool _wasRead;
-    QUrl _filePath;
-    QDateTime _sendDateTime;
+    QString m_text;
+    Type m_type;
+    Direction m_direction;
+    bool m_wasRead;
+    QUrl m_filePath;
+    QDateTime m_sendDateTime;
 };
 
 #endif // MESSAGE_H

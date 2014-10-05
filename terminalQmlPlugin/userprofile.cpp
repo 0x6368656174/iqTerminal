@@ -15,12 +15,22 @@ UserProfile::UserProfile(QObject *parent) :
 {
 }
 
+QString UserProfile::name() const
+{
+    return m_name;
+}
+
 void UserProfile::setName(const QString &name)
 {
     if (m_name != name) {
         m_name = name;
         emit nameChanged();
     }
+}
+
+QImage UserProfile::photo() const
+{
+    return m_photo;
 }
 
 void UserProfile::setPhoto(QImage &photo)
@@ -30,6 +40,12 @@ void UserProfile::setPhoto(QImage &photo)
         emit photoChanged();
     }
 }
+
+UserStatesModel* UserProfile::stateModel() const
+{
+    return m_stateModel;
+}
+
 QSize UserProfile::preferredSize() const
 {
     return m_preferredSize;
@@ -55,7 +71,10 @@ void UserProfile::setId(int id)
     }
 }
 
-
+QUrl UserProfile::source() const
+{
+    return m_source;
+}
 
 void UserProfile::setSource(const QUrl &source)
 {
@@ -66,6 +85,11 @@ void UserProfile::setSource(const QUrl &source)
         if (!parentElement().isEmpty())
             reload();
     }
+}
+
+QString UserProfile::parentElement() const
+{
+    return m_parentElement;
 }
 
 void UserProfile::setParentElement(const QString &parentElement)

@@ -31,19 +31,19 @@ public:
     Q_INVOKABLE bool photoIsNull() const;
 
 public:
-    inline QUrl source() const {return m_source;}
+    QUrl source() const;
     void setSource(const QUrl &source);
 
-    inline QString parentElement() const {return m_parentElement;}
+    QString parentElement() const;
     void setParentElement(const QString &parentElement);
 
-    inline QString name() const {return m_name;}
+    QString name() const;
     void setName(const QString &name);
 
-    inline QImage photo() const {return m_photo;}
+    QImage photo() const;
     void setPhoto(QImage &photo);
 
-    inline UserStatesModel *stateModel() const {return m_stateModel;}
+    UserStatesModel *stateModel() const;
 
     QSize preferredSize() const;
     void setPreferredSize(const QSize &preferredSize);

@@ -3,8 +3,8 @@
 
 UserState::UserState(QObject *parent) :
     AbstractXmlItemObject(parent),
-    _name(tr("New State")),
-    _text("")
+    m_name(tr("New State")),
+    m_text("")
 {
 }
 
@@ -20,21 +20,29 @@ QString UserState::tagName() const
     return "state";
 }
 
+QString UserState::name() const
+{
+    return m_name;
+}
+
 void UserState::setName(const QString &name)
 {
-    if (_name != name)
-    {
-        _name = name;
+    if (m_name != name) {
+        m_name = name;
 
         emit nameChanged();
     }
 }
 
+QString UserState::text() const
+{
+    return m_text;
+}
+
 void UserState::setText(const QString &text)
 {
-    if (_text != text)
-    {
-        _text = text;
+    if (m_text != text) {
+        m_text = text;
 
         emit textChanged();
     }
@@ -42,25 +50,18 @@ void UserState::setText(const QString &text)
 
 bool UserState::loadFromDomElement(const QDomElement &domElement)
 {
-    if (AbstractXmlItemObject::loadFromDomElement(domElement))
-    {
+    if (AbstractXmlItemObject::loadFromDomElement(domElement)) {
         QDomElement nameElement = domElement.firstChildElement("name");
-        if (!nameElement.isNull())
-        {
+        if (!nameElement.isNull()) {
             setName(nameElement.text());
-        }
-        else
-        {
+        } else {
             setName("");
         }
 
         QDomElement textElement = domElement.firstChildElement("text");
-        if (!textElement.isNull())
-        {
+        if (!textElement.isNull()) {
             setText(textElement.text());
-        }
-        else
-        {
+        } else {
             setText("");
         }
 

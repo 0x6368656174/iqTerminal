@@ -18,13 +18,13 @@ public:
     Q_INVOKABLE bool remove(int row);
 
 public:
-    inline AbstractXmlItemsModel *filterModel() const {return _filterModel;}
+    AbstractXmlItemsModel *filterModel() const;
     void setFilterModel(AbstractXmlItemsModel * filterModel);
 
-    inline QString filterString() const {return _filterString;}
+    QString filterString() const;
     void setFilterString(const QString &filterString);
 
-    inline int count() const {return rowCount();}
+    int count() const;
 
 signals:
     void filterModelChanged();
@@ -32,8 +32,8 @@ signals:
     void countChanged();
 
 private:
-    AbstractXmlItemsModel *_filterModel;
-    QString _filterString;
+    AbstractXmlItemsModel *m_filterModel;
+    QString m_filterString;
 };
 
 #endif // ABSTRACTXMLITEMSFILTERMODEL_H

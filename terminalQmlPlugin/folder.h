@@ -32,15 +32,15 @@ protected:
 public:
     FilesModel *filesModel() const;
 
-    inline QString name() const {return _name;}
+    QString name() const;
     void setName(const QString &name);
 
 signals:
     void nameChanged();
 
 private:
-    mutable FilesModel *_filesModel;
-    QString _name;
+    mutable FilesModel *m_filesModel;
+    QString m_name;
 
     void loadFromDir(const QUrl &path);
 };

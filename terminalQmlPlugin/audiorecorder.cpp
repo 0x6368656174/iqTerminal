@@ -2,23 +2,28 @@
 
 AudioRecorder::AudioRecorder(QObject *parent) :
     QObject(parent),
-    _recored(new QAudioRecorder(this))
+    m_recored(new QAudioRecorder(this))
 {
     QAudioEncoderSettings audioSettings;
     audioSettings.setCodec("audio/mp3");
     audioSettings.setQuality(QMultimedia::NormalQuality);
-    _recored->setAudioSettings(audioSettings);
+    m_recored->setAudioSettings(audioSettings);
 }
 
 
 void AudioRecorder::record()
 {
-    _recored->record();
+    m_recored->record();
 }
 
 void AudioRecorder::stop()
 {
-    _recored->stop();
+    m_recored->stop();
 
     emit outputLocationChanged();
+}
+
+QUrl AudioRecorder::outputLocation() const
+{
+    return m_recored->outputLocation();
 }

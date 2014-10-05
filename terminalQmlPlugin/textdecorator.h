@@ -15,7 +15,7 @@ public:
     Q_INVOKABLE static QString toFormattedText(const QString &str);
 
 private:
-    static QHash<QString, QString> _smiles;
+    static QHash<QString, QString> m_smiles;
 
     static void initSmiles();
 };

@@ -23,10 +23,10 @@ protected:
     virtual void reset();
 
 public:
-    inline QString name() const {return _name;}
+    QString name() const;
     void setName(const QString &name);
 
-    inline QString text() const {return _text;}
+    QString text() const;
     void setText(const QString &text);
 
 signals:
@@ -34,8 +34,8 @@ signals:
     void textChanged();
 
 private:
-    QString _name;
-    QString _text;
+    QString m_name;
+    QString m_text;
 };
 
 #endif // USERSTATE_H

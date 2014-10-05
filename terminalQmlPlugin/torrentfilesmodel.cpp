@@ -4,15 +4,20 @@
 TorrentFilesModel::TorrentFilesModel(QObject *parent) :
     FilesModel(parent)
 {
-    _roles[Id] = "file_id";
-    _roles[Path] = "file_path";
-    _roles[Name] = "file_name";
-    _roles[Size] = "file_size";
-    _roles[DowloadedSize] = "file_downloaded_size";
-    _roles[AdditionalData] = "file_additional_data";
+    m_roles[Id] = "file_id";
+    m_roles[Path] = "file_path";
+    m_roles[Name] = "file_name";
+    m_roles[Size] = "file_size";
+    m_roles[DowloadedSize] = "file_downloaded_size";
+    m_roles[AdditionalData] = "file_additional_data";
 
     connect(this, SIGNAL(countChanged()), this, SIGNAL(filesDownloadedSumSizeChanged()));
     connect(this, SIGNAL(countChanged()), this, SIGNAL(filesSumSizeChanged()));
+}
+
+QHash<int, QByteArray> TorrentFilesModel::roleNames() const
+{
+    return m_roles;
 }
 
 AbstractXmlItemObject * TorrentFilesModel::newItem()
@@ -31,8 +36,7 @@ AbstractXmlItemObject * TorrentFilesModel::newItem()
 qint64 TorrentFilesModel::filesSumSize() const
 {
     qint64 result = 0;
-    for (int i = 0; i < rowCount(); i++)
-    {
+    for (int i = 0; i < rowCount(); i++) {
         TorrentFile *file = qobject_cast<TorrentFile *>(get(i));
         result += file->size();
     }
@@ -43,8 +47,7 @@ qint64 TorrentFilesModel::filesSumSize() const
 qint64 TorrentFilesModel::filesDownloadedSumSize() const
 {
     qint64 result = 0;
-    for (int i = 0; i < rowCount(); i++)
-    {
+    for (int i = 0; i < rowCount(); i++) {
         TorrentFile *file = qobject_cast<TorrentFile *>(get(i));
         result += file->downloadedSize();
     }
@@ -58,8 +61,7 @@ QVariant TorrentFilesModel::data(const QModelIndex &index, int role) const
     if (!item)
         return QVariant();
 
-    switch (role)
-    {
+    switch (role) {
     case Id:
         return item->id();
         break;

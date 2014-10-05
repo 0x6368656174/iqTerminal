@@ -32,7 +32,7 @@ public:
     Q_INVOKABLE Folder * insertNew(int row, const QUrl &path = QUrl());
 
 public:
-    virtual inline QHash<int, QByteArray> roleNames() const {return _roles;}
+    virtual QHash<int, QByteArray> roleNames() const;
 
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
@@ -40,13 +40,13 @@ protected:
     virtual AbstractXmlItemObject * newItem();
 
 public:
-    inline QUrl source() const {return _source;}
+    QUrl source() const;
     void setSource(const QUrl &source);
 
-    inline QString parentElement() const {return _parentElement;}
+    QString parentElement() const;
     void setParentElement(const QString &parentElement);
 
-    inline QQmlComponent *fileAdditionalData() const {return _fileAdditionalData;}
+    QQmlComponent *fileAdditionalData() const;
     void setFileAdditionalData(QQmlComponent *fileAdditionalData);
 
 signals:
@@ -56,11 +56,11 @@ signals:
     void fileAdditionalDataChanged();
 
 private:
-    QHash<int, QByteArray> _roles;
+    QHash<int, QByteArray> m_roles;
 
-    QUrl _source;
-    QString _parentElement;
-    QQmlComponent *_fileAdditionalData;
+    QUrl m_source;
+    QString m_parentElement;
+    QQmlComponent *m_fileAdditionalData;
 };
 
 #endif // FOLDERSMODEL_H

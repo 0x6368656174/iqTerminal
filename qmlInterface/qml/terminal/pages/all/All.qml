@@ -140,7 +140,7 @@ Page {
 
                 visible: !privateData.isEdited
                 onClicked: {
-                    userInfo.userProfile = user_profile
+                    userInfoPage.userProfile = user_profile
                     showRightPage(userInfo.name)
                 }
                 onPressedChanged: {

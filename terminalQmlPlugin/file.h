@@ -26,10 +26,10 @@ protected:
     virtual void reset();
 
 public:
-    inline QString path() const {return _path;}
+    QString path() const;
     void setPath(const QString &path);
 
-    inline QString name() const {return _name;}
+    QString name() const;
     void setName(const QString &name);
 
 signals:
@@ -37,8 +37,8 @@ signals:
     void nameChanged();
 
 private:
-    QString _path;
-    QString _name;
+    QString m_path;
+    QString m_name;
 };
 
 #endif // FILE_H

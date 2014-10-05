@@ -31,6 +31,10 @@ void TorrentFile::setHash(const QString &hash)
     }
 }
 
+qint64 TorrentFile::size() const
+{
+    return m_size;
+}
 
 void TorrentFile::setSize(const qint64 size)
 {
@@ -39,6 +43,11 @@ void TorrentFile::setSize(const qint64 size)
 
         emit sizeChanged();
     }
+}
+
+qint64 TorrentFile::downloadedSize() const
+{
+    return m_downloadedSize;
 }
 
 void TorrentFile::setDownloadedSize(const qint64 downloadedSize)

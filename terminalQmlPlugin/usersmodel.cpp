@@ -2,20 +2,30 @@
 
 UsersModel::UsersModel(QObject *parent) :
     AbstractXmlItemsModel(parent),
-    _source(QUrl()),
-    _parentElement("")
+    m_source(QUrl()),
+    m_parentElement("")
 {
-    _roles[Id] = "user_id";
-    _roles[AdditionalData] = "user_additional_data";
-    _roles[Profile] = "user_profile";
-    _roles[Online] = "user_online";
-    _roles[FriendshipAccepted] = "user_friendship_accepted";
+    m_roles[Id] = "user_id";
+    m_roles[AdditionalData] = "user_additional_data";
+    m_roles[Profile] = "user_profile";
+    m_roles[Online] = "user_online";
+    m_roles[FriendshipAccepted] = "user_friendship_accepted";
+}
+
+QHash<int, QByteArray> UsersModel::roleNames() const
+{
+    return m_roles;
+}
+
+QUrl UsersModel::source() const
+{
+    return m_source;
 }
 
 void UsersModel::setSource(const QUrl &source)
 {
-    if(_source != source) {
-        _source = source;
+    if(m_source != source) {
+        m_source = source;
 
         emit sourceChanged();
 
@@ -24,10 +34,15 @@ void UsersModel::setSource(const QUrl &source)
     }
 }
 
+QString UsersModel::parentElement() const
+{
+    return m_parentElement;
+}
+
 void UsersModel::setParentElement(const QString &parentElement)
 {
-    if (_parentElement != parentElement) {
-        _parentElement = parentElement;
+    if (m_parentElement != parentElement) {
+        m_parentElement = parentElement;
 
         emit parentElementChanged();
 

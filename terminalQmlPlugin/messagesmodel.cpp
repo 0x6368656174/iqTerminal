@@ -3,23 +3,33 @@
 
 MessagesModel::MessagesModel(QObject *parent) :
     AbstractXmlItemsModel(parent),
-    _source(QUrl()),
-    _parentElement("")
+    m_source(QUrl()),
+    m_parentElement("")
 {
-    _roles[Id] = "message_id";
-    _roles[AdditionalData] = "message_additional_data";
-    _roles[Text] = "message_text";
-    _roles[Type] = "message_type";
-    _roles[Direction] = "message_direction";
-    _roles[WasRead] = "message_was_read";
-    _roles[FilePath] = "message_file_path";
-    _roles[SendDateTime] = "message_send_date_time";
+    m_roles[Id] = "message_id";
+    m_roles[AdditionalData] = "message_additional_data";
+    m_roles[Text] = "message_text";
+    m_roles[Type] = "message_type";
+    m_roles[Direction] = "message_direction";
+    m_roles[WasRead] = "message_was_read";
+    m_roles[FilePath] = "message_file_path";
+    m_roles[SendDateTime] = "message_send_date_time";
+}
+
+QHash<int, QByteArray> MessagesModel::roleNames() const
+{
+    return m_roles;
+}
+
+QUrl MessagesModel::source() const
+{
+    return m_source;
 }
 
 void MessagesModel::setSource(const QUrl &source)
 {
-    if(_source != source) {
-        _source = source;
+    if(m_source != source) {
+        m_source = source;
 
         emit sourceChanged();
 
@@ -28,10 +38,15 @@ void MessagesModel::setSource(const QUrl &source)
     }
 }
 
+QString MessagesModel::parentElement() const
+{
+    return m_parentElement;
+}
+
 void MessagesModel::setParentElement(const QString &parentElement)
 {
-    if (_parentElement != parentElement) {
-        _parentElement = parentElement;
+    if (m_parentElement != parentElement) {
+        m_parentElement = parentElement;
 
         emit parentElementChanged();
 

@@ -17,14 +17,10 @@ bool TorrentFoldersFilterModel::filterAcceptsRow(int source_row, const QModelInd
     TorrentFolder * folder = qobject_cast<TorrentFolder *>(filterModel()->get(source_row));
     if (!folder)
         return false;
-    if (folder->name().contains(filterString(), filterCaseSensitivity()))
-    {
+    if (folder->name().contains(filterString(), filterCaseSensitivity())) {
         return true;
-    }
-    else
-    {
-        for(int i = 0; i < folder->filesModel()->rowCount(); i++)
-        {
+    } else {
+        for(int i = 0; i < folder->filesModel()->rowCount(); i++) {
             File* file = qobject_cast<File *>(folder->filesModel()->get(i));
             if (file && file->name().contains(filterString(), filterCaseSensitivity()))
                 return true;

@@ -26,7 +26,6 @@
         <file>qml/terminal/pages/contacts/Contacts.qml</file>
         <file>qml/terminal/pages/visitors/Visitors.qml</file>
         <file>qml/terminal/pages/userInfo/Header.qml</file>
-        <file>qml/terminal/pages/userInfo/UserInfo.qml</file>
         <file>qml/terminal/pages/userInfo/pages/Info.qml</file>
         <file>qml/terminal/elements/AudioPlayer.qml</file>
         <file>qml/terminal/elements/PhotoSlider.qml</file>
@@ -43,5 +42,6 @@
         <file>qml/terminal/elements/ProgressBar.qml</file>
         <file>qml/terminal/elements/ErrorMessage.qml</file>
         <file>qml/terminal/elements/ErrorPage.qml</file>
+        <file>qml/terminal/pages/userInfo/UserInfoPage.qml</file>
     </qresource>
 </RCC>

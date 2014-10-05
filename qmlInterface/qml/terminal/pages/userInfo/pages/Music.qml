@@ -21,9 +21,9 @@ Page {
         visible: !musicPage.readOnly
         enabled: !privateData.isEdited
         onClicked: {
-            var folder = musicFolderModel.insertNew(0)
+            var folder = userInfo.musicsModel.insertNew(0)
             folder.name = "Новая папка"
-            musicFolderModel.save()
+            userInfo.musicsModel.save()
         }
     }
 
@@ -58,7 +58,7 @@ Page {
             NumberAnimation { properties: "x,y"; duration: 400; easing.type: Easing.OutBounce }
         }
 
-        model: musicFolderModel
+        model: userInfo.musicsModel
 
         delegate: Rectangle {
             property int folderIndex: index
@@ -343,8 +343,8 @@ Page {
                             target: file_additional_data
                             onIsPlayingChanged: {
                                 if (file_additional_data.isPlaying) {
-                                    for (var i = 0; i < musicFolderModel.count; i++) {
-                                        var folder = musicFolderModel.get(i)
+                                    for (var i = 0; i < userInfo.musicsModel.count; i++) {
+                                        var folder = userInfo.musicsModel.get(i)
                                         for (var j = 0; j < folder.filesModel.count; j++) {
                                             if (i !== folderIndex || j !== fileIndex) {
                                                 folder.filesModel.get(j).additionalData.isPlaying = false
@@ -441,7 +441,7 @@ Page {
                                             //Включим следующий
                                             foldersView.positionViewAtIndex(nextFolder, ListView.Beginning)
                                             childsView.positionViewAtIndex(nextFile, ListView.Center)
-                                            var folder = musicFolderModel.get(nextFolder)
+                                            var folder = userInfo.musicsModel.get(nextFolder)
                                             folder.additionalData.collapsed = true
                                             folder.filesModel.get(nextFile).additionalData.isPlaying = true
                                         }
@@ -471,11 +471,11 @@ Page {
 
         onSubmit: {
             if (editRole === "remove") {
-                for (var i = 0; i < musicFolderModel.count; i++) {
-                    var folder = musicFolderModel.get(i)
+                for (var i = 0; i < userInfo.musicsModel.count; i++) {
+                    var folder = userInfo.musicsModel.get(i)
                     if (folder.additionalData.isEdited) {
-                        musicFolderModel.remove(i)
-                        musicFolderModel.save()
+                        userInfo.musicsModel.remove(i)
+                        userInfo.musicsModel.save()
                         break
                     }
                     var fileRemoved = false
@@ -483,7 +483,7 @@ Page {
                         var file = folder.filesModel.get(j)
                         if (file.additionalData.isEdited) {
                             folder.filesModel.remove(j)
-                            musicFolderModel.save()
+                            userInfo.musicsModel.save()
                             fileRemoved = true
                             break
                         }
@@ -492,11 +492,11 @@ Page {
                         break
                 }
             } else if (editRole === "edit") {
-                for (i = 0; i < musicFolderModel.count; i++) {
-                    folder = musicFolderModel.get(i)
+                for (i = 0; i < userInfo.musicsModel.count; i++) {
+                    folder = userInfo.musicsModel.get(i)
                     if (folder.additionalData.isEdited) {
                         folder.name = folder.additionalData.nameToSave
-                        musicFolderModel.save()
+                        userInfo.musicsModel.save()
                         break
                     }
                     var fileEdited = false
@@ -504,7 +504,7 @@ Page {
                         file = folder.filesModel.get(j)
                         if (file.additionalData.isEdited) {
                             file.name = file.additionalData.nameToSave
-                            musicFolderModel.save()
+                            userInfo.musicsModel.save()
                             fileEdited = true
                             break
                         }
@@ -517,8 +517,8 @@ Page {
         }
 
         onCansel: {
-            for (var i = 0; i < musicFolderModel.count; i++) {
-                var folder = musicFolderModel.get(i)
+            for (var i = 0; i < userInfo.musicsModel.count; i++) {
+                var folder = userInfo.musicsModel.get(i)
                 folder.additionalData.isEdited = false
                 for (var j = 0; j < folder.filesModel.count; j++) {
                     var file = folder.filesModel.get(j)
@@ -538,11 +538,11 @@ Page {
         onVisibleChanged: userInfoPageBackButton.visible = !visible
 
         onAccepted: {
-            for (var i = 0; i < musicFolderModel.count; i++) {
-                var folder = musicFolderModel.get(i)
+            for (var i = 0; i < userInfo.musicsModel.count; i++) {
+                var folder = userInfo.musicsModel.get(i)
                 if (folder.additionalData.isEdited) {
                     folder.filesModel.insertNew(0, fileUrl)
-                    musicFolderModel.save()
+                    userInfo.musicsModel.save()
                     break
                 }
                 var fileAdd = false
@@ -550,7 +550,7 @@ Page {
                     var file = folder.filesModel.get(j)
                     if (file.additionalData.isEdited) {
                         folder.filesModel.insertNew(j + 1, fileUrl)
-                        musicFolderModel.save()
+                        userInfo.musicsModel.save()
                         fileAdd = true
                         break
                     }

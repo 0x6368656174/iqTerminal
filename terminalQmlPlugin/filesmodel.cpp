@@ -3,10 +3,15 @@
 FilesModel::FilesModel(QObject *parent) :
     AbstractXmlItemsModel(parent)
 {
-    _roles[Id] = "file_id";
-    _roles[Path] = "file_path";
-    _roles[Name] = "file_name";
-    _roles[AdditionalData] = "file_additional_data";
+    m_roles[Id] = "file_id";
+    m_roles[Path] = "file_path";
+    m_roles[Name] = "file_name";
+    m_roles[AdditionalData] = "file_additional_data";
+}
+
+QHash<int, QByteArray> FilesModel::roleNames() const
+{
+    return m_roles;
 }
 
 AbstractXmlItemObject * FilesModel::newItem()
@@ -36,8 +41,7 @@ QVariant FilesModel::data(const QModelIndex &index, int role) const
     if (!item)
         return QVariant();
 
-    switch (role)
-    {
+    switch (role) {
     case Id:
         return item->id();
         break;

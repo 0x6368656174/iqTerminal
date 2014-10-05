@@ -21,9 +21,9 @@ Page {
         visible: !photosPage.readOnly
         enabled: !privateData.isEdited
         onClicked: {
-            var folder = photoFolderModel.insertNew(0)
+            var folder = userInfo.photosModel.insertNew(0)
             folder.name = "Новая папка"
-            photoFolderModel.save()
+            userInfo.photosModel.save()
         }
     }
 
@@ -58,7 +58,7 @@ Page {
             NumberAnimation { properties: "x,y"; duration: 400; easing.type: Easing.OutBounce }
         }
 
-        model: photoFolderModel
+        model: userInfo.photosModel
 
         delegate: Rectangle {
             property int folderIndex: index
@@ -366,11 +366,11 @@ Page {
 
         onSubmit: {
             if (editRole === "remove") {
-                for (var i = 0; i < photoFolderModel.count; i++) {
-                    var folder = photoFolderModel.get(i)
+                for (var i = 0; i < userInfo.photosModel.count; i++) {
+                    var folder = userInfo.photosModel.get(i)
                     if (folder.additionalData.isEdited) {
-                        photoFolderModel.remove(i)
-                        photoFolderModel.save()
+                        userInfo.photosModel.remove(i)
+                        userInfo.photosModel.save()
                         break
                     }
                     var fileRemoved = false
@@ -378,7 +378,7 @@ Page {
                         var file = folder.filesModel.get(j)
                         if (file.additionalData.isEdited) {
                             folder.filesModel.remove(j)
-                            photoFolderModel.save()
+                            userInfo.photosModel.save()
                             fileRemoved = true
                             break
                         }
@@ -387,11 +387,11 @@ Page {
                         break
                 }
             } else if (editRole === "edit") {
-                for (i = 0; i < photoFolderModel.count; i++) {
-                    folder = photoFolderModel.get(i)
+                for (i = 0; i < userInfo.photosModel.count; i++) {
+                    folder = userInfo.photosModel.get(i)
                     if (folder.additionalData.isEdited) {
                         folder.name = folder.additionalData.nameToSave
-                        photoFolderModel.save()
+                        userInfo.photosModel.save()
                         break
                     }
                     var fileEdited = false
@@ -399,7 +399,7 @@ Page {
                         file = folder.filesModel.get(j)
                         if (file.additionalData.isEdited) {
                             file.name = file.additionalData.nameToSave
-                            photoFolderModel.save()
+                            userInfo.photosModel.save()
                             fileEdited = true
                             break
                         }
@@ -412,8 +412,8 @@ Page {
         }
 
         onCansel: {
-            for (var i = 0; i < photoFolderModel.count; i++) {
-                var folder = photoFolderModel.get(i)
+            for (var i = 0; i < userInfo.photosModel.count; i++) {
+                var folder = userInfo.photosModel.get(i)
                 folder.additionalData.isEdited = false
                 for (var j = 0; j < folder.filesModel.count; j++) {
                     var file = folder.filesModel.get(j)
@@ -433,11 +433,11 @@ Page {
         onVisibleChanged: userInfoPageBackButton.visible = !visible
 
         onAccepted: {
-            for (var i = 0; i < photoFolderModel.count; i++) {
-                var folder = photoFolderModel.get(i)
+            for (var i = 0; i < userInfo.photosModel.count; i++) {
+                var folder = userInfo.photosModel.get(i)
                 if (folder.additionalData.isEdited) {
                     folder.filesModel.insertNew(0, fileUrl)
-                    photoFolderModel.save()
+                    userInfo.photosModel.save()
                     break
                 }
                 var fileAdd = false
@@ -445,7 +445,7 @@ Page {
                     var file = folder.filesModel.get(j)
                     if (file.additionalData.isEdited) {
                         folder.filesModel.insertNew(j + 1, fileUrl)
-                        photoFolderModel.save()
+                        userInfo.photosModel.save()
                         fileAdd = true
                         break
                     }

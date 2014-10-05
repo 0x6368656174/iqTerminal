@@ -21,9 +21,9 @@ Page {
         visible: !videoPage.readOnly
         enabled: !privateData.isEdited
         onClicked: {
-            var folder = videoFolderModel.insertNew(0)
+            var folder = userInfo.videosModel.insertNew(0)
             folder.name = "Новая папка"
-            videoFolderModel.save()
+            userInfo.videosModel.save()
         }
     }
 
@@ -58,7 +58,7 @@ Page {
             NumberAnimation { properties: "x,y"; duration: 400; easing.type: Easing.OutBounce }
         }
 
-        model: videoFolderModel
+        model: userInfo.videosModel
 
         delegate: Rectangle {
             property int folderIndex: index
@@ -351,11 +351,11 @@ Page {
 
         onSubmit: {
             if (editRole === "remove") {
-                for (var i = 0; i < videoFolderModel.count; i++) {
-                    var folder = videoFolderModel.get(i)
+                for (var i = 0; i < userInfo.videosModel.count; i++) {
+                    var folder = userInfo.videosModel.get(i)
                     if (folder.additionalData.isEdited) {
-                        videoFolderModel.remove(i)
-                        videoFolderModel.save()
+                        userInfo.videosModel.remove(i)
+                        userInfo.videosModel.save()
                         break
                     }
                     var fileRemoved = false
@@ -363,7 +363,7 @@ Page {
                         var file = folder.filesModel.get(j)
                         if (file.additionalData.isEdited) {
                             folder.filesModel.remove(j)
-                            videoFolderModel.save()
+                            userInfo.videosModel.save()
                             fileRemoved = true
                             break
                         }
@@ -372,11 +372,11 @@ Page {
                         break
                 }
             } else if (editRole === "edit") {
-                for (i = 0; i < videoFolderModel.count; i++) {
-                    folder = videoFolderModel.get(i)
+                for (i = 0; i < userInfo.videosModel.count; i++) {
+                    folder = userInfo.videosModel.get(i)
                     if (folder.additionalData.isEdited) {
                         folder.name = folder.additionalData.nameToSave
-                        videoFolderModel.save()
+                        userInfo.videosModel.save()
                         break
                     }
                     var fileEdited = false
@@ -384,7 +384,7 @@ Page {
                         file = folder.filesModel.get(j)
                         if (file.additionalData.isEdited) {
                             file.name = file.additionalData.nameToSave
-                            videoFolderModel.save()
+                            userInfo.videosModel.save()
                             fileEdited = true
                             break
                         }
@@ -397,8 +397,8 @@ Page {
         }
 
         onCansel: {
-            for (var i = 0; i < videoFolderModel.count; i++) {
-                var folder = videoFolderModel.get(i)
+            for (var i = 0; i < userInfo.videosModel.count; i++) {
+                var folder = userInfo.videosModel.get(i)
                 folder.additionalData.isEdited = false
                 for (var j = 0; j < folder.filesModel.count; j++) {
                     var file = folder.filesModel.get(j)
@@ -418,11 +418,11 @@ Page {
         onVisibleChanged: userInfoPageBackButton.visible = !visible
 
         onAccepted: {
-            for (var i = 0; i < videoFolderModel.count; i++) {
-                var folder = videoFolderModel.get(i)
+            for (var i = 0; i < userInfo.videosModel.count; i++) {
+                var folder = userInfo.videosModel.get(i)
                 if (folder.additionalData.isEdited) {
                     folder.filesModel.insertNew(0, fileUrl)
-                    videoFolderModel.save()
+                    userInfo.videosModel.save()
                     break
                 }
                 var fileAdd = false
@@ -430,7 +430,7 @@ Page {
                     var file = folder.filesModel.get(j)
                     if (file.additionalData.isEdited) {
                         folder.filesModel.insertNew(j + 1, fileUrl)
-                        videoFolderModel.save()
+                        userInfo.videosModel.save()
                         fileAdd = true
                         break
                     }

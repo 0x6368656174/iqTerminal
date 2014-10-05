@@ -3,11 +3,11 @@
 
 Message::Message(QObject *parent) :
     AbstractXmlItemObject(parent),
-    _text(""),
-    _type(Text),
-    _direction(Outgoing),
-    _wasRead(false),
-    _filePath(QUrl())
+    m_text(""),
+    m_type(Text),
+    m_direction(Outgoing),
+    m_wasRead(false),
+    m_filePath(QUrl())
 {
 }
 
@@ -26,60 +26,85 @@ QString Message::tagName() const
     return "message";
 }
 
+QString Message::text() const
+{
+    return m_text;
+}
+
 void Message::setText(const QString &text)
 {
-    if (_text != text)
-    {
-        _text = text;
+    if (m_text != text) {
+        m_text = text;
 
         emit textChanged();
     }
 }
 
+Message::Type Message::type() const
+{
+    return m_type;
+}
+
 void Message::setType(const Type type)
 {
-    if (_type != type)
-    {
-        _type = type;
+    if (m_type != type) {
+        m_type = type;
 
         emit typeChanged();
     }
 }
 
+Message::Direction Message::direction() const
+{
+    return m_direction;
+}
+
 void Message::setDirection(const Direction direction)
 {
-    if (_direction != direction)
-    {
-        _direction = direction;
+    if (m_direction != direction) {
+        m_direction = direction;
 
         emit directionChanged();
     }
 }
 
+bool Message::wasRead() const
+{
+    return m_wasRead;
+}
+
 void Message::setWasRead(const bool wasRead)
 {
-    if (_wasRead != wasRead)
-    {
-        _wasRead = wasRead;
+    if (m_wasRead != wasRead) {
+        m_wasRead = wasRead;
 
         emit wasReadChanged();
     }
 }
+
+QUrl Message::filePath() const
+{
+    return m_filePath;
+}
+
 void Message::setFilePath(const QUrl &filePath)
 {
-    if (_filePath != filePath)
-    {
-        _filePath = filePath;
+    if (m_filePath != filePath) {
+        m_filePath = filePath;
 
         emit filePathChanged();
     }
 }
 
+QDateTime Message::sendDateTime() const
+{
+    return m_sendDateTime;
+}
+
 void Message::setSendDateTime(const QDateTime &dateTime)
 {
-    if (_sendDateTime != dateTime)
-    {
-        _sendDateTime = dateTime;
+    if (m_sendDateTime != dateTime) {
+        m_sendDateTime = dateTime;
 
         emit sendDateTimeChanged();
     }
@@ -87,39 +112,29 @@ void Message::setSendDateTime(const QDateTime &dateTime)
 
 bool Message::loadFromDomElement(const QDomElement &domElement)
 {
-    if (AbstractXmlItemObject::loadFromDomElement(domElement))
-    {
+    if (AbstractXmlItemObject::loadFromDomElement(domElement)) {
         QString typeName = domElement.attribute("type", "text");
-        if (typeName == "text")
-        {
+        if (typeName == "text") {
             setType(Text);
-        } else if (typeName == "image")
-        {
+        } else if (typeName == "image") {
             setType(Image);
-        } else if (typeName == "audio")
-        {
+        } else if (typeName == "audio") {
             setType(Audio);
-        } else if (typeName == "video")
-        {
+        } else if (typeName == "video") {
             setType(Video);
-        } else if (typeName == "file")
-        {
+        } else if (typeName == "file") {
             setType(File);
-        } else
-        {
+        } else {
             qWarning() << QString("Invalid message type \"%0\".").arg(typeName);
             setType(Text);
         }
 
         QString directionName = domElement.attribute("direction", "outgoing");
-        if (directionName == "outgoing")
-        {
+        if (directionName == "outgoing") {
             setDirection(Outgoing);
-        } else if (directionName == "incoming")
-        {
+        } else if (directionName == "incoming") {
             setDirection(Incoming);
-        } else
-        {
+        } else {
             qWarning() << QString("Invalid message direction \"%0\".").arg(directionName);
             setDirection(Outgoing);
         }
@@ -127,22 +142,16 @@ bool Message::loadFromDomElement(const QDomElement &domElement)
         setWasRead(domElement.attribute("read", "false") == "true");
 
         QString filePathStr = domElement.attribute("file_path", "");
-        if (!filePathStr.isEmpty())
-        {
+        if (!filePathStr.isEmpty()) {
             setFilePath(QUrl(filePathStr));
-        }
-        else
-        {
+        } else {
             setFilePath(QUrl());
         }
 
         QString sendDateTimeStr = domElement.attribute("send_date_time", "");
-        if (!sendDateTimeStr.isEmpty())
-        {
+        if (!sendDateTimeStr.isEmpty()) {
             setSendDateTime(QDateTime::fromString(sendDateTimeStr, Qt::ISODate));
-        }
-        else
-        {
+        } else {
             setSendDateTime(QDateTime());
         }
 
@@ -158,8 +167,7 @@ QDomElement Message::toDomElement(QDomDocument &domDocument) const
 {
     QDomElement rootElement = AbstractXmlItemObject::toDomElement(domDocument);
 
-    switch (type())
-    {
+    switch (type()) {
     case Text:
         rootElement.setAttribute("type", "text");
         break;
@@ -177,8 +185,7 @@ QDomElement Message::toDomElement(QDomDocument &domDocument) const
         break;
     }
 
-    switch (direction())
-    {
+    switch (direction()) {
     case Outgoing:
         rootElement.setAttribute("direction", "outgoing");
         break;
@@ -187,12 +194,9 @@ QDomElement Message::toDomElement(QDomDocument &domDocument) const
         break;
     }
 
-    if (wasRead())
-    {
+    if (wasRead()) {
         rootElement.setAttribute("read", "true");
-    }
-    else
-    {
+    } else {
         rootElement.setAttribute("read", "false");
     }
 

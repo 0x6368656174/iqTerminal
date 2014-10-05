@@ -44,6 +44,10 @@
 #include "filesystem.h"
 #include "filewatcher.h"
 
+#include "userinfo.h"
+#include "torrents.h"
+#include "applicationmodel.h"
+
 static QObject *core_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine)
@@ -91,6 +95,15 @@ static QObject *fileSystem_singletontype_provider(QQmlEngine *engine, QJSEngine 
 
     return new FileSystem();
 }
+
+static QObject *applictionModel_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+    return ApplicationModel::instance();
+}
+
 
 class TerminalQmlPlugin : public QQmlExtensionPlugin
 {
@@ -160,7 +173,6 @@ public:
         // @uri TerminalQmlPlugin
         qmlRegisterType<MessagesFilterModel>(uri, 1, 0, "MessagesFilterModel");
 
-
         // @uri TerminalQmlPlugin
         qmlRegisterType<AudioRecorder>(uri, 1, 0, "AudioRecorder");
 
@@ -176,6 +188,14 @@ public:
         // @uri TerminalQmlPlugin
         qmlRegisterType<FileWatcher>(uri, 1, 0, "FileWatcher");
 
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<UserInfo>(uri, 1, 0, "UserInfo");
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<Torrents>(uri, 1, 0, "Torrents");
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterSingletonType<ApplicationModel>(uri, 1, 0, "ApplicationModel", applictionModel_singletontype_provider);
     }
 };
 

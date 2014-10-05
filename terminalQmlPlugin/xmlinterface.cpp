@@ -6,84 +6,75 @@
 
 QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source, const QString &element, QDomDocument &domDocument)
 {
-    if (!object)
-    {
+    if (!object) {
         qWarning() << "In XmlInterface::findElement() object can not be NULL.";
         return QDomElement();
     }
 
     QString className = QString(object->metaObject()->className());
 
-    if (!source.isValid())
-    {
+    if (!source.isValid()) {
         qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className);
+                   .arg(element)
+                   .arg(source.toLocalFile())
+                   .arg(className);
         return QDomElement();
     }
 
-    if (element.isEmpty())
-    {
+    if (element.isEmpty()) {
         qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Element must be set first.")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className);
+                   .arg(element)
+                   .arg(source.toLocalFile())
+                   .arg(className);
         return QDomElement();
     }
 
     QFile file (source.toLocalFile());
-    if (!file.exists())
-    {
+    if (!file.exists()) {
         qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. File \"%1\" not exists.")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className);
+                   .arg(element)
+                   .arg(source.toLocalFile())
+                   .arg(className);
         return QDomElement();
     }
-    if (!file.open(QFile::ReadOnly))
-    {
+    if (!file.open(QFile::ReadOnly)) {
         qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Can not open file \"%1\".")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className);
+                   .arg(element)
+                   .arg(source.toLocalFile())
+                   .arg(className);
         return QDomElement();
     }
     QString error;
-    if (!domDocument.setContent(&file, &error))
-    {
+    if (!domDocument.setContent(&file, &error)) {
         qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Parse file \"%1\" error. Error: \"%3\".")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className)
-                      .arg(error);
+                   .arg(element)
+                   .arg(source.toLocalFile())
+                   .arg(className)
+                   .arg(error);
         return QDomElement();
     }
 
     QDomElement rootElement = domDocument.documentElement();
     QStringList domPath = element.split("/", QString::SkipEmptyParts);
 
-    if (rootElement.tagName() != domPath.first())
-    {
+    if (rootElement.tagName() != domPath.first()) {
         qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. In file \"%1\" not found \"%3\".")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className)
-                      .arg(domPath.first());
+                   .arg(element)
+                   .arg(source.toLocalFile())
+                   .arg(className)
+                   .arg(domPath.first());
         return QDomElement();
     }
     domPath.removeFirst();
 
-    foreach (QString domPathString, domPath)
-    {
+    foreach (QString domPathString, domPath) {
         rootElement = rootElement.firstChildElement(domPathString);
-        if (rootElement.isNull())
-        {
+        if (rootElement.isNull()) {
             qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. In file \"%1\" not found \"%3\".")
-                          .arg(element)
-                          .arg(source.toLocalFile())
-                          .arg(className)
-                          .arg(domPathString);
+                       .arg(element)
+                       .arg(source.toLocalFile())
+                       .arg(className)
+                       .arg(domPathString);
             return QDomElement();
         }
     }
@@ -93,52 +84,46 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
 
 QDomElement XmlInterface::createElement(const QObject* object, const QUrl &source, const QString &element, QDomDocument &domDocument)
 {
-    if (!object)
-    {
+    if (!object) {
         qWarning() << "In XmlInterface::createElement() object can not be NULL.";
         return QDomElement();
     }
 
     QString className = QString(object->metaObject()->className());
 
-    if (!source.isValid())
-    {
+    if (!source.isValid()) {
         qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className);
+                   .arg(element)
+                   .arg(source.toLocalFile())
+                   .arg(className);
         return QDomElement();
     }
 
-    if (element.isEmpty())
-    {
+    if (element.isEmpty()) {
         qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. ParentElement must be set first.")
-                      .arg(element)
-                      .arg(source.toLocalFile())
-                      .arg(className);
+                   .arg(element)
+                   .arg(source.toLocalFile())
+                   .arg(className);
         return QDomElement();
     }
 
     QDomElement rootElement;
     QFile file (source.toLocalFile());
-    if (file.exists())
-    {
-        if (!file.open(QFile::ReadOnly))
-        {
+    if (file.exists()) {
+        if (!file.open(QFile::ReadOnly)) {
             qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. Can not open file \"%0\".")
-                          .arg(element)
-                          .arg(source.toLocalFile())
-                          .arg(className);
+                       .arg(element)
+                       .arg(source.toLocalFile())
+                       .arg(className);
             return QDomElement();
         }
         QString error;
-        if (!domDocument.setContent(&file, &error))
-        {
+        if (!domDocument.setContent(&file, &error)) {
             qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. Parse file \"%0\" error. Error: \"%3\".")
-                          .arg(element)
-                          .arg(source.toLocalFile())
-                          .arg(className)
-                          .arg(error);
+                       .arg(element)
+                       .arg(source.toLocalFile())
+                       .arg(className)
+                       .arg(error);
             return QDomElement();
         }
         file.close();
@@ -146,38 +131,32 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
         rootElement = domDocument.documentElement();
         QStringList domPath = element.split("/", QString::SkipEmptyParts);
 
-        if (rootElement.tagName() != domPath.first())
-        {
+        if (rootElement.tagName() != domPath.first()) {
             qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. In file \"%0\" not found \"%3\".")
-                          .arg(element)
-                          .arg(source.toLocalFile())
-                          .arg(className)
-                          .arg(domPath.first());
+                       .arg(element)
+                       .arg(source.toLocalFile())
+                       .arg(className)
+                       .arg(domPath.first());
             return QDomElement();
         }
         domPath.removeFirst();
 
-        foreach (QString domPathString, domPath)
-        {
+        foreach (QString domPathString, domPath) {
             QDomElement parentElement = rootElement;
             rootElement = parentElement.firstChildElement(domPathString);
-            if (rootElement.isNull())
-            {
+            if (rootElement.isNull()) {
                 rootElement = domDocument.createElement(domPathString);
                 parentElement.appendChild(rootElement);
             }
         }
-    }
-    else
-    {
+    } else {
         QStringList domPath = element.split("/", QString::SkipEmptyParts);
 
         rootElement = domDocument.createElement(domPath.first());
         domDocument.appendChild(rootElement);
         domPath.removeFirst();
 
-        foreach (QString domPathString, domPath)
-        {
+        foreach (QString domPathString, domPath) {
             QDomElement parentElement = rootElement;
             rootElement = domDocument.createElement(domPathString);
             parentElement.appendChild(rootElement);
@@ -189,16 +168,14 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
 
 bool XmlInterface::reloadModel(AbstractXmlItemsModel *model, const QUrl &source, const QString &element)
 {
-    if (!model)
-    {
+    if (!model) {
         qWarning() << "In XmlInterface::reoladModel() model can not be NULL.";
         return false;
     }
 
     QDomDocument domDoc;
     QDomElement rootElement = findElement(model, source, element, domDoc);
-    if (!rootElement.isNull())
-    {
+    if (!rootElement.isNull()) {
         return model->loadFromDomElement(rootElement);
     }
 
@@ -207,16 +184,14 @@ bool XmlInterface::reloadModel(AbstractXmlItemsModel *model, const QUrl &source,
 
 bool XmlInterface::saveModel(const AbstractXmlItemsModel *model, const QUrl &source, const QString &element)
 {
-    if (!model)
-    {
+    if (!model) {
         qWarning() << "In XmlInterface::saveModel() model can not be NULL.";
         return false;
     }
 
     QDomDocument domDoc;
     QDomElement rootElement = createElement(model, source, element, domDoc);
-    if (!rootElement.isNull())
-    {
+    if (!rootElement.isNull()) {
         //Пересоздадим основной элемент
         QDomElement oldRootElement = rootElement;
         rootElement = domDoc.createElement(rootElement.tagName());
@@ -226,8 +201,7 @@ bool XmlInterface::saveModel(const AbstractXmlItemsModel *model, const QUrl &sou
         model->appendItemsToDomElement(rootElement, domDoc);
 
         QFile file (source.toLocalFile());
-        if(file.open(QFile::WriteOnly))
-        {
+        if(file.open(QFile::WriteOnly)) {
             QTextStream ts(&file);
             ts.setCodec("UTF-8");
             ts << domDoc.toString();

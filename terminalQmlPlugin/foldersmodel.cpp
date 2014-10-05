@@ -3,14 +3,14 @@
 
 FoldersModel::FoldersModel(QObject *parent) :
     AbstractXmlItemsModel(parent),
-    _source(QUrl()),
-    _parentElement(""),
-    _fileAdditionalData(NULL)
+    m_source(QUrl()),
+    m_parentElement(""),
+    m_fileAdditionalData(nullptr)
 {
-    _roles[Id] = "folder_id";
-    _roles[Name] = "folder_name";
-    _roles[AdditionalData] = "folder_additional_data";
-    _roles[FilesModel] = "folder_files_model";
+    m_roles[Id] = "folder_id";
+    m_roles[Name] = "folder_name";
+    m_roles[AdditionalData] = "folder_additional_data";
+    m_roles[FilesModel] = "folder_files_model";
 
     connect(this, SIGNAL(itemAdditionalDataChanged()), this, SIGNAL(folderAdditionalDataChanged()));
 }
@@ -21,14 +21,24 @@ AbstractXmlItemObject * FoldersModel::newItem()
     connect(newItem, SIGNAL(idChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
-    newItem->filesModel()->setItemAdditionalData(_fileAdditionalData);
+    newItem->filesModel()->setItemAdditionalData(m_fileAdditionalData);
     return newItem;
+}
+
+QHash<int, QByteArray> FoldersModel::roleNames() const
+{
+    return m_roles;
+}
+
+QUrl FoldersModel::source() const
+{
+    return m_source;
 }
 
 void FoldersModel::setSource(const QUrl &source)
 {
-    if(_source != source) {
-        _source = source;
+    if(m_source != source) {
+        m_source = source;
 
         emit sourceChanged();
 
@@ -37,10 +47,15 @@ void FoldersModel::setSource(const QUrl &source)
     }
 }
 
+QString FoldersModel::parentElement() const
+{
+    return m_parentElement;
+}
+
 void FoldersModel::setParentElement(const QString &parentElement)
 {
-    if (_parentElement != parentElement) {
-        _parentElement = parentElement;
+    if (m_parentElement != parentElement) {
+        m_parentElement = parentElement;
 
         emit parentElementChanged();
 
@@ -49,10 +64,22 @@ void FoldersModel::setParentElement(const QString &parentElement)
     }
 }
 
+QQmlComponent* FoldersModel::fileAdditionalData() const
+{
+    return m_fileAdditionalData;
+}
+
 void FoldersModel::setFileAdditionalData(QQmlComponent *fileAdditionalData)
 {
-    if (_fileAdditionalData != fileAdditionalData) {
-        _fileAdditionalData = fileAdditionalData;
+    if (m_fileAdditionalData != fileAdditionalData) {
+        m_fileAdditionalData = fileAdditionalData;
+
+        //Установим новые дополнительные данные для всех существующих объектов
+        for (int i = 0; i < rowCount(); i++) {
+            Folder *folder = qobject_cast<Folder* >(get(i));
+            if (folder)
+                folder->filesModel()->setItemAdditionalData(fileAdditionalData);
+        }
 
         emit fileAdditionalDataChanged();
     }

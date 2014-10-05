@@ -5,8 +5,8 @@
 
 File::File(QObject *parent) :
     AbstractXmlItemObject(parent),
-    _path(""),
-    _name("")
+    m_path(""),
+    m_name("")
 {
 }
 
@@ -22,21 +22,29 @@ QString File::tagName() const
     return "file";
 }
 
+QString File::path() const
+{
+    return m_path;
+}
+
 void File::setPath(const QString &path)
 {
-    if (_path != path)
-    {
-        _path = path;
+    if (m_path != path) {
+        m_path = path;
 
         emit pathChanged();
     }
 }
 
+QString File::name() const
+{
+    return m_name;
+}
+
 void File::setName(const QString &name)
 {
-    if (_name != name)
-    {
-        _name = name;
+    if (m_name != name) {
+        m_name = name;
 
         emit nameChanged();
     }
@@ -44,11 +52,9 @@ void File::setName(const QString &name)
 
 bool File::loadFromPath(const QUrl &path)
 {
-    if (path.isValid())
-    {
+    if (path.isValid()) {
         QFileInfo info (path.toLocalFile());
-        if (info.exists())
-        {
+        if (info.exists()) {
             setName(info.fileName());
             setPath(path.toString());
             return true;
@@ -59,26 +65,19 @@ bool File::loadFromPath(const QUrl &path)
 
 bool File::loadFromDomElement(const QDomElement &domElement)
 {
-    if (AbstractXmlItemObject::loadFromDomElement(domElement))
-    {
+    if (AbstractXmlItemObject::loadFromDomElement(domElement)) {
 
         QDomElement pathElement = domElement.firstChildElement("path");
-        if (!pathElement.isNull())
-        {
+        if (!pathElement.isNull()) {
             setPath(pathElement.text());
-        }
-        else
-        {
+        } else {
             setPath("");
         }
 
         QDomElement nameElement = domElement.firstChildElement("name");
-        if (!nameElement.isNull())
-        {
+        if (!nameElement.isNull()) {
             setName(nameElement.text());
-        }
-        else
-        {
+        } else {
             setName("");
         }
 

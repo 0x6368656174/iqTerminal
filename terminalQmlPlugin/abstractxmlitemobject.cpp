@@ -3,28 +3,39 @@
 
 AbstractXmlItemObject::AbstractXmlItemObject(QObject *parent) :
     QObject(parent),
-    _id(-1),
-    _additionalData(NULL)
+    m_id(-1),
+    m_additionalData(nullptr)
 {
+}
+
+qint64 AbstractXmlItemObject::id() const
+{
+    return m_id;
 }
 
 void AbstractXmlItemObject::setId(const qint64 id)
 {
-    if (_id != id)
-    {
-        _id = id;
+    if (m_id != id) {
+        m_id = id;
 
         emit idChanged();
     }
 }
 
+QObject *AbstractXmlItemObject::additionalData() const
+{
+    return m_additionalData;
+}
+
 void AbstractXmlItemObject::setAdditionalData(QObject *additionalData)
 {
-    if (_additionalData != additionalData)
-    {
-        _additionalData = additionalData;
-        if(_additionalData)
-            _additionalData->setParent(this);
+    if (m_additionalData != additionalData) {
+        if (m_additionalData)
+            m_additionalData->deleteLater();
+
+        if(m_additionalData)
+            m_additionalData->setParent(this);
+        m_additionalData = additionalData;
 
         emit additionalDataChanged();
     }
@@ -37,28 +48,23 @@ void AbstractXmlItemObject::reset()
 
 bool AbstractXmlItemObject::loadFromDomElement(const QDomElement &domElement)
 {
-    if (domElement.isNull())
-    {
+    if (domElement.isNull()) {
         reset();
         return false;
     }
 
-    if (domElement.tagName() != tagName())
-    {
+    if (domElement.tagName() != tagName()) {
         qWarning() << QString("Dom Element is not \"%0\"")
-                      .arg(tagName());
+                   .arg(tagName());
         reset();
         return false;
     }
 
-    if (domElement.hasAttribute("id"))
-    {
+    if (domElement.hasAttribute("id")) {
         setId(domElement.attribute("id").toLongLong());
-    }
-    else
-    {
+    } else {
         qWarning() << QString("In parsing \"%0\" element found element without id, skipped...")
-                      .arg(tagName());
+                   .arg(tagName());
         reset();
         return false;
     }

@@ -28,7 +28,7 @@ public:
     void appendItemsToDomElement(QDomElement &rootElement, QDomDocument &domDocument) const;
 
 public:
-    virtual inline int rowCount(const QModelIndex &parent = QModelIndex()) const {Q_UNUSED(parent); return _items.count();}
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
     virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex());
 
@@ -37,7 +37,7 @@ public:
 public:
     int count() const {return rowCount();}
 
-    inline QQmlComponent *itemAdditionalData() const {return _itemAdditionalData;}
+    QQmlComponent *itemAdditionalData() const;
     void setItemAdditionalData(QQmlComponent *itemAdditionalData);
 
 signals:
@@ -53,9 +53,9 @@ protected slots:
     void itemDataChanged();
 
 private:
-    QList<AbstractXmlItemObject *> _items;
-    QQmlComponent *_itemAdditionalData;
-    mutable QString _itemTagName;
+    QList<AbstractXmlItemObject *> m_items;
+    QQmlComponent *m_itemAdditionalData;
+    mutable QString m_itemTagName;
 
     qint64 newId() const;
 

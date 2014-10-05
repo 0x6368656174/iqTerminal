@@ -27,7 +27,7 @@ public:
     Q_INVOKABLE bool save();
 
 public:
-    virtual inline QHash<int, QByteArray> roleNames() const {return _roles;}
+    virtual QHash<int, QByteArray> roleNames() const;
 
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
@@ -35,10 +35,10 @@ protected:
     virtual AbstractXmlItemObject * newItem();
 
 public:
-    inline QUrl source() const {return _source;}
+    QUrl source() const;
     void setSource(const QUrl &source);
 
-    inline QString parentElement() const {return _parentElement;}
+    QString parentElement() const;
     void setParentElement(const QString &parentElement);
 
 signals:
@@ -46,9 +46,9 @@ signals:
     void parentElementChanged();
 
 private:
-    QHash<int, QByteArray> _roles;
-    QUrl _source;
-    QString _parentElement;
+    QHash<int, QByteArray> m_roles;
+    QUrl m_source;
+    QString m_parentElement;
 };
 
 #endif // USERSMODEL_H

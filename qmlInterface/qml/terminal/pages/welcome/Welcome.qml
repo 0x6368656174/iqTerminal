@@ -366,7 +366,7 @@ Page {
             anchors.top: buttonTitle.bottom
             anchors.topMargin: Core.dp(4)
             height: Core.dp(28)
-            width: Core.dp(28)*4+Core.dp(4)*3
+            width: Core.dp(28)*5+Core.dp(4)*4
             spacing: Core.dp(4)
 
             Item {
@@ -390,7 +390,8 @@ Page {
                     onClicked: welcomePage.state = "registerPage"
                 }
 
-            }Item {
+            }
+            Item {
                 width: Core.dp(28)
                 height: width
                 enabled: !main.autorized
@@ -400,7 +401,8 @@ Page {
                     source: "../../images/7.png"
                     onClicked: welcomePage.state = "remindPage"
                 }
-            }Item {
+            }
+            Item {
                 width: Core.dp(28)
                 height: width
                 enabled: main.autorized
@@ -409,6 +411,16 @@ Page {
                     anchors.centerIn: parent
                     source: "../../images/8.png"
                     onClicked: welcomePage.state = "changePage"
+                }
+            }
+            Item {
+                width: Core.dp(28)
+                height: width
+                Welcome.Button {
+                    id: helpButton
+                    anchors.centerIn: parent
+                    source: "../../images/205.png"
+                    onClicked: Qt.openUrlExternally("http://www.ya.ru")
                 }
             }
         }

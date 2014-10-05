@@ -2,8 +2,8 @@
 
 AbstractXmlItemsFilterModel::AbstractXmlItemsFilterModel(QObject *parent) :
     QSortFilterProxyModel(parent),
-    _filterModel(NULL),
-    _filterString("")
+    m_filterModel(nullptr),
+    m_filterString("")
 {
     setFilterKeyColumn(1);
     setFilterCaseSensitivity(Qt::CaseInsensitive);
@@ -12,13 +12,22 @@ AbstractXmlItemsFilterModel::AbstractXmlItemsFilterModel(QObject *parent) :
     connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SIGNAL(countChanged()));
 }
 
+int AbstractXmlItemsFilterModel::count() const
+{
+    return rowCount();
+}
+
+AbstractXmlItemsModel *AbstractXmlItemsFilterModel::filterModel() const
+{
+    return m_filterModel;
+}
+
 void AbstractXmlItemsFilterModel::setFilterModel(AbstractXmlItemsModel *filterModel)
 {
-    if (_filterModel != filterModel)
-    {
+    if (m_filterModel != filterModel) {
         int oldCount = count();
-        _filterModel = filterModel;
-        setSourceModel(_filterModel);
+        m_filterModel = filterModel;
+        setSourceModel(m_filterModel);
 
         if (oldCount != count())
             emit countChanged();
@@ -26,11 +35,15 @@ void AbstractXmlItemsFilterModel::setFilterModel(AbstractXmlItemsModel *filterMo
     }
 }
 
+QString AbstractXmlItemsFilterModel::filterString() const
+{
+    return m_filterString;
+}
+
 void AbstractXmlItemsFilterModel::setFilterString(const QString &filterString)
 {
-    if (_filterString != filterString)
-    {
-        _filterString = filterString;
+    if (m_filterString != filterString) {
+        m_filterString = filterString;
 
         emit filterStringChanged();
 
@@ -41,12 +54,12 @@ void AbstractXmlItemsFilterModel::setFilterString(const QString &filterString)
 AbstractXmlItemObject * AbstractXmlItemsFilterModel::get(const int row) const
 {
     if (row < 0 || row > rowCount() - 1)
-        return NULL;
+        return nullptr;
 
-    if (!_filterModel)
-        return NULL;
+    if (!m_filterModel)
+        return nullptr;
 
-    return _filterModel->get(mapToSource(index(row, 0)).row());
+    return m_filterModel->get(mapToSource(index(row, 0)).row());
 }
 
 bool AbstractXmlItemsFilterModel::remove(int row)
@@ -54,8 +67,8 @@ bool AbstractXmlItemsFilterModel::remove(int row)
     if (row < 0 || row > rowCount() - 1)
         return false;
 
-    if (!_filterModel)
+    if (!m_filterModel)
         return false;
 
-    return _filterModel->remove(mapToSource(index(row, 0)).row());
+    return m_filterModel->remove(mapToSource(index(row, 0)).row());
 }

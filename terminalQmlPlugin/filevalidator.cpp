@@ -9,8 +9,7 @@ FileValidator::FileValidator(QObject *parent) :
 
 bool FileValidator::isImage(const QUrl &url)
 {
-    if (url.isEmpty())
-    {
+    if (url.isEmpty()) {
         qWarning() << tr("URL is empty.");
         return false;
     }

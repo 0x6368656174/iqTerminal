@@ -20,23 +20,19 @@ QString Base64::fromBase64(const QString &data) const
 
 QString Base64::fileToBase64(const QUrl &url)
 {
-    if (url.isEmpty())
-    {
+    if (url.isEmpty()) {
         qWarning() << tr("URL is empty.");
         return QString();
     }
 
     QFile file(url.path());
-    if ( file.open(QIODevice::ReadOnly) )
-    {
+    if ( file.open(QIODevice::ReadOnly) ) {
         QByteArray fileContent = file.readAll();
 
         file.close();
 
         return QString(fileContent.toBase64());
-    }
-    else
-    {
+    } else {
         qWarning() <<tr ("Unable to open the file %0.").arg(url.path());
         return QString();
     }

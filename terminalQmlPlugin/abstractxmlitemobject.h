@@ -22,10 +22,10 @@ protected:
     virtual void reset();
 
 public:
-    inline qint64 id() const {return _id;}
+    qint64 id() const;
     void setId(const qint64 id);
 
-    inline QObject *additionalData() const {return _additionalData;}
+    QObject *additionalData() const;
     void setAdditionalData(QObject *additionalData);
 
 signals:
@@ -33,8 +33,8 @@ signals:
     void additionalDataChanged();
 
 private:
-    qint64 _id;
-    QObject *_additionalData;
+    qint64 m_id;
+    QObject *m_additionalData;
 };
 
 #endif // ABSTRACTXMLITEMOBJECT_H

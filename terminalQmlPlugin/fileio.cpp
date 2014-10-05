@@ -9,15 +9,20 @@ FileIO::FileIO(QObject *parent) :
 {
 }
 
+QUrl FileIO::source() const
+{
+    return m_source;
+}
+
 void FileIO::setSource(const QUrl &source)
 {
-    if (_source != source) {
+    if (m_source != source) {
         if (QFile::exists(source.toLocalFile())) {
-            _source = source;
+            m_source = source;
         } else {
             emit error(tr("File not found."));
             qWarning() << tr("Not found %0.").arg(source.toString());
-            _source.clear();
+            m_source.clear();
         }
 
         emit sourceChanged();
@@ -26,13 +31,13 @@ void FileIO::setSource(const QUrl &source)
 
 QString FileIO::read()
 {
-    if (_source.isEmpty()) {
+    if (m_source.isEmpty()) {
         emit error(tr("Source is empty."));
         qWarning() << tr("Source is empty.");
         return QString();
     }
 
-    QFile file(_source.toLocalFile());
+    QFile file(m_source.toLocalFile());
     QString fileContent;
     if ( file.open(QIODevice::ReadOnly) ) {
         QString line;
@@ -44,8 +49,8 @@ QString FileIO::read()
 
         file.close();
     } else {
-        emit error(tr("Unable to open the file %0.").arg(_source.toLocalFile()));
-        qWarning() <<tr ("Unable to open the file %0.").arg(_source.toLocalFile());
+        emit error(tr("Unable to open the file %0.").arg(m_source.toLocalFile()));
+        qWarning() <<tr ("Unable to open the file %0.").arg(m_source.toLocalFile());
         return QString();
     }
     return fileContent;
@@ -53,20 +58,20 @@ QString FileIO::read()
 
 bool FileIO::write(const QString& data)
 {
-    if (_source.isEmpty()) {
+    if (m_source.isEmpty()) {
         emit error(tr("Source is empty."));
         qWarning() << tr("Source is empty.");
         return false;
     }
 
-    QFile file(_source.toLocalFile());
+    QFile file(m_source.toLocalFile());
     if (!file.open(QFile::WriteOnly)) {
-        QFileInfo info (_source.toLocalFile());
+        QFileInfo info (m_source.toLocalFile());
         qDebug() << info.exists();
         qDebug() << info.size();
 
-        emit error(tr("Unable to open the file %0.").arg(_source.toLocalFile()));
-        qWarning() << tr("Unable to open the file %0.").arg(_source.toLocalFile());
+        emit error(tr("Unable to open the file %0.").arg(m_source.toLocalFile()));
+        qWarning() << tr("Unable to open the file %0.").arg(m_source.toLocalFile());
         return false;
     }
 

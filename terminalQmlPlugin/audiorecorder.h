@@ -17,13 +17,13 @@ public:
     Q_INVOKABLE void stop();
 
 public:
-    inline QUrl outputLocation() const {return _recored->outputLocation();}
+    QUrl outputLocation() const;
 
 signals:
     void outputLocationChanged();
 
 private:
-    QAudioRecorder *_recored;
+    QAudioRecorder *m_recored;
 };
 
 #endif // AUDIORECORDER_H

@@ -127,8 +127,8 @@ Page {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                userInfo.userProfile = userProfile
-                showRightPage(userInfo.name)
+                userInfoPage.userProfile = userProfile
+                showRightPage(userInfoPage.name)
             }
         }
     }
@@ -205,7 +205,7 @@ Page {
                 anchors.right: parent.right
                 anchors.top: triangleOne.bottom
                 anchors.bottom: triangleTwo.top
-                color: message_direction === Message.Incoming?"#f25d26":"#cdcdcd"
+                color: message_direction === Message.Incoming?"#f25d26":"#888888"
 
                 Image {
                     id: typeImage

@@ -6,10 +6,10 @@
 
 TorrentFolder::TorrentFolder(QObject *parent) :
     Folder(parent),
-    _sidsAvailability(0),
-    _inProcess(false),
-    _size(0),
-    _downloadedSize(0)
+    m_sidsAvailability(0),
+    m_inProcess(false),
+    m_size(0),
+    m_downloadedSize(0)
 {
     connect(filesModel(), SIGNAL(filesSumSizeChanged()), this, SLOT(updateSize()));
     connect(filesModel(), SIGNAL(filesDownloadedSumSizeChanged()), this, SLOT(updateDownloadedSize()));
@@ -27,41 +27,57 @@ void TorrentFolder::reset()
     setInProcess(false);
 }
 
+qint32 TorrentFolder::sidsAvailability() const
+{
+    return m_sidsAvailability;
+}
+
 void TorrentFolder::setSidsAvailability(const qint32 sidsAvailability)
 {
-    if (_sidsAvailability != sidsAvailability)
-    {
-        _sidsAvailability = sidsAvailability;
+    if (m_sidsAvailability != sidsAvailability) {
+        m_sidsAvailability = sidsAvailability;
 
         emit sidsAvailabilityChanged();
     }
 }
 
+bool TorrentFolder::inProcess() const
+{
+    return m_inProcess;
+}
+
 void TorrentFolder::setInProcess(const bool loadingInProcess)
 {
-    if (_inProcess != loadingInProcess)
-    {
-        _inProcess = loadingInProcess;
+    if (m_inProcess != loadingInProcess) {
+        m_inProcess = loadingInProcess;
 
         emit inProcessChanged();
     }
 }
 
+qint64 TorrentFolder::size() const
+{
+    return m_size;
+}
+
 void TorrentFolder::setSize(const qint64 size)
 {
-    if (_size != size)
-    {
-        _size = size;
+    if (m_size != size) {
+        m_size = size;
 
         emit sizeChanged();
     }
 }
 
+qint64 TorrentFolder::downloadedSize() const
+{
+    return m_downloadedSize;
+}
+
 void TorrentFolder::setDownloadedSize(const qint64 downloadedSize)
 {
-    if (_downloadedSize != downloadedSize)
-    {
-        _downloadedSize = downloadedSize;
+    if (m_downloadedSize != downloadedSize) {
+        m_downloadedSize = downloadedSize;
 
         emit downloadedSizeChanged();
     }
@@ -79,25 +95,18 @@ void TorrentFolder::updateDownloadedSize()
 
 bool TorrentFolder::loadFromDomElement(const QDomElement &domElement)
 {
-    if (Folder::loadFromDomElement(domElement))
-    {
+    if (Folder::loadFromDomElement(domElement)) {
         QDomElement sidsAvailabilityElement = domElement.firstChildElement("availability");
-        if (!sidsAvailabilityElement.isNull())
-        {
+        if (!sidsAvailabilityElement.isNull()) {
             setSidsAvailability(sidsAvailabilityElement.text().toInt());
-        }
-        else
-        {
+        } else {
             setSidsAvailability(0);
         }
 
         QDomElement inProcessElement = domElement.firstChildElement("in_process");
-        if (!inProcessElement.isNull())
-        {
+        if (!inProcessElement.isNull()) {
             setInProcess(inProcessElement.text().compare("true", Qt::CaseInsensitive) == 0);
-        }
-        else
-        {
+        } else {
             setInProcess(false);
         }
         return true;

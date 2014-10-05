@@ -24,7 +24,7 @@ public:
     qint64 filesDownloadedSumSize() const;
 
 public:
-    virtual inline QHash<int, QByteArray> roleNames() const {return _roles;}
+    virtual QHash<int, QByteArray> roleNames() const;
 
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
@@ -36,7 +36,7 @@ signals:
     void filesDownloadedSumSizeChanged();
 
 private:
-    QHash<int, QByteArray> _roles;
+    QHash<int, QByteArray> m_roles;
 };
 
 #endif // TORRENTFILESMODEL_H

@@ -27,15 +27,15 @@ protected:
     virtual void reset();
 
 public:
-    inline qint32 sidsAvailability() const {return _sidsAvailability;}
+    qint32 sidsAvailability() const;
     void setSidsAvailability(const qint32 sidsAvailability);
 
-    inline bool inProcess() const {return _inProcess;}
+    bool inProcess() const;
     void setInProcess(const bool inProcess);
 
-    inline qint64 size() const {return _size;}
+    qint64 size() const;
 
-    inline qint64 downloadedSize() const {return _downloadedSize;}
+    qint64 downloadedSize() const;
 
 signals:
     void sidsAvailabilityChanged();
@@ -48,10 +48,10 @@ private slots:
     void updateDownloadedSize();
 
 private:
-    qint32 _sidsAvailability;
-    bool _inProcess;
-    qint64 _size;
-    qint64 _downloadedSize;
+    qint32 m_sidsAvailability;
+    bool m_inProcess;
+    qint64 m_size;
+    qint64 m_downloadedSize;
 
     void setSize(const qint64 size);
     void setDownloadedSize(const qint64 downloadedSize);

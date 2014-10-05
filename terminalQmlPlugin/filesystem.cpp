@@ -11,15 +11,13 @@ FileSystem::FileSystem(QObject *parent) :
 
 bool FileSystem::cp(const QUrl &source, const QUrl &destination)
 {
-    if (!QFile::exists(source.toLocalFile()))
-    {
+    if (!QFile::exists(source.toLocalFile())) {
         qWarning() << QString("File %0 not exists.").arg(source.toLocalFile());
         return false;
     }
 
     QFileInfo fi (destination.toLocalFile());
-    if (fi.isDir())
-    {
+    if (fi.isDir()) {
         return QFile::copy(source.toLocalFile(), destination.toLocalFile() + "/" + source.fileName());
     }
 

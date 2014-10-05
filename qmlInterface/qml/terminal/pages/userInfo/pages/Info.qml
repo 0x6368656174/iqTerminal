@@ -59,7 +59,7 @@ Page {
                     cache: false
                     anchors.fill: parent
                     fillMode: Image.PreserveAspectFit
-                    source: "image://xml/" + userProfileModel.source
+                    source: "image://xml/" + userInfo.userProfile.source
                 }
             }
 
@@ -116,7 +116,7 @@ Page {
                 anchors.bottom: parent.bottom
                 anchors.margins: Core.dp(2)
                 fillMode: Image.PreserveAspectFit
-                source: "image://xml/" + userProfileModel.source
+                source: "image://xml/" + userInfo.userProfile.source
                 scale: {
                     if (flickItem.contentY < photoRect.height - height)
                         return 0
@@ -138,7 +138,7 @@ Page {
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: Core.dp(8)
-                text: userProfileModel.name
+                text: userInfo.userProfile.name
                 font.bold: true
             }
 
@@ -152,10 +152,10 @@ Page {
                 font.bold: true
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: Core.dp(8)
-                text: userProfileModel.name
+                text: userInfo.userProfile.name
                 onVisibleChanged: {
                     if (visible) {
-                        text = userProfileModel.name
+                        text = userInfo.userProfile.name
                         forceActiveFocus()
                     }
                 }
@@ -232,12 +232,12 @@ Page {
         CreateNewButton {
             id: createNewButton
             anchors.top: stateSpacer.bottom
-            visible: userProfileModel.stateModel.count === 0
+            visible: userInfo.userProfile.stateModel.count === 0
             enabled: !privateData.isEdited
             text: qsTr("Новый")
             spacerVisible: false
             onClicked: {
-                var newSatate = userProfileModel.stateModel.appendNew()
+                var newSatate = userInfo.userProfile.stateModel.appendNew()
             }
         }
 
@@ -259,7 +259,7 @@ Page {
             anchors.left: parent.left
             anchors.right: parent.right
             height: infoPage.height - nameContainter.height - stateTextContainer.height - stateSpacer.height - photoRect.height + flickItem.contentY - Core.dp(22) - editBar.anchors.bottomMargin + 1
-            model: userProfileModel.stateModel
+            model: userInfo.userProfile.stateModel
 
             add: Transition {
                 NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 400 }
@@ -421,13 +421,13 @@ Page {
 
         addButtonEnabled: {
             if (photoIsEdited) {
-                if (userProfileModel.photoIsNull()) {
+                if (userInfo.userProfile.photoIsNull()) {
                     return true
                 } else {
                     return false
                 }
             } else if (nameIsEdited) {
-                if (userProfileModel.name === "") {
+                if (userInfo.userProfile.name === "") {
                     return true
                 } else {
                     return false
@@ -440,13 +440,13 @@ Page {
 
         removeButtonEnabled: {
             if (photoIsEdited) {
-                if (!userProfileModel.photoIsNull()) {
+                if (!userInfo.userProfile.photoIsNull()) {
                     return true
                 } else {
                     return false
                 }
             } else if (nameIsEdited) {
-                if (userProfileModel.name !== "") {
+                if (userInfo.userProfile.name !== "") {
                     return true
                 } else {
                     return false
@@ -459,13 +459,13 @@ Page {
 
         editButtonEnabled: {
             if (photoIsEdited) {
-                if (!userProfileModel.photoIsNull()) {
+                if (!userInfo.userProfile.photoIsNull()) {
                     return true
                 } else {
                     return false
                 }
             } else if (nameIsEdited) {
-                if (userProfileModel.name !== "") {
+                if (userInfo.userProfile.name !== "") {
                     return true
                 } else {
                     return false
@@ -488,30 +488,30 @@ Page {
         onSubmit: {
             if (photoIsEdited) {
                 if (editRole === "remove") {
-                    userProfileModel.removePhoto()
-                    userProfileModel.save()
+                    userInfo.userProfile.removePhoto()
+                    userInfo.userProfile.save()
                     reloadPhotos()
                 }
             } else if (nameIsEdited) {
                 if (editRole === "edit" || editRole === "add") {
-                    userProfileModel.name = nameTextEditor.text
+                    userInfo.userProfile.name = nameTextEditor.text
                 } else if (editRole === "remove") {
-                    userProfileModel.name = ""
+                    userInfo.userProfile.name = ""
                 }
-                userProfileModel.save()
+                userInfo.userProfile.save()
             } else if (stateIsEdited) {
-                for (var i = 0; i < userProfileModel.stateModel.count; i++) {
-                    var state = userProfileModel.stateModel.get(i)
+                for (var i = 0; i < userInfo.userProfile.stateModel.count; i++) {
+                    var state = userInfo.userProfile.stateModel.get(i)
                     if(state.additionalData.isEdited) {
                         if (editRole === "add") {
-                            userProfileModel.stateModel.insertNew(i+1)
+                            userInfo.userProfile.stateModel.insertNew(i+1)
                         } else if (editRole === "edit") {
                             state.name = state.additionalData.nameToSave
                             state.text = state.additionalData.textToSave
                         } else if (editRole === "remove") {
-                            userProfileModel.stateModel.remove(i)
+                            userInfo.userProfile.stateModel.remove(i)
                         }
-                        userProfileModel.save()
+                        userInfo.userProfile.save()
                         break
                     }
                 }
@@ -523,9 +523,9 @@ Page {
         onCansel: {
             privateData.photoIsEdited = false
             privateData.nameIsEdited = false
-            nameTextEditor.text = userProfileModel.name
-            for (var i = 0; i < userProfileModel.stateModel.count; i++) {
-                userProfileModel.stateModel.get(i).additionalData.isEdited = false
+            nameTextEditor.text = userInfo.userProfile.name
+            for (var i = 0; i < userInfo.userProfile.stateModel.count; i++) {
+                userInfo.userProfile.stateModel.get(i).additionalData.isEdited = false
             }
             privateData.isEdited = false
         }
@@ -535,8 +535,8 @@ Page {
                 photoIsEdited = privateData.photoIsEdited
                 nameIsEdited = privateData.nameIsEdited
                 stateIsEdited = false
-                for (var i = 0; i < userProfileModel.stateModel.count; i++) {
-                    if(userProfileModel.stateModel.get(i).additionalData.isEdited) {
+                for (var i = 0; i < userInfo.userProfile.stateModel.count; i++) {
+                    if(userInfo.userProfile.stateModel.get(i).additionalData.isEdited) {
                         stateIsEdited = true
                         break
                     }
@@ -551,8 +551,8 @@ Page {
         title: qsTr("Выбирите изображени")
 
         onAccepted: {
-            userProfileModel.setPhoto(fileUrl)
-            userProfileModel.save()
+            userInfo.userProfile.setPhoto(fileUrl)
+            userInfo.userProfile.save()
             reloadPhotos()
         }
     }

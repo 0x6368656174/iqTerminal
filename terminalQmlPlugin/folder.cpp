@@ -4,8 +4,8 @@
 
 Folder::Folder(QObject *parent) :
     AbstractXmlItemObject(parent),
-    _filesModel(NULL),
-    _name("")
+    m_filesModel(nullptr),
+    m_name("")
 {
 }
 
@@ -28,23 +28,24 @@ AbstractXmlItemsModel * Folder::newFilesModel() const
 
 FilesModel *Folder::filesModel() const
 {
-    if (_filesModel)
-    {
-        return _filesModel;
+    if (m_filesModel) {
+        return m_filesModel;
+    } else {
+        m_filesModel = qobject_cast<FilesModel *>(newFilesModel());
+        return m_filesModel;
     }
-    else
-    {
-        _filesModel = qobject_cast<FilesModel *>(newFilesModel());
-        return _filesModel;
-    }
-    return NULL;
+    return nullptr;
+}
+
+QString Folder::name() const
+{
+    return m_name;
 }
 
 void Folder::setName(const QString &name)
 {
-    if (_name != name)
-    {
-        _name = name;
+    if (m_name != name) {
+        m_name = name;
 
         emit nameChanged();
     }
@@ -52,15 +53,11 @@ void Folder::setName(const QString &name)
 
 bool Folder::loadFromDomElement(const QDomElement &domElement)
 {
-    if (AbstractXmlItemObject::loadFromDomElement(domElement))
-    {
+    if (AbstractXmlItemObject::loadFromDomElement(domElement)) {
         QDomElement nameElement = domElement.firstChildElement("name");
-        if (!nameElement.isNull())
-        {
+        if (!nameElement.isNull()) {
             setName(nameElement.text());
-        }
-        else
-        {
+        } else {
             setName("");
         }
 
@@ -86,11 +83,9 @@ QDomElement Folder::toDomElement(QDomDocument &domDocument) const
 bool Folder::loadFromPath(const QUrl &path)
 {
     reset();
-    if (path.isValid())
-    {
+    if (path.isValid()) {
         QDir dir(path.toLocalFile());
-        if (dir.exists())
-        {
+        if (dir.exists()) {
             setName(dir.dirName());
 
             loadFromDir(path);
@@ -103,19 +98,13 @@ bool Folder::loadFromPath(const QUrl &path)
 
 void Folder::loadFromDir(const QUrl &path)
 {
-    if (path.isValid())
-    {
+    if (path.isValid()) {
         QDir dir(path.toLocalFile());
-        if (dir.exists())
-        {
-            foreach (QFileInfo fileInfo, dir.entryInfoList(QDir::AllEntries | QDir::NoDotAndDotDot))
-            {
-                if (fileInfo.isDir())
-                {
+        if (dir.exists()) {
+            foreach (QFileInfo fileInfo, dir.entryInfoList(QDir::AllEntries | QDir::NoDotAndDotDot)) {
+                if (fileInfo.isDir()) {
                     loadFromDir(QUrl::fromLocalFile(fileInfo.absoluteFilePath()));
-                }
-                else
-                {
+                } else {
                     filesModel()->appendNew(QUrl::fromLocalFile(fileInfo.absoluteFilePath()));
                 }
             }
