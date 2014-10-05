@@ -10,6 +10,17 @@ Page {
     id: allPage
     name: "all"
 
+    Component {
+        id: allModelAdditionalData
+        QtObject {
+            property bool isSelect: false
+        }
+    }
+
+    Component.onCompleted: {
+        applicationModel.allModel.itemAdditionalData = allModelAdditionalData
+    }
+
     BackButton {
         anchors.right: parent.right
         anchors.top: parent.top
@@ -23,8 +34,7 @@ Page {
 
     UsersFilterModel {
         id: usersModel
-        userProfilesDir: Core.dataDir + "/users/"
-        filterModel: usersAllModel
+        filterModel: applicationModel.allModel
     }
 
     GridView {
@@ -55,12 +65,6 @@ Page {
             height: usersView.cellHeight - Core.dp(2)
             color: "#6c676e"
 
-            UserProfile {
-                id: userProfile
-                source: Core.dataDir + "users/" + user_profile
-                parentElement: "user/info"
-            }
-
             Item
             {
                 anchors.top: parent.top
@@ -74,7 +78,7 @@ Page {
                     Image {
                         id: photoImage
                         anchors.fill: parent
-                        source: "image://xml/" + userProfile.source
+                        source: "image://xml/" + user_info.userProfile.source
                         fillMode: Image.PreserveAspectFit
                     }
                 }
@@ -121,8 +125,7 @@ Page {
                     anchors.leftMargin: Core.dp(6) + userCheckButton.width
                     anchors.rightMargin: Core.dp(6)
                     font.pixelSize: Core.dp(6)
-//                    text: userProfile.name
-                    text: user_profile
+                    text: user_info.userProfile.name
                 }
             }
 
@@ -140,8 +143,8 @@ Page {
 
                 visible: !privateData.isEdited
                 onClicked: {
-                    userInfoPage.userProfile = user_profile
-                    showRightPage(userInfo.name)
+                    userInfoPage.userInfo = user_info
+                    showRightPage(userInfoPage.name)
                 }
                 onPressedChanged: {
                     if (pressed) {

@@ -19,6 +19,17 @@ Page {
         id: items
         anchors.fill: parent
 
+        Component {
+            id: contactsModelAdditionalData
+            QtObject {
+                property bool isSelect: false
+            }
+        }
+
+        Component.onCompleted: {
+            applicationModel.contactsModel.itemAdditionalData = contactsModelAdditionalData
+        }
+
         BackButton {
             anchors.right: parent.right
             anchors.top: parent.top
@@ -32,8 +43,7 @@ Page {
 
         UsersFilterModel {
             id: usersModel
-            userProfilesDir: Core.dataDir + "/users/"
-            filterModel: usersContactsModel
+            filterModel: applicationModel.contactsModel
         }
 
         GridView {
@@ -64,12 +74,6 @@ Page {
                 height: usersView.cellHeight - Core.dp(2)
                 color: "#6c676e"
 
-                UserProfile {
-                    id: userProfile
-                    source: Core.dataDir + "users/" + user_profile
-                    parentElement: "user/info"
-                }
-
                 Item
                 {
                     anchors.top: parent.top
@@ -83,7 +87,7 @@ Page {
                         Image {
                             id: photoImage
                             anchors.fill: parent
-                            source: "image://xml/" + userProfile.source
+                            source: "image://xml/" + user_info.userProfile.source
                             fillMode: Image.PreserveAspectFit
                         }
                     }
@@ -148,8 +152,7 @@ Page {
                         anchors.leftMargin: Core.dp(16)
                         anchors.rightMargin: Core.dp(6)
                         font.pixelSize: Core.dp(6)
-//                        text: userProfile.name
-                        text: user_profile
+                        text: user_info.userProfile.name
                     }
                 }
 
@@ -171,7 +174,7 @@ Page {
                             chat.userProfile = user_profile
                             showRightPage(chat.name)
                         } else
-                            showError(qsTr("Waiting adding contacts from ") + userProfile.name)
+                            showError(qsTr("Waiting adding contacts from ") + user_info.userProfile.name)
                     }
                     onPressedChanged: {
                         if (pressed) {

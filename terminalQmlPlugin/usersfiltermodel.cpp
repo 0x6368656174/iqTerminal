@@ -7,20 +7,6 @@ UsersFilterModel::UsersFilterModel(QObject *parent) :
 {
 }
 
-QUrl UsersFilterModel::userProfilesDir() const
-{
-    return m_userProfilesDir;
-}
-
-void UsersFilterModel::setUserProfilesDir(const QUrl &dir)
-{
-    if (m_userProfilesDir != dir) {
-        m_userProfilesDir = dir;
-
-        emit userProfilesDirChanged();
-    }
-}
-
 bool UsersFilterModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     Q_UNUSED(source_parent);
@@ -31,12 +17,13 @@ bool UsersFilterModel::filterAcceptsRow(int source_row, const QModelIndex &sourc
     if (!user)
         return false;
 
-    UserProfile userProfile;
-    userProfile.setParentElement("user/info");
-    QUrl userProfileFile = QUrl::fromLocalFile(userProfilesDir().toLocalFile() + user->profile());
-    userProfile.setSource(userProfileFile);
+    if (!user->userInfo())
+        return false;
 
-    if (userProfile.name().contains(filterString(), filterCaseSensitivity())) {
+    if (!user->userInfo()->userProfile())
+        return false;
+
+    if (user->userInfo()->userProfile()->name().contains(filterString(), filterCaseSensitivity())) {
         return true;
     }
     return false;

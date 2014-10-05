@@ -17,7 +17,8 @@ public:
         AdditionalData,
         Profile,
         Online,
-        FriendshipAccepted
+        FriendshipAccepted,
+        UserInfo
     };
 
     explicit UsersModel(QObject *parent = 0);

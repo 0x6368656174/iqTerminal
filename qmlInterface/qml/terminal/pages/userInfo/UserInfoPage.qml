@@ -135,7 +135,7 @@ Page {
 
     PhotoSlider {
         id: photoSlider
-        photosModel: userInfo.photosModel
+        photosModel: userInfo?userInfo.photosModel:undefined
         opacity: 0
         anchors.centerIn: parent
         visible: opacity > 0
@@ -149,6 +149,8 @@ Page {
         id: videoPlayer
         playlist: {
             var result = []
+            if (!userInfo)
+                return result
             for (var i = 0; i < userInfo.videosModel.count; i++) {
                 var folder = userInfo.videosModel.get(i)
                 for (var j = 0; j < folder.filesModel.count; j++) {

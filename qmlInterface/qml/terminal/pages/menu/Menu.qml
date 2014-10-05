@@ -149,19 +149,11 @@ Page {
                     onClicked: if (expected_file === "") {
                                    menuPage.pageClicked(page_name)
                                } else {
-                                   if(page_name==="contacts") {
-                                       progressBar.runing=true
-                                       proxy.command("abonbook","")
+                                   if (fileWatcher.exist()) {
+                                       menuPage.pageClicked(page_name)
+                                   } else {
+                                       progressBar.runing = true
                                    }
-                                   if(page_name==="visitors")  {
-                                       progressBar.runing=true
-                                       proxy.command("abonwait","")
-                                   }
-                                   if(page_name==="all") {
-                                       progressBar.runing=true
-                                       proxy.command("abonlist","")
-                                   }
-
                                }
                 }
 

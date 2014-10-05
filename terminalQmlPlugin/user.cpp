@@ -4,7 +4,8 @@ User::User(QObject *parent) :
     AbstractXmlItemObject(parent),
     m_profile(""),
     m_online(false),
-    m_friendshipAccepted(false)
+    m_friendshipAccepted(false),
+    m_userInfo(new UserInfo(this))
 {
 }
 
@@ -25,6 +26,9 @@ void User::setProfile(const QString &profileFile)
 {
     if (m_profile != profileFile) {
         m_profile = profileFile;
+
+        m_userInfo->setUserProfileFile(profileFile);
+
         emit profileChanged();
     }
 }
@@ -53,7 +57,10 @@ void User::setFriendshipAccepted(bool friendshipAccepted)
     }
 }
 
-
+UserInfo *User::userInfo() const
+{
+    return m_userInfo;
+}
 
 bool User::loadFromDomElement(const QDomElement &domElement)
 {

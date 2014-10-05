@@ -87,7 +87,7 @@ Page {
             anchors.topMargin: Core.dp(2)
             color: "white"
             font.pixelSize: Core.dp(8)
-            text: (folderIndex + 1) + "/" + photosModel.count
+            text: photosModel?(folderIndex + 1) + "/" + photosModel.count:""
         }
 
         Text {

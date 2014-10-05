@@ -1,4 +1,5 @@
 #include "applicationmodel.h"
+#include "core.h"
 
 ApplicationModel * ApplicationModel::m_instance = nullptr;
 
@@ -12,6 +13,14 @@ ApplicationModel::ApplicationModel(QObject *parent) :
 {
     m_aboutMe->setUserProfileFile("../i.xml");
 
+    m_allModel->setParentElement("all");
+    m_allModel->setSource(QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/all.xml"));
+
+    m_contactsModel->setParentElement("all");
+    m_contactsModel->setSource(QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/contacts.xml"));
+
+    m_visitorsModel->setParentElement("all");
+    m_visitorsModel->setSource(QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/visitors.xml"));
 }
 
 ApplicationModel* ApplicationModel::instance()

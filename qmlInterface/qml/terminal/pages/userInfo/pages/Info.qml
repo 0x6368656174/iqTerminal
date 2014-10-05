@@ -59,7 +59,7 @@ Page {
                     cache: false
                     anchors.fill: parent
                     fillMode: Image.PreserveAspectFit
-                    source: "image://xml/" + userInfo.userProfile.source
+                    source: userInfo?"image://xml/" + userInfo.userProfile.source:""
                 }
             }
 
@@ -116,7 +116,7 @@ Page {
                 anchors.bottom: parent.bottom
                 anchors.margins: Core.dp(2)
                 fillMode: Image.PreserveAspectFit
-                source: "image://xml/" + userInfo.userProfile.source
+                source: userInfo?"image://xml/" + userInfo.userProfile.source:""
                 scale: {
                     if (flickItem.contentY < photoRect.height - height)
                         return 0
@@ -138,7 +138,7 @@ Page {
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: Core.dp(8)
-                text: userInfo.userProfile.name
+                text: userInfo?userInfo.userProfile.name:""
                 font.bold: true
             }
 
@@ -152,7 +152,7 @@ Page {
                 font.bold: true
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: Core.dp(8)
-                text: userInfo.userProfile.name
+                text: userInfo?userInfo.userProfile.name:""
                 onVisibleChanged: {
                     if (visible) {
                         text = userInfo.userProfile.name
@@ -232,7 +232,7 @@ Page {
         CreateNewButton {
             id: createNewButton
             anchors.top: stateSpacer.bottom
-            visible: userInfo.userProfile.stateModel.count === 0
+            visible: userInfo?userInfo.userProfile.stateModel.count === 0:false
             enabled: !privateData.isEdited
             text: qsTr("Новый")
             spacerVisible: false
@@ -259,7 +259,7 @@ Page {
             anchors.left: parent.left
             anchors.right: parent.right
             height: infoPage.height - nameContainter.height - stateTextContainer.height - stateSpacer.height - photoRect.height + flickItem.contentY - Core.dp(22) - editBar.anchors.bottomMargin + 1
-            model: userInfo.userProfile.stateModel
+            model: userInfo?userInfo.userProfile.stateModel:undefined
 
             add: Transition {
                 NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 400 }

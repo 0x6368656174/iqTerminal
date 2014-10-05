@@ -10,6 +10,7 @@ UsersModel::UsersModel(QObject *parent) :
     m_roles[Profile] = "user_profile";
     m_roles[Online] = "user_online";
     m_roles[FriendshipAccepted] = "user_friendship_accepted";
+    m_roles[UserInfo] = "user_info";
 }
 
 QHash<int, QByteArray> UsersModel::roleNames() const
@@ -83,6 +84,9 @@ QVariant UsersModel::data(const QModelIndex &index, int role) const
         break;
     case FriendshipAccepted:
         return item->friendshipAccepted();
+        break;
+    case UserInfo:
+        return QVariant::fromValue(item->userInfo());
         break;
     }
 

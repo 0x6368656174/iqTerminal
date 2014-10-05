@@ -58,7 +58,7 @@ Page {
             NumberAnimation { properties: "x,y"; duration: 400; easing.type: Easing.OutBounce }
         }
 
-        model: userInfo.photosModel
+        model: userInfo?userInfo.photosModel:undefined
 
         delegate: Rectangle {
             property int folderIndex: index

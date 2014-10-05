@@ -84,35 +84,6 @@ Rectangle {
         id: pages
         anchors.fill: parent
 
-        //Модели
-
-        UsersModel {
-            id: usersAllModel
-            source: Core.dataDir + "all.xml"
-            parentElement: "all"
-            itemAdditionalData: QtObject {
-                property bool isSelect: false
-            }
-        }
-
-        UsersModel {
-            id: usersContactsModel
-            source: Core.dataDir + "contacts.xml"
-            parentElement: "all"
-            itemAdditionalData: QtObject {
-                property bool isSelect: false
-            }
-        }
-
-        UsersModel {
-            id: usersVisitorsModel
-            source: Core.dataDir + "visitors.xml"
-            parentElement: "all"
-            itemAdditionalData: QtObject {
-                property bool isSelect: false
-            }
-        }
-
         Welcome {
         }
 
@@ -127,11 +98,11 @@ Rectangle {
             }
         }
 
-//        UserInfoPage {
-//            id: userInfoPage
-//            visible: false
-//            readOnly: true
-//        }
+        UserInfoPage {
+            id: userInfoPage
+            visible: false
+            readOnly: true
+        }
 
         Chat {
             id: chat
