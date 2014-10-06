@@ -125,7 +125,7 @@ bool Message::loadFromDomElement(const QDomElement &domElement)
         } else if (typeName == "file") {
             setType(File);
         } else {
-            qWarning() << QString("Invalid message type \"%0\".").arg(typeName);
+            qWarning() << tr("Invalid message type \"%0\".").arg(typeName);
             setType(Text);
         }
 
@@ -135,7 +135,7 @@ bool Message::loadFromDomElement(const QDomElement &domElement)
         } else if (directionName == "incoming") {
             setDirection(Incoming);
         } else {
-            qWarning() << QString("Invalid message direction \"%0\".").arg(directionName);
+            qWarning() << tr("Invalid message direction \"%0\".").arg(directionName);
             setDirection(Outgoing);
         }
 

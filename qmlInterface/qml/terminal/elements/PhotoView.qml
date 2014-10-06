@@ -50,9 +50,9 @@ Page {
             anchors.left: parent.left
             anchors.bottom: parent.bottom
             anchors.right: parent.right
-            anchors.margins: Core.dp(8)
+            anchors.margins: (8 * applicationModel.settings.zoomFactor)
             color: "white"
-            font.pixelSize: Core.dp(8)
+            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
             clip: true
             elide: Text.ElideRight
             text: photoView.text
@@ -62,8 +62,8 @@ Page {
             id: rotateButton
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            height: Core.dp(26)
-            width: Core.dp(48)
+            height: (26 * applicationModel.settings.zoomFactor)
+            width: (48 * applicationModel.settings.zoomFactor)
             source: "../images/203.png"
 
             onClicked: {

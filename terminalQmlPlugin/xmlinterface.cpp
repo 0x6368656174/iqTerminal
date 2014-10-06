@@ -7,14 +7,14 @@
 QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source, const QString &element, QDomDocument &domDocument)
 {
     if (!object) {
-        qWarning() << "In XmlInterface::findElement() object can not be NULL.";
+        qWarning() << QObject::tr("In XmlInterface::findElement() object can not be NULL.");
         return QDomElement();
     }
 
     QString className = QString(object->metaObject()->className());
 
     if (!source.isValid()) {
-        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
+        qWarning() << QObject::tr("Find element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
                    .arg(element)
                    .arg(source.toLocalFile())
                    .arg(className);
@@ -22,7 +22,7 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
     }
 
     if (element.isEmpty()) {
-        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Element must be set first.")
+        qWarning() << QObject::tr("Find element \"%0\" in \"%1\" in %2 failed. Element must be set first.")
                    .arg(element)
                    .arg(source.toLocalFile())
                    .arg(className);
@@ -31,14 +31,14 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
 
     QFile file (source.toLocalFile());
     if (!file.exists()) {
-        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. File \"%1\" not exists.")
+        qWarning() << QObject::tr("Find element \"%0\" in \"%1\" in %2 failed. File \"%1\" not exists.")
                    .arg(element)
                    .arg(source.toLocalFile())
                    .arg(className);
         return QDomElement();
     }
     if (!file.open(QFile::ReadOnly)) {
-        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Can not open file \"%1\".")
+        qWarning() << QObject::tr("Find element \"%0\" in \"%1\" in %2 failed. Can not open file \"%1\".")
                    .arg(element)
                    .arg(source.toLocalFile())
                    .arg(className);
@@ -46,7 +46,7 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
     }
     QString error;
     if (!domDocument.setContent(&file, &error)) {
-        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. Parse file \"%1\" error. Error: \"%3\".")
+        qWarning() << QObject::tr("Find element \"%0\" in \"%1\" in %2 failed. Parse file \"%1\" error. Error: \"%3\".")
                    .arg(element)
                    .arg(source.toLocalFile())
                    .arg(className)
@@ -58,7 +58,7 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
     QStringList domPath = element.split("/", QString::SkipEmptyParts);
 
     if (rootElement.tagName() != domPath.first()) {
-        qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. In file \"%1\" not found \"%3\".")
+        qWarning() << QObject::tr("Find element \"%0\" in \"%1\" in %2 failed. In file \"%1\" not found \"%3\".")
                    .arg(element)
                    .arg(source.toLocalFile())
                    .arg(className)
@@ -70,7 +70,7 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
     foreach (QString domPathString, domPath) {
         rootElement = rootElement.firstChildElement(domPathString);
         if (rootElement.isNull()) {
-            qWarning() << QString("Find element \"%0\" in \"%1\" in %2 failed. In file \"%1\" not found \"%3\".")
+            qWarning() << QObject::tr("Find element \"%0\" in \"%1\" in %2 failed. In file \"%1\" not found \"%3\".")
                        .arg(element)
                        .arg(source.toLocalFile())
                        .arg(className)
@@ -85,14 +85,14 @@ QDomElement XmlInterface::findElement(const QObject *object, const QUrl &source,
 QDomElement XmlInterface::createElement(const QObject* object, const QUrl &source, const QString &element, QDomDocument &domDocument)
 {
     if (!object) {
-        qWarning() << "In XmlInterface::createElement() object can not be NULL.";
+        qWarning() << QObject::tr("In XmlInterface::createElement() object can not be NULL.");
         return QDomElement();
     }
 
     QString className = QString(object->metaObject()->className());
 
     if (!source.isValid()) {
-        qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
+        qWarning() << QObject::tr("Create element \"%0\" in \"%1\" in %2 failed. Source must be set first.")
                    .arg(element)
                    .arg(source.toLocalFile())
                    .arg(className);
@@ -100,7 +100,7 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
     }
 
     if (element.isEmpty()) {
-        qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. ParentElement must be set first.")
+        qWarning() << QObject::tr("Create element \"%0\" in \"%1\" in %2 failed. ParentElement must be set first.")
                    .arg(element)
                    .arg(source.toLocalFile())
                    .arg(className);
@@ -111,7 +111,7 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
     QFile file (source.toLocalFile());
     if (file.exists()) {
         if (!file.open(QFile::ReadOnly)) {
-            qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. Can not open file \"%0\".")
+            qWarning() << QObject::tr("Create element \"%0\" in \"%1\" in %2 failed. Can not open file \"%0\".")
                        .arg(element)
                        .arg(source.toLocalFile())
                        .arg(className);
@@ -119,7 +119,7 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
         }
         QString error;
         if (!domDocument.setContent(&file, &error)) {
-            qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. Parse file \"%0\" error. Error: \"%3\".")
+            qWarning() << QObject::tr("Create element \"%0\" in \"%1\" in %2 failed. Parse file \"%0\" error. Error: \"%3\".")
                        .arg(element)
                        .arg(source.toLocalFile())
                        .arg(className)
@@ -132,7 +132,7 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
         QStringList domPath = element.split("/", QString::SkipEmptyParts);
 
         if (rootElement.tagName() != domPath.first()) {
-            qWarning() << QString("Create element \"%0\" in \"%1\" in %2 failed. In file \"%0\" not found \"%3\".")
+            qWarning() << QObject::tr("Create element \"%0\" in \"%1\" in %2 failed. In file \"%0\" not found \"%3\".")
                        .arg(element)
                        .arg(source.toLocalFile())
                        .arg(className)
@@ -169,7 +169,7 @@ QDomElement XmlInterface::createElement(const QObject* object, const QUrl &sourc
 bool XmlInterface::reloadModel(AbstractXmlItemsModel *model, const QUrl &source, const QString &element)
 {
     if (!model) {
-        qWarning() << "In XmlInterface::reoladModel() model can not be NULL.";
+        qWarning() << QObject::tr("In XmlInterface::reoladModel() model can not be NULL.");
         return false;
     }
 
@@ -185,7 +185,7 @@ bool XmlInterface::reloadModel(AbstractXmlItemsModel *model, const QUrl &source,
 bool XmlInterface::saveModel(const AbstractXmlItemsModel *model, const QUrl &source, const QString &element)
 {
     if (!model) {
-        qWarning() << "In XmlInterface::saveModel() model can not be NULL.";
+        qWarning() << QObject::tr("In XmlInterface::saveModel() model can not be NULL.");
         return false;
     }
 

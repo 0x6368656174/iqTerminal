@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../i18n/terminal_ar.qm</file>
+        <file>../i18n/terminal_de.qm</file>
+        <file>../i18n/terminal_en.qm</file>
+        <file>../i18n/terminal_es.qm</file>
+        <file>../i18n/terminal_fr.qm</file>
+        <file>../i18n/terminal_jp.qm</file>
+        <file>../i18n/terminal_ko.qm</file>
+        <file>../i18n/terminal_pt.qm</file>
+        <file>../i18n/terminal_ru.qm</file>
+        <file>../i18n/terminal_zh.qm</file>
+    </qresource>
+</RCC>

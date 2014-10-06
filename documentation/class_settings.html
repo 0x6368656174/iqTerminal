@@ -1,0 +1,656 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Terminal: Класс Settings</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="extraDoxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Terminal
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Приложение Terminal</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;классов</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Члены&#160;классов</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_settings.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Свойства</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Группы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Открытые типы</a> &#124;
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#properties">Свойства</a> &#124;
+<a href="class_settings-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс Settings<div class="ingroups"><a class="el" href="group___app_model.html">Основная модель</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Класс, описывающий настройки приложения  
+ <a href="class_settings.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="settings_8h_source.html">settings.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:Settings:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_settings.png" usemap="#Settings_map" alt=""/>
+  <map id="Settings_map" name="Settings_map">
+<area href="class_xml_interface.html" title="Класс, описывающий методы расширяющие классы для работы с XML-фалами " alt="XmlInterface" shape="rect" coords="93,0,176,24"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Открытые типы</h2></td></tr>
+<tr class="memitem:ad106a4a88ebdd47d44d2fe1976de2bea"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Translations</a> { <br/>
+&#160;&#160;<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaafb63f4d543780e7aedbb9ce4c328bb06">English</a>, 
+<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa00a6dd112b97481b2499bb9cef76165d">Chinese</a>, 
+<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa266d1abc74dcbcde44357588369f80bb">Spanish</a>, 
+<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf7203b18d80fe283a58d5ee22391b5a6">Japanese</a>, 
+<br/>
+&#160;&#160;<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf825f79ceb876cda533bad37c1935e3b">Portuguese</a>, 
+<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa969466eb05700c8d256f02eaae70b85c">German</a>, 
+<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa59633dcb73a077e53a828f9b30476af8">Arabic</a>, 
+<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaae740b67a736a156b77ce9980f675b0f6">French</a>, 
+<br/>
+&#160;&#160;<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa1194d4e99cad3347886b7112a60e266e">Russian</a>, 
+<a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf45090043d2ccad4074936f56fbad2b7">Korean</a>
+<br/>
+ }</td></tr>
+<tr class="memdesc:ad106a4a88ebdd47d44d2fe1976de2bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Доступные переводы  <a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Подробнее...</a><br/></td></tr>
+<tr class="separator:ad106a4a88ebdd47d44d2fe1976de2bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:af88ba9c76af5ca1795aeda2b9937215e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#af88ba9c76af5ca1795aeda2b9937215e">Settings</a> (QObject *parent=0)</td></tr>
+<tr class="memdesc:af88ba9c76af5ca1795aeda2b9937215e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор  <a href="#af88ba9c76af5ca1795aeda2b9937215e">Подробнее...</a><br/></td></tr>
+<tr class="separator:af88ba9c76af5ca1795aeda2b9937215e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a3823de3872a30be2b6aa7e431887d5"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#a1a3823de3872a30be2b6aa7e431887d5">reload</a> ()</td></tr>
+<tr class="memdesc:a1a3823de3872a30be2b6aa7e431887d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перезагружает объект  <a href="#a1a3823de3872a30be2b6aa7e431887d5">Подробнее...</a><br/></td></tr>
+<tr class="separator:a1a3823de3872a30be2b6aa7e431887d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1c42c54f67ce263bfa1f1d60856cb52"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#ad1c42c54f67ce263bfa1f1d60856cb52">save</a> () const </td></tr>
+<tr class="memdesc:ad1c42c54f67ce263bfa1f1d60856cb52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохраняет данные объекта  <a href="#ad1c42c54f67ce263bfa1f1d60856cb52">Подробнее...</a><br/></td></tr>
+<tr class="separator:ad1c42c54f67ce263bfa1f1d60856cb52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Свойства</h2></td></tr>
+<tr class="memitem:a0e490f9aac8951d62101fe635e6322b7"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">source</a></td></tr>
+<tr class="memdesc:a0e490f9aac8951d62101fe635e6322b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">XML-файл, в котором храняться данные модели  <a href="#a0e490f9aac8951d62101fe635e6322b7">Подробнее...</a><br/></td></tr>
+<tr class="separator:a0e490f9aac8951d62101fe635e6322b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf84c98f572b82d9c69ff642a22ddb13"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">parentElement</a></td></tr>
+<tr class="memdesc:abf84c98f572b82d9c69ff642a22ddb13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Корненвой элемент, в котором храняться XML-ноды, описывающие экземпляры элементов объекта.  <a href="#abf84c98f572b82d9c69ff642a22ddb13">Подробнее...</a><br/></td></tr>
+<tr class="separator:abf84c98f572b82d9c69ff642a22ddb13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeec6e95d3d48262ee57c4ebd2a2060cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Translations</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#aeec6e95d3d48262ee57c4ebd2a2060cc">translation</a></td></tr>
+<tr class="memdesc:aeec6e95d3d48262ee57c4ebd2a2060cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перевод  <a href="#aeec6e95d3d48262ee57c4ebd2a2060cc">Подробнее...</a><br/></td></tr>
+<tr class="separator:aeec6e95d3d48262ee57c4ebd2a2060cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cbb2b8b805f666e1eb2a26586a00a83"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#a9cbb2b8b805f666e1eb2a26586a00a83">homeDirectory</a></td></tr>
+<tr class="memdesc:a9cbb2b8b805f666e1eb2a26586a00a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Домашняя дирректория приложения  <a href="#a9cbb2b8b805f666e1eb2a26586a00a83">Подробнее...</a><br/></td></tr>
+<tr class="separator:a9cbb2b8b805f666e1eb2a26586a00a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d6d61cb0ade9338558f29fbb0a77f42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_simple_devices_model.html">SimpleDevicesModel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#a1d6d61cb0ade9338558f29fbb0a77f42">audioDevicesModel</a></td></tr>
+<tr class="memdesc:a1d6d61cb0ade9338558f29fbb0a77f42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на модель, содержащую доступные аудио-устройства  <a href="#a1d6d61cb0ade9338558f29fbb0a77f42">Подробнее...</a><br/></td></tr>
+<tr class="separator:a1d6d61cb0ade9338558f29fbb0a77f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae65db1a99879af266249f85265c71b37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_simple_devices_model.html">SimpleDevicesModel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#ae65db1a99879af266249f85265c71b37">videoDevicesModel</a></td></tr>
+<tr class="memdesc:ae65db1a99879af266249f85265c71b37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на модель, содержащую доступные видео-устройства  <a href="#ae65db1a99879af266249f85265c71b37">Подробнее...</a><br/></td></tr>
+<tr class="separator:ae65db1a99879af266249f85265c71b37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e52cafb314c7edad153888c3d96f92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_network_devices_model.html">NetworkDevicesModel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#a94e52cafb314c7edad153888c3d96f92">wanDevicesModel</a></td></tr>
+<tr class="memdesc:a94e52cafb314c7edad153888c3d96f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Укзатель на модель, содержащую доступные WAN-интерфейсы  <a href="#a94e52cafb314c7edad153888c3d96f92">Подробнее...</a><br/></td></tr>
+<tr class="separator:a94e52cafb314c7edad153888c3d96f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33c36c9d99a5e959c7ade58ed3babe7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#a33c36c9d99a5e959c7ade58ed3babe7c">natEnabled</a></td></tr>
+<tr class="memdesc:a33c36c9d99a5e959c7ade58ed3babe7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Признак того, что NAT-PNP активирован  <a href="#a33c36c9d99a5e959c7ade58ed3babe7c">Подробнее...</a><br/></td></tr>
+<tr class="separator:a33c36c9d99a5e959c7ade58ed3babe7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13c264ccc4783bf4ae8cb040da2cbb39"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#a13c264ccc4783bf4ae8cb040da2cbb39">upnpEnabled</a></td></tr>
+<tr class="memdesc:a13c264ccc4783bf4ae8cb040da2cbb39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Признак того, что UPnP активирован  <a href="#a13c264ccc4783bf4ae8cb040da2cbb39">Подробнее...</a><br/></td></tr>
+<tr class="separator:a13c264ccc4783bf4ae8cb040da2cbb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6b4367b0d41cdfe409940d0c3bef622"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_proxy_settings.html">ProxySettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#ac6b4367b0d41cdfe409940d0c3bef622">proxySettings</a></td></tr>
+<tr class="memdesc:ac6b4367b0d41cdfe409940d0c3bef622"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на настройки прокси  <a href="#ac6b4367b0d41cdfe409940d0c3bef622">Подробнее...</a><br/></td></tr>
+<tr class="separator:ac6b4367b0d41cdfe409940d0c3bef622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5647eb961c9e977b20bb235bb800a4e"><td class="memItemLeft" align="right" valign="top">qreal&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#ad5647eb961c9e977b20bb235bb800a4e">zoomFactor</a></td></tr>
+<tr class="memdesc:ad5647eb961c9e977b20bb235bb800a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Коофициент маштабирования приложения  <a href="#ad5647eb961c9e977b20bb235bb800a4e">Подробнее...</a><br/></td></tr>
+<tr class="separator:ad5647eb961c9e977b20bb235bb800a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48fed2e1aa7990ac670197dbeb242cd6"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_settings.html#a48fed2e1aa7990ac670197dbeb242cd6">translatorStringEnd</a></td></tr>
+<tr class="memdesc:a48fed2e1aa7990ac670197dbeb242cd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вспомогательное свойство для обеспечения динамического перевода QML.  <a href="#a48fed2e1aa7990ac670197dbeb242cd6">Подробнее...</a><br/></td></tr>
+<tr class="separator:a48fed2e1aa7990ac670197dbeb242cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_static_methods_class_xml_interface"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_class_xml_interface')"><img src="closed.png" alt="-"/>&#160;Защищенные статические члены inherited from <a class="el" href="class_xml_interface.html">XmlInterface</a></td></tr>
+<tr class="memitem:a9d1f6ffe79e759e5965c5bb2e0242485 inherit pro_static_methods_class_xml_interface"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d1f6ffe79e759e5965c5bb2e0242485"></a>
+static QDomElement&#160;</td><td class="memItemRight" valign="bottom"><b>findElement</b> (const QObject *object, const QUrl &amp;source, const QString &amp;element, QDomDocument &amp;domDocument)</td></tr>
+<tr class="separator:a9d1f6ffe79e759e5965c5bb2e0242485 inherit pro_static_methods_class_xml_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fc5d447cffc0dab6f7bec274af7fb9c inherit pro_static_methods_class_xml_interface"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3fc5d447cffc0dab6f7bec274af7fb9c"></a>
+static QDomElement&#160;</td><td class="memItemRight" valign="bottom"><b>createElement</b> (const QObject *object, const QUrl &amp;source, const QString &amp;element, QDomDocument &amp;domDocument)</td></tr>
+<tr class="separator:a3fc5d447cffc0dab6f7bec274af7fb9c inherit pro_static_methods_class_xml_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a396256cf22263ca693a9440dd868a997 inherit pro_static_methods_class_xml_interface"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a396256cf22263ca693a9440dd868a997"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>reloadModel</b> (<a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a> *model, const QUrl &amp;source, const QString &amp;element)</td></tr>
+<tr class="separator:a396256cf22263ca693a9440dd868a997 inherit pro_static_methods_class_xml_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a530c72a17c22589245ce33509f1a0b inherit pro_static_methods_class_xml_interface"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a530c72a17c22589245ce33509f1a0b"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>saveModel</b> (const <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a> *model, const QUrl &amp;source, const QString &amp;element)</td></tr>
+<tr class="separator:a3a530c72a17c22589245ce33509f1a0b inherit pro_static_methods_class_xml_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Класс, описывающий настройки приложения </p>
+<p>Настройки из данного класса доступны пользователю через графический интерфейс QML. </p>
+</div><h2 class="groupheader">Перечисления</h2>
+<a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2bea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Settings::Translations</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Доступные переводы </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaafb63f4d543780e7aedbb9ce4c328bb06"></a>English</em>&nbsp;</td><td class="fielddoc">
+<p>Английский </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaa00a6dd112b97481b2499bb9cef76165d"></a>Chinese</em>&nbsp;</td><td class="fielddoc">
+<p>Китайский </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaa266d1abc74dcbcde44357588369f80bb"></a>Spanish</em>&nbsp;</td><td class="fielddoc">
+<p>Испанский </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaaf7203b18d80fe283a58d5ee22391b5a6"></a>Japanese</em>&nbsp;</td><td class="fielddoc">
+<p>Японский </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaaf825f79ceb876cda533bad37c1935e3b"></a>Portuguese</em>&nbsp;</td><td class="fielddoc">
+<p>Португальский </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaa969466eb05700c8d256f02eaae70b85c"></a>German</em>&nbsp;</td><td class="fielddoc">
+<p>Немецкий </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaa59633dcb73a077e53a828f9b30476af8"></a>Arabic</em>&nbsp;</td><td class="fielddoc">
+<p>Арабский </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaae740b67a736a156b77ce9980f675b0f6"></a>French</em>&nbsp;</td><td class="fielddoc">
+<p>Французкий </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaa1194d4e99cad3347886b7112a60e266e"></a>Russian</em>&nbsp;</td><td class="fielddoc">
+<p>Русский </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ad106a4a88ebdd47d44d2fe1976de2beaaf45090043d2ccad4074936f56fbad2b7"></a>Korean</em>&nbsp;</td><td class="fielddoc">
+<p>Корейский </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Конструктор(ы)</h2>
+<a class="anchor" id="af88ba9c76af5ca1795aeda2b9937215e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Settings::Settings </td>
+          <td>(</td>
+          <td class="paramtype">QObject *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Конструктор </p>
+<p>Создает экземпляр объекта с указанным родителем.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Укзатель на родитель </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a class="anchor" id="a1a3823de3872a30be2b6aa7e431887d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Settings::reload </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Перезагружает объект </p>
+<p>Перезагружает данные в объект из XML-файла. Для того, чтоб можно было загрузить данные в объект, необходимо правильно установить <a class="el" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">source</a>, <a class="el" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">parentElement</a>.</p>
+<dl class="section return"><dt>Возвращает</dt><dd><em>TRUE</em>, в случае удачи, иначе <em>FALSE</em> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad1c42c54f67ce263bfa1f1d60856cb52"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Settings::save </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сохраняет данные объекта </p>
+<p>Сохраняет данные из объекта в XML-файл. Для того, чтоб можно было сохранить данные из объекта, необходимо правильно установить <a class="el" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">source</a>, <a class="el" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">parentElement</a>.</p>
+<dl class="section return"><dt>Возвращает</dt><dd><em>TRUE</em>, в случае удачи, иначе <em>FALSE</em> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Полный список свойств</h2>
+<a class="anchor" id="a1d6d61cb0ade9338558f29fbb0a77f42"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_simple_devices_model.html">SimpleDevicesModel</a> * Settings::audioDevicesModel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Указатель на модель, содержащую доступные аудио-устройства </p>
+<dl class="section user"><dt>Доступ:</dt><dd>audioDevicesModel() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9cbb2b8b805f666e1eb2a26586a00a83"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QUrl Settings::homeDirectory</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Домашняя дирректория приложения </p>
+<p>По умолчанию равен Core::homeDir().</p>
+<dl class="section user"><dt>Доступ:</dt><dd>homeDirectory(), setHomeDirectory(), homeDirectoryChanged() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a33c36c9d99a5e959c7ade58ed3babe7c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Settings::natEnabled</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Признак того, что NAT-PNP активирован </p>
+<p>По-умолчанию <em>FALSE</em>.</p>
+<dl class="section user"><dt>Доступ:</dt><dd>natEnabled(), setNatEnabled(), natEnabledChanged() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="abf84c98f572b82d9c69ff642a22ddb13"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Settings::parentElement</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Корненвой элемент, в котором храняться XML-ноды, описывающие экземпляры элементов объекта. </p>
+<p>Строка содержащая названия нод XML-файла, разделенные косой чертой ("\\"). Например, если XML-файл имеет структуру: </p>
+<div class="fragment"><div class="line">&lt;all&gt;</div>
+<div class="line">   &lt;settings&gt;</div>
+<div class="line">      ....</div>
+<div class="line">   &lt;/settings&gt;</div>
+<div class="line">&lt;/all&gt;</div>
+</div><!-- fragment --><p> То корневой элемент для объекта, содержего настройки, описанные в нодах <code>&lt;settings&gt;&lt;/settings&gt;</code>, является <code>"all/settings"</code>.</p>
+<p>При установки нового корневого элемента, если задан правильный путь к XML-файлу (<a class="el" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">source</a>), объект автоматически перезагрузится.</p>
+<dl class="section user"><dt>Доступ:</dt><dd>parentElement(), setParentElement(), parentElementChanged() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac6b4367b0d41cdfe409940d0c3bef622"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_proxy_settings.html">ProxySettings</a> * Settings::proxySettings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Указатель на настройки прокси </p>
+<dl class="section user"><dt>Доступ:</dt><dd>proxySettings() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0e490f9aac8951d62101fe635e6322b7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QUrl Settings::source</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>XML-файл, в котором храняться данные модели </p>
+<p>Модель автоматически читает данные из указанного XML-файла (если до этого указан правильный <a class="el" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">parentElement</a>), а так же сохраняет данные в указанный XML-файл при вызове метода <a class="el" href="class_settings.html#ad1c42c54f67ce263bfa1f1d60856cb52">save()</a>.</p>
+<dl class="section user"><dt>Доступ:</dt><dd>source(), setSource(), sourceChanged() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aeec6e95d3d48262ee57c4ebd2a2060cc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Settings::Translations</a> Settings::translation</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Перевод </p>
+<p>При изменении данного параметра, интерфейс автоматически переводится на указаный перевод.</p>
+<p>По умолчанию <em>English</em>.</p>
+<dl class="section user"><dt>Доступ:</dt><dd>translation(), setTranslation(), translationChanged() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a48fed2e1aa7990ac670197dbeb242cd6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Settings::translatorStringEnd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Вспомогательное свойство для обеспечения динамического перевода QML. </p>
+<p>При помощи данного свойства, обеспечивается динамический перевод QML. Каждая строка в QML, которая должна быть переведена должна заканчиваться конкатенацией с данным свойством.</p>
+<div class="fragment"><div class="line">Text {</div>
+<div class="line">   text: qsTr(<span class="stringliteral">&quot;Name&quot;</span>) + applicationModel.settings.translatorStringEnd</div>
+<div class="line">}</div>
+</div><!-- fragment --><dl class="section user"><dt>Доступ:</dt><dd>emptyString(), translationChanged() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a13c264ccc4783bf4ae8cb040da2cbb39"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Settings::upnpEnabled</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Признак того, что UPnP активирован </p>
+<p>По-умолчанию <em>FALSE</em>.</p>
+<dl class="section user"><dt>Доступ:</dt><dd>upnpEnabled(), setUpnpEnabled(), upnpEnabledChanged() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae65db1a99879af266249f85265c71b37"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_simple_devices_model.html">SimpleDevicesModel</a> * Settings::videoDevicesModel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Указатель на модель, содержащую доступные видео-устройства </p>
+<dl class="section user"><dt>Доступ:</dt><dd>videoDevicesModel() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a94e52cafb314c7edad153888c3d96f92"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_network_devices_model.html">NetworkDevicesModel</a> * Settings::wanDevicesModel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Укзатель на модель, содержащую доступные WAN-интерфейсы </p>
+<dl class="section user"><dt>Доступ:</dt><dd>wanDevicesModel() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad5647eb961c9e977b20bb235bb800a4e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qreal Settings::zoomFactor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Коофициент маштабирования приложения </p>
+<p>При изменении данного параметра, интерфейс автоматически маштабируется в соответствии с ним.</p>
+<p>По умолчанию <em>1.0</em>.</p>
+<dl class="section user"><dt>Доступ:</dt><dd>zoomFactor(), setZoomFactor(), zoomFactorChanged() </dd></dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>terminalQmlPlugin/<a class="el" href="settings_8h_source.html">settings.h</a></li>
+<li>terminalQmlPlugin/settings.cpp</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_settings.html">Settings</a></li>
+    <li class="footer">Документация по Terminal. Последние изменения: Вт 7 Окт 2014 01:12:40. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -24,10 +24,11 @@ AbstractXmlItemObject * TorrentFoldersModel::newItem()
 {
     TorrentFolder *newItem = new TorrentFolder(this);
     connect(newItem, SIGNAL(idChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
+
     connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(sidsAvailabilityChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(inProcessChanged()), this, SLOT(itemDataChanged()));
-    connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(sizeChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(downloadedSizeChanged()), this, SLOT(itemDataChanged()));
     newItem->filesModel()->setItemAdditionalData(fileAdditionalData());

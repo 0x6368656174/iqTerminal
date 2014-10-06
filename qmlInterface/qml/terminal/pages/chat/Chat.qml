@@ -47,7 +47,7 @@ Page {
     BackButton {
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.topMargin: Core.dp(70)
+        anchors.topMargin: (70 * applicationModel.settings.zoomFactor)
     }
 
     Component {
@@ -80,7 +80,7 @@ Page {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.right: parent.right
-        height: Core.dp(20)
+        height: (20 * applicationModel.settings.zoomFactor)
         color: "#c6c1c7"
         Item
         {
@@ -108,7 +108,7 @@ Page {
             anchors.bottom: photoItem.bottom
             anchors.top: photoItem.top
             verticalAlignment: Text.AlignVCenter
-            font.pixelSize: Core.dp(8)
+            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
             anchors.leftMargin: font.pixelSize
             anchors.rightMargin: font.pixelSize
             anchors.right: parent.right
@@ -133,7 +133,7 @@ Page {
         anchors.bottom: audioRecordBar.top
         interactive: contentHeight > height
         model: messageFilterModel
-        spacing: Core.dp(2)
+        spacing: (2 * applicationModel.settings.zoomFactor)
         clip: true
 
         add: Transition {
@@ -161,14 +161,14 @@ Page {
             height: {
                 if (message_text === "") {
                     if (message_type === Message.Audio)
-                        return Core.dp(50)
-                    return Core.dp(36)
+                        return (50 * applicationModel.settings.zoomFactor)
+                    return (36 * applicationModel.settings.zoomFactor)
                 } else if (message_additional_data.isPlaying) {
-                    return Core.dp(74)
+                    return (74 * applicationModel.settings.zoomFactor)
                 } else if (message_type == Message.Text && messageText.lineCount > 1) {
-                    return messageText.paintedHeight + Core.dp(28)
+                    return messageText.paintedHeight + (28 * applicationModel.settings.zoomFactor)
                 }
-                return Core.dp(38)
+                return (38 * applicationModel.settings.zoomFactor)
             }
             Connections {
                 target: message_additional_data
@@ -187,8 +187,8 @@ Page {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 width: height
-                height: message_direction === Message.Incoming?Core.dp(4):0
-                anchors.leftMargin: Core.dp(4)
+                height: message_direction === Message.Incoming?(4 * applicationModel.settings.zoomFactor):0
+                anchors.leftMargin: (4 * applicationModel.settings.zoomFactor)
                 source: "../../images/51cb.png"
             }
 
@@ -203,7 +203,7 @@ Page {
                     id: typeImage
                     anchors.verticalCenter: messageText.verticalCenter
                     anchors.left: parent.left
-                    width: message_type !== Message.Text?Core.dp(28):0
+                    width: message_type !== Message.Text?(28 * applicationModel.settings.zoomFactor):0
                     height: width
                     visible: message_type !== Message.Text
                     source: {
@@ -236,14 +236,14 @@ Page {
                 Text {
                     id: messageText
                     anchors.left: typeImage.right
-                    anchors.leftMargin: message_type !== Message.Text?0:Core.dp(8)
+                    anchors.leftMargin: message_type !== Message.Text?0:(8 * applicationModel.settings.zoomFactor)
                     anchors.right: parent.right
-                    anchors.rightMargin: Core.dp(8)
-                    anchors.topMargin: Core.dp(12)
+                    anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
+                    anchors.topMargin: (12 * applicationModel.settings.zoomFactor)
                     anchors.top: parent.top
                     wrapMode: Text.WordWrap
                     text: TextDecorator.toFormattedText(message_text)
-                    font.pixelSize: Core.dp(8)
+                    font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                     color: "white"
                 }
 
@@ -321,13 +321,13 @@ Page {
                         return false
                     }
                     anchors.left: parent.left
-                    anchors.leftMargin: message_text!==""?0:Core.dp(8)
+                    anchors.leftMargin: message_text!==""?0:(8 * applicationModel.settings.zoomFactor)
                     anchors.right: parent.right
                     anchors.top: parent.top
                     anchors.topMargin: {
                         if (message_text !== "")
-                            return messageText.paintedHeight + Core.dp(14)
-                        return Core.dp(6)
+                            return messageText.paintedHeight + (14 * applicationModel.settings.zoomFactor)
+                        return (6 * applicationModel.settings.zoomFactor)
                     }
                     position: message_additional_data.isPlaying?audioPlayer.position:0
                     duration: message_additional_data.isPlaying?audioPlayer.duration:0
@@ -367,10 +367,10 @@ Page {
                     anchors.left: message_direction === Message.Incoming?undefined:parent.left
                     anchors.right: message_direction === Message.Outgoing?undefined:parent.right
                     anchors.bottom: parent.bottom
-                    anchors.leftMargin: Core.dp(8)
-                    anchors.rightMargin: Core.dp(8)
-                    anchors.bottomMargin: Core.dp(2)
-                    font.pixelSize: Core.dp(5)
+                    anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
+                    anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
+                    anchors.bottomMargin: (2 * applicationModel.settings.zoomFactor)
+                    font.pixelSize: (5 * applicationModel.settings.zoomFactor)
                     color: "white"
                     text: Qt.formatDateTime(message_send_date_time, "dd.MM.yy hh:mm")
                 }
@@ -382,8 +382,8 @@ Page {
                 anchors.bottom: parent.bottom
                 rotation: 180
                 width: height
-                height: message_direction === Message.Outgoing?Core.dp(4):0
-                anchors.rightMargin: Core.dp(4)
+                height: message_direction === Message.Outgoing?(4 * applicationModel.settings.zoomFactor):0
+                anchors.rightMargin: (4 * applicationModel.settings.zoomFactor)
                 source: "../../images/51c.png"
             }
 
@@ -400,7 +400,7 @@ Page {
         anchors.bottom: firstButtonRow.top
         color: "#868686"
 
-        height: audioButton.checked?Core.dp(38):0
+        height: audioButton.checked?(38 * applicationModel.settings.zoomFactor):0
         Behavior on height {NumberAnimation { duration: 200;} }
 
         AudioRecorder {
@@ -410,7 +410,7 @@ Page {
         ChatButton {
             id: recordButton
             anchors.left: parent.left
-            width: Core.dp(38)
+            width: (38 * applicationModel.settings.zoomFactor)
             height: width
             imageNumber: audioRecordBar.role !== "recording"?74:80
             onClicked: {
@@ -431,7 +431,7 @@ Page {
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.left: parent.left
-            anchors.leftMargin: Core.dp(38)
+            anchors.leftMargin: (38 * applicationModel.settings.zoomFactor)
             position: audioPlayer.position
             duration: audioPlayer.duration
             isPlay: audioPlayer.isPlay
@@ -474,7 +474,7 @@ Page {
 
         height: {
             if (role === "file") {
-                return Core.dp(22)
+                return (22 * applicationModel.settings.zoomFactor)
             }
             return 0
         }
@@ -485,7 +485,7 @@ Page {
             id: fileAttachment
             anchors.left: parent.left
             anchors.right: parent.right
-            height: Core.dp(22)
+            height: (22 * applicationModel.settings.zoomFactor)
             color: "#cdcdcd"
 
             Image {
@@ -499,7 +499,7 @@ Page {
             Text {
                 anchors.left: fileAttachmentImage.right
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                 anchors.right: parent.right
                 anchors.rightMargin: font.pixelSize
                 elide: Text.ElideRight
@@ -511,14 +511,9 @@ Page {
     Rectangle {
         id: smilesRow
         property int smilesCount: 15
-        property int columnCount: (width - 2*smilesGrid.anchors.margins) / Core.dp(20) < 1?1:(width - 2*smilesGrid.anchors.margins) / Core.dp(20)
+        property int columnCount: (width - 2*smilesGrid.anchors.margins) / (20 * applicationModel.settings.zoomFactor) < 1?1:(width - 2*smilesGrid.anchors.margins) / (20 * applicationModel.settings.zoomFactor)
         property int rowCountInt: smilesCount / columnCount
-        property int rowCount:  {
-            if (smilesCount / columnCount - rowCountInt !== 0) {
-                return rowCountInt + 1
-            }
-            return rowCountInt
-        }
+        property int rowCount:  smilesCount / columnCount - rowCountInt !== 0?rowCountInt + 1:rowCountInt
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: firstButtonRow.top
@@ -534,15 +529,15 @@ Page {
 
         function insertSmile(smileImage) {
             textInputText.insert(textInputText.cursorPosition, "<img src=\""+ Core.dataDir +"smiles/"+smileImage+"\" "
-                                 +"height=\""+Core.dp(8) + "\""
-                                 +"width=\""+Core.dp(8)+"\"/>")
+                                 +"height=\""+(8 * applicationModel.settings.zoomFactor) + "\""
+                                 +"width=\""+(8 * applicationModel.settings.zoomFactor)+"\"/>")
             smileButton.checked = false
         }
 
         GridView {
             id: smilesGrid
             anchors.fill: parent
-            anchors.margins: Core.dp(4)
+            anchors.margins: (4 * applicationModel.settings.zoomFactor)
             cellHeight: cellWidth
             cellWidth: width/smilesRow.columnCount
             model: smilesRow.smilesCount
@@ -550,8 +545,8 @@ Page {
                 width: smilesGrid.cellWidth
                 height: smilesGrid.cellHeight
                 ChatButton {
-                    width: parent.width - Core.dp(4)
-                    height: parent.height - Core.dp(4)
+                    width: parent.width - (4 * applicationModel.settings.zoomFactor)
+                    height: parent.height - (4 * applicationModel.settings.zoomFactor)
                     anchors.centerIn: parent
                     hoverColor: backgroundColor
                     clip: false
@@ -682,14 +677,14 @@ Page {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        height: Core.dp(22)
+        height: (22 * applicationModel.settings.zoomFactor)
         color: "white"
 
         Text {
             anchors.centerIn: parent
-            font.pixelSize: Core.dp(8)
+            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
             color: "#c6c1c7"
-            text: qsTr("input text field")
+            text: qsTr("input text field") + applicationModel.settings.translatorStringEnd
             opacity: textInputText.text === "" && !textInputText.focus?1:0.5
         }
 
@@ -700,15 +695,15 @@ Page {
             anchors.right: parent.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            anchors.leftMargin: Core.dp(8)
-            anchors.rightMargin: Core.dp(8)
+            anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
+            anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
             interactive: textInputText.lineCount > 0
-            contentHeight: textInputText.paintedHeight + Core.dp(14)
+            contentHeight: textInputText.paintedHeight + (14 * applicationModel.settings.zoomFactor)
             function ensureVisible(r) {
                 if (contentY >= r.y)
                     contentY = r.y;
-                else if (contentY+height <= r.y+r.height + Core.dp(7))
-                    contentY = r.y+r.height-height + Core.dp(13);
+                else if (contentY+height <= r.y+r.height + (7 * applicationModel.settings.zoomFactor))
+                    contentY = r.y+r.height-height + (13 * applicationModel.settings.zoomFactor);
             }
 
             TextEdit {
@@ -716,8 +711,8 @@ Page {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 textFormat: TextEdit.RichText
-                y: Core.dp(7)
-                font.pixelSize: Core.dp(8)
+                y: (7 * applicationModel.settings.zoomFactor)
+                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                 wrapMode: TextEdit.Wrap
                 selectByMouse: true
                 selectionColor: "#c00d0d"
@@ -784,7 +779,7 @@ Page {
     FileDialog {
         id: fileChoiceDialog
         selectMultiple: false
-        title: qsTr("Выбирите файл")
+        title: qsTr("Select file") + applicationModel.settings.translatorStringEnd
 
         onAccepted: {
             attachmentBar.role = "file"

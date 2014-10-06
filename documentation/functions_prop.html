@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="extraDoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -121,32 +122,58 @@ $(document).ready(function(){initNavTree('functions_prop.html','');});
 <li>allModel
 : <a class="el" href="class_application_model.html#a6a52ba353fd42a2d603a6a7a7f8c0789">ApplicationModel</a>
 </li>
+<li>audioDevicesModel
+: <a class="el" href="class_settings.html#a1d6d61cb0ade9338558f29fbb0a77f42">Settings</a>
+</li>
 <li>contactsModel
 : <a class="el" href="class_application_model.html#a80a584763a413d87b60c4f8332e8bf4f">ApplicationModel</a>
 </li>
 <li>downloadModel
 : <a class="el" href="class_torrents.html#adfec38b2a7f398c4bed22b4c3ddb74f8">Torrents</a>
 </li>
+<li>homeDirectory
+: <a class="el" href="class_settings.html#a9cbb2b8b805f666e1eb2a26586a00a83">Settings</a>
+</li>
 <li>musicsModel
 : <a class="el" href="class_user_info.html#acd5b14add3ac6f1c7ab9544e96938c23">UserInfo</a>
 </li>
+<li>natEnabled
+: <a class="el" href="class_settings.html#a33c36c9d99a5e959c7ade58ed3babe7c">Settings</a>
+</li>
 <li>parentElement
-: <a class="el" href="class_users_model.html#a82b4a272eb774ae36e063c8b27dcef3c">UsersModel</a>
+: <a class="el" href="class_file_xml_items_model.html#ac62d2392836d93aa22f7be0c9f6bf149">FileXmlItemsModel</a>
+, <a class="el" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">Settings</a>
 </li>
 <li>photosModel
 : <a class="el" href="class_user_info.html#a08b307bb4bee1e67c7aa3f3db25a0ae2">UserInfo</a>
 </li>
+<li>proxySettings
+: <a class="el" href="class_settings.html#ac6b4367b0d41cdfe409940d0c3bef622">Settings</a>
+</li>
 <li>searchModel
 : <a class="el" href="class_torrents.html#a3f39c233eadfddd08fc105d163d970b3">Torrents</a>
 </li>
+<li>settings
+: <a class="el" href="class_application_model.html#a2343683244356e53c88457f64814333f">ApplicationModel</a>
+</li>
 <li>source
-: <a class="el" href="class_users_model.html#a2ffc17d02fba23c85deb0d39cb99e352">UsersModel</a>
+: <a class="el" href="class_file_xml_items_model.html#aa8a1f7faf9bf06edf137bb74db9a7e13">FileXmlItemsModel</a>
+, <a class="el" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">Settings</a>
 </li>
 <li>torrents
 : <a class="el" href="class_application_model.html#a9ead9b4262b6cbebb00ecaba9689b294">ApplicationModel</a>
 </li>
+<li>translation
+: <a class="el" href="class_settings.html#aeec6e95d3d48262ee57c4ebd2a2060cc">Settings</a>
+</li>
+<li>translatorStringEnd
+: <a class="el" href="class_settings.html#a48fed2e1aa7990ac670197dbeb242cd6">Settings</a>
+</li>
 <li>uploadModel
 : <a class="el" href="class_torrents.html#a22fa2dd02316cc1375c4a5e5ed3a7ded">Torrents</a>
+</li>
+<li>upnpEnabled
+: <a class="el" href="class_settings.html#a13c264ccc4783bf4ae8cb040da2cbb39">Settings</a>
 </li>
 <li>userProfile
 : <a class="el" href="class_user_info.html#ae0b529f9875521655f8f23fbc2a5f47c">UserInfo</a>
@@ -154,11 +181,20 @@ $(document).ready(function(){initNavTree('functions_prop.html','');});
 <li>userProfileFile
 : <a class="el" href="class_user_info.html#a0976d50bc01205ab60f20c0b1a9c5da3">UserInfo</a>
 </li>
+<li>videoDevicesModel
+: <a class="el" href="class_settings.html#ae65db1a99879af266249f85265c71b37">Settings</a>
+</li>
 <li>videosModel
 : <a class="el" href="class_user_info.html#a4e1518d1cfe30ef650237be63ab36c81">UserInfo</a>
 </li>
 <li>visitorsModel
 : <a class="el" href="class_application_model.html#abb95d2e8fc668626d2ec3303dba9e545">ApplicationModel</a>
+</li>
+<li>wanDevicesModel
+: <a class="el" href="class_settings.html#a94e52cafb314c7edad153888c3d96f92">Settings</a>
+</li>
+<li>zoomFactor
+: <a class="el" href="class_settings.html#ad5647eb961c9e977b20bb235bb800a4e">Settings</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -166,7 +202,7 @@ $(document).ready(function(){initNavTree('functions_prop.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Документация по Terminal. Последние изменения: Пн 6 Окт 2014 14:53:39. Создано системой
+    <li class="footer">Документация по Terminal. Последние изменения: Вт 7 Окт 2014 01:12:40. Создано системой
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

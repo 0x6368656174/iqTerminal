@@ -11,8 +11,8 @@ Rectangle {
 
     signal clicked()
 
-    width: Core.dp(22)
-    height: Core.dp(22)
+    width: 22 * applicationModel.settings.zoomFactor
+    height: 22 * applicationModel.settings.zoomFactor
 
 //    color: "#b0b5b4b9"
     color: "white"
@@ -22,7 +22,7 @@ Rectangle {
         Image {
             id: buttonImage
             anchors.centerIn: parent
-            width: Core.dp(22)
+            width: 22 * applicationModel.settings.zoomFactor
             height: width
 
             source: {

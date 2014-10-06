@@ -24,6 +24,8 @@ AbstractXmlItemObject * TorrentFilesModel::newItem()
 {
     TorrentFile *newItem = new TorrentFile(this);
     connect(newItem, SIGNAL(idChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
+
     connect(newItem, SIGNAL(pathChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(sizeChanged()), this, SLOT(itemDataChanged()));

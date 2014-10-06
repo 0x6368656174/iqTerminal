@@ -2,9 +2,7 @@
 #include <QDebug>
 
 FoldersModel::FoldersModel(QObject *parent) :
-    AbstractXmlItemsModel(parent),
-    m_source(QUrl()),
-    m_parentElement(""),
+    FileXmlItemsModel(parent),
     m_fileAdditionalData(nullptr)
 {
     m_roles[Id] = "folder_id";
@@ -19,8 +17,9 @@ AbstractXmlItemObject * FoldersModel::newItem()
 {
     Folder *newItem = new Folder(this);
     connect(newItem, SIGNAL(idChanged()), this, SLOT(itemDataChanged()));
-    connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
+
+    connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
     newItem->filesModel()->setItemAdditionalData(m_fileAdditionalData);
     return newItem;
 }
@@ -28,40 +27,6 @@ AbstractXmlItemObject * FoldersModel::newItem()
 QHash<int, QByteArray> FoldersModel::roleNames() const
 {
     return m_roles;
-}
-
-QUrl FoldersModel::source() const
-{
-    return m_source;
-}
-
-void FoldersModel::setSource(const QUrl &source)
-{
-    if(m_source != source) {
-        m_source = source;
-
-        emit sourceChanged();
-
-        if (!parentElement().isEmpty())
-            reload();
-    }
-}
-
-QString FoldersModel::parentElement() const
-{
-    return m_parentElement;
-}
-
-void FoldersModel::setParentElement(const QString &parentElement)
-{
-    if (m_parentElement != parentElement) {
-        m_parentElement = parentElement;
-
-        emit parentElementChanged();
-
-        if (source().isValid())
-            reload();
-    }
 }
 
 QQmlComponent* FoldersModel::fileAdditionalData() const
@@ -83,16 +48,6 @@ void FoldersModel::setFileAdditionalData(QQmlComponent *fileAdditionalData)
 
         emit fileAdditionalDataChanged();
     }
-}
-
-bool FoldersModel::reload()
-{
-    return reloadModel(this, source(), parentElement());
-}
-
-bool FoldersModel::save() const
-{
-    return saveModel(this, source(), parentElement());
 }
 
 Folder * FoldersModel::appendNew(const QUrl &path)

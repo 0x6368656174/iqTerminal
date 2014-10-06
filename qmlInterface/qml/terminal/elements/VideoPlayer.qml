@@ -108,7 +108,7 @@ Page {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            height: Core.dp(55)
+            height: (55 * applicationModel.settings.zoomFactor)
             anchors.bottomMargin: -height
             Behavior on anchors.bottomMargin {NumberAnimation {duration: 200} }
             color: "#80c6c1c7"
@@ -131,10 +131,10 @@ Page {
                 anchors.top: parent.top
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
-                anchors.leftMargin: Core.dp(19)
-                anchors.rightMargin: Core.dp(8)
-                anchors.topMargin: Core.dp(5)
-                font.pixelSize: Core.dp(8)
+                anchors.leftMargin: (19 * applicationModel.settings.zoomFactor)
+                anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
+                anchors.topMargin: (5 * applicationModel.settings.zoomFactor)
+                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
             }
 
             MediaButtons {
@@ -172,8 +172,8 @@ Page {
         id: rotateButton
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        height: Core.dp(26)
-        width: Core.dp(48)
+        height: (26 * applicationModel.settings.zoomFactor)
+        width: (48 * applicationModel.settings.zoomFactor)
         source: "../images/203.png"
 
         onClicked: {

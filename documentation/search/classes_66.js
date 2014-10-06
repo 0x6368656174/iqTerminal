@@ -6,6 +6,7 @@ var searchData=
   ['filesystem',['FileSystem',['../class_file_system.html',1,'']]],
   ['filevalidator',['FileValidator',['../class_file_validator.html',1,'']]],
   ['filewatcher',['FileWatcher',['../class_file_watcher.html',1,'']]],
+  ['filexmlitemsmodel',['FileXmlItemsModel',['../class_file_xml_items_model.html',1,'']]],
   ['folder',['Folder',['../class_folder.html',1,'']]],
   ['foldersmodel',['FoldersModel',['../class_folders_model.html',1,'']]]
 ];

@@ -54,7 +54,7 @@ Page {
     BackButton {
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.topMargin: Core.dp(70)
+        anchors.topMargin: (70 * applicationModel.settings.zoomFactor)
     }
 
     Rectangle {
@@ -65,12 +65,12 @@ Page {
     Item {
         id: items
         anchors.fill: parent
-        anchors.leftMargin: Core.dp(27)
+        anchors.leftMargin: (27 * applicationModel.settings.zoomFactor)
         Image {
             id: terminalLogo
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
-            anchors.topMargin: Core.dp(35)
+            anchors.topMargin: (35 * applicationModel.settings.zoomFactor)
             source: "../../images/2.png"
             width: parent.width / 3 * 2
             fillMode: Image.PreserveAspectFit
@@ -81,8 +81,8 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
             width: terminalLogo.paintedWidth
             anchors.top: terminalLogo.bottom
-            anchors.topMargin: Core.dp(8)
-            height: runing?Core.dp(2):0
+            anchors.topMargin: (8 * applicationModel.settings.zoomFactor)
+            height: runing?(2 * applicationModel.settings.zoomFactor):0
             Behavior on height {NumberAnimation {duration: 200 } }
             onFinished: showError(qsTr("No connection"))
         }
@@ -93,18 +93,18 @@ Page {
             Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.margins: Core.dp(15)
-                height: Core.dp(28)
+                anchors.margins: (15 * applicationModel.settings.zoomFactor)
+                height: (28 * applicationModel.settings.zoomFactor)
                 Row {
                     anchors.fill: parent
-                    spacing: Core.dp(8)
+                    spacing: (8 * applicationModel.settings.zoomFactor)
 
                     Item {
                         height: parent.height
                         width: height
                         Image {
                             id: icon
-                            width: Core.dp(28)
+                            width: ma.containsMouse?(34 * applicationModel.settings.zoomFactor):(28 * applicationModel.settings.zoomFactor)
                             height: width
                             anchors.centerIn: parent
                             source: "../../images/" + image
@@ -115,12 +115,12 @@ Page {
 
                     Text {
                         color: "white"
-                        font.pixelSize: Core.dp(8)
+                        font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                         anchors.verticalCenter: parent.verticalCenter
-                        width: Core.dp(596)
+                        width: (596 * applicationModel.settings.zoomFactor)
                         clip: true
                         elide: Text.ElideRight
-                        text: title
+                        text: qsTranslate("MenuContext", title) + applicationModel.settings.translatorStringEnd
                     }
                 }
 
@@ -136,16 +136,9 @@ Page {
                 }
 
                 TerminalMouseArea {
+                    id: ma
                     anchors.fill: parent
                     hoverEnabled: true
-                    onContainsMouseChanged: {
-                        if (containsMouse) {
-                            icon.width = Core.dp(34)
-                        } else {
-                            icon.width = Core.dp(28)
-                        }
-                    }
-
                     onClicked: if (expected_file === "") {
                                    menuPage.pageClicked(page_name)
                                } else {
@@ -168,53 +161,69 @@ Page {
             }
         }
 
-        XmlListModel {
+        ListModel {
             id: menuModel
-            source: Core.dataDir + "menu.xml"
-            query: "/menu/item"
-
-            XmlRole {
-                name: "image"
-                query: "image/string()"
+            ListElement {
+                page_name: "i"
+                title: QT_TRANSLATE_NOOP("MenuContext", "I")
+                image: "13.png"
+                qml_page: "i/I.qml"
+                expected_file: ""
             }
-
-            XmlRole {
-                name: "title"
-                query: "title/string()"
+            ListElement {
+                page_name: "all"
+                title: QT_TRANSLATE_NOOP("MenuContext", "ALL")
+                image: "15.png"
+                qml_page: "all/All.qml"
+                expected_file: "all.xml"
             }
-
-            XmlRole {
-                name: "qml_page"
-                query: "qml_page/string()"
+            ListElement {
+                page_name: "contacts"
+                title: QT_TRANSLATE_NOOP("MenuContext", "CONTACTS")
+                image: "16.png"
+                qml_page: "contacts/Contacts.qml"
+                expected_file: "contacts.xml"
             }
-
-            XmlRole {
-                name: "page_name"
-                query: "name/string()"
+            ListElement {
+                page_name: "visitors"
+                title: QT_TRANSLATE_NOOP("MenuContext", "VISITORS")
+                image: "17.png"
+                qml_page: "visitors/Visitors.qml"
+                expected_file: ""
             }
-            XmlRole {
-                name: "expected_file"
-                query: "expected_file/string()"
+            ListElement {
+                page_name: "torrent"
+                title: QT_TRANSLATE_NOOP("MenuContext", "TORRENT")
+                image: "14.png"
+                qml_page: "torrent/Torrent.qml"
+                expected_file: ""
+            }
+            ListElement {
+                page_name: "settings"
+                title: QT_TRANSLATE_NOOP("MenuContext", "SETTINGS")
+                image: "18.png"
+                qml_page: "settings/Settings.qml"
+                expected_file: ""
             }
         }
 
         Item {
             anchors.horizontalCenter: parent.horizontalCenter
-            width: Core.dp(125)
+            width: (125 * applicationModel.settings.zoomFactor)
             anchors.top: progressBar.bottom
             anchors.bottom: parent.bottom
-            anchors.margins: Core.dp(5)
-            anchors.horizontalCenterOffset: Core.dp(-25)
+            anchors.margins: (5 * applicationModel.settings.zoomFactor)
+            anchors.horizontalCenterOffset: (-25 * applicationModel.settings.zoomFactor)
             clip: true
 
             ListView {
                 interactive: contentHeight > height
                 delegate: menuDelegate
-                spacing: Core.dp(5)
+                spacing: (5 * applicationModel.settings.zoomFactor)
                 model: menuModel
                 anchors.fill: parent
-                anchors.topMargin: Core.dp(4)
-                anchors.bottomMargin: Core.dp(4)
+                anchors.topMargin: (4 * applicationModel.settings.zoomFactor)
+                anchors.bottomMargin: (4 * applicationModel.settings.zoomFactor)
             }
         }
     }
@@ -224,6 +233,6 @@ Page {
         id: errorPage
         visible: false
         blurItem: items
-        blurLeftMargin: Core.dp(27)
+        blurLeftMargin: (27 * applicationModel.settings.zoomFactor)
     }
 }

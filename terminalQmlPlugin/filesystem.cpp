@@ -12,7 +12,7 @@ FileSystem::FileSystem(QObject *parent) :
 bool FileSystem::cp(const QUrl &source, const QUrl &destination)
 {
     if (!QFile::exists(source.toLocalFile())) {
-        qWarning() << QString("File %0 not exists.").arg(source.toLocalFile());
+        qWarning() << tr("File %0 not exists.").arg(source.toLocalFile());
         return false;
     }
 

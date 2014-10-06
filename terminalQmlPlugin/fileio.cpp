@@ -67,8 +67,6 @@ bool FileIO::write(const QString& data)
     QFile file(m_source.toLocalFile());
     if (!file.open(QFile::WriteOnly)) {
         QFileInfo info (m_source.toLocalFile());
-        qDebug() << info.exists();
-        qDebug() << info.size();
 
         emit error(tr("Unable to open the file %0.").arg(m_source.toLocalFile()));
         qWarning() << tr("Unable to open the file %0.").arg(m_source.toLocalFile());

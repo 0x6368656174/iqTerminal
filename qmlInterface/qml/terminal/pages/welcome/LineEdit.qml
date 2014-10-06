@@ -13,15 +13,15 @@ Rectangle {
     border.color: "#c00d0d"
     border.width: 1
     color: "transparent"
-    height: Core.dp(20)
-    width: Core.dp(125)
+    height: (20 * applicationModel.settings.zoomFactor)
+    width: (125 * applicationModel.settings.zoomFactor)
 
     onFocusChanged: if (focus) textInput.forceActiveFocus()
 
     Text {
         id: placeholder
         color: "#b1b1b1"
-        font.pixelSize: Core.dp(8)
+        font.pixelSize: (8 * applicationModel.settings.zoomFactor)
         anchors.centerIn: parent
         visible: textInput.text === "" && !textInput.focus
     }
@@ -30,11 +30,11 @@ Rectangle {
         id: textInput
         clip: true
         anchors.fill: parent
-        anchors.leftMargin: Core.dp(8)
+        anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
         anchors.rightMargin: anchors.leftMargin
         verticalAlignment: Text.AlignVCenter
         color: "white"
-        font.pixelSize: Core.dp(8)
+        font.pixelSize: (8 * applicationModel.settings.zoomFactor)
         echoMode: lineEdit.password?TextInput.Password:TextInput.Normal
         passwordCharacter: "*"
         selectByMouse: true

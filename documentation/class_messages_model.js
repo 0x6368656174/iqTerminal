@@ -13,15 +13,5 @@ var class_messages_model =
     [ "MessagesModel", "class_messages_model.html#abd96b2b81025016ca2d9cd7b1dacfd93", null ],
     [ "data", "class_messages_model.html#a3c84d081f1f4370d5f4dd92a969467d6", null ],
     [ "newItem", "class_messages_model.html#a6a66ca4a5cef3640852daf4c451f6e46", null ],
-    [ "parentElement", "class_messages_model.html#a5e4327fcce5278cf57a3daadfb371894", null ],
-    [ "parentElementChanged", "class_messages_model.html#aeb1a752535515a00a5c6ebaff706806e", null ],
-    [ "reload", "class_messages_model.html#a1361d55642670ae6668865cd98526773", null ],
-    [ "roleNames", "class_messages_model.html#a9dc3c3ac007b2e2c982df57f0047b7b0", null ],
-    [ "save", "class_messages_model.html#a51736993324b18219c83a0dc19ad6025", null ],
-    [ "setParentElement", "class_messages_model.html#abb6863bb8afdc1a7a39dc50d8ef5d264", null ],
-    [ "setSource", "class_messages_model.html#a01cfd0116ef957a7eda1467931e7e920", null ],
-    [ "source", "class_messages_model.html#af6d893c97cbb30106b89c00a4f32393e", null ],
-    [ "sourceChanged", "class_messages_model.html#ab665c388033eeb160308941361c558d4", null ],
-    [ "parentElement", "class_messages_model.html#a3d93d2db7d08060e590e8fb8a3fcbc15", null ],
-    [ "source", "class_messages_model.html#ac3d41f9f5bce7d0338c79fb54e21c100", null ]
+    [ "roleNames", "class_messages_model.html#a9dc3c3ac007b2e2c982df57f0047b7b0", null ]
 ];

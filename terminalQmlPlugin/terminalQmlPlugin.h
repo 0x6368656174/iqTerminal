@@ -48,6 +48,14 @@
 #include "torrents.h"
 #include "applicationmodel.h"
 
+#include "device.h"
+#include "simpledevice.h"
+#include "simpledevicesmodel.h"
+#include "networkdevice.h"
+#include "networkdevicesmodel.h"
+#include "proxysettings.h"
+#include "settings.h"
+
 /*!
  * \mainpage Terminal - Приложение Terminal
  *
@@ -213,6 +221,21 @@ public:
 
         // @uri TerminalQmlPlugin
         qmlRegisterSingletonType<ApplicationModel>(uri, 1, 0, "ApplicationModel", applictionModel_singletontype_provider);
+
+        // @uri TerminalQmlPlugin
+        qmlRegisterUncreatableType<Device>(uri, 1, 0, "Device", "Device is uncreatable abstract type.");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<SimpleDevice>(uri, 1, 0, "SimpleDevice");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<SimpleDevicesModel>(uri, 1, 0, "SimpleDevicesModel");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<NetworkDevice>(uri, 1, 0, "NetworkDevice");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<NetworkDevicesModel>(uri, 1, 0, "NetworkDevicesModel");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<ProxySettings>(uri, 1, 0, "ProxySettings");
+        // @uri TerminalQmlPlugin
+        qmlRegisterType<Settings>(uri, 1, 0, "Settings");
     }
 };
 

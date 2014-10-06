@@ -4,9 +4,7 @@ import TerminalQmlPlugin 1.0
 Item {
     id: page
     property string name
-    property bool showHideAnimationRunning: {
-        return hideLeftAnimations.running || showLeftAnimations.running || hideRightAnimations.running || showRightAnimations.running
-    }
+    property bool showHideAnimationRunning: hideLeftAnimations.running || showLeftAnimations.running || hideRightAnimations.running || showRightAnimations.running
 
     clip: true
 

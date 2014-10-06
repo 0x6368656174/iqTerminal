@@ -6,7 +6,7 @@ Image {
     id: button
 
     property bool widthAnimationEnabled: true
-    property real baseWidth: Core.dp(28)
+    property real baseWidth: (28 * applicationModel.settings.zoomFactor)
     property bool hide: false
     property bool hover: false
 

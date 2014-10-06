@@ -1,15 +1,11 @@
 #ifndef MESSAGESMODEL_H
 #define MESSAGESMODEL_H
 
-#include "abstractxmlitemsmodel.h"
-#include "xmlinterface.h"
+#include "filexmlitemsmodel.h"
 
-class MessagesModel : public AbstractXmlItemsModel, public XmlInterface
+class MessagesModel : public FileXmlItemsModel
 {
     Q_OBJECT
-    Q_PROPERTY(QUrl source READ source WRITE setSource NOTIFY sourceChanged)
-    Q_PROPERTY(QString parentElement READ parentElement WRITE setParentElement NOTIFY parentElementChanged)
-
 public:
     enum Roles
     {
@@ -25,10 +21,6 @@ public:
 
     explicit MessagesModel(QObject *parent = 0);
 
-    Q_INVOKABLE bool reload();
-
-    Q_INVOKABLE bool save();
-
 public:
     virtual QHash<int, QByteArray> roleNames() const;
 
@@ -37,21 +29,9 @@ public:
 protected:
     virtual AbstractXmlItemObject * newItem();
 
-public:
-    QUrl source() const;
-    void setSource(const QUrl &source);
-
-    QString parentElement() const;
-    void setParentElement(const QString &parentElement);
-
-signals:
-    void sourceChanged();
-    void parentElementChanged();
 
 private:
     QHash<int, QByteArray> m_roles;
-    QUrl m_source;
-    QString m_parentElement;
 };
 
 #endif // MESSAGESMODEL_H

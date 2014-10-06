@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Terminal: Класс SimpleDevice</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="extraDoxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Terminal
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Приложение Terminal</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;классов</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Члены&#160;классов</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_simple_device.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Свойства</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Группы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#signals">Сигналы</a> &#124;
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pro-methods">Защищенные члены</a> &#124;
+<a href="#properties">Свойства</a> &#124;
+<a href="class_simple_device-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс SimpleDevice</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Граф наследования:SimpleDevice:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_simple_device.png" usemap="#SimpleDevice_map" alt=""/>
+  <map id="SimpleDevice_map" name="SimpleDevice_map">
+<area href="class_device.html" alt="Device" shape="rect" coords="0,112,139,136"/>
+<area href="class_abstract_xml_item_object.html" alt="AbstractXmlItemObject" shape="rect" coords="0,56,139,80"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
+Сигналы</h2></td></tr>
+<tr class="memitem:a31968ab0b8b7ce5018922d1a31ade4e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31968ab0b8b7ce5018922d1a31ade4e9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>nameChanged</b> ()</td></tr>
+<tr class="separator:a31968ab0b8b7ce5018922d1a31ade4e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header signals_class_device"><td colspan="2" onclick="javascript:toggleInherit('signals_class_device')"><img src="closed.png" alt="-"/>&#160;Сигналы inherited from <a class="el" href="class_device.html">Device</a></td></tr>
+<tr class="memitem:a602e258e9a61dbb1afd6db131657fc05 inherit signals_class_device"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a602e258e9a61dbb1afd6db131657fc05"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>activeChanged</b> ()</td></tr>
+<tr class="separator:a602e258e9a61dbb1afd6db131657fc05 inherit signals_class_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header signals_class_abstract_xml_item_object"><td colspan="2" onclick="javascript:toggleInherit('signals_class_abstract_xml_item_object')"><img src="closed.png" alt="-"/>&#160;Сигналы inherited from <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a></td></tr>
+<tr class="memitem:a1c968a0ee8ebbb2630a17bb68401d1d0 inherit signals_class_abstract_xml_item_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c968a0ee8ebbb2630a17bb68401d1d0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>idChanged</b> ()</td></tr>
+<tr class="separator:a1c968a0ee8ebbb2630a17bb68401d1d0 inherit signals_class_abstract_xml_item_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0f30edd99d7ec1992b90448511a042b inherit signals_class_abstract_xml_item_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0f30edd99d7ec1992b90448511a042b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>additionalDataChanged</b> ()</td></tr>
+<tr class="separator:ac0f30edd99d7ec1992b90448511a042b inherit signals_class_abstract_xml_item_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:aa24245d6906d5e87003239312e3adbe9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa24245d6906d5e87003239312e3adbe9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SimpleDevice</b> (QObject *parent=0)</td></tr>
+<tr class="separator:aa24245d6906d5e87003239312e3adbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fb99911a55a193a012acfed9575ddeb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6fb99911a55a193a012acfed9575ddeb"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>loadFromDomElement</b> (const QDomElement &amp;domElement)</td></tr>
+<tr class="separator:a6fb99911a55a193a012acfed9575ddeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a391e1c79f807c39682929462591d457e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a391e1c79f807c39682929462591d457e"></a>
+virtual QDomElement&#160;</td><td class="memItemRight" valign="bottom"><b>toDomElement</b> (QDomDocument &amp;domDocument) const </td></tr>
+<tr class="separator:a391e1c79f807c39682929462591d457e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcc3cf6348eddef84ae64422c90ad4ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afcc3cf6348eddef84ae64422c90ad4ce"></a>
+virtual QString&#160;</td><td class="memItemRight" valign="bottom"><b>tagName</b> () const </td></tr>
+<tr class="separator:afcc3cf6348eddef84ae64422c90ad4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58e630b9dc6d8f1dd22b7c98a2bb00c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58e630b9dc6d8f1dd22b7c98a2bb00c7"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const </td></tr>
+<tr class="separator:a58e630b9dc6d8f1dd22b7c98a2bb00c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c35c7ff42dd25f8efaa5cc9da567d0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c35c7ff42dd25f8efaa5cc9da567d0f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setName</b> (const QString &amp;name)</td></tr>
+<tr class="separator:a8c35c7ff42dd25f8efaa5cc9da567d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_device"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_device')"><img src="closed.png" alt="-"/>&#160;Открытые члены inherited from <a class="el" href="class_device.html">Device</a></td></tr>
+<tr class="memitem:ae17845a0781723b5a5576dbf9a5d0193 inherit pub_methods_class_device"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae17845a0781723b5a5576dbf9a5d0193"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Device</b> (QObject *parent=0)</td></tr>
+<tr class="separator:ae17845a0781723b5a5576dbf9a5d0193 inherit pub_methods_class_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cda535c73666636f32aa66271a32899 inherit pub_methods_class_device"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cda535c73666636f32aa66271a32899"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>active</b> () const </td></tr>
+<tr class="separator:a1cda535c73666636f32aa66271a32899 inherit pub_methods_class_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad013386d9389cbabaf245cbc651b17b3 inherit pub_methods_class_device"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad013386d9389cbabaf245cbc651b17b3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setActive</b> (bool active)</td></tr>
+<tr class="separator:ad013386d9389cbabaf245cbc651b17b3 inherit pub_methods_class_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_abstract_xml_item_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_abstract_xml_item_object')"><img src="closed.png" alt="-"/>&#160;Открытые члены inherited from <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a></td></tr>
+<tr class="memitem:a27d9012f99162ce7d50916f7d80dce8a inherit pub_methods_class_abstract_xml_item_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27d9012f99162ce7d50916f7d80dce8a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AbstractXmlItemObject</b> (QObject *parent=0)</td></tr>
+<tr class="separator:a27d9012f99162ce7d50916f7d80dce8a inherit pub_methods_class_abstract_xml_item_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a498e9dca98965d9d18d3ee9ea38b8849 inherit pub_methods_class_abstract_xml_item_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a498e9dca98965d9d18d3ee9ea38b8849"></a>
+qint64&#160;</td><td class="memItemRight" valign="bottom"><b>id</b> () const </td></tr>
+<tr class="separator:a498e9dca98965d9d18d3ee9ea38b8849 inherit pub_methods_class_abstract_xml_item_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc0467a47b0dcd5275cc05e4a446a41 inherit pub_methods_class_abstract_xml_item_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abcc0467a47b0dcd5275cc05e4a446a41"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (const qint64 id)</td></tr>
+<tr class="separator:abcc0467a47b0dcd5275cc05e4a446a41 inherit pub_methods_class_abstract_xml_item_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5aedbbf658a5bc54308bcda429bd25e inherit pub_methods_class_abstract_xml_item_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5aedbbf658a5bc54308bcda429bd25e"></a>
+QObject *&#160;</td><td class="memItemRight" valign="bottom"><b>additionalData</b> () const </td></tr>
+<tr class="separator:ae5aedbbf658a5bc54308bcda429bd25e inherit pub_methods_class_abstract_xml_item_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a293ef9fed302f34a47ca95802e5b12dd inherit pub_methods_class_abstract_xml_item_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a293ef9fed302f34a47ca95802e5b12dd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setAdditionalData</b> (QObject *additionalData)</td></tr>
+<tr class="separator:a293ef9fed302f34a47ca95802e5b12dd inherit pub_methods_class_abstract_xml_item_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Защищенные члены</h2></td></tr>
+<tr class="memitem:aef0bf89b2c0a4680b6484db909db8dd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef0bf89b2c0a4680b6484db909db8dd6"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr class="separator:aef0bf89b2c0a4680b6484db909db8dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Свойства</h2></td></tr>
+<tr class="memitem:a15b09703bb13221e951dd6ff7bbaeb2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15b09703bb13221e951dd6ff7bbaeb2b"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="separator:a15b09703bb13221e951dd6ff7bbaeb2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_device"><td colspan="2" onclick="javascript:toggleInherit('properties_class_device')"><img src="closed.png" alt="-"/>&#160;Свойства inherited from <a class="el" href="class_device.html">Device</a></td></tr>
+<tr class="memitem:ac6c8534a9c755b5ee9affc37771a301d inherit properties_class_device"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6c8534a9c755b5ee9affc37771a301d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>active</b></td></tr>
+<tr class="separator:ac6c8534a9c755b5ee9affc37771a301d inherit properties_class_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_abstract_xml_item_object"><td colspan="2" onclick="javascript:toggleInherit('properties_class_abstract_xml_item_object')"><img src="closed.png" alt="-"/>&#160;Свойства inherited from <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a></td></tr>
+<tr class="memitem:af40ebc4f469caca8fb15fb1c80535dc3 inherit properties_class_abstract_xml_item_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af40ebc4f469caca8fb15fb1c80535dc3"></a>
+qint64&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="separator:af40ebc4f469caca8fb15fb1c80535dc3 inherit properties_class_abstract_xml_item_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ae676b23d0016606ddc23571431156e inherit properties_class_abstract_xml_item_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ae676b23d0016606ddc23571431156e"></a>
+QObject&#160;</td><td class="memItemRight" valign="bottom"><b>additionalData</b></td></tr>
+<tr class="separator:a3ae676b23d0016606ddc23571431156e inherit properties_class_abstract_xml_item_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>terminalQmlPlugin/<a class="el" href="simpledevice_8h_source.html">simpledevice.h</a></li>
+<li>terminalQmlPlugin/simpledevice.cpp</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_simple_device.html">SimpleDevice</a></li>
+    <li class="footer">Документация по Terminal. Последние изменения: Вт 7 Окт 2014 01:12:40. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
+  </ul>
+</div>
+</body>
+</html>

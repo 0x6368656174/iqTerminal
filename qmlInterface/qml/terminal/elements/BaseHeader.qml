@@ -6,5 +6,5 @@ Rectangle {
 
     anchors.left: parent.left
     anchors.right: parent.right
-    height: Core.dp(24)
+    height: 24 * applicationModel.settings.zoomFactor
 }

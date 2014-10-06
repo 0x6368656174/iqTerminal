@@ -43,5 +43,8 @@
         <file>qml/terminal/elements/ErrorMessage.qml</file>
         <file>qml/terminal/elements/ErrorPage.qml</file>
         <file>qml/terminal/pages/userInfo/UserInfoPage.qml</file>
+        <file>qml/terminal/pages/settings/ClickedText.qml</file>
+        <file>qml/terminal/pages/settings/Separator.qml</file>
+        <file>qml/terminal/pages/settings/Settings.qml</file>
     </qresource>
 </RCC>

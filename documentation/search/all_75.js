@@ -1,6 +1,7 @@
 var searchData=
 [
   ['uploadmodel',['uploadModel',['../class_torrents.html#a22fa2dd02316cc1375c4a5e5ed3a7ded',1,'Torrents']]],
+  ['upnpenabled',['upnpEnabled',['../class_settings.html#a13c264ccc4783bf4ae8cb040da2cbb39',1,'Settings']]],
   ['urlhelper',['UrlHelper',['../class_url_helper.html',1,'']]],
   ['user',['User',['../class_user.html',1,'']]],
   ['userinfo',['UserInfo',['../class_user_info.html',1,'UserInfo'],['../class_users_model.html#a5ac53157486cc7e167a53b51c2032afca8e53cb12dc33b9e3d81c7e8c503be3dc',1,'UsersModel::UserInfo()']]],

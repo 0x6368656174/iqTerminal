@@ -108,7 +108,7 @@ Page {
             name: "signInPage"
             PropertyChanges {
                 target: buttonTitleText
-                text: qsTr("Sign In")
+                text: qsTr("Sign In") + applicationModel.settings.translatorStringEnd
             }
             PropertyChanges {
                 target: signInPage
@@ -151,7 +151,7 @@ Page {
             name: "registerPage"
             PropertyChanges {
                 target: buttonTitleText
-                text: qsTr("Register")
+                text: qsTr("Register") + applicationModel.settings.translatorStringEnd
             }
             PropertyChanges {
                 target: signInPage
@@ -194,7 +194,7 @@ Page {
             name: "remindPage"
             PropertyChanges {
                 target: buttonTitleText
-                text: qsTr("Remind Password")
+                text: qsTr("Remind Password") + applicationModel.settings.translatorStringEnd
             }
             PropertyChanges {
                 target: signInPage
@@ -237,7 +237,7 @@ Page {
             name: "changePage"
             PropertyChanges {
                 target: buttonTitleText
-                text: qsTr("Change Password")
+                text: qsTr("Change Password") + applicationModel.settings.translatorStringEnd
             }
             PropertyChanges {
                 target: signInPage
@@ -296,7 +296,7 @@ Page {
             id: terminalLogo
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
-            anchors.topMargin: Core.dp(35)
+            anchors.topMargin: (35 * applicationModel.settings.zoomFactor)
             source: "../../images/2.png"
             width: parent.width / 3 * 2
             fillMode: Image.PreserveAspectFit
@@ -307,8 +307,8 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
             width: terminalLogo.paintedWidth
             anchors.top: terminalLogo.bottom
-            anchors.topMargin: Core.dp(8)
-            height: runing?Core.dp(2):0
+            anchors.topMargin: (8 * applicationModel.settings.zoomFactor)
+            height: runing?(2 * applicationModel.settings.zoomFactor):0
             Behavior on height {NumberAnimation {duration: 200 } }
             onFinished: showError(qsTr("No connection"))
         }
@@ -318,27 +318,20 @@ Page {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: progressBar.bottom
-            anchors.topMargin: progressBar.runing?Core.dp(8):0
+            anchors.topMargin: progressBar.runing?(8 * applicationModel.settings.zoomFactor):0
             Behavior on anchors.topMargin {NumberAnimation {duration: 200 } }
-            height: Core.dp(12)
+            height: (12 * applicationModel.settings.zoomFactor)
 
             Text {
                 id: buttonTitleText
                 anchors.centerIn: parent
                 color: "white"
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: buttonTitleMA.containsMouse?(10 * applicationModel.settings.zoomFactor):(8 * applicationModel.settings.zoomFactor)
             }
             Elements.TerminalMouseArea {
                 id: buttonTitleMA
                 anchors.fill: parent
                 platformIndependentHoverEnabled: true
-                onContainsMouseChanged:  {
-                    if (containsMouse) {
-                        buttonTitleText.font.pixelSize = Core.dp(10)
-                    } else {
-                        buttonTitleText.font.pixelSize = Core.dp(8)
-                    }
-                }
 
                 function click() {
                     if (welcomePage.state === "signInPage") {
@@ -364,13 +357,13 @@ Page {
             id: buttonsRow
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: buttonTitle.bottom
-            anchors.topMargin: Core.dp(4)
-            height: Core.dp(28)
-            width: Core.dp(28)*5+Core.dp(4)*4
-            spacing: Core.dp(4)
+            anchors.topMargin: (4 * applicationModel.settings.zoomFactor)
+            height: (28 * applicationModel.settings.zoomFactor)
+            width: (28 * applicationModel.settings.zoomFactor)*5+(4 * applicationModel.settings.zoomFactor)*4
+            spacing: (4 * applicationModel.settings.zoomFactor)
 
             Item {
-                width: Core.dp(28)
+                width: (28 * applicationModel.settings.zoomFactor)
                 height: width
                 Welcome.Button {
                     id: signInButton
@@ -380,7 +373,7 @@ Page {
                 }
             }
             Item {
-                width: Core.dp(28)
+                width: (28 * applicationModel.settings.zoomFactor)
                 height: width
                 enabled: !main.autorized
                 Welcome.Button {
@@ -392,7 +385,7 @@ Page {
 
             }
             Item {
-                width: Core.dp(28)
+                width: (28 * applicationModel.settings.zoomFactor)
                 height: width
                 enabled: !main.autorized
                 Welcome.Button {
@@ -403,7 +396,7 @@ Page {
                 }
             }
             Item {
-                width: Core.dp(28)
+                width: (28 * applicationModel.settings.zoomFactor)
                 height: width
                 enabled: main.autorized
                 Welcome.Button {
@@ -414,7 +407,7 @@ Page {
                 }
             }
             Item {
-                width: Core.dp(28)
+                width: (28 * applicationModel.settings.zoomFactor)
                 height: width
                 Welcome.Button {
                     id: helpButton
@@ -430,9 +423,9 @@ Page {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: buttonsRow.bottom
-            anchors.topMargin: Core.dp(8)
+            anchors.topMargin: (8 * applicationModel.settings.zoomFactor)
             anchors.bottom: saveUser.top
-            anchors.bottomMargin: Core.dp(4)
+            anchors.bottomMargin: (4 * applicationModel.settings.zoomFactor)
             contentWidth: parent.width
             contentHeight: form.height + errorMessage.height*errorMessage.visible + errorMessage.anchors.topMargin*errorMessage.visible
             interactive: contentHeight > height
@@ -458,7 +451,7 @@ Page {
                         id: signInPage
                         opacity: 0
                         visible: opacity !== 0
-                        spacing: Core.dp(12)
+                        spacing: (12 * applicationModel.settings.zoomFactor)
                         anchors.left: parent.left
                         anchors.right: parent.right
 
@@ -466,7 +459,7 @@ Page {
 
                         Welcome.LineEdit {
                             id: signInLogin
-                            placeholderText: qsTr("LOGIN")
+                            placeholderText: qsTr("LOGIN") + applicationModel.settings.translatorStringEnd
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: signInPassword
                             onSubmit: buttonTitleMA.click()
@@ -474,7 +467,7 @@ Page {
                         }
                         Welcome.LineEdit {
                             id: signInPassword
-                            placeholderText: qsTr("PASSWORD")
+                            placeholderText: qsTr("PASSWORD") + applicationModel.settings.translatorStringEnd
                             anchors.horizontalCenter: parent.horizontalCenter
                             password: true
                             KeyNavigation.tab: signInLogin
@@ -487,7 +480,7 @@ Page {
                         id: registerPage
                         opacity: 0
                         visible: opacity !== 0
-                        spacing: Core.dp(12)
+                        spacing: (12 * applicationModel.settings.zoomFactor)
                         anchors.left: parent.left
                         anchors.right: parent.right
                         onVisibleChanged: {
@@ -500,21 +493,21 @@ Page {
 
                         Welcome.LineEdit {
                             id: registerLogin
-                            placeholderText: qsTr("LOGIN")
+                            placeholderText: qsTr("LOGIN") + applicationModel.settings.translatorStringEnd
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: registerEmail
                             onSubmit: buttonTitleMA.click()
                         }
                         Welcome.LineEdit {
                             id: registerEmail
-                            placeholderText: qsTr("EMAIL")
+                            placeholderText: qsTr("EMAIL") + applicationModel.settings.translatorStringEnd
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: registerName
                             onSubmit: buttonTitleMA.click()
                         }
                         Welcome.LineEdit {
                             id: registerName
-                            placeholderText: qsTr("YOUR NAME")
+                            placeholderText: qsTr("YOUR NAME") + applicationModel.settings.translatorStringEnd
                             anchors.horizontalCenter: parent.horizontalCenter
                             KeyNavigation.tab: registerLogin
                             onSubmit: buttonTitleMA.click()
@@ -525,7 +518,7 @@ Page {
                         id: remindPage
                         opacity: 0
                         visible: opacity !== 0
-                        spacing: Core.dp(12)
+                        spacing: (12 * applicationModel.settings.zoomFactor)
                         anchors.left: parent.left
                         anchors.right: parent.right
                         onVisibleChanged: {
@@ -536,7 +529,7 @@ Page {
 
                         Welcome.LineEdit {
                             id: remindEmal
-                            placeholderText: qsTr("EMAIL")
+                            placeholderText: qsTr("EMAIL") + applicationModel.settings.translatorStringEnd
                             anchors.horizontalCenter: parent.horizontalCenter
                             onSubmit: buttonTitleMA.click()
                         }
@@ -546,7 +539,7 @@ Page {
                         id: changePage
                         opacity: 0
                         visible: opacity !== 0
-                        spacing: Core.dp(12)
+                        spacing: (12 * applicationModel.settings.zoomFactor)
                         anchors.left: parent.left
                         anchors.right: parent.right
                         onVisibleChanged: {
@@ -559,7 +552,7 @@ Page {
 
                         Welcome.LineEdit {
                             id: changeOldPassword
-                            placeholderText: qsTr("OLD PASSWORD")
+                            placeholderText: qsTr("OLD PASSWORD") + applicationModel.settings.translatorStringEnd
                             anchors.horizontalCenter: parent.horizontalCenter
                             password: true
                             KeyNavigation.tab: changeNewPassword
@@ -567,7 +560,7 @@ Page {
                         }
                         Welcome.LineEdit {
                             id: changeNewPassword
-                            placeholderText: qsTr("NEW PASSWORD")
+                            placeholderText: qsTr("NEW PASSWORD") + applicationModel.settings.translatorStringEnd
                             anchors.horizontalCenter: parent.horizontalCenter
                             password: true
                             KeyNavigation.tab: changeRepeatPassword
@@ -575,7 +568,7 @@ Page {
                         }
                         Welcome.LineEdit {
                             id: changeRepeatPassword
-                            placeholderText: qsTr("REPEAT PASSWORD")
+                            placeholderText: qsTr("REPEAT PASSWORD") + applicationModel.settings.translatorStringEnd
                             anchors.horizontalCenter: parent.horizontalCenter
                             password: true
                             KeyNavigation.tab: changeOldPassword
@@ -590,7 +583,7 @@ Page {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: form.bottom
-                    anchors.topMargin: Core.dp(12)
+                    anchors.topMargin: (12 * applicationModel.settings.zoomFactor)
                 }
             }
         }
@@ -601,9 +594,9 @@ Page {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: Core.dp(10)
+            anchors.bottomMargin: (10 * applicationModel.settings.zoomFactor)
             Behavior on anchors.topMargin {NumberAnimation {duration: 200 } }
-            height: Core.dp(12)
+            height: (12 * applicationModel.settings.zoomFactor)
 
             Settings {
                 property alias saveUserAndPassword: saveUser.passwordSaved
@@ -615,20 +608,13 @@ Page {
                 id: saveUserText
                 anchors.centerIn: parent
                 color: "white"
-                font.pixelSize: Core.dp(8)
-                text: saveUser.passwordSaved?qsTr("Not save User & Password"):qsTr("Save User & Password")
+                font.pixelSize: saveUserMA.containsMouse?(10 * applicationModel.settings.zoomFactor):(8 * applicationModel.settings.zoomFactor)
+                text: saveUser.passwordSaved?qsTr("Not save User & Password") + applicationModel.settings.translatorStringEnd:qsTr("Save User & Password") + applicationModel.settings.translatorStringEnd
             }
             Elements.TerminalMouseArea {
                 id: saveUserMA
                 anchors.fill: parent
                 platformIndependentHoverEnabled: true
-                onContainsMouseChanged:  {
-                    if (containsMouse) {
-                        saveUserText.font.pixelSize = Core.dp(10)
-                    } else {
-                        saveUserText.font.pixelSize = Core.dp(8)
-                    }
-                }
                 onClicked: saveUser.passwordSaved = !saveUser.passwordSaved
             }
         }

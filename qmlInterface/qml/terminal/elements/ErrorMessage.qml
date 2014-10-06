@@ -7,7 +7,7 @@ Item {
     id: errorMessage
 
     opacity: parent.visible?1:0
-    height: errorTextText.lineCount * Core.dp(16)
+    height: errorTextText.lineCount * 16 * applicationModel.settings.zoomFactor
     Behavior on opacity {NumberAnimation {duration: 200} }
 
     onVisibleChanged: {
@@ -20,10 +20,10 @@ Item {
         id: showErrorAmination
         target: errorBox
         property: "anchors.horizontalCenterOffset"
-        from: Core.dp(12)
+        from: 12 * applicationModel.settings.zoomFactor
         to: 0
         easing.type: Easing.OutElastic
-        easing.amplitude: Core.dp(2)
+        easing.amplitude: 2 * applicationModel.settings.zoomFactor
         duration: 800
         running: errorMessage.visible
     }
@@ -34,15 +34,15 @@ Item {
         height: parent.height
         border.color: "#FF0000"
         color: "#FBEFEF"
-        width: Core.dp(125)
+        width: 125 * applicationModel.settings.zoomFactor
 
         Text {
             id: errorTextText
             color: "#FF0000"
-            font.pixelSize: Core.dp(8)
+            font.pixelSize: 8 * applicationModel.settings.zoomFactor
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.margins: Core.dp(8)
+            anchors.margins: 8 * applicationModel.settings.zoomFactor
             anchors.verticalCenter: parent.verticalCenter
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap

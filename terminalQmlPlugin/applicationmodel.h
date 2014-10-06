@@ -5,6 +5,7 @@
 #include "userinfo.h"
 #include "usersmodel.h"
 #include "torrents.h"
+#include "settings.h"
 
 /*!
  * \defgroup AppModel Основная модель
@@ -59,6 +60,12 @@ class ApplicationModel : public QObject
      * \accessors %torrents()
      */
     Q_PROPERTY(Torrents* torrents READ torrents CONSTANT)
+    /*!
+     * \brief Указатель на настройки
+     *
+     * \accessors %settings()
+     */
+    Q_PROPERTY(Settings* settings READ settings CONSTANT)
 
 public:
     /*!
@@ -82,6 +89,8 @@ public:
     UsersModel *visitorsModel() const;
 
     Torrents *torrents() const;
+
+    Settings *settings() const;
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
 
 private:
@@ -93,6 +102,7 @@ private:
     UsersModel *m_contactsModel;
     UsersModel *m_visitorsModel;
     Torrents *m_torrents;
+    Settings *m_settings;
 };
 
 #endif // APPLICATIONMODEL_H

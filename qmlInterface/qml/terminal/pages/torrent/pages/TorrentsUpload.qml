@@ -45,11 +45,11 @@ Page {
         id: dog1
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.leftMargin: Core.dp(11)
-        anchors.bottomMargin: Core.dp(22)*2 + editBar.anchors.bottomMargin
+        anchors.leftMargin: (11 * applicationModel.settings.zoomFactor)
+        anchors.bottomMargin: (22 * applicationModel.settings.zoomFactor)*2 + editBar.anchors.bottomMargin
         source: "../../../images/96.png"
         fillMode: Image.PreserveAspectFit
-        width: Core.dp(90)
+        width: (90 * applicationModel.settings.zoomFactor)
     }
 
     Image {
@@ -58,7 +58,7 @@ Page {
         anchors.verticalCenter: parent.verticalCenter
         source: "../../../images/96a.png"
         fillMode: Image.PreserveAspectFit
-        height: Core.dp(90)
+        height: (90 * applicationModel.settings.zoomFactor)
     }
 
     CreateNewButton {
@@ -72,10 +72,10 @@ Page {
         anchors.right: parent.right
         anchors.top: createNewButton.bottom
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: Core.dp(22) + editBar.anchors.bottomMargin - 1
+        anchors.bottomMargin: (22 * applicationModel.settings.zoomFactor) + editBar.anchors.bottomMargin - 1
         model: folderModel
         interactive: contentHeight > height
-        spacing: Core.dp(5)
+        spacing: (5 * applicationModel.settings.zoomFactor)
         clip: true
 
         add: Transition {
@@ -92,13 +92,13 @@ Page {
 
             anchors.left: parent.left
             anchors.right: parent.right
-            height: Core.dp(22) + collapsedContainer.height
+            height: (22 * applicationModel.settings.zoomFactor) + collapsedContainer.height
 
             Rectangle {
                 id: folderNameContainer
                 anchors.left: parent.left
                 anchors.right: parent.right
-                height: Core.dp(22)
+                height: (22 * applicationModel.settings.zoomFactor)
                 color: folder_additional_data.collapsed?"#da4504":"#c6c1c7"
                 Behavior on color {ColorAnimation { duration: 200 } }
 
@@ -113,9 +113,9 @@ Page {
                         id: folderImage
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
-                        anchors.leftMargin: Core.dp(6)
-                        height: Core.dp(15)
-                        width: Core.dp(17)
+                        anchors.leftMargin: (6 * applicationModel.settings.zoomFactor)
+                        height: (15 * applicationModel.settings.zoomFactor)
+                        width: (17 * applicationModel.settings.zoomFactor)
                         fillMode: Image.PreserveAspectFit
                         source: folder_additional_data.collapsed?"../../../images/47.png":"../../../images/40.png"
                     }
@@ -124,14 +124,14 @@ Page {
                         id: folderText
                         visible: !folder_additional_data.isEdited || editBar.editRole !== "edit"
                         anchors.left: folderImage.right
-                        anchors.leftMargin: Core.dp(8)
+                        anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
-                        anchors.bottomMargin: parent.height / 2 - Core.dp(2)
+                        anchors.bottomMargin: parent.height / 2 - (2 * applicationModel.settings.zoomFactor)
                         anchors.right: parent.right
                         anchors.rightMargin: anchors.leftMargin
                         elide: Text.ElideRight
-                        font.pixelSize: Core.dp(8)
+                        font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                         verticalAlignment: Text.AlignBottom
                         color: folder_additional_data.collapsed?"white":"black"
                         Behavior on color {ColorAnimation { duration: 200 } }
@@ -163,16 +163,16 @@ Page {
                         id: folderSizeTitle
                         anchors.left: folderText.left
                         anchors.top: folderText.bottom
-                        font.pixelSize: Core.dp(6)
+                        font.pixelSize: (6 * applicationModel.settings.zoomFactor)
                         color: folderText.color
-                        text: qsTr("Размер")
+                        text: qsTr("Size") + applicationModel.settings.translatorStringEnd
                     }
 
                     Text {
                         id: folderSizeText
                         anchors.verticalCenter: folderSizeTitle.verticalCenter
                         anchors.left: folderSizeTitle.right
-                        anchors.leftMargin: Core.dp(3)
+                        anchors.leftMargin: (3 * applicationModel.settings.zoomFactor)
                         font.pixelSize: folderSizeTitle.font.pixelSize
                         color: folderText.color
                         font.bold: true
@@ -241,11 +241,11 @@ Page {
                 //ПАУЗА
                 Button {
                     id: pauseButton
-                    width: Core.dp(9)
+                    width: (9 * applicationModel.settings.zoomFactor)
                     height: width
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: loadingImage.left
-                    anchors.rightMargin: Core.dp(4)
+                    anchors.rightMargin: (4 * applicationModel.settings.zoomFactor)
                     source: folder_in_process?"../../../images/51b.png":"../../../images/51a.png"
                     onClicked: {
                         folderModel.get(index).inProcess = !folderModel.get(index).inProcess
@@ -256,24 +256,24 @@ Page {
                 //В ПРОСЕССЕ
                 Image {
                     id: loadingImage
-                    width: Core.dp(10)
+                    width: (10 * applicationModel.settings.zoomFactor)
                     height: width
                     fillMode: Image.PreserveAspectFit
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: availibleImage.left
-                    anchors.rightMargin: Core.dp(4)
+                    anchors.rightMargin: (4 * applicationModel.settings.zoomFactor)
                     source: folder_in_process?"../../../images/100a.png":"../../../images/100.png"
                 }
 
                 //ДОСТУПНОСТЬ
                 Image {
                     id: availibleImage
-                    width: Core.dp(10)
+                    width: (10 * applicationModel.settings.zoomFactor)
                     height: width
                     fillMode: Image.PreserveAspectFit
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: checkButton.left
-                    anchors.rightMargin: Core.dp(4)
+                    anchors.rightMargin: (4 * applicationModel.settings.zoomFactor)
                     source: {
                         if (folder_sids_availability === 0) {
                             return "../../../images/97.png"
@@ -292,8 +292,8 @@ Page {
                     id: checkButton
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.rightMargin: Core.dp(6)
-                    width: privateData.isEdited?Core.dp(14):0
+                    anchors.rightMargin: (6 * applicationModel.settings.zoomFactor)
+                    width: privateData.isEdited?(14 * applicationModel.settings.zoomFactor):0
                     height: width
                     Behavior on width {NumberAnimation {duration: 200 } }
                     source: folder_additional_data.isSelect?"../../../images/34a.png":"../../../images/34.png"
@@ -319,7 +319,7 @@ Page {
                         if (!folder_additional_data.collapsed) {
                             return 0
                         }
-                        return Core.dp(22)*folder_files_model.count + 1
+                        return (22 * applicationModel.settings.zoomFactor)*folder_files_model.count + 1
                     }
 
                     clip: true
@@ -347,15 +347,15 @@ Page {
 
                             anchors.left: parent.left
                             anchors.right: parent.right
-                            height: Core.dp(22)
+                            height: (22 * applicationModel.settings.zoomFactor)
 
                             Image {
                                 id: fileImage
                                 anchors.left: parent.left
                                 anchors.verticalCenter: parent.verticalCenter
                                 fillMode: Image.PreserveAspectFit
-                                anchors.leftMargin: Core.dp(30)
-                                height: Core.dp(15)
+                                anchors.leftMargin: (30 * applicationModel.settings.zoomFactor)
+                                height: (15 * applicationModel.settings.zoomFactor)
                                 source: "../../../images/98.png"
                             }
 
@@ -364,12 +364,12 @@ Page {
                                 anchors.left: fileImage.right
                                 anchors.right: fileCheckButton.left
                                 anchors.top: parent.top
-                                height: Core.dp(22)
+                                height: (22 * applicationModel.settings.zoomFactor)
                                 elide: Text.ElideRight
                                 verticalAlignment: Text.AlignVCenter
-                                anchors.leftMargin: Core.dp(8)
-                                anchors.rightMargin: Core.dp(8)
-                                font.pixelSize: Core.dp(8)
+                                anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
+                                anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
+                                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                                 text: file_name
                             }
 
@@ -396,8 +396,8 @@ Page {
                                 id: fileCheckButton
                                 anchors.right: parent.right
                                 anchors.verticalCenter: parent.verticalCenter
-                                anchors.rightMargin: Core.dp(6)
-                                width: privateData.isEdited?Core.dp(14):0
+                                anchors.rightMargin: (6 * applicationModel.settings.zoomFactor)
+                                width: privateData.isEdited?(14 * applicationModel.settings.zoomFactor):0
                                 height: width
                                 Behavior on width {NumberAnimation {duration: 200 } }
                                 source: file_additional_data && file_additional_data.isSelect?"../../../images/34a.png":"../../../images/34.png"
@@ -450,7 +450,7 @@ Page {
         opacity: privateData.isEdited?1:0
 
         anchors.bottom: searchBar.top
-        anchors.bottomMargin: privateData.isEdited?0:-Core.dp(22)
+        anchors.bottomMargin: privateData.isEdited?0:-(22 * applicationModel.settings.zoomFactor)
 
         hideOnMissClick: false
 
@@ -519,7 +519,7 @@ Page {
             searchBar.visible = !visible
             torrentPageBackButton.visible = !visible
         }
-        title: qsTr("Выбирите папку")
+        title: qsTr("Select folder") + applicationModel.settings.translatorStringEnd
 
         onAccepted: {
             folderModel.insertNew(0, fileUrl)

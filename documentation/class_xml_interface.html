@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="extraDoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -113,23 +114,26 @@ $(document).ready(function(){initNavTree('class_xml_interface.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Класс, описывающий методы расширяющие <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a>.  
+<p>Класс, описывающий методы расширяющие классы для работы с XML-фалами  
  <a href="class_xml_interface.html#details">Подробнее...</a></p>
 
 <p><code>#include &lt;<a class="el" href="xmlinterface_8h_source.html">xmlinterface.h</a>&gt;</code></p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Граф наследования:XmlInterface:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="dynheader">
+Граф наследования:XmlInterface:</div>
+<div class="dyncontent">
  <div class="center">
   <img src="class_xml_interface.png" usemap="#XmlInterface_map" alt=""/>
   <map id="XmlInterface_map" name="XmlInterface_map">
-<area href="class_folders_model.html" alt="FoldersModel" shape="rect" coords="0,56,131,80"/>
-<area href="class_messages_model.html" alt="MessagesModel" shape="rect" coords="141,56,272,80"/>
-<area href="class_user_profile.html" alt="UserProfile" shape="rect" coords="282,56,413,80"/>
-<area href="class_users_model.html" title="Модель, содержащая список пользователей " alt="UsersModel" shape="rect" coords="423,56,554,80"/>
-<area href="class_torrent_folders_model.html" alt="TorrentFoldersModel" shape="rect" coords="0,112,131,136"/>
+<area href="class_file_xml_items_model.html" title="Модель позволяющая хранить данные в XML-файлах " alt="FileXmlItemsModel" shape="rect" coords="372,56,511,80"/>
+<area href="class_settings.html" title="Класс, описывающий настройки приложения " alt="Settings" shape="rect" coords="521,56,660,80"/>
+<area href="class_user_profile.html" alt="UserProfile" shape="rect" coords="670,56,809,80"/>
+<area href="class_devices_model.html" alt="DevicesModel" shape="rect" coords="74,112,213,136"/>
+<area href="class_folders_model.html" alt="FoldersModel" shape="rect" coords="298,112,437,136"/>
+<area href="class_messages_model.html" alt="MessagesModel" shape="rect" coords="447,112,586,136"/>
+<area href="class_users_model.html" title="Модель, содержащая список пользователей " alt="UsersModel" shape="rect" coords="596,112,735,136"/>
+<area href="class_network_devices_model.html" alt="NetworkDevicesModel" shape="rect" coords="0,168,139,192"/>
+<area href="class_simple_devices_model.html" alt="SimpleDevicesModel" shape="rect" coords="149,168,288,192"/>
+<area href="class_torrent_folders_model.html" alt="TorrentFoldersModel" shape="rect" coords="298,168,437,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -149,8 +153,8 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>saveModel</b> 
 <tr class="separator:a3a530c72a17c22589245ce33509f1a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
-<div class="textblock"><p>Класс, описывающий методы расширяющие <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a>. </p>
-<p>Данный класс описывает методы, расщиряющие функционал <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a>. Это методы для работы с XML-элементами (findElement(), createElement()), а так же методы, позволяющие <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a> загружать свои данные из XML-файлов (reloadModel()) и сохранять свои данные в XML-файл (saveModel()). </p>
+<div class="textblock"><p>Класс, описывающий методы расширяющие классы для работы с XML-фалами </p>
+<p>Данный класс описывает методы, расщиряющие функционал классов для работы с XML-файлами. Это методы для работы с XML-элементами (findElement(), createElement()), а так же методы, позволяющие <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a> загружать свои данные из XML-файлов (reloadModel()) и сохранять свои данные в XML-файл (saveModel()). </p>
 </div><hr/>Объявления и описания членов классов находятся в файлах:<ul>
 <li>terminalQmlPlugin/<a class="el" href="xmlinterface_8h_source.html">xmlinterface.h</a></li>
 <li>terminalQmlPlugin/xmlinterface.cpp</li>
@@ -161,7 +165,7 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>saveModel</b> 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_xml_interface.html">XmlInterface</a></li>
-    <li class="footer">Документация по Terminal. Последние изменения: Пн 6 Окт 2014 14:53:39. Создано системой
+    <li class="footer">Документация по Terminal. Последние изменения: Вт 7 Окт 2014 01:12:40. Создано системой
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

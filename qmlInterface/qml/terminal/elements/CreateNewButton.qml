@@ -4,23 +4,23 @@ import TerminalQmlPlugin 1.0
 Rectangle {
     id: createNewButton
     property bool enabled: true
-    property string text: qsTr("Создать новую")
+    property string text: qsTr("Create new") + applicationModel.settings.translatorStringEnd
     property bool spacerVisible: true
 
     signal clicked()
 
     anchors.left: parent.left
     anchors.right: parent.right
-    height: Core.dp(24)
+    height: 24 * applicationModel.settings.zoomFactor
     color: "white"
 
     Rectangle {
         anchors.fill: parent
-        anchors.bottomMargin: createNewButton.spacerVisible?Core.dp(2):0
+        anchors.bottomMargin: createNewButton.spacerVisible?2 * applicationModel.settings.zoomFactor:0
         color: createNewButtonMA.containsMouse?"#da4504":"#c6c1c7"
 
         Item {
-            anchors.leftMargin: Core.dp(12)
+            anchors.leftMargin: 12 * applicationModel.settings.zoomFactor
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
@@ -28,7 +28,7 @@ Rectangle {
             Text {
                 id: createNewButtonText
                 anchors.centerIn: parent
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: 8 * applicationModel.settings.zoomFactor
                 text: createNewButton.text
                 color: createNewButtonMA.containsMouse?"white":"black"
             }

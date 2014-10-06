@@ -1,0 +1,45 @@
+<settings>
+	<translation>en</translation>
+	<home_directory>file:///home/pashok</home_directory>
+	<nat_enabled>true</nat_enabled>
+	<upnp_enabled>false</upnp_enabled>
+	<zoom_factor>1.0</zoom_factor>
+	<audio_devices>
+		<device id="0">
+			<name>Audio1</name>
+			<active>false</active>
+		</device>
+		<device id="1">
+			<name>Audio2</name>
+			<active>true</active>
+		</device>
+	</audio_devices>
+	<video_devices>
+		<device id="0">
+			<name>Video1</name>
+			<active>false</active>
+		</device>
+		<device id="1">
+			<name>Video2</name>
+			<active>false</active>
+		</device>
+	</video_devices>
+	<wan_devices>
+		<network_device id="0">
+			<ip>192.168.1.1</ip>
+			<port>80</port>
+			<active>true</active>
+		</network_device>
+		<network_device id="1">
+			<ip>127.0.0.1</ip>
+			<port>1987</port>
+			<active>false</active>
+		</network_device>
+	</wan_devices>
+	<proxy_settings>
+		<ip>192.168.10.10</ip>
+		<port>2451</port>
+		<user>root</user>
+		<password>MyPassword</password>
+	</proxy_settings>
+</settings>

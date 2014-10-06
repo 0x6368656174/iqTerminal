@@ -8,7 +8,6 @@ import "../../elements"
 Page {
     id: torrentPage
     name: "torrent"
-    property string torrentXmlPath: Core.dataDir + "/torrent.xml"
 
     Header {
         id: header
@@ -19,7 +18,7 @@ Page {
         id: torrentPageBackButton
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.topMargin: Core.dp(70)
+        anchors.topMargin: (70 * applicationModel.settings.zoomFactor)
     }
 
     Item {

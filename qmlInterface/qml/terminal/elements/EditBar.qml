@@ -89,7 +89,7 @@ Item {
 
     Item {
         id: barRow
-        height: Core.dp(22)
+        height: 22 * applicationModel.settings.zoomFactor
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom

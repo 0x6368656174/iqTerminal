@@ -21,6 +21,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="extraDoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -107,25 +108,22 @@ $(document).ready(function(){initNavTree('class_messages_model.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Открытые типы</a> &#124;
-<a href="#signals">Сигналы</a> &#124;
 <a href="#pub-methods">Открытые члены</a> &#124;
 <a href="#pro-methods">Защищенные члены</a> &#124;
-<a href="#properties">Свойства</a> &#124;
 <a href="class_messages_model-members.html">Полный список членов класса</a>  </div>
   <div class="headertitle">
 <div class="title">Класс MessagesModel</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Граф наследования:MessagesModel:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="dynheader">
+Граф наследования:MessagesModel:</div>
+<div class="dyncontent">
  <div class="center">
   <img src="class_messages_model.png" usemap="#MessagesModel_map" alt=""/>
   <map id="MessagesModel_map" name="MessagesModel_map">
+<area href="class_file_xml_items_model.html" title="Модель позволяющая хранить данные в XML-файлах " alt="FileXmlItemsModel" shape="rect" coords="76,112,219,136"/>
 <area href="class_abstract_xml_items_model.html" title="Абстрактная модель на основе XML-элементов " alt="AbstractXmlItemsModel" shape="rect" coords="0,56,143,80"/>
-<area href="class_xml_interface.html" title="Класс, описывающий методы расширяющие AbstractXmlItemsModel. " alt="XmlInterface" shape="rect" coords="153,56,296,80"/>
+<area href="class_xml_interface.html" title="Класс, описывающий методы расширяющие классы для работы с XML-фалами " alt="XmlInterface" shape="rect" coords="153,56,296,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -145,51 +143,27 @@ $(document).ready(function(){initNavTree('class_messages_model.html','');});
  }</td></tr>
 <tr class="separator:ac14e6a9df91e9275b6384254541e43a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
-Сигналы</h2></td></tr>
-<tr class="memitem:ab665c388033eeb160308941361c558d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab665c388033eeb160308941361c558d4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sourceChanged</b> ()</td></tr>
-<tr class="separator:ab665c388033eeb160308941361c558d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb1a752535515a00a5c6ebaff706806e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb1a752535515a00a5c6ebaff706806e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>parentElementChanged</b> ()</td></tr>
-<tr class="separator:aeb1a752535515a00a5c6ebaff706806e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header signals_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('signals_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Сигналы inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
-<tr class="memitem:a3833b23f8543d0c8a2e61b17c45e11cf inherit signals_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3833b23f8543d0c8a2e61b17c45e11cf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>countChanged</b> ()</td></tr>
-<tr class="separator:a3833b23f8543d0c8a2e61b17c45e11cf inherit signals_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a394e8c80474276124cc87113a9df71 inherit signals_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a394e8c80474276124cc87113a9df71"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalDataChanged</b> ()</td></tr>
-<tr class="separator:a6a394e8c80474276124cc87113a9df71 inherit signals_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Открытые члены</h2></td></tr>
 <tr class="memitem:abd96b2b81025016ca2d9cd7b1dacfd93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd96b2b81025016ca2d9cd7b1dacfd93"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>MessagesModel</b> (QObject *parent=0)</td></tr>
 <tr class="separator:abd96b2b81025016ca2d9cd7b1dacfd93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1361d55642670ae6668865cd98526773"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1361d55642670ae6668865cd98526773"></a>
-Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><b>reload</b> ()</td></tr>
-<tr class="separator:a1361d55642670ae6668865cd98526773"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51736993324b18219c83a0dc19ad6025"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51736993324b18219c83a0dc19ad6025"></a>
-Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><b>save</b> ()</td></tr>
-<tr class="separator:a51736993324b18219c83a0dc19ad6025"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dc3c3ac007b2e2c982df57f0047b7b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9dc3c3ac007b2e2c982df57f0047b7b0"></a>
 virtual QHash&lt; int, QByteArray &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>roleNames</b> () const </td></tr>
 <tr class="separator:a9dc3c3ac007b2e2c982df57f0047b7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c84d081f1f4370d5f4dd92a969467d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c84d081f1f4370d5f4dd92a969467d6"></a>
 virtual QVariant&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> (const QModelIndex &amp;index, int role=Qt::DisplayRole) const </td></tr>
 <tr class="separator:a3c84d081f1f4370d5f4dd92a969467d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6d893c97cbb30106b89c00a4f32393e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af6d893c97cbb30106b89c00a4f32393e"></a>
-QUrl&#160;</td><td class="memItemRight" valign="bottom"><b>source</b> () const </td></tr>
-<tr class="separator:af6d893c97cbb30106b89c00a4f32393e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01cfd0116ef957a7eda1467931e7e920"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01cfd0116ef957a7eda1467931e7e920"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setSource</b> (const QUrl &amp;source)</td></tr>
-<tr class="separator:a01cfd0116ef957a7eda1467931e7e920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e4327fcce5278cf57a3daadfb371894"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e4327fcce5278cf57a3daadfb371894"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>parentElement</b> () const </td></tr>
-<tr class="separator:a5e4327fcce5278cf57a3daadfb371894"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb6863bb8afdc1a7a39dc50d8ef5d264"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb6863bb8afdc1a7a39dc50d8ef5d264"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setParentElement</b> (const QString &amp;parentElement)</td></tr>
-<tr class="separator:abb6863bb8afdc1a7a39dc50d8ef5d264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_file_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_file_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Открытые члены inherited from <a class="el" href="class_file_xml_items_model.html">FileXmlItemsModel</a></td></tr>
+<tr class="memitem:ae46798e7ee33286b2f22953cdeb40022 inherit pub_methods_class_file_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae46798e7ee33286b2f22953cdeb40022"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FileXmlItemsModel</b> (QObject *parent=0)</td></tr>
+<tr class="separator:ae46798e7ee33286b2f22953cdeb40022 inherit pub_methods_class_file_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a399bdc99b617fcfb20c15bf76e598bea inherit pub_methods_class_file_xml_items_model"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_xml_items_model.html#a399bdc99b617fcfb20c15bf76e598bea">reload</a> ()</td></tr>
+<tr class="memdesc:a399bdc99b617fcfb20c15bf76e598bea inherit pub_methods_class_file_xml_items_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перезагружает модель  <a href="#a399bdc99b617fcfb20c15bf76e598bea">Подробнее...</a><br/></td></tr>
+<tr class="separator:a399bdc99b617fcfb20c15bf76e598bea inherit pub_methods_class_file_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af35c4860f5e9c065ff0c9380921b2f4b inherit pub_methods_class_file_xml_items_model"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_xml_items_model.html#af35c4860f5e9c065ff0c9380921b2f4b">save</a> ()</td></tr>
+<tr class="memdesc:af35c4860f5e9c065ff0c9380921b2f4b inherit pub_methods_class_file_xml_items_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохраняет данные модели  <a href="#af35c4860f5e9c065ff0c9380921b2f4b">Подробнее...</a><br/></td></tr>
+<tr class="separator:af35c4860f5e9c065ff0c9380921b2f4b inherit pub_methods_class_file_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Открытые члены inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
 <tr class="memitem:a23def2fe37d3c9190f74810d5458b47d inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23def2fe37d3c9190f74810d5458b47d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>AbstractXmlItemsModel</b> (QObject *parent=0)</td></tr>
@@ -244,24 +218,15 @@ virtual <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItem
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>itemTagName</b> () const </td></tr>
 <tr class="separator:abf4f14dff4b715e77875017142622f6c inherit pro_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Свойства</h2></td></tr>
-<tr class="memitem:ac3d41f9f5bce7d0338c79fb54e21c100"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3d41f9f5bce7d0338c79fb54e21c100"></a>
-QUrl&#160;</td><td class="memItemRight" valign="bottom"><b>source</b></td></tr>
-<tr class="separator:ac3d41f9f5bce7d0338c79fb54e21c100"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d93d2db7d08060e590e8fb8a3fcbc15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d93d2db7d08060e590e8fb8a3fcbc15"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>parentElement</b></td></tr>
-<tr class="separator:a3d93d2db7d08060e590e8fb8a3fcbc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header properties_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('properties_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Свойства inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
-<tr class="memitem:af2a9fe8763b4e818842ee34588f8fbf0 inherit properties_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2a9fe8763b4e818842ee34588f8fbf0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b></td></tr>
-<tr class="separator:af2a9fe8763b4e818842ee34588f8fbf0 inherit properties_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa30af818e83f6218dc5b3ed4bcad3a52 inherit properties_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa30af818e83f6218dc5b3ed4bcad3a52"></a>
-QQmlComponent&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalData</b></td></tr>
-<tr class="separator:aa30af818e83f6218dc5b3ed4bcad3a52 inherit properties_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header signals_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('signals_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Сигналы inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:a3833b23f8543d0c8a2e61b17c45e11cf inherit signals_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3833b23f8543d0c8a2e61b17c45e11cf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>countChanged</b> ()</td></tr>
+<tr class="separator:a3833b23f8543d0c8a2e61b17c45e11cf inherit signals_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a394e8c80474276124cc87113a9df71 inherit signals_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a394e8c80474276124cc87113a9df71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalDataChanged</b> ()</td></tr>
+<tr class="separator:a6a394e8c80474276124cc87113a9df71 inherit signals_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_slots_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('pro_slots_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Защищенные слоты inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
 <tr class="memitem:aa7eceee66d835d82ce245501d08fd9da inherit pro_slots_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7eceee66d835d82ce245501d08fd9da"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>itemDataChanged</b> ()</td></tr>
@@ -279,6 +244,20 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>reloadModel</b
 <tr class="memitem:a3a530c72a17c22589245ce33509f1a0b inherit pro_static_methods_class_xml_interface"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a530c72a17c22589245ce33509f1a0b"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>saveModel</b> (const <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a> *model, const QUrl &amp;source, const QString &amp;element)</td></tr>
 <tr class="separator:a3a530c72a17c22589245ce33509f1a0b inherit pro_static_methods_class_xml_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_file_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('properties_class_file_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Свойства inherited from <a class="el" href="class_file_xml_items_model.html">FileXmlItemsModel</a></td></tr>
+<tr class="memitem:aa8a1f7faf9bf06edf137bb74db9a7e13 inherit properties_class_file_xml_items_model"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_xml_items_model.html#aa8a1f7faf9bf06edf137bb74db9a7e13">source</a></td></tr>
+<tr class="memdesc:aa8a1f7faf9bf06edf137bb74db9a7e13 inherit properties_class_file_xml_items_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">XML-файл, в котором храняться данные модели  <a href="#aa8a1f7faf9bf06edf137bb74db9a7e13">Подробнее...</a><br/></td></tr>
+<tr class="separator:aa8a1f7faf9bf06edf137bb74db9a7e13 inherit properties_class_file_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62d2392836d93aa22f7be0c9f6bf149 inherit properties_class_file_xml_items_model"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_xml_items_model.html#ac62d2392836d93aa22f7be0c9f6bf149">parentElement</a></td></tr>
+<tr class="memdesc:ac62d2392836d93aa22f7be0c9f6bf149 inherit properties_class_file_xml_items_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">Корненвой элемент, в котором храняться XML-ноды, описывающие экземпляры элементов модели.  <a href="#ac62d2392836d93aa22f7be0c9f6bf149">Подробнее...</a><br/></td></tr>
+<tr class="separator:ac62d2392836d93aa22f7be0c9f6bf149 inherit properties_class_file_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('properties_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Свойства inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:af2a9fe8763b4e818842ee34588f8fbf0 inherit properties_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2a9fe8763b4e818842ee34588f8fbf0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b></td></tr>
+<tr class="separator:af2a9fe8763b4e818842ee34588f8fbf0 inherit properties_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30af818e83f6218dc5b3ed4bcad3a52 inherit properties_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa30af818e83f6218dc5b3ed4bcad3a52"></a>
+QQmlComponent&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalData</b></td></tr>
+<tr class="separator:aa30af818e83f6218dc5b3ed4bcad3a52 inherit properties_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>Объявления и описания членов классов находятся в файлах:<ul>
 <li>terminalQmlPlugin/<a class="el" href="messagesmodel_8h_source.html">messagesmodel.h</a></li>
@@ -290,7 +269,7 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>saveModel</b> 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_messages_model.html">MessagesModel</a></li>
-    <li class="footer">Документация по Terminal. Последние изменения: Пн 6 Окт 2014 14:53:39. Создано системой
+    <li class="footer">Документация по Terminal. Последние изменения: Вт 7 Окт 2014 01:12:40. Создано системой
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

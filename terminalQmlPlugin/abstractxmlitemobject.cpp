@@ -54,7 +54,7 @@ bool AbstractXmlItemObject::loadFromDomElement(const QDomElement &domElement)
     }
 
     if (domElement.tagName() != tagName()) {
-        qWarning() << QString("Dom Element is not \"%0\"")
+        qWarning() << tr("Dom Element is not \"%0\"")
                    .arg(tagName());
         reset();
         return false;
@@ -63,7 +63,7 @@ bool AbstractXmlItemObject::loadFromDomElement(const QDomElement &domElement)
     if (domElement.hasAttribute("id")) {
         setId(domElement.attribute("id").toLongLong());
     } else {
-        qWarning() << QString("In parsing \"%0\" element found element without id, skipped...")
+        qWarning() << tr("In parsing \"%0\" element found element without id, skipped...")
                    .arg(tagName());
         reset();
         return false;

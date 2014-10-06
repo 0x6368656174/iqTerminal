@@ -18,6 +18,8 @@ AbstractXmlItemObject * FilesModel::newItem()
 {
     File *newItem = new File(this);
     connect(newItem, SIGNAL(idChanged()), this, SLOT(itemDataChanged()));
+    connect(newItem, SIGNAL(additionalDataChanged()), this, SLOT(itemDataChanged()));
+
     connect(newItem, SIGNAL(pathChanged()), this, SLOT(itemDataChanged()));
     connect(newItem, SIGNAL(nameChanged()), this, SLOT(itemDataChanged()));
     return newItem;

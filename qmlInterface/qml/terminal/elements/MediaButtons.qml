@@ -10,7 +10,7 @@ Item {
     property bool isStop: false
     property string style: "orange"
 
-    height: Core.dp(38)
+    height: (38 * applicationModel.settings.zoomFactor)
 
     signal playClicked()
     signal stopClicked()
@@ -26,9 +26,9 @@ Item {
         id: playButton
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.topMargin: Core.dp(6)
-        anchors.leftMargin: Core.dp(19)
-        width: Core.dp(10)
+        anchors.topMargin: (6 * applicationModel.settings.zoomFactor)
+        anchors.leftMargin: (19 * applicationModel.settings.zoomFactor)
+        width: (10 * applicationModel.settings.zoomFactor)
         height: width
         source: {
             if(buttons.isPlay||buttons.isPause||position>0) {
@@ -47,7 +47,7 @@ Item {
         id: pauseButton
         anchors.horizontalCenter: barImage.horizontalCenter
         anchors.verticalCenter: playButton.verticalCenter
-        width: Core.dp(10)
+        width: (10 * applicationModel.settings.zoomFactor)
         height: width
         source: "../images/51.png"
 
@@ -58,7 +58,7 @@ Item {
         id: stopButton
         anchors.right: endImage.right
         anchors.verticalCenter: playButton.verticalCenter
-        width: Core.dp(10)
+        width: (10 * applicationModel.settings.zoomFactor)
         height: width
         source: "../images/52.png"
 
@@ -71,9 +71,9 @@ Item {
         anchors.verticalCenter: startImage.verticalCenter
         anchors.left: startImage.right
         anchors.right: endImage.left
-        anchors.leftMargin: -Core.dp(5)
+        anchors.leftMargin: -(5 * applicationModel.settings.zoomFactor)
         anchors.rightMargin: anchors.leftMargin
-        height: Core.dp(10)
+        height: (10 * applicationModel.settings.zoomFactor)
         source: "../images/49d.png"
     }
 
@@ -81,10 +81,10 @@ Item {
         id: positionImage
         anchors.verticalCenter: startImage.verticalCenter
         anchors.left: startImage.right
-        anchors.leftMargin: -Core.dp(5)
+        anchors.leftMargin: -(5 * applicationModel.settings.zoomFactor)
         width: duration > 0?(endImage.x - startImage.x) * position / duration:0
         Behavior on width {NumberAnimation {duration: 200; easing.type: Easing.OutQuad;} }
-        height: Core.dp(4)
+        height: (4 * applicationModel.settings.zoomFactor)
         source: {
             if (style === "orange") {
                 return "../images/49b.png"
@@ -98,9 +98,9 @@ Item {
         id: startImage
         anchors.left: parent.left
         anchors.top: playButton.bottom
-        anchors.topMargin: Core.dp(6)
+        anchors.topMargin: (6 * applicationModel.settings.zoomFactor)
         anchors.leftMargin: playButton.anchors.leftMargin
-        width: Core.dp(10)
+        width: (10 * applicationModel.settings.zoomFactor)
         height: width
         source: {
             if (position > 0) {
@@ -119,12 +119,12 @@ Item {
         id: endImage
         anchors.verticalCenter: startImage.verticalCenter
         anchors.right: positionText.left
-        anchors.rightMargin: Core.dp(11)
-        width: Core.dp(10)
+        anchors.rightMargin: (11 * applicationModel.settings.zoomFactor)
+        width: (10 * applicationModel.settings.zoomFactor)
         height: width
         rotation: 180
         source: {
-            if (positionImage.width>barImage.width-Core.dp(6.5)) {
+            if (positionImage.width>barImage.width-(6.5 * applicationModel.settings.zoomFactor)) {
                 if (style === "orange") {
                     return "../images/49.png"
                 } else {
@@ -141,7 +141,7 @@ Item {
         anchors.verticalCenter: startImage.verticalCenter
         anchors.horizontalCenter: positionImage.right
         visible: position > 0
-        width: Core.dp(8)
+        width: (8 * applicationModel.settings.zoomFactor)
         height: width
         source: {
             if (style === "orange") {
@@ -157,7 +157,7 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: playButton.anchors.leftMargin
         anchors.verticalCenter: endImage.verticalCenter
-        font.pixelSize: Core.dp(8)
+        font.pixelSize: (8 * applicationModel.settings.zoomFactor)
         text: {
             var minute = parseInt(position/60000)
             var minuteStr = minute

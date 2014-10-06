@@ -14,8 +14,8 @@ Rectangle {
 
     signal clicked()
 
-    width: Core.dp(39)
-    height: Core.dp(24)
+    width: (39 * applicationModel.settings.zoomFactor)
+    height: (24 * applicationModel.settings.zoomFactor)
     color: "transparent"
 
     Item {

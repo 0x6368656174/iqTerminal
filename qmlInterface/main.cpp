@@ -1,4 +1,5 @@
 #include <QtGui/QGuiApplication>
+#include <QQmlApplicationEngine>
 #include "qtquick2applicationviewer.h"
 #include "terminalimageprovider.h"
 #include "terminalQmlPlugin.h"
@@ -45,8 +46,9 @@ QString initialData()
         usersDir.mkpath(homeDir+"/home");
     }
 
-    QStringList dataFiles = QStringList() << "i.xml" << "menu.xml" << "torrent.xml"
-                                          << "all.xml" << "contacts.xml" << "visitors.xml";
+    QStringList dataFiles = QStringList() << "i.xml" << "torrent.xml"
+                                          << "all.xml" << "contacts.xml" << "visitors.xml"
+                                          << "settings.xml";
 
 //    QStringList dataFiles = QStringList() << "menu.xml" << "all.xml" << "visitors.xml"
 //                                          << "users/1.xml" << "users/2.xml" << "users/3.xml"
@@ -59,7 +61,7 @@ QString initialData()
         QString dataFilePath = homeDir + dataFile;
         if (!QFileInfo::exists(dataFilePath))
         {
-            qDebug() << QString("Copy \":/data/%0\" to \"%1\".").arg(dataFile).arg(dataFilePath);
+            qDebug() << QObject::tr("Copy \":/data/%0\" to \"%1\".").arg(dataFile).arg(dataFilePath);
             QFile::copy(":/data/" + dataFile, dataFilePath);
         }
         QFile file (dataFilePath);
@@ -72,7 +74,7 @@ QString initialData()
         QString localSmileFilePath = homeDir + "smiles/" + smileFile.fileName();
         if (!QFileInfo::exists(localSmileFilePath))
         {
-            qDebug() << QString("Copy \"%0\" to \"%1\".").arg(smileFile.filePath()).arg(localSmileFilePath);
+            qDebug() << QObject::tr("Copy \"%0\" to \"%1\".").arg(smileFile.filePath()).arg(localSmileFilePath);
             QFile::copy(smileFile.filePath(), localSmileFilePath);
         }
     }
@@ -85,32 +87,24 @@ int main(int argc, char *argv[])
     app.setOrganizationName("itQuasar");
     app.setApplicationName("iqTerminal");
 
-    QtQuick2ApplicationViewer viewer;
-
     QString homeDir=initialData();
 
     TerminalQmlPlugin terminalQmlPlugin;
     terminalQmlPlugin.registerTypes("TerminalQmlPlugin");
 
+    QQmlApplicationEngine engine;
     //Главная модель данных
     //В С++ доступ к ней можно получить, используя ApplicationModel::instance() в любом месте кода
-    viewer.engine()->rootContext()->setContextProperty("applicationModel", ApplicationModel::instance());
+    engine.rootContext()->setContextProperty("applicationModel", ApplicationModel::instance());
 
 //----------------------------------------------------------------------------
 // прокси к движку
     MyProxyEngine proxy(homeDir);
-    viewer.engine()->rootContext()->setContextProperty("proxy",&proxy);
+    engine.rootContext()->setContextProperty("proxy",&proxy);
 //----------------------------------------------------------------------------
 
-    viewer.engine()->addImageProvider("xml", new TerminalImageProvider);
-    viewer.setSource(QUrl("qrc:/qml/terminal/main.qml"));
-    viewer.setTitle("iqTerminal");
-
-#ifdef Q_OS_ANDROID
-    viewer.showFullScreen();
-#else
-    viewer.showExpanded();
-#endif
+    engine.addImageProvider("xml", new TerminalImageProvider);
+    engine.load(QUrl("qrc:/qml/terminal/main.qml"));
 
     return app.exec();
 }

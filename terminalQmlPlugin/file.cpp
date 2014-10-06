@@ -31,7 +31,6 @@ void File::setPath(const QString &path)
 {
     if (m_path != path) {
         m_path = path;
-
         emit pathChanged();
     }
 }
@@ -45,7 +44,6 @@ void File::setName(const QString &name)
 {
     if (m_name != name) {
         m_name = name;
-
         emit nameChanged();
     }
 }
@@ -66,7 +64,6 @@ bool File::loadFromPath(const QUrl &path)
 bool File::loadFromDomElement(const QDomElement &domElement)
 {
     if (AbstractXmlItemObject::loadFromDomElement(domElement)) {
-
         QDomElement pathElement = domElement.firstChildElement("path");
         if (!pathElement.isNull()) {
             setPath(pathElement.text());

@@ -58,10 +58,10 @@ Page {
             id: previousFolderButton
             anchors.left: parent.left
             anchors.top: parent.top
-            anchors.leftMargin: Core.dp(10)
-            anchors.topMargin: Core.dp(5)
-            width: Core.dp(13)
-            height: Core.dp(9)
+            anchors.leftMargin: (10 * applicationModel.settings.zoomFactor)
+            anchors.topMargin: (5 * applicationModel.settings.zoomFactor)
+            width: (13 * applicationModel.settings.zoomFactor)
+            height: (9 * applicationModel.settings.zoomFactor)
             source: "../images/41.png"
 
             onClicked: {
@@ -75,7 +75,7 @@ Page {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.right: previousFolderButton.right
-            anchors.rightMargin: -Core.dp(12)
+            anchors.rightMargin: -(12 * applicationModel.settings.zoomFactor)
             anchors.bottom: folderCounter.verticalCenter
             onClicked: previousFolderButton.clicked()
         }
@@ -84,9 +84,9 @@ Page {
             id: folderCounter
             anchors.horizontalCenter: previousFolderButton.horizontalCenter
             anchors.top: previousFolderButton.bottom
-            anchors.topMargin: Core.dp(2)
+            anchors.topMargin: (2 * applicationModel.settings.zoomFactor)
             color: "white"
-            font.pixelSize: Core.dp(8)
+            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
             text: photosModel?(folderIndex + 1) + "/" + photosModel.count:""
         }
 
@@ -94,11 +94,11 @@ Page {
             id: folderName
             anchors.verticalCenter: folderCounter.verticalCenter
             anchors.left: folderCounter.right
-            anchors.leftMargin: Core.dp(2)
+            anchors.leftMargin: (2 * applicationModel.settings.zoomFactor)
             anchors.right: parent.right
-            anchors.rightMargin: Core.dp(8)
+            anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
             color: "white"
-            font.pixelSize: Core.dp(8)
+            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
             elide: Text.ElideRight
             text: folderIndex !== -1?photosModel.get(folderIndex).name:""
         }
@@ -107,9 +107,9 @@ Page {
             id: nextFolderButton
             anchors.horizontalCenter: previousFolderButton.horizontalCenter
             anchors.top: folderCounter.bottom
-            anchors.topMargin: Core.dp(2)
-            width: Core.dp(13)
-            height: Core.dp(9)
+            anchors.topMargin: (2 * applicationModel.settings.zoomFactor)
+            width: (13 * applicationModel.settings.zoomFactor)
+            height: (9 * applicationModel.settings.zoomFactor)
             source: "../images/41c.png"
 
             onClicked: {
@@ -123,7 +123,7 @@ Page {
             anchors.left: parent.left
             anchors.top: folderCounter.verticalCenter
             anchors.right: nextFolderButton.right
-            anchors.rightMargin: -Core.dp(12)
+            anchors.rightMargin: -(12 * applicationModel.settings.zoomFactor)
             anchors.bottom: parent.bottom
             onClicked: nextFolderButton.clicked()
         }
@@ -132,9 +132,9 @@ Page {
             id: photoName
             anchors.left: previousPhotoButton.left
             anchors.bottom: previousPhotoButton.top
-            anchors.bottomMargin: Core.dp(2)
+            anchors.bottomMargin: (2 * applicationModel.settings.zoomFactor)
             color: "white"
-            font.pixelSize: Core.dp(8)
+            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
             text: {
                 if (folderIndex !== -1 && photoIndex !== -1 && photosModel.get(folderIndex).filesModel.count > 0) {
                     if (photosModel.get(folderIndex).filesModel.get(photoIndex))
@@ -148,10 +148,10 @@ Page {
             id: previousPhotoButton
             anchors.left: parent.left
             anchors.bottom: parent.bottom
-            anchors.leftMargin: Core.dp(10)
-            anchors.bottomMargin: Core.dp(5)
-            height: Core.dp(13)
-            width: Core.dp(9)
+            anchors.leftMargin: (10 * applicationModel.settings.zoomFactor)
+            anchors.bottomMargin: (5 * applicationModel.settings.zoomFactor)
+            height: (13 * applicationModel.settings.zoomFactor)
+            width: (9 * applicationModel.settings.zoomFactor)
             source: "../images/41a.png"
 
             onClicked: {
@@ -165,7 +165,7 @@ Page {
             anchors.left: parent.left
             anchors.right: photoCounter.horizontalCenter
             anchors.top: previousPhotoButton.top
-            anchors.topMargin: -Core.dp(12)
+            anchors.topMargin: -(12 * applicationModel.settings.zoomFactor)
             anchors.bottom: parent.bottom
             onClicked: previousPhotoButton.clicked()
         }
@@ -174,9 +174,9 @@ Page {
             id: photoCounter
             anchors.verticalCenter: previousPhotoButton.verticalCenter
             anchors.left: previousPhotoButton.right
-            anchors.leftMargin: Core.dp(2)
+            anchors.leftMargin: (2 * applicationModel.settings.zoomFactor)
             color: "white"
-            font.pixelSize: Core.dp(8)
+            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
             text: {
                 if (folderIndex !== -1 && photoIndex !== -1 && photosModel.get(folderIndex).filesModel.count > 0) {
                     return (photoIndex + 1) + "/" +  photosModel.get(folderIndex).filesModel.count
@@ -189,9 +189,9 @@ Page {
             id: nextPhotoButton
             anchors.verticalCenter: previousPhotoButton.verticalCenter
             anchors.left: photoCounter.right
-            anchors.leftMargin: Core.dp(2)
-            height: Core.dp(13)
-            width: Core.dp(9)
+            anchors.leftMargin: (2 * applicationModel.settings.zoomFactor)
+            height: (13 * applicationModel.settings.zoomFactor)
+            width: (9 * applicationModel.settings.zoomFactor)
             source: "../images/41b.png"
 
             onClicked: {
@@ -205,7 +205,7 @@ Page {
             anchors.left: photoCounter.horizontalCenter
             anchors.right: parent.right
             anchors.top: nextPhotoButton.top
-            anchors.topMargin: -Core.dp(12)
+            anchors.topMargin: -(12 * applicationModel.settings.zoomFactor)
             anchors.bottom: parent.bottom
             onClicked: nextPhotoButton.clicked()
         }
@@ -214,8 +214,8 @@ Page {
             id: rotateButton
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            height: Core.dp(26)
-            width: Core.dp(48)
+            height: (26 * applicationModel.settings.zoomFactor)
+            width: (48 * applicationModel.settings.zoomFactor)
             source: "../images/203.png"
 
             onClicked: {

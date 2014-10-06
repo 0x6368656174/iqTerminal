@@ -5,11 +5,17 @@ var hierarchy =
         [ "FilesModel", "class_files_model.html", [
           [ "TorrentFilesModel", "class_torrent_files_model.html", null ]
         ] ],
-        [ "FoldersModel", "class_folders_model.html", [
-          [ "TorrentFoldersModel", "class_torrent_folders_model.html", null ]
+        [ "FileXmlItemsModel", "class_file_xml_items_model.html", [
+          [ "DevicesModel", "class_devices_model.html", [
+            [ "NetworkDevicesModel", "class_network_devices_model.html", null ],
+            [ "SimpleDevicesModel", "class_simple_devices_model.html", null ]
+          ] ],
+          [ "FoldersModel", "class_folders_model.html", [
+            [ "TorrentFoldersModel", "class_torrent_folders_model.html", null ]
+          ] ],
+          [ "MessagesModel", "class_messages_model.html", null ],
+          [ "UsersModel", "class_users_model.html", null ]
         ] ],
-        [ "MessagesModel", "class_messages_model.html", null ],
-        [ "UsersModel", "class_users_model.html", null ],
         [ "UserStatesModel", "class_user_states_model.html", null ]
       ] ]
     ] ],
@@ -18,6 +24,10 @@ var hierarchy =
     ] ],
     [ "QObject", null, [
       [ "AbstractXmlItemObject", "class_abstract_xml_item_object.html", [
+        [ "Device", "class_device.html", [
+          [ "NetworkDevice", "class_network_device.html", null ],
+          [ "SimpleDevice", "class_simple_device.html", null ]
+        ] ],
         [ "File", "class_file.html", [
           [ "TorrentFile", "class_torrent_file.html", null ]
         ] ],
@@ -25,6 +35,7 @@ var hierarchy =
           [ "TorrentFolder", "class_torrent_folder.html", null ]
         ] ],
         [ "Message", "class_message.html", null ],
+        [ "ProxySettings", "class_proxy_settings.html", null ],
         [ "User", "class_user.html", null ],
         [ "UserState", "class_user_state.html", null ]
       ] ],
@@ -35,6 +46,7 @@ var hierarchy =
       [ "FileIO", "class_file_i_o.html", null ],
       [ "FileSystem", "class_file_system.html", null ],
       [ "FileValidator", "class_file_validator.html", null ],
+      [ "Settings", "class_settings.html", null ],
       [ "TextDecorator", "class_text_decorator.html", null ],
       [ "Torrents", "class_torrents.html", null ],
       [ "UrlHelper", "class_url_helper.html", null ],
@@ -52,9 +64,8 @@ var hierarchy =
       ] ]
     ] ],
     [ "XmlInterface", "class_xml_interface.html", [
-      [ "FoldersModel", "class_folders_model.html", null ],
-      [ "MessagesModel", "class_messages_model.html", null ],
-      [ "UserProfile", "class_user_profile.html", null ],
-      [ "UsersModel", "class_users_model.html", null ]
+      [ "FileXmlItemsModel", "class_file_xml_items_model.html", null ],
+      [ "Settings", "class_settings.html", null ],
+      [ "UserProfile", "class_user_profile.html", null ]
     ] ]
 ];

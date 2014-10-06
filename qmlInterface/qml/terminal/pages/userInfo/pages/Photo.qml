@@ -33,7 +33,7 @@ Page {
         anchors.top: createNewButton.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        height: Core.dp(2)
+        height: (2 * applicationModel.settings.zoomFactor)
     }
 
     ListView {
@@ -44,9 +44,9 @@ Page {
         anchors.right: parent.right
         anchors.top: !photosPage.readOnly?spacer.bottom:parent.top
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: Core.dp(22) + editBar.anchors.bottomMargin - 1
+        anchors.bottomMargin: (22 * applicationModel.settings.zoomFactor) + editBar.anchors.bottomMargin - 1
         interactive: contentHeight > height
-        spacing: Core.dp(5)
+        spacing: (5 * applicationModel.settings.zoomFactor)
         clip: true
 
         add: Transition {
@@ -65,13 +65,13 @@ Page {
             id: folderDelegate
             anchors.left: parent.left
             anchors.right: parent.right
-            height: Core.dp(22) + collapsedContainer.height/* + Core.dp(4)*/
+            height: (22 * applicationModel.settings.zoomFactor) + collapsedContainer.height/* + (4 * applicationModel.settings.zoomFactor)*/
 
             Rectangle {
                 id: folderNameContainer
                 anchors.left: parent.left
                 anchors.right: parent.right
-                height: Core.dp(22)
+                height: (22 * applicationModel.settings.zoomFactor)
                 color: folder_additional_data.collapsed?"#da4504":"#c6c1c7"
                 Behavior on color {ColorAnimation { duration: 200 } }
 
@@ -79,9 +79,9 @@ Page {
                     id: folderImage
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.leftMargin: Core.dp(6)
-                    height: Core.dp(15)
-                    width: Core.dp(17)
+                    anchors.leftMargin: (6 * applicationModel.settings.zoomFactor)
+                    height: (15 * applicationModel.settings.zoomFactor)
+                    width: (17 * applicationModel.settings.zoomFactor)
                     fillMode: Image.PreserveAspectFit
                     source: folder_additional_data.collapsed?"../../../images/47.png":"../../../images/40.png"
                 }
@@ -90,13 +90,13 @@ Page {
                     id: folderText
                     visible: !folder_additional_data.isEdited  || editBar.editRole !== "edit"
                     anchors.left: folderImage.right
-                    anchors.leftMargin: Core.dp(8)
+                    anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     anchors.right: parent.right
                     anchors.rightMargin: anchors.leftMargin
                     elide: Text.ElideRight
-                    font.pixelSize: Core.dp(8)
+                    font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                     verticalAlignment: Text.AlignVCenter
                     color: folder_additional_data.collapsed?"white":"black"
                     Behavior on color {ColorAnimation { duration: 200 } }
@@ -111,7 +111,7 @@ Page {
                     text: folder_name
                     onTextChanged: folder_additional_data.nameToSave = text
                     color: folderText.color
-                    font.pixelSize: Core.dp(8)
+                    font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                     selectByMouse: true
                     selectionColor: "#c00d0d"
                     verticalAlignment: Text.AlignVCenter
@@ -201,28 +201,23 @@ Page {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: folderNameContainer.bottom
-                height: folder_additional_data.collapsed?childsView.height - Core.dp(2):0
+                height: folder_additional_data.collapsed?childsView.height - (2 * applicationModel.settings.zoomFactor):0
                 clip: true
 
                 Behavior on height {NumberAnimation {duration: 200 } }
 
                 GridView {
                     id: childsView
-                    property int columnCount: width / Core.dp(60) < 1?1:width / Core.dp(60)
+                    property int columnCount: width / (60 * applicationModel.settings.zoomFactor) < 1?1:width / (60 * applicationModel.settings.zoomFactor)
                     property int rowCountInt: folder_files_model.count / columnCount
-                    property int rowCount:  {
-                        if (folder_files_model.count / columnCount - rowCountInt !== 0) {
-                            return rowCountInt + 1
-                        }
-                        return rowCountInt
-                    }
+                    property int rowCount:  folder_files_model.count / columnCount - rowCountInt !== 0?rowCountInt + 1:rowCountInt
                     interactive: false
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: parent.top
-                    anchors.rightMargin: -Core.dp(2)
+                    anchors.rightMargin: -(2 * applicationModel.settings.zoomFactor)
                     height: rowCount*cellHeight
-                    cellHeight: Core.dp(74)
+                    cellHeight: (74 * applicationModel.settings.zoomFactor)
                     cellWidth: width/columnCount
                     model: folder_files_model
 
@@ -238,18 +233,18 @@ Page {
                     delegate: Rectangle {
                         property int fileIndex: index
                         id: childDelegate
-                        width: childsView.cellWidth - Core.dp(2)
-                        height: childsView.cellHeight - Core.dp(2)
+                        width: childsView.cellWidth - (2 * applicationModel.settings.zoomFactor)
+                        height: childsView.cellHeight - (2 * applicationModel.settings.zoomFactor)
                         color: "#6c676e"
 
                         Item
                         {
                             anchors.fill: parent
-                            anchors.bottomMargin: Core.dp(12)
+                            anchors.bottomMargin: (12 * applicationModel.settings.zoomFactor)
                             Item{
                                 anchors.centerIn: parent
                                 width: photoImage.sourceSize.width > parent.width? parent.width:photoImage.sourceSize.width
-                                height: photoImage.sourceSize.height > Core.dp(60)?Core.dp(60):photoImage.sourceSize.height
+                                height: photoImage.sourceSize.height > (60 * applicationModel.settings.zoomFactor)?(60 * applicationModel.settings.zoomFactor):photoImage.sourceSize.height
                                 Image {
                                     id: photoImage
                                     anchors.fill: parent
@@ -262,7 +257,7 @@ Page {
                         Rectangle {
                             id: childNameContainer
                             width: parent.width
-                            height: Core.dp(12)
+                            height: (12 * applicationModel.settings.zoomFactor)
                             anchors.bottom: parent.bottom
                             color: "#dddddd"
 
@@ -279,9 +274,9 @@ Page {
                                 elide: Text.ElideRight
                                 verticalAlignment: Text.AlignVCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                anchors.leftMargin: Core.dp(8)
-                                anchors.rightMargin: Core.dp(8)
-                                font.pixelSize: Core.dp(8)
+                                anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
+                                anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
+                                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                                 text: file_name
                             }
 
@@ -292,7 +287,7 @@ Page {
                                 visible: file_additional_data.isEdited && editBar.editRole === "edit"
                                 verticalAlignment: Text.AlignVCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                font.pixelSize: Core.dp(8)
+                                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                                 selectByMouse: true
                                 selectionColor: "#c00d0d"
                                 text: file_name
@@ -354,7 +349,7 @@ Page {
         id: editBar
         visible: opacity !== 0
         opacity: privateData.isEdited && !fileDialog.visible?1:0
-        anchors.bottomMargin: privateData.isEdited && !fileDialog.visible?0:-Core.dp(22)
+        anchors.bottomMargin: privateData.isEdited && !fileDialog.visible?0:-(22 * applicationModel.settings.zoomFactor)
         hideOnMissClick: false
         canselButtonEnabled: true
 
@@ -427,7 +422,7 @@ Page {
     FileDialog {
         id: fileDialog
         selectMultiple: false
-        title: qsTr("Выбирите изображени")
+        title: qsTr("Select image") + applicationModel.settings.translatorStringEnd
         anchors.bottom: parent.bottom
         height: userInfoPage.height
         onVisibleChanged: userInfoPageBackButton.visible = !visible

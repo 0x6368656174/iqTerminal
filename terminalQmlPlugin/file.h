@@ -15,7 +15,6 @@ public:
 public:
     virtual bool loadFromPath(const QUrl &path);
 
-public:
     virtual bool loadFromDomElement(const QDomElement &domElement);
 
     virtual QDomElement toDomElement(QDomDocument &domDocument) const;

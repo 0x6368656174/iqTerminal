@@ -12,14 +12,14 @@ Item {
 
     anchors.left: parent.left
     anchors.right: parent.right
-    height: Core.dp(28)
+    height: (28 * applicationModel.settings.zoomFactor)
 
     states: [
         State {
             name: "normal"
             PropertyChanges {
                 target: buttonImage
-                width: Core.dp(28)
+                width: (28 * applicationModel.settings.zoomFactor)
             }
             PropertyChanges {
                 target: buttonText
@@ -44,7 +44,7 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         height: parent.height
-        spacing: Core.dp(8)
+        spacing: (8 * applicationModel.settings.zoomFactor)
 
         Item {
             width: height
@@ -59,7 +59,7 @@ Item {
         Text {
             id: buttonText
             color: "white"
-            font.pixelSize: Core.dp(8)
+            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
             anchors.verticalCenter: parent.verticalCenter
 
             Behavior on opacity {

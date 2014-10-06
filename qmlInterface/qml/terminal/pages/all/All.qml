@@ -24,7 +24,7 @@ Page {
     BackButton {
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.topMargin: Core.dp(70)
+        anchors.topMargin: (70 * applicationModel.settings.zoomFactor)
     }
 
     QtObject {
@@ -39,14 +39,14 @@ Page {
 
     GridView {
         id: usersView
-        property int columnCount: width / Core.dp(60) < 1?1:width / Core.dp(60)
+        property int columnCount: width / (60 * applicationModel.settings.zoomFactor) < 1?1:width / (60 * applicationModel.settings.zoomFactor)
         interactive: contentHeight > height
         anchors.left: parent.left
-        anchors.rightMargin: -Core.dp(2)
+        anchors.rightMargin: -(2 * applicationModel.settings.zoomFactor)
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: searchBar.top
-        cellHeight: Core.dp(76)
+        cellHeight: (76 * applicationModel.settings.zoomFactor)
         cellWidth: width/columnCount
         model: usersModel
 
@@ -61,8 +61,8 @@ Page {
 
         delegate: Rectangle {
             id: userDelegate
-            width: usersView.cellWidth - Core.dp(2)
-            height: usersView.cellHeight - Core.dp(2)
+            width: usersView.cellWidth - (2 * applicationModel.settings.zoomFactor)
+            height: usersView.cellHeight - (2 * applicationModel.settings.zoomFactor)
             color: "#6c676e"
 
             Item
@@ -74,7 +74,7 @@ Page {
                 Item{
                     anchors.centerIn: parent
                     width: photoImage.sourceSize.width > parent.width? parent.width:photoImage.sourceSize.width
-                    height: photoImage.sourceSize.height > Core.dp(60)?Core.dp(60):photoImage.sourceSize.height
+                    height: photoImage.sourceSize.height > (60 * applicationModel.settings.zoomFactor)?(60 * applicationModel.settings.zoomFactor):photoImage.sourceSize.height
                     Image {
                         id: photoImage
                         anchors.fill: parent
@@ -87,7 +87,7 @@ Page {
             Rectangle {
                 id: userNameContainer
                 width: parent.width
-                height: Core.dp(14)
+                height: (14 * applicationModel.settings.zoomFactor)
                 anchors.bottom: parent.bottom
                 color: "#dddddd"
 
@@ -96,14 +96,14 @@ Page {
                     id: selectItem
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.leftMargin: Core.dp(3)
-                    width: Core.dp(10)
+                    anchors.leftMargin: (3 * applicationModel.settings.zoomFactor)
+                    width: (10 * applicationModel.settings.zoomFactor)
                     height: width
 
                     Button {
                         id: userCheckButton
                         anchors.centerIn: parent
-                        width: privateData.isEdited?Core.dp(10):0
+                        width: privateData.isEdited?(10 * applicationModel.settings.zoomFactor):0
                         height: width
                         Behavior on width {NumberAnimation {duration: 200 } }
                         source: user_additional_data.isSelect?"../../images/34a.png":"../../images/34.png"
@@ -122,9 +122,9 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WordWrap
                     maximumLineCount: 2
-                    anchors.leftMargin: Core.dp(6) + userCheckButton.width
-                    anchors.rightMargin: Core.dp(6)
-                    font.pixelSize: Core.dp(6)
+                    anchors.leftMargin: (6 * applicationModel.settings.zoomFactor) + userCheckButton.width
+                    anchors.rightMargin: (6 * applicationModel.settings.zoomFactor)
+                    font.pixelSize: (6 * applicationModel.settings.zoomFactor)
                     text: user_info.userProfile.name
                 }
             }
@@ -166,7 +166,7 @@ Page {
     SearchBar {
         id: searchBar
         z: 2
-        anchors.bottomMargin: privateData.isEdited?Core.dp(22):0
+        anchors.bottomMargin: privateData.isEdited?(22 * applicationModel.settings.zoomFactor):0
         Behavior on anchors.bottomMargin {NumberAnimation {duration: 200 } }
         onSearch: {
             usersModel.filterString = text
@@ -184,8 +184,8 @@ Page {
         selectAllButtonEnabled: false
         deselectAllButtonEnabled: false
         hideOnMissClick: false
-        visible: anchors.bottomMargin > - Core.dp(22)
-        anchors.bottomMargin: privateData.isEdited?0:-Core.dp(22)
+        visible: anchors.bottomMargin > - (22 * applicationModel.settings.zoomFactor)
+        anchors.bottomMargin: privateData.isEdited?0:-(22 * applicationModel.settings.zoomFactor)
         onCansel: {
             for (var i = 0; i < usersModel.count; i++) {
                 usersModel.get(i).additionalData.isSelect = false

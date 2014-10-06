@@ -40,7 +40,7 @@ Page {
         id: pathContainer
         anchors.left: parent.left
         anchors.right: parent.right
-        height: Core.dp(22)
+        height: 22 * applicationModel.settings.zoomFactor
         color: "#da4504"
 
         Item {
@@ -51,11 +51,11 @@ Page {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.left: parent.left
-                width: (parent.width-Core.dp(10))/2
+                width: (parent.width-10 * applicationModel.settings.zoomFactor)/2
                 visible: UrlHelper.hasContainingFolder(privateData.currentFolder)
                 color: "white"
                 elide: Text.ElideRight
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: 8 * applicationModel.settings.zoomFactor
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: UrlHelper.dirName(UrlHelper.containingFolder(privateData.currentFolder))
@@ -65,9 +65,9 @@ Page {
                     platformIndependentHoverEnabled: true
                     onContainsMouseChanged: {
                         if (containsMouse) {
-                            parentFolderText.font.pixelSize = Core.dp(10)
+                            parentFolderText.font.pixelSize = 10 * applicationModel.settings.zoomFactor
                         } else {
-                            parentFolderText.font.pixelSize = Core.dp(8)
+                            parentFolderText.font.pixelSize = 8 * applicationModel.settings.zoomFactor
                         }
                     }
 
@@ -80,7 +80,7 @@ Page {
 
             Image {
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: Core.dp(10)
+                width: 10 * applicationModel.settings.zoomFactor
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 fillMode: Image.PreserveAspectFit
@@ -91,10 +91,10 @@ Page {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
-                width: (parent.width-Core.dp(10))/2
+                width: (parent.width-10 * applicationModel.settings.zoomFactor)/2
                 color: "white"
                 elide: Text.ElideRight
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: 8 * applicationModel.settings.zoomFactor
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: UrlHelper.dirName(privateData.currentFolder)
@@ -114,10 +114,10 @@ Page {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.left: parent.left
-                width: (staticPathItem.width-Core.dp(10))/2
+                width: (staticPathItem.width-10 * applicationModel.settings.zoomFactor)/2
                 color: "white"
                 elide: Text.ElideRight
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: 8 * applicationModel.settings.zoomFactor
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: {
@@ -131,7 +131,7 @@ Page {
             Image {
                 id: animatedImage1
                 anchors.left: animatedText1.right
-                width: Core.dp(10)
+                width: 10 * applicationModel.settings.zoomFactor
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 fillMode: Image.PreserveAspectFit
@@ -143,10 +143,10 @@ Page {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.left: animatedImage1.right
-                width: (staticPathItem.width-Core.dp(10))/2
+                width: (staticPathItem.width-10 * applicationModel.settings.zoomFactor)/2
                 color: "white"
                 elide: Text.ElideRight
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: 8 * applicationModel.settings.zoomFactor
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: {
@@ -160,7 +160,7 @@ Page {
             Image {
                 id: animatedImage2
                 anchors.left: animatedText2.right
-                width: Core.dp(10)
+                width: 10 * applicationModel.settings.zoomFactor
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 fillMode: Image.PreserveAspectFit
@@ -172,10 +172,10 @@ Page {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.left: animatedImage2.right
-                width: (staticPathItem.width-Core.dp(10))/2
+                width: (staticPathItem.width-10 * applicationModel.settings.zoomFactor)/2
                 color: "white"
                 elide: Text.ElideRight
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: 8 * applicationModel.settings.zoomFactor
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: UrlHelper.dirName(animatePathItem.currentFolder)
@@ -187,7 +187,7 @@ Page {
         id: backAnimation
         ScriptAction {
             script: {
-                animatePathItem.x = - (staticPathItem.width - Core.dp(10))/2 - Core.dp(10)
+                animatePathItem.x = - (staticPathItem.width - (10 * applicationModel.settings.zoomFactor))/2 - (10 * applicationModel.settings.zoomFactor)
                 animatePathItem.visible = true
             }
         }
@@ -216,7 +216,7 @@ Page {
         PropertyAnimation {
             target: animatePathItem
             property: "x"
-            to: - (staticPathItem.width - Core.dp(10))/2 - Core.dp(10)
+            to: - (staticPathItem.width - (10 * applicationModel.settings.zoomFactor))/2 - (10 * applicationModel.settings.zoomFactor)
             duration: 200
         }
         ScriptAction {
@@ -238,24 +238,24 @@ Page {
         anchors.right: parent.right
         anchors.top: pathContainer.bottom
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: Core.dp(22)
+        anchors.bottomMargin: (22 * applicationModel.settings.zoomFactor)
         model: folderModel
         clip: true
-        spacing: Core.dp(2)
+        spacing: (2 * applicationModel.settings.zoomFactor)
 
         delegate: Rectangle {
             id: itemContainer
             anchors.left: parent.left
             anchors.right: parent.right
-            height: Core.dp(22)
+            height: (22 * applicationModel.settings.zoomFactor)
 
             Image {
                 id: itemImage
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.leftMargin: Core.dp(6)
-                height: Core.dp(15)
-                width: Core.dp(17)
+                anchors.leftMargin: (6 * applicationModel.settings.zoomFactor)
+                height: (15 * applicationModel.settings.zoomFactor)
+                width: (17 * applicationModel.settings.zoomFactor)
                 fillMode: Image.PreserveAspectFit
                 source: fileIsDir?"../images/40a.png":"../images/98a.png"
             }
@@ -266,13 +266,13 @@ Page {
                 anchors.right: itemCheckButton.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: parent.height / 2 - Core.dp(2)
-                height: Core.dp(22)
+                anchors.bottomMargin: parent.height / 2 - (2 * applicationModel.settings.zoomFactor)
+                height: (22 * applicationModel.settings.zoomFactor)
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
-                anchors.leftMargin: Core.dp(8)
-                anchors.rightMargin: Core.dp(8)
-                font.pixelSize: Core.dp(8)
+                anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
+                anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
+                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                 text: fileName
             }
 
@@ -281,17 +281,17 @@ Page {
                 id: fileSizeTitle
                 anchors.left: itemNameText.left
                 anchors.top: itemNameText.bottom
-                font.pixelSize: Core.dp(6)
+                font.pixelSize: (6 * applicationModel.settings.zoomFactor)
                 color: itemNameText.color
                 visible: !fileIsDir
-                text: qsTr("Размер")
+                text: qsTr("Size") + applicationModel.settings.translatorStringEnd
             }
 
             Text {
                 id: fileSizeText
                 anchors.verticalCenter: fileSizeTitle.verticalCenter
                 anchors.left: fileSizeTitle.right
-                anchors.leftMargin: Core.dp(3)
+                anchors.leftMargin: (3 * applicationModel.settings.zoomFactor)
                 font.pixelSize: fileSizeTitle.font.pixelSize
                 color: itemNameText.color
                 visible: !fileIsDir
@@ -303,17 +303,17 @@ Page {
                 id: folderEntryTitle
                 anchors.left: itemNameText.left
                 anchors.top: itemNameText.bottom
-                font.pixelSize: Core.dp(6)
+                font.pixelSize: (6 * applicationModel.settings.zoomFactor)
                 color: itemNameText.color
                 visible: fileIsDir
-                text: qsTr("Элементов")
+                text: qsTr("Elemens") + applicationModel.settings.translatorStringEnd
             }
 
             Text {
                 id: folderEntryText
                 anchors.verticalCenter: folderEntryTitle.verticalCenter
                 anchors.left: folderEntryTitle.right
-                anchors.leftMargin: Core.dp(3)
+                anchors.leftMargin: (3 * applicationModel.settings.zoomFactor)
                 font.pixelSize: folderEntryTitle.font.pixelSize
                 color: itemNameText.color
                 visible: fileIsDir
@@ -352,8 +352,8 @@ Page {
                 id: itemCheckButton
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.rightMargin: Core.dp(6)
-                width: fileIsDir && fileDialog.selectFolder || !fileIsDir && fileDialog.selectFile?Core.dp(14):0
+                anchors.rightMargin: (6 * applicationModel.settings.zoomFactor)
+                width: fileIsDir && fileDialog.selectFolder || !fileIsDir && fileDialog.selectFile?(14 * applicationModel.settings.zoomFactor):0
                 height: width
                 fillMode: Image.PreserveAspectFit
                 source: "../images/34.png"

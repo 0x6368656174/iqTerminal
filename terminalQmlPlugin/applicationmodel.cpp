@@ -9,7 +9,8 @@ ApplicationModel::ApplicationModel(QObject *parent) :
     m_allModel(new UsersModel(this)),
     m_contactsModel(new UsersModel(this)),
     m_visitorsModel(new UsersModel(this)),
-    m_torrents(new Torrents(this))
+    m_torrents(new Torrents(this)),
+    m_settings(new Settings(this))
 {
     m_aboutMe->setUserProfileFile("../i.xml");
 
@@ -21,13 +22,16 @@ ApplicationModel::ApplicationModel(QObject *parent) :
 
     m_visitorsModel->setParentElement("all");
     m_visitorsModel->setSource(QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/visitors.xml"));
+
+    m_settings->setParentElement("settings");
+    m_settings->setSource(QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/settings.xml"));
 }
 
 ApplicationModel* ApplicationModel::instance()
 {
     if (m_instance)
         return m_instance;
-
+    
     m_instance = new ApplicationModel();
     return m_instance;
 }
@@ -55,4 +59,9 @@ UsersModel *ApplicationModel::visitorsModel() const
 Torrents *ApplicationModel::torrents() const
 {
     return m_torrents;
+}
+
+Settings *ApplicationModel::settings() const
+{
+    return m_settings;
 }

@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Terminal: Класс FileXmlItemsModel</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="extraDoxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Terminal
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Приложение Terminal</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;классов</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Члены&#160;классов</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_file_xml_items_model.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Свойства</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Группы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#properties">Свойства</a> &#124;
+<a href="class_file_xml_items_model-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс FileXmlItemsModel</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Модель позволяющая хранить данные в XML-файлах  
+ <a href="class_file_xml_items_model.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="filexmlitemsmodel_8h_source.html">filexmlitemsmodel.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:FileXmlItemsModel:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_file_xml_items_model.png" usemap="#FileXmlItemsModel_map" alt=""/>
+  <map id="FileXmlItemsModel_map" name="FileXmlItemsModel_map">
+<area href="class_abstract_xml_items_model.html" title="Абстрактная модель на основе XML-элементов " alt="AbstractXmlItemsModel" shape="rect" coords="306,56,449,80"/>
+<area href="class_xml_interface.html" title="Класс, описывающий методы расширяющие классы для работы с XML-фалами " alt="XmlInterface" shape="rect" coords="459,56,602,80"/>
+<area href="class_devices_model.html" alt="DevicesModel" shape="rect" coords="76,168,219,192"/>
+<area href="class_folders_model.html" alt="FoldersModel" shape="rect" coords="306,168,449,192"/>
+<area href="class_messages_model.html" alt="MessagesModel" shape="rect" coords="459,168,602,192"/>
+<area href="class_users_model.html" title="Модель, содержащая список пользователей " alt="UsersModel" shape="rect" coords="612,168,755,192"/>
+<area href="class_network_devices_model.html" alt="NetworkDevicesModel" shape="rect" coords="0,224,143,248"/>
+<area href="class_simple_devices_model.html" alt="SimpleDevicesModel" shape="rect" coords="153,224,296,248"/>
+<area href="class_torrent_folders_model.html" alt="TorrentFoldersModel" shape="rect" coords="306,224,449,248"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:ae46798e7ee33286b2f22953cdeb40022"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae46798e7ee33286b2f22953cdeb40022"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FileXmlItemsModel</b> (QObject *parent=0)</td></tr>
+<tr class="separator:ae46798e7ee33286b2f22953cdeb40022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a399bdc99b617fcfb20c15bf76e598bea"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_xml_items_model.html#a399bdc99b617fcfb20c15bf76e598bea">reload</a> ()</td></tr>
+<tr class="memdesc:a399bdc99b617fcfb20c15bf76e598bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перезагружает модель  <a href="#a399bdc99b617fcfb20c15bf76e598bea">Подробнее...</a><br/></td></tr>
+<tr class="separator:a399bdc99b617fcfb20c15bf76e598bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af35c4860f5e9c065ff0c9380921b2f4b"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_xml_items_model.html#af35c4860f5e9c065ff0c9380921b2f4b">save</a> ()</td></tr>
+<tr class="memdesc:af35c4860f5e9c065ff0c9380921b2f4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохраняет данные модели  <a href="#af35c4860f5e9c065ff0c9380921b2f4b">Подробнее...</a><br/></td></tr>
+<tr class="separator:af35c4860f5e9c065ff0c9380921b2f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Открытые члены inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:a23def2fe37d3c9190f74810d5458b47d inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23def2fe37d3c9190f74810d5458b47d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AbstractXmlItemsModel</b> (QObject *parent=0)</td></tr>
+<tr class="separator:a23def2fe37d3c9190f74810d5458b47d inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a640267efafb57c5d2c32a2cadda14831 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a640267efafb57c5d2c32a2cadda14831"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> (const int row) const </td></tr>
+<tr class="separator:a640267efafb57c5d2c32a2cadda14831 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db5d8803fc8150a84914d09ebff6917 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8db5d8803fc8150a84914d09ebff6917"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const qint64 id) const </td></tr>
+<tr class="separator:a8db5d8803fc8150a84914d09ebff6917 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a626825146f48c0d9d559df5253f29792 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a626825146f48c0d9d559df5253f29792"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>appendNew</b> ()</td></tr>
+<tr class="separator:a626825146f48c0d9d559df5253f29792 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9860eebf5151f44b72a06a19e5edf1f inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9860eebf5151f44b72a06a19e5edf1f"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>insertNew</b> (int row)</td></tr>
+<tr class="separator:aa9860eebf5151f44b72a06a19e5edf1f inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad529a1dcde6aaef3de42115f87af183f inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad529a1dcde6aaef3de42115f87af183f"></a>
+Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><b>remove</b> (int row)</td></tr>
+<tr class="separator:ad529a1dcde6aaef3de42115f87af183f inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44ea8293e256bb13f35901433363904d inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44ea8293e256bb13f35901433363904d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>loadFromDomElement</b> (const QDomElement &amp;domElement)</td></tr>
+<tr class="separator:a44ea8293e256bb13f35901433363904d inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a72123e5f98387241888bfa12ef0bca inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a72123e5f98387241888bfa12ef0bca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>appendItemsToDomElement</b> (QDomElement &amp;rootElement, QDomDocument &amp;domDocument) const </td></tr>
+<tr class="separator:a7a72123e5f98387241888bfa12ef0bca inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb4a00f50273796327106107c8d9bed inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaeb4a00f50273796327106107c8d9bed"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>rowCount</b> (const QModelIndex &amp;parent=QModelIndex()) const </td></tr>
+<tr class="separator:aaeb4a00f50273796327106107c8d9bed inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f3d36fe4881a0271a2478a54ee8bb0c inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f3d36fe4881a0271a2478a54ee8bb0c"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>insertRows</b> (int row, int count, const QModelIndex &amp;parent=QModelIndex())</td></tr>
+<tr class="separator:a6f3d36fe4881a0271a2478a54ee8bb0c inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a5045aa1d37f5e70aa42c52f1a1a13d inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a5045aa1d37f5e70aa42c52f1a1a13d"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeRows</b> (int row, int count, const QModelIndex &amp;parent=QModelIndex())</td></tr>
+<tr class="separator:a9a5045aa1d37f5e70aa42c52f1a1a13d inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29181a7d074217a663572a90c0c09133 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29181a7d074217a663572a90c0c09133"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> () const </td></tr>
+<tr class="separator:a29181a7d074217a663572a90c0c09133 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71cdd33507459a9d43b14ee60ce76184 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71cdd33507459a9d43b14ee60ce76184"></a>
+QQmlComponent *&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalData</b> () const </td></tr>
+<tr class="separator:a71cdd33507459a9d43b14ee60ce76184 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63cf19853c796813cf85ed7295f0748b inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63cf19853c796813cf85ed7295f0748b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setItemAdditionalData</b> (QQmlComponent *itemAdditionalData)</td></tr>
+<tr class="separator:a63cf19853c796813cf85ed7295f0748b inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Свойства</h2></td></tr>
+<tr class="memitem:aa8a1f7faf9bf06edf137bb74db9a7e13"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_xml_items_model.html#aa8a1f7faf9bf06edf137bb74db9a7e13">source</a></td></tr>
+<tr class="memdesc:aa8a1f7faf9bf06edf137bb74db9a7e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">XML-файл, в котором храняться данные модели  <a href="#aa8a1f7faf9bf06edf137bb74db9a7e13">Подробнее...</a><br/></td></tr>
+<tr class="separator:aa8a1f7faf9bf06edf137bb74db9a7e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62d2392836d93aa22f7be0c9f6bf149"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_xml_items_model.html#ac62d2392836d93aa22f7be0c9f6bf149">parentElement</a></td></tr>
+<tr class="memdesc:ac62d2392836d93aa22f7be0c9f6bf149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Корненвой элемент, в котором храняться XML-ноды, описывающие экземпляры элементов модели.  <a href="#ac62d2392836d93aa22f7be0c9f6bf149">Подробнее...</a><br/></td></tr>
+<tr class="separator:ac62d2392836d93aa22f7be0c9f6bf149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('properties_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Свойства inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:af2a9fe8763b4e818842ee34588f8fbf0 inherit properties_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2a9fe8763b4e818842ee34588f8fbf0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b></td></tr>
+<tr class="separator:af2a9fe8763b4e818842ee34588f8fbf0 inherit properties_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30af818e83f6218dc5b3ed4bcad3a52 inherit properties_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa30af818e83f6218dc5b3ed4bcad3a52"></a>
+QQmlComponent&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalData</b></td></tr>
+<tr class="separator:aa30af818e83f6218dc5b3ed4bcad3a52 inherit properties_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header signals_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('signals_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Сигналы inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:a3833b23f8543d0c8a2e61b17c45e11cf inherit signals_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3833b23f8543d0c8a2e61b17c45e11cf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>countChanged</b> ()</td></tr>
+<tr class="separator:a3833b23f8543d0c8a2e61b17c45e11cf inherit signals_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a394e8c80474276124cc87113a9df71 inherit signals_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a394e8c80474276124cc87113a9df71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalDataChanged</b> ()</td></tr>
+<tr class="separator:a6a394e8c80474276124cc87113a9df71 inherit signals_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_slots_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('pro_slots_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Защищенные слоты inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:aa7eceee66d835d82ce245501d08fd9da inherit pro_slots_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7eceee66d835d82ce245501d08fd9da"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>itemDataChanged</b> ()</td></tr>
+<tr class="separator:aa7eceee66d835d82ce245501d08fd9da inherit pro_slots_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Защищенные члены inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:a3af6324ddb26e491d141e4c4466f808d inherit pro_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3af6324ddb26e491d141e4c4466f808d"></a>
+virtual <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>newItem</b> ()=0</td></tr>
+<tr class="separator:a3af6324ddb26e491d141e4c4466f808d inherit pro_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf4f14dff4b715e77875017142622f6c inherit pro_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf4f14dff4b715e77875017142622f6c"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>itemTagName</b> () const </td></tr>
+<tr class="separator:abf4f14dff4b715e77875017142622f6c inherit pro_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_methods_class_xml_interface"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_class_xml_interface')"><img src="closed.png" alt="-"/>&#160;Защищенные статические члены inherited from <a class="el" href="class_xml_interface.html">XmlInterface</a></td></tr>
+<tr class="memitem:a9d1f6ffe79e759e5965c5bb2e0242485 inherit pro_static_methods_class_xml_interface"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d1f6ffe79e759e5965c5bb2e0242485"></a>
+static QDomElement&#160;</td><td class="memItemRight" valign="bottom"><b>findElement</b> (const QObject *object, const QUrl &amp;source, const QString &amp;element, QDomDocument &amp;domDocument)</td></tr>
+<tr class="separator:a9d1f6ffe79e759e5965c5bb2e0242485 inherit pro_static_methods_class_xml_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fc5d447cffc0dab6f7bec274af7fb9c inherit pro_static_methods_class_xml_interface"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3fc5d447cffc0dab6f7bec274af7fb9c"></a>
+static QDomElement&#160;</td><td class="memItemRight" valign="bottom"><b>createElement</b> (const QObject *object, const QUrl &amp;source, const QString &amp;element, QDomDocument &amp;domDocument)</td></tr>
+<tr class="separator:a3fc5d447cffc0dab6f7bec274af7fb9c inherit pro_static_methods_class_xml_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a396256cf22263ca693a9440dd868a997 inherit pro_static_methods_class_xml_interface"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a396256cf22263ca693a9440dd868a997"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>reloadModel</b> (<a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a> *model, const QUrl &amp;source, const QString &amp;element)</td></tr>
+<tr class="separator:a396256cf22263ca693a9440dd868a997 inherit pro_static_methods_class_xml_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a530c72a17c22589245ce33509f1a0b inherit pro_static_methods_class_xml_interface"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a530c72a17c22589245ce33509f1a0b"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>saveModel</b> (const <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a> *model, const QUrl &amp;source, const QString &amp;element)</td></tr>
+<tr class="separator:a3a530c72a17c22589245ce33509f1a0b inherit pro_static_methods_class_xml_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Модель позволяющая хранить данные в XML-файлах </p>
+<p>Данная модель реализует методы и функции, позволяющие хранить данные модели в XML-файлах. Для работы с XML-файлами необходимо установить <a class="el" href="class_file_xml_items_model.html#aa8a1f7faf9bf06edf137bb74db9a7e13">source</a> и <a class="el" href="class_file_xml_items_model.html#ac62d2392836d93aa22f7be0c9f6bf149">parentElement</a>. После чего можно загружать модель из XML-фала, используя <a class="el" href="class_file_xml_items_model.html#a399bdc99b617fcfb20c15bf76e598bea">reload()</a>, а так же сохранять данные модели в XML-файл, используя <a class="el" href="class_file_xml_items_model.html#af35c4860f5e9c065ff0c9380921b2f4b">save()</a>. </p>
+</div><h2 class="groupheader">Методы</h2>
+<a class="anchor" id="a399bdc99b617fcfb20c15bf76e598bea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FileXmlItemsModel::reload </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Перезагружает модель </p>
+<p>Перезагружает данные в модель из XML-файла. Для того, чтоб можно было загрузить данные в модель, необходимо правильно установить <a class="el" href="class_file_xml_items_model.html#aa8a1f7faf9bf06edf137bb74db9a7e13">source</a>, <a class="el" href="class_file_xml_items_model.html#ac62d2392836d93aa22f7be0c9f6bf149">parentElement</a>.</p>
+<dl class="section return"><dt>Возвращает</dt><dd><em>TRUE</em>, в случае удачи, иначе <em>FALSE</em> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af35c4860f5e9c065ff0c9380921b2f4b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FileXmlItemsModel::save </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сохраняет данные модели </p>
+<p>Сохраняет данные из модели в XML-файл. Для того, чтоб можно было сохранить данные из модели, необходимо правильно установить <a class="el" href="class_file_xml_items_model.html#aa8a1f7faf9bf06edf137bb74db9a7e13">source</a>, <a class="el" href="class_file_xml_items_model.html#ac62d2392836d93aa22f7be0c9f6bf149">parentElement</a>.</p>
+<dl class="section return"><dt>Возвращает</dt><dd><em>TRUE</em>, в случае удачи, иначе <em>FALSE</em> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Полный список свойств</h2>
+<a class="anchor" id="ac62d2392836d93aa22f7be0c9f6bf149"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString FileXmlItemsModel::parentElement</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Корненвой элемент, в котором храняться XML-ноды, описывающие экземпляры элементов модели. </p>
+<p>Строка содержащая названия нод XML-файла, разделенные косой чертой ("\\"). Например, если XML-файл имеет структуру: </p>
+<div class="fragment"><div class="line">&lt;all&gt;</div>
+<div class="line">   &lt;contacts&gt;</div>
+<div class="line">      &lt;user&gt;&lt;/user&gt;</div>
+<div class="line">      ....</div>
+<div class="line">      &lt;user&gt;&lt;/user&gt;</div>
+<div class="line">   &lt;/contacts&gt;</div>
+<div class="line">&lt;/all&gt;</div>
+</div><!-- fragment --><p> То корневой элемент для модели, содержей пользователей, описанные в нодах <code>&lt;user&gt;&lt;/user&gt;</code>, является <code>"all/contacts"</code>.</p>
+<p>При установки нового корневого элемента, если задан правильный путь к XML-файлу (<a class="el" href="class_file_xml_items_model.html#aa8a1f7faf9bf06edf137bb74db9a7e13">source</a>), модель автоматически перезагрузится.</p>
+<dl class="section user"><dt>Доступ:</dt><dd>parentElement(), setParentElement(), parentElementChanged() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa8a1f7faf9bf06edf137bb74db9a7e13"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QUrl FileXmlItemsModel::source</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>XML-файл, в котором храняться данные модели </p>
+<p>Модель автоматически читает данные из указанного XML-файла (если до этого указан правильный <a class="el" href="class_file_xml_items_model.html#ac62d2392836d93aa22f7be0c9f6bf149">parentElement</a>), а так же сохраняет данные в указанный XML-файл при вызове метода <a class="el" href="class_file_xml_items_model.html#af35c4860f5e9c065ff0c9380921b2f4b">save()</a>.</p>
+<dl class="section user"><dt>Доступ:</dt><dd>source(), setSource(), sourceChanged() </dd></dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>terminalQmlPlugin/<a class="el" href="filexmlitemsmodel_8h_source.html">filexmlitemsmodel.h</a></li>
+<li>terminalQmlPlugin/filexmlitemsmodel.cpp</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_file_xml_items_model.html">FileXmlItemsModel</a></li>
+    <li class="footer">Документация по Terminal. Последние изменения: Вт 7 Окт 2014 01:12:40. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
+  </ul>
+</div>
+</body>
+</html>

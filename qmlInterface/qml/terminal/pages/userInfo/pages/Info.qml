@@ -42,7 +42,7 @@ Page {
             id: photoRect
             anchors.left: parent.left
             anchors.right: parent.right
-            height: Core.dp(132)
+            height: (132 * applicationModel.settings.zoomFactor)
             color: "#a0706a78"
             Rectangle {
                 visible: privateData.photoIsEdited
@@ -99,7 +99,7 @@ Page {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: photoRect.bottom
-            height: Core.dp(20)
+            height: (20 * applicationModel.settings.zoomFactor)
             color: "#c6c1c7"
 
             Rectangle {
@@ -114,7 +114,7 @@ Page {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.margins: Core.dp(2)
+                anchors.margins: (2 * applicationModel.settings.zoomFactor)
                 fillMode: Image.PreserveAspectFit
                 source: userInfo?"image://xml/" + userInfo.userProfile.source:""
                 scale: {
@@ -133,11 +133,11 @@ Page {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
-                anchors.leftMargin: Core.dp(12) + (namePhotoImage.width-Core.dp(4))*namePhotoImage.scale
+                anchors.leftMargin: (12 * applicationModel.settings.zoomFactor) + (namePhotoImage.width-(4 * applicationModel.settings.zoomFactor))*namePhotoImage.scale
                 anchors.rightMargin: anchors.leftMargin
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                 text: userInfo?userInfo.userProfile.name:""
                 font.bold: true
             }
@@ -151,7 +151,7 @@ Page {
                 selectionColor: "#c00d0d"
                 font.bold: true
                 verticalAlignment: Text.AlignVCenter
-                font.pixelSize: Core.dp(8)
+                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                 text: userInfo?userInfo.userProfile.name:""
                 onVisibleChanged: {
                     if (visible) {
@@ -205,16 +205,16 @@ Page {
             anchors.top: nameContainter.bottom
             anchors.left: parent.left
             anchors.right: parent.right
-            height: Core.dp(20)
+            height: (20 * applicationModel.settings.zoomFactor)
 
             Text {
                 anchors.fill: parent
-                anchors.leftMargin: Core.dp(12)
+                anchors.leftMargin: (12 * applicationModel.settings.zoomFactor)
                 anchors.rightMargin: anchors.leftMargin
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
-                font.pixelSize: Core.dp(8)
-                text: qsTr("Статус")
+                font.pixelSize: (8 * applicationModel.settings.zoomFactor)
+                text: qsTr("State") + applicationModel.settings.translatorStringEnd
                 color: "#da4504"
                 font.bold: true
             }
@@ -234,7 +234,7 @@ Page {
             anchors.top: stateSpacer.bottom
             visible: userInfo?userInfo.userProfile.stateModel.count === 0:false
             enabled: !privateData.isEdited
-            text: qsTr("Новый")
+            text: qsTr("New") + applicationModel.settings.translatorStringEnd
             spacerVisible: false
             onClicked: {
                 var newSatate = userInfo.userProfile.stateModel.appendNew()
@@ -258,7 +258,7 @@ Page {
             anchors.top: stateSpacer.bottom
             anchors.left: parent.left
             anchors.right: parent.right
-            height: infoPage.height - nameContainter.height - stateTextContainer.height - stateSpacer.height - photoRect.height + flickItem.contentY - Core.dp(22) - editBar.anchors.bottomMargin + 1
+            height: infoPage.height - nameContainter.height - stateTextContainer.height - stateSpacer.height - photoRect.height + flickItem.contentY - (22 * applicationModel.settings.zoomFactor) - editBar.anchors.bottomMargin + 1
             model: userInfo?userInfo.userProfile.stateModel:undefined
 
             add: Transition {
@@ -286,7 +286,7 @@ Page {
                     id: dataItem
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    height: Math.max(detailText.paintedHeight, stateText.paintedHeight) + Core.dp(12)
+                    height: Math.max(detailText.paintedHeight, stateText.paintedHeight) + (12 * applicationModel.settings.zoomFactor)
 
                     Rectangle {
                         id: checkRect
@@ -299,12 +299,12 @@ Page {
                         id: stateText
                         visible: !state_additional_data.isEdited || editBar.editRole !== "edit"
                         anchors.left: parent.left
-                        anchors.leftMargin: Core.dp(12)
+                        anchors.leftMargin: (12 * applicationModel.settings.zoomFactor)
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
-                        width: Core.dp(50)
+                        width: (50 * applicationModel.settings.zoomFactor)
                         verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: Core.dp(8)
+                        font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                         text: state_name
                         wrapMode: Text.Wrap
                     }
@@ -321,7 +321,7 @@ Page {
                         selectByMouse: true
                         selectionColor: "#c00d0d"
                         verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: Core.dp(8)
+                        font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                         text: state_name
                         onTextChanged: state_additional_data.nameToSave = text
                         clip: true
@@ -337,11 +337,11 @@ Page {
                         anchors.left: parent.left
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
-                        anchors.leftMargin: Core.dp(64)
+                        anchors.leftMargin: (64 * applicationModel.settings.zoomFactor)
                         anchors.right: parent.right
-                        anchors.rightMargin: Core.dp(12)
+                        anchors.rightMargin: (12 * applicationModel.settings.zoomFactor)
                         verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: Core.dp(8)
+                        font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                         text: state_text
                     }
 
@@ -359,7 +359,7 @@ Page {
                         selectByMouse: true
                         selectionColor: "#c00d0d"
                         verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: Core.dp(8)
+                        font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                         text: state_text
                         onTextChanged: state_additional_data.textToSave = text
                         clip: true
@@ -411,7 +411,7 @@ Page {
         id: editBar
         visible: opacity !== 0
         opacity: privateData.isEdited?1:0
-        anchors.bottomMargin: privateData.isEdited?0:-Core.dp(22)
+        anchors.bottomMargin: privateData.isEdited?0:-(22 * applicationModel.settings.zoomFactor)
         hideOnMissClick: false
         canselButtonEnabled: true
 
@@ -548,7 +548,7 @@ Page {
     FileDialog {
         id: fileDialog
         selectMultiple: false
-        title: qsTr("Выбирите изображени")
+        title: qsTr("Select image") + applicationModel.settings.translatorStringEnd
 
         onAccepted: {
             userInfo.userProfile.setPhoto(fileUrl)

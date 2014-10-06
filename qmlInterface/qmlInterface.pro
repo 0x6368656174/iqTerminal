@@ -41,12 +41,40 @@ HEADERS += \
 RESOURCES += \
     data.qrc \
     qml.qrc \
-    images.qrc
+    images.qrc \
+    translations.qrc
 
+lupdate_only {
 OTHER_FILES += \
-    qml/terminal/elements/BaseHeader.qml \
-    qml/terminal/pages/userInfo/pages/Photo.qml \
-    android/AndroidManifest.xml \
-    qml/terminal/pages/userInfo/UserInfoPage.qml
+          qml/terminal/*.qml \
+          qml/terminal/pages/*.qml \
+          qml/terminal/pages/all/*.qml \
+          qml/terminal/pages/chat/*.qml \
+          qml/terminal/pages/contacts/*.qml \
+          qml/terminal/pages/i/*.qml \
+          qml/terminal/pages/menu/*.qml \
+          qml/terminal/pages/torrent/*.qml \
+          qml/terminal/pages/torrent/pages/*.qml \
+          qml/terminal/pages/userInfo/*.qml \
+          qml/terminal/pages/userInfo/pages/*.qml \
+          qml/terminal/pages/visitors/*.qml \
+          qml/terminal/pages/welcome/*.qml \
+          qml/terminal/pages/settings/*.qml \
+          qml/terminal/elements/*.qml
+
+SOURCES = $$OTHER_FILES
+}
+
+TRANSLATIONS += \
+    ../i18n/terminal_en.ts \
+    ../i18n/terminal_zh.ts \
+    ../i18n/terminal_es.ts \
+    ../i18n/terminal_jp.ts \
+    ../i18n/terminal_pt.ts \
+    ../i18n/terminal_de.ts \
+    ../i18n/terminal_ar.ts \
+    ../i18n/terminal_fr.ts \
+    ../i18n/terminal_ru.ts \
+    ../i18n/terminal_ko.ts
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

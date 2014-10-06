@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import TerminalQmlPlugin 1.0
 import QtMultimedia 5.2
+import QtQuick.Window 2.1
 
 import "pages/welcome"
 import "pages/menu"
@@ -8,10 +9,14 @@ import "pages/userInfo"
 import "pages/chat"
 import "elements"
 
-Rectangle {
+Window {
     id: main
-    width: Core.dp(208)
-    height: Core.dp(285)
+    visible: true
+    title: "iqTerminal"
+    visibility: Core.operatingSystem === Core.Android?Window.FullScreen:Window.Windowed
+    width: (208 * applicationModel.settings.zoomFactor)
+    height: (285 * applicationModel.settings.zoomFactor)
+
 
     property bool autorized: false
 

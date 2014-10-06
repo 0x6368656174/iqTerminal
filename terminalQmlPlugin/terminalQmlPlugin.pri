@@ -34,8 +34,19 @@
         $$PWD/textdecorator.h \
         $$PWD/urlhelper.h \
         $$PWD/filesystem.h \
-        $$PWD/messagesfiltermodel.h
-
+        $$PWD/messagesfiltermodel.h \
+        $$PWD/filewatcher.h \
+        $$PWD/applicationmodel.h \
+        $$PWD/torrents.h \
+        $$PWD/userinfo.h \
+        $$PWD/settings.h \
+        $$PWD/device.h \
+        $$PWD/filexmlitemsmodel.h \
+        $$PWD/simpledevice.h \
+        $$PWD/simpledevicesmodel.h \
+        $$PWD/devicesmodel.h \
+        $$PWD/networkdevice.h \
+        $$PWD/networkdevicesmodel.h
 
     SOURCES += \
         $$PWD/core.cpp \
@@ -67,8 +78,19 @@
         $$PWD/textdecorator.cpp \
         $$PWD/urlhelper.cpp \
         $$PWD/filesystem.cpp \
-        $$PWD/messagesfiltermodel.cpp
-
+        $$PWD/messagesfiltermodel.cpp \
+        $$PWD/filewatcher.cpp \
+        $$PWD/applicationmodel.cpp \
+        $$PWD/torrents.cpp \
+        $$PWD/userinfo.cpp \
+        $$PWD/settings.cpp \
+        $$PWD/device.cpp \
+        $$PWD/filexmlitemsmodel.cpp \
+        $$PWD/simpledevice.cpp \
+        $$PWD/simpledevicesmodel.cpp \
+        $$PWD/devicesmodel.cpp \
+        $$PWD/networkdevice.cpp \
+        $$PWD/networkdevicesmodel.cpp
 
     OTHER_FILES += \
         $$PWD/imports/TerminalQmlPlugin/TerminalMouseArea.qml \
@@ -76,13 +98,7 @@
 }
 
 HEADERS += \
-    $$PWD/filewatcher.h \
-    $$PWD/applicationmodel.h \
-    $$PWD/torrents.h \
-    $$PWD/userinfo.h
+    $$PWD/proxysettings.h
 
 SOURCES += \
-    $$PWD/filewatcher.cpp \
-    $$PWD/applicationmodel.cpp \
-    $$PWD/torrents.cpp \
-    $$PWD/userinfo.cpp
+    $$PWD/proxysettings.cpp

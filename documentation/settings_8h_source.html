@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Terminal: Исходный файл terminalQmlPlugin/settings.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="extraDoxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Terminal
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Приложение Terminal</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('settings_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Свойства</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Группы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">settings.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef SETTINGS_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SETTINGS_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QUrl&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QTranslator&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;simpledevicesmodel.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;networkdevicesmodel.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;proxysettings.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;xmlinterface.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_settings.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_settings.html">Settings</a> : <span class="keyword">public</span> QObject, <span class="keyword">public</span> <a class="code" href="class_xml_interface.html">XmlInterface</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">   30</a></span>&#160;    Q_PROPERTY(QUrl <a class="code" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">source</a> READ <a class="code" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">source</a> WRITE setSource NOTIFY sourceChanged)</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">   51</a></span>&#160;    Q_PROPERTY(QString <a class="code" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">parentElement</a> READ <a class="code" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">parentElement</a> WRITE setParentElement NOTIFY parentElementChanged)</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_settings.html#aeec6e95d3d48262ee57c4ebd2a2060cc">   61</a></span>&#160;    Q_PROPERTY(<a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Translations</a> <a class="code" href="class_settings.html#aeec6e95d3d48262ee57c4ebd2a2060cc">translation</a> READ <a class="code" href="class_settings.html#aeec6e95d3d48262ee57c4ebd2a2060cc">translation</a> WRITE setTranslation NOTIFY translationChanged)</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_settings.html#a9cbb2b8b805f666e1eb2a26586a00a83">   69</a></span>&#160;    Q_PROPERTY(QUrl <a class="code" href="class_settings.html#a9cbb2b8b805f666e1eb2a26586a00a83">homeDirectory</a> READ <a class="code" href="class_settings.html#a9cbb2b8b805f666e1eb2a26586a00a83">homeDirectory</a> WRITE setHomeDirectory NOTIFY homeDirectoryChanged)</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_settings.html#a1d6d61cb0ade9338558f29fbb0a77f42">   75</a></span>&#160;    Q_PROPERTY(<a class="code" href="class_simple_devices_model.html">SimpleDevicesModel</a>* <a class="code" href="class_settings.html#a1d6d61cb0ade9338558f29fbb0a77f42">audioDevicesModel</a> READ <a class="code" href="class_settings.html#a1d6d61cb0ade9338558f29fbb0a77f42">audioDevicesModel</a> CONSTANT)</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="class_settings.html#ae65db1a99879af266249f85265c71b37">   81</a></span>&#160;    Q_PROPERTY(<a class="code" href="class_simple_devices_model.html">SimpleDevicesModel</a>* <a class="code" href="class_settings.html#ae65db1a99879af266249f85265c71b37">videoDevicesModel</a> READ <a class="code" href="class_settings.html#ae65db1a99879af266249f85265c71b37">videoDevicesModel</a> CONSTANT)</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_settings.html#a94e52cafb314c7edad153888c3d96f92">   87</a></span>&#160;    Q_PROPERTY(<a class="code" href="class_network_devices_model.html">NetworkDevicesModel</a>* <a class="code" href="class_settings.html#a94e52cafb314c7edad153888c3d96f92">wanDevicesModel</a> READ <a class="code" href="class_settings.html#a94e52cafb314c7edad153888c3d96f92">wanDevicesModel</a> CONSTANT)</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_settings.html#a33c36c9d99a5e959c7ade58ed3babe7c">   95</a></span>&#160;    Q_PROPERTY(<span class="keywordtype">bool</span> <a class="code" href="class_settings.html#a33c36c9d99a5e959c7ade58ed3babe7c">natEnabled</a> READ <a class="code" href="class_settings.html#a33c36c9d99a5e959c7ade58ed3babe7c">natEnabled</a> WRITE setNatEnabled NOTIFY natEnabledChanged)</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_settings.html#a13c264ccc4783bf4ae8cb040da2cbb39">  103</a></span>&#160;    Q_PROPERTY(<span class="keywordtype">bool</span> <a class="code" href="class_settings.html#a13c264ccc4783bf4ae8cb040da2cbb39">upnpEnabled</a> READ <a class="code" href="class_settings.html#a13c264ccc4783bf4ae8cb040da2cbb39">upnpEnabled</a> WRITE setUpnpEnabled NOTIFY upnpEnabledChanged)</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="class_settings.html#ac6b4367b0d41cdfe409940d0c3bef622">  109</a></span>&#160;    Q_PROPERTY(<a class="code" href="class_proxy_settings.html">ProxySettings</a>* <a class="code" href="class_settings.html#ac6b4367b0d41cdfe409940d0c3bef622">proxySettings</a> READ <a class="code" href="class_settings.html#ac6b4367b0d41cdfe409940d0c3bef622">proxySettings</a> CONSTANT)</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_settings.html#ad5647eb961c9e977b20bb235bb800a4e">  119</a></span>&#160;    Q_PROPERTY(qreal <a class="code" href="class_settings.html#ad5647eb961c9e977b20bb235bb800a4e">zoomFactor</a> READ <a class="code" href="class_settings.html#ad5647eb961c9e977b20bb235bb800a4e">zoomFactor</a> WRITE setZoomFactor NOTIFY zoomFactorChanged)</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="class_settings.html#a48fed2e1aa7990ac670197dbeb242cd6">  134</a></span>&#160;    Q_PROPERTY(QString <a class="code" href="class_settings.html#a48fed2e1aa7990ac670197dbeb242cd6">translatorStringEnd</a> READ emptyString NOTIFY translationChanged)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    Q_ENUMS(<a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Translations</a>)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;public:</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">  140</a></span>&#160;    enum <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Translations</a> {</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaafb63f4d543780e7aedbb9ce4c328bb06">  141</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaafb63f4d543780e7aedbb9ce4c328bb06">English</a>,    </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa00a6dd112b97481b2499bb9cef76165d">  142</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa00a6dd112b97481b2499bb9cef76165d">Chinese</a>,    </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa266d1abc74dcbcde44357588369f80bb">  143</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa266d1abc74dcbcde44357588369f80bb">Spanish</a>,    </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf7203b18d80fe283a58d5ee22391b5a6">  144</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf7203b18d80fe283a58d5ee22391b5a6">Japanese</a>,   </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf825f79ceb876cda533bad37c1935e3b">  145</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf825f79ceb876cda533bad37c1935e3b">Portuguese</a>, </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa969466eb05700c8d256f02eaae70b85c">  146</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa969466eb05700c8d256f02eaae70b85c">German</a>,     </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa59633dcb73a077e53a828f9b30476af8">  147</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa59633dcb73a077e53a828f9b30476af8">Arabic</a>,     </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaae740b67a736a156b77ce9980f675b0f6">  148</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaae740b67a736a156b77ce9980f675b0f6">French</a>,     </div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa1194d4e99cad3347886b7112a60e266e">  149</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa1194d4e99cad3347886b7112a60e266e">Russian</a>,    </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf45090043d2ccad4074936f56fbad2b7">  150</a></span>&#160;        <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf45090043d2ccad4074936f56fbad2b7">Korean</a>      </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    };</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_settings.html#af88ba9c76af5ca1795aeda2b9937215e">Settings</a>(QObject *parent = 0);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    Q_INVOKABLE <span class="keywordtype">bool</span> <a class="code" href="class_settings.html#a1a3823de3872a30be2b6aa7e431887d5">reload</a>();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    Q_INVOKABLE <span class="keywordtype">bool</span> <a class="code" href="class_settings.html#ad1c42c54f67ce263bfa1f1d60856cb52">save</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#ifndef DOXYGEN_SHOULD_SKIP_THIS</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor"></span><span class="keyword">public</span>:</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    QUrl <a class="code" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">source</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordtype">void</span> setSource(<span class="keyword">const</span> QUrl &amp;<a class="code" href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">source</a>);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    QString <a class="code" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">parentElement</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordtype">void</span> setParentElement(<span class="keyword">const</span> QString &amp;<a class="code" href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">parentElement</a>);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Translations</a> <a class="code" href="class_settings.html#aeec6e95d3d48262ee57c4ebd2a2060cc">translation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordtype">void</span> setTranslation(<span class="keyword">const</span> <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Translations</a> &amp;<a class="code" href="class_settings.html#aeec6e95d3d48262ee57c4ebd2a2060cc">translation</a>);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    QUrl <a class="code" href="class_settings.html#a9cbb2b8b805f666e1eb2a26586a00a83">homeDirectory</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordtype">void</span> setHomeDirectory(<span class="keyword">const</span> QUrl &amp;<a class="code" href="class_settings.html#a9cbb2b8b805f666e1eb2a26586a00a83">homeDirectory</a>);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="class_simple_devices_model.html">SimpleDevicesModel</a> *<a class="code" href="class_settings.html#a1d6d61cb0ade9338558f29fbb0a77f42">audioDevicesModel</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <a class="code" href="class_simple_devices_model.html">SimpleDevicesModel</a> *<a class="code" href="class_settings.html#ae65db1a99879af266249f85265c71b37">videoDevicesModel</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="class_network_devices_model.html">NetworkDevicesModel</a> *<a class="code" href="class_settings.html#a94e52cafb314c7edad153888c3d96f92">wanDevicesModel</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_settings.html#a33c36c9d99a5e959c7ade58ed3babe7c">natEnabled</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">void</span> setNatEnabled(<span class="keywordtype">bool</span> <a class="code" href="class_settings.html#a33c36c9d99a5e959c7ade58ed3babe7c">natEnabled</a>);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_settings.html#a13c264ccc4783bf4ae8cb040da2cbb39">upnpEnabled</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordtype">void</span> setUpnpEnabled(<span class="keywordtype">bool</span> <a class="code" href="class_settings.html#a13c264ccc4783bf4ae8cb040da2cbb39">upnpEnabled</a>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="class_proxy_settings.html">ProxySettings</a> *<a class="code" href="class_settings.html#ac6b4367b0d41cdfe409940d0c3bef622">proxySettings</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    qreal <a class="code" href="class_settings.html#ad5647eb961c9e977b20bb235bb800a4e">zoomFactor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordtype">void</span> setZoomFactor(<span class="keyword">const</span> qreal &amp;<a class="code" href="class_settings.html#ad5647eb961c9e977b20bb235bb800a4e">zoomFactor</a>);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    QString emptyString() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;signals:</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordtype">void</span> sourceChanged();</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordtype">void</span> parentElementChanged();</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordtype">void</span> translationChanged();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordtype">void</span> homeDirectoryChanged();</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordtype">void</span> natEnabledChanged();</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordtype">void</span> upnpEnabledChanged();</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">void</span> zoomFactorChanged();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* DOXYGEN_SHOULD_SKIP_THIS */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    QUrl m_source;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    QString m_parentElement;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Translations</a> m_translation;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    QUrl m_homeDirectory;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <a class="code" href="class_simple_devices_model.html">SimpleDevicesModel</a> *m_audioDevicesModel;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <a class="code" href="class_simple_devices_model.html">SimpleDevicesModel</a> *m_videoDevicesModel;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <a class="code" href="class_network_devices_model.html">NetworkDevicesModel</a> *m_wanDevicesModel;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordtype">bool</span> m_natEnabled;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordtype">bool</span> m_upnpEnabled;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <a class="code" href="class_proxy_settings.html">ProxySettings</a> *m_proxySettings;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    qreal m_zoomFactor;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    QTranslator *m_applicatonTranslator;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;};</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#endif // SETTINGS_H</span></div>
+<div class="ttc" id="class_settings_html_ad5647eb961c9e977b20bb235bb800a4e"><div class="ttname"><a href="class_settings.html#ad5647eb961c9e977b20bb235bb800a4e">Settings::zoomFactor</a></div><div class="ttdeci">qreal zoomFactor</div><div class="ttdoc">Коофициент маштабирования приложения </div><div class="ttdef"><b>Definition:</b> settings.h:119</div></div>
+<div class="ttc" id="class_proxy_settings_html"><div class="ttname"><a href="class_proxy_settings.html">ProxySettings</a></div><div class="ttdef"><b>Definition:</b> proxysettings.h:6</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaae740b67a736a156b77ce9980f675b0f6"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaae740b67a736a156b77ce9980f675b0f6">Settings::French</a></div><div class="ttdoc">Французкий </div><div class="ttdef"><b>Definition:</b> settings.h:148</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaafb63f4d543780e7aedbb9ce4c328bb06"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaafb63f4d543780e7aedbb9ce4c328bb06">Settings::English</a></div><div class="ttdoc">Английский </div><div class="ttdef"><b>Definition:</b> settings.h:141</div></div>
+<div class="ttc" id="class_settings_html_abf84c98f572b82d9c69ff642a22ddb13"><div class="ttname"><a href="class_settings.html#abf84c98f572b82d9c69ff642a22ddb13">Settings::parentElement</a></div><div class="ttdeci">QString parentElement</div><div class="ttdoc">Корненвой элемент, в котором храняться XML-ноды, описывающие экземпляры элементов объекта...</div><div class="ttdef"><b>Definition:</b> settings.h:51</div></div>
+<div class="ttc" id="class_simple_devices_model_html"><div class="ttname"><a href="class_simple_devices_model.html">SimpleDevicesModel</a></div><div class="ttdef"><b>Definition:</b> simpledevicesmodel.h:6</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaa1194d4e99cad3347886b7112a60e266e"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa1194d4e99cad3347886b7112a60e266e">Settings::Russian</a></div><div class="ttdoc">Русский </div><div class="ttdef"><b>Definition:</b> settings.h:149</div></div>
+<div class="ttc" id="class_network_devices_model_html"><div class="ttname"><a href="class_network_devices_model.html">NetworkDevicesModel</a></div><div class="ttdef"><b>Definition:</b> networkdevicesmodel.h:6</div></div>
+<div class="ttc" id="class_settings_html_ac6b4367b0d41cdfe409940d0c3bef622"><div class="ttname"><a href="class_settings.html#ac6b4367b0d41cdfe409940d0c3bef622">Settings::proxySettings</a></div><div class="ttdeci">ProxySettings proxySettings</div><div class="ttdoc">Указатель на настройки прокси </div><div class="ttdef"><b>Definition:</b> settings.h:109</div></div>
+<div class="ttc" id="class_settings_html_ae65db1a99879af266249f85265c71b37"><div class="ttname"><a href="class_settings.html#ae65db1a99879af266249f85265c71b37">Settings::videoDevicesModel</a></div><div class="ttdeci">SimpleDevicesModel videoDevicesModel</div><div class="ttdoc">Указатель на модель, содержащую доступные видео-устройства </div><div class="ttdef"><b>Definition:</b> settings.h:81</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaa266d1abc74dcbcde44357588369f80bb"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa266d1abc74dcbcde44357588369f80bb">Settings::Spanish</a></div><div class="ttdoc">Испанский </div><div class="ttdef"><b>Definition:</b> settings.h:143</div></div>
+<div class="ttc" id="class_settings_html_a9cbb2b8b805f666e1eb2a26586a00a83"><div class="ttname"><a href="class_settings.html#a9cbb2b8b805f666e1eb2a26586a00a83">Settings::homeDirectory</a></div><div class="ttdeci">QUrl homeDirectory</div><div class="ttdoc">Домашняя дирректория приложения </div><div class="ttdef"><b>Definition:</b> settings.h:69</div></div>
+<div class="ttc" id="class_settings_html_a33c36c9d99a5e959c7ade58ed3babe7c"><div class="ttname"><a href="class_settings.html#a33c36c9d99a5e959c7ade58ed3babe7c">Settings::natEnabled</a></div><div class="ttdeci">bool natEnabled</div><div class="ttdoc">Признак того, что NAT-PNP активирован </div><div class="ttdef"><b>Definition:</b> settings.h:95</div></div>
+<div class="ttc" id="class_settings_html_a94e52cafb314c7edad153888c3d96f92"><div class="ttname"><a href="class_settings.html#a94e52cafb314c7edad153888c3d96f92">Settings::wanDevicesModel</a></div><div class="ttdeci">NetworkDevicesModel wanDevicesModel</div><div class="ttdoc">Укзатель на модель, содержащую доступные WAN-интерфейсы </div><div class="ttdef"><b>Definition:</b> settings.h:87</div></div>
+<div class="ttc" id="class_settings_html"><div class="ttname"><a href="class_settings.html">Settings</a></div><div class="ttdoc">Класс, описывающий настройки приложения </div><div class="ttdef"><b>Definition:</b> settings.h:19</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaaf825f79ceb876cda533bad37c1935e3b"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf825f79ceb876cda533bad37c1935e3b">Settings::Portuguese</a></div><div class="ttdoc">Португальский </div><div class="ttdef"><b>Definition:</b> settings.h:145</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaaf45090043d2ccad4074936f56fbad2b7"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf45090043d2ccad4074936f56fbad2b7">Settings::Korean</a></div><div class="ttdoc">Корейский </div><div class="ttdef"><b>Definition:</b> settings.h:150</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaa969466eb05700c8d256f02eaae70b85c"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa969466eb05700c8d256f02eaae70b85c">Settings::German</a></div><div class="ttdoc">Немецкий </div><div class="ttdef"><b>Definition:</b> settings.h:146</div></div>
+<div class="ttc" id="class_settings_html_af88ba9c76af5ca1795aeda2b9937215e"><div class="ttname"><a href="class_settings.html#af88ba9c76af5ca1795aeda2b9937215e">Settings::Settings</a></div><div class="ttdeci">Settings(QObject *parent=0)</div><div class="ttdoc">Конструктор </div><div class="ttdef"><b>Definition:</b> settings.cpp:8</div></div>
+<div class="ttc" id="class_settings_html_a0e490f9aac8951d62101fe635e6322b7"><div class="ttname"><a href="class_settings.html#a0e490f9aac8951d62101fe635e6322b7">Settings::source</a></div><div class="ttdeci">QUrl source</div><div class="ttdoc">XML-файл, в котором храняться данные модели </div><div class="ttdef"><b>Definition:</b> settings.h:30</div></div>
+<div class="ttc" id="class_settings_html_ad1c42c54f67ce263bfa1f1d60856cb52"><div class="ttname"><a href="class_settings.html#ad1c42c54f67ce263bfa1f1d60856cb52">Settings::save</a></div><div class="ttdeci">Q_INVOKABLE bool save() const </div><div class="ttdoc">Сохраняет данные объекта </div><div class="ttdef"><b>Definition:</b> settings.cpp:267</div></div>
+<div class="ttc" id="class_settings_html_a13c264ccc4783bf4ae8cb040da2cbb39"><div class="ttname"><a href="class_settings.html#a13c264ccc4783bf4ae8cb040da2cbb39">Settings::upnpEnabled</a></div><div class="ttdeci">bool upnpEnabled</div><div class="ttdoc">Признак того, что UPnP активирован </div><div class="ttdef"><b>Definition:</b> settings.h:103</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaa00a6dd112b97481b2499bb9cef76165d"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa00a6dd112b97481b2499bb9cef76165d">Settings::Chinese</a></div><div class="ttdoc">Китайский </div><div class="ttdef"><b>Definition:</b> settings.h:142</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2bea"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2bea">Settings::Translations</a></div><div class="ttdeci">Translations</div><div class="ttdoc">Доступные переводы </div><div class="ttdef"><b>Definition:</b> settings.h:140</div></div>
+<div class="ttc" id="class_settings_html_a1d6d61cb0ade9338558f29fbb0a77f42"><div class="ttname"><a href="class_settings.html#a1d6d61cb0ade9338558f29fbb0a77f42">Settings::audioDevicesModel</a></div><div class="ttdeci">SimpleDevicesModel audioDevicesModel</div><div class="ttdoc">Указатель на модель, содержащую доступные аудио-устройства </div><div class="ttdef"><b>Definition:</b> settings.h:75</div></div>
+<div class="ttc" id="class_settings_html_aeec6e95d3d48262ee57c4ebd2a2060cc"><div class="ttname"><a href="class_settings.html#aeec6e95d3d48262ee57c4ebd2a2060cc">Settings::translation</a></div><div class="ttdeci">Translations translation</div><div class="ttdoc">Перевод </div><div class="ttdef"><b>Definition:</b> settings.h:61</div></div>
+<div class="ttc" id="class_settings_html_a48fed2e1aa7990ac670197dbeb242cd6"><div class="ttname"><a href="class_settings.html#a48fed2e1aa7990ac670197dbeb242cd6">Settings::translatorStringEnd</a></div><div class="ttdeci">QString translatorStringEnd</div><div class="ttdoc">Вспомогательное свойство для обеспечения динамического перевода QML. </div><div class="ttdef"><b>Definition:</b> settings.h:134</div></div>
+<div class="ttc" id="class_xml_interface_html"><div class="ttname"><a href="class_xml_interface.html">XmlInterface</a></div><div class="ttdoc">Класс, описывающий методы расширяющие классы для работы с XML-фалами </div><div class="ttdef"><b>Definition:</b> xmlinterface.h:16</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaaf7203b18d80fe283a58d5ee22391b5a6"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaaf7203b18d80fe283a58d5ee22391b5a6">Settings::Japanese</a></div><div class="ttdoc">Японский </div><div class="ttdef"><b>Definition:</b> settings.h:144</div></div>
+<div class="ttc" id="class_settings_html_ad106a4a88ebdd47d44d2fe1976de2beaa59633dcb73a077e53a828f9b30476af8"><div class="ttname"><a href="class_settings.html#ad106a4a88ebdd47d44d2fe1976de2beaa59633dcb73a077e53a828f9b30476af8">Settings::Arabic</a></div><div class="ttdoc">Арабский </div><div class="ttdef"><b>Definition:</b> settings.h:147</div></div>
+<div class="ttc" id="class_settings_html_a1a3823de3872a30be2b6aa7e431887d5"><div class="ttname"><a href="class_settings.html#a1a3823de3872a30be2b6aa7e431887d5">Settings::reload</a></div><div class="ttdeci">Q_INVOKABLE bool reload()</div><div class="ttdoc">Перезагружает объект </div><div class="ttdef"><b>Definition:</b> settings.cpp:160</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_cdc619dc72387aac862b807edcb42f39.html">terminalQmlPlugin</a></li><li class="navelem"><b>settings.h</b></li>
+    <li class="footer">Документация по Terminal. Последние изменения: Вт 7 Окт 2014 01:12:39. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
+  </ul>
+</div>
+</body>
+</html>

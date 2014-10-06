@@ -33,7 +33,7 @@ Page {
         anchors.top: createNewButton.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        height: Core.dp(2)
+        height: (2 * applicationModel.settings.zoomFactor)
     }
 
     ListView {
@@ -44,9 +44,9 @@ Page {
         anchors.right: parent.right
         anchors.top: !musicPage.readOnly?spacer.bottom:parent.top
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: Core.dp(22) + editBar.anchors.bottomMargin - 1
+        anchors.bottomMargin: (22 * applicationModel.settings.zoomFactor) + editBar.anchors.bottomMargin - 1
         interactive: contentHeight > height
-        spacing: Core.dp(5)
+        spacing: (5 * applicationModel.settings.zoomFactor)
         clip: true
 
         add: Transition {
@@ -65,13 +65,13 @@ Page {
             id: folderDelegate
             anchors.left: parent.left
             anchors.right: parent.right
-            height: Core.dp(22) + collapsedContainer.height/* + Core.dp(4)*/
+            height: (22 * applicationModel.settings.zoomFactor) + collapsedContainer.height/* + (4 * applicationModel.settings.zoomFactor)*/
 
             Rectangle {
                 id: folderNameContainer
                 anchors.left: parent.left
                 anchors.right: parent.right
-                height: Core.dp(22)
+                height: (22 * applicationModel.settings.zoomFactor)
                 color: folder_additional_data.collapsed?"#da4504":"#c6c1c7"
                 Behavior on color {ColorAnimation { duration: 200 } }
 
@@ -79,9 +79,9 @@ Page {
                     id: folderImage
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.leftMargin: Core.dp(6)
-                    height: Core.dp(15)
-                    width: Core.dp(17)
+                    anchors.leftMargin: (6 * applicationModel.settings.zoomFactor)
+                    height: (15 * applicationModel.settings.zoomFactor)
+                    width: (17 * applicationModel.settings.zoomFactor)
                     fillMode: Image.PreserveAspectFit
                     source: folder_additional_data.collapsed?"../../../images/47.png":"../../../images/40.png"
                 }
@@ -90,13 +90,13 @@ Page {
                     id: folderText
                     visible: !folder_additional_data.isEdited  || editBar.editRole !== "edit"
                     anchors.left: folderImage.right
-                    anchors.leftMargin: Core.dp(8)
+                    anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     anchors.right: parent.right
                     anchors.rightMargin: anchors.leftMargin
                     elide: Text.ElideRight
-                    font.pixelSize: Core.dp(8)
+                    font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                     verticalAlignment: Text.AlignVCenter
                     color: folder_additional_data.collapsed?"white":"black"
                     Behavior on color {ColorAnimation { duration: 200 } }
@@ -111,7 +111,7 @@ Page {
                     text: folder_name
                     onTextChanged: folder_additional_data.nameToSave = text
                     color: folderText.color
-                    font.pixelSize: Core.dp(8)
+                    font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                     selectByMouse: true
                     selectionColor: "#c00d0d"
                     verticalAlignment: Text.AlignVCenter
@@ -212,14 +212,14 @@ Page {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: parent.top
-                    anchors.rightMargin: -Core.dp(2)
+                    anchors.rightMargin: -(2 * applicationModel.settings.zoomFactor)
                     height: {
                         for (var i = 0; i < folder_files_model.count; i++) {
                             if (folder_files_model.get(i).additionalData.isPlaying) {
-                                return folder_files_model.count * Core.dp(22) + Core.dp(48)
+                                return folder_files_model.count * (22 * applicationModel.settings.zoomFactor) + (48 * applicationModel.settings.zoomFactor)
                             }
                         }
-                        return folder_files_model.count * Core.dp(22)
+                        return folder_files_model.count * (22 * applicationModel.settings.zoomFactor)
                     }
                     model: folder_files_model
 
@@ -238,7 +238,7 @@ Page {
                         clip: true
                         anchors.left: parent.left
                         anchors.right: parent.right
-                        height: !file_additional_data.isPlaying?Core.dp(22):Core.dp(70)
+                        height: !file_additional_data.isPlaying?(22 * applicationModel.settings.zoomFactor):(70 * applicationModel.settings.zoomFactor)
 
                         function play() {
 
@@ -257,8 +257,8 @@ Page {
                             anchors.left: parent.left
                             anchors.verticalCenter: childNameText.verticalCenter
                             fillMode: Image.PreserveAspectFit
-                            anchors.leftMargin: Core.dp(30)
-                            height: Core.dp(15)
+                            anchors.leftMargin: (30 * applicationModel.settings.zoomFactor)
+                            height: (15 * applicationModel.settings.zoomFactor)
                             source: "../../../images/98.png"
                         }
 
@@ -268,12 +268,12 @@ Page {
                             anchors.left: fileImage.right
                             anchors.right: parent.right
                             anchors.top: parent.top
-                            height: Core.dp(22)
+                            height: (22 * applicationModel.settings.zoomFactor)
                             elide: Text.ElideRight
                             verticalAlignment: Text.AlignVCenter
-                            anchors.leftMargin: Core.dp(8)
-                            anchors.rightMargin: Core.dp(34)
-                            font.pixelSize: Core.dp(8)
+                            anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
+                            anchors.rightMargin: (34 * applicationModel.settings.zoomFactor)
+                            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                             text: file_name
                         }
 
@@ -283,7 +283,7 @@ Page {
                             clip: true
                             visible: file_additional_data.isEdited && editBar.editRole === "edit"
                             verticalAlignment: Text.AlignVCenter
-                            font.pixelSize: Core.dp(8)
+                            font.pixelSize: (8 * applicationModel.settings.zoomFactor)
                             selectByMouse: true
                             selectionColor: "#c00d0d"
                             text: file_name
@@ -370,7 +370,7 @@ Page {
                             anchors.top: childNameText.bottom
                             anchors.left: parent.left
                             anchors.right: parent.right
-                            height: Core.dp(38)
+                            height: (38 * applicationModel.settings.zoomFactor)
                             clip: true
 
                             MediaButtons {
@@ -459,7 +459,7 @@ Page {
         id: editBar
         visible: opacity !== 0
         opacity: privateData.isEdited && !fileDialog.visible?1:0
-        anchors.bottomMargin: privateData.isEdited && !fileDialog.visible?0:-Core.dp(22)
+        anchors.bottomMargin: privateData.isEdited && !fileDialog.visible?0:-(22 * applicationModel.settings.zoomFactor)
         hideOnMissClick: false
         canselButtonEnabled: true
 
@@ -532,7 +532,7 @@ Page {
     FileDialog {
         id: fileDialog
         selectMultiple: false
-        title: qsTr("Выбирите аудио")
+        title: qsTr("Select audio") + applicationModel.settings.translatorStringEnd
         anchors.bottom: parent.bottom
         height: userInfoPage.height
         onVisibleChanged: userInfoPageBackButton.visible = !visible
