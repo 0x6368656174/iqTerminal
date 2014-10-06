@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Terminal: Класс TorrentFilesModel</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Terminal
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Приложение Terminal</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;классов</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Члены&#160;классов</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_torrent_files_model.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Свойства</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Группы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Открытые типы</a> &#124;
+<a href="#signals">Сигналы</a> &#124;
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pro-methods">Защищенные члены</a> &#124;
+<a href="class_torrent_files_model-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс TorrentFilesModel</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Граф наследования:TorrentFilesModel:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="class_torrent_files_model.png" usemap="#TorrentFilesModel_map" alt=""/>
+  <map id="TorrentFilesModel_map" name="TorrentFilesModel_map">
+<area href="class_files_model.html" alt="FilesModel" shape="rect" coords="0,112,143,136"/>
+<area href="class_abstract_xml_items_model.html" title="Абстрактная модель на основе XML-элементов " alt="AbstractXmlItemsModel" shape="rect" coords="0,56,143,80"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Открытые типы</h2></td></tr>
+<tr class="memitem:aaac7c5480995c536bc7083f7f2da5cf6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>Roles</b> { <br/>
+&#160;&#160;<b>Id</b> = Qt::UserRole, 
+<b>Path</b>, 
+<b>Name</b>, 
+<b>Size</b>, 
+<br/>
+&#160;&#160;<b>DowloadedSize</b>, 
+<b>AdditionalData</b>
+<br/>
+ }</td></tr>
+<tr class="separator:aaac7c5480995c536bc7083f7f2da5cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_class_files_model"><td colspan="2" onclick="javascript:toggleInherit('pub_types_class_files_model')"><img src="closed.png" alt="-"/>&#160;Открытые типы inherited from <a class="el" href="class_files_model.html">FilesModel</a></td></tr>
+<tr class="memitem:a21268f54c464a451fa5111ad2eeb2572 inherit pub_types_class_files_model"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>Roles</b> { <b>Id</b> = Qt::UserRole, 
+<b>Path</b>, 
+<b>Name</b>, 
+<b>AdditionalData</b>
+ }</td></tr>
+<tr class="separator:a21268f54c464a451fa5111ad2eeb2572 inherit pub_types_class_files_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
+Сигналы</h2></td></tr>
+<tr class="memitem:aac1cb4e3afebf30bb99cce6182021d7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac1cb4e3afebf30bb99cce6182021d7c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>filesSumSizeChanged</b> ()</td></tr>
+<tr class="separator:aac1cb4e3afebf30bb99cce6182021d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c65c9a633c04db19b4c3bd2b7bae9db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c65c9a633c04db19b4c3bd2b7bae9db"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>filesDownloadedSumSizeChanged</b> ()</td></tr>
+<tr class="separator:a7c65c9a633c04db19b4c3bd2b7bae9db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header signals_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('signals_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Сигналы inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:a3833b23f8543d0c8a2e61b17c45e11cf inherit signals_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3833b23f8543d0c8a2e61b17c45e11cf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>countChanged</b> ()</td></tr>
+<tr class="separator:a3833b23f8543d0c8a2e61b17c45e11cf inherit signals_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a394e8c80474276124cc87113a9df71 inherit signals_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a394e8c80474276124cc87113a9df71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalDataChanged</b> ()</td></tr>
+<tr class="separator:a6a394e8c80474276124cc87113a9df71 inherit signals_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a2590acabd63a49918397bc3a5814e52a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2590acabd63a49918397bc3a5814e52a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TorrentFilesModel</b> (QObject *parent=0)</td></tr>
+<tr class="separator:a2590acabd63a49918397bc3a5814e52a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bad2ef39a8bfaf34680eefbc5b56ec1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bad2ef39a8bfaf34680eefbc5b56ec1"></a>
+qint64&#160;</td><td class="memItemRight" valign="bottom"><b>filesSumSize</b> () const </td></tr>
+<tr class="separator:a7bad2ef39a8bfaf34680eefbc5b56ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02d64d7fc96fec294937ba767357c719"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02d64d7fc96fec294937ba767357c719"></a>
+qint64&#160;</td><td class="memItemRight" valign="bottom"><b>filesDownloadedSumSize</b> () const </td></tr>
+<tr class="separator:a02d64d7fc96fec294937ba767357c719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7378f93d77a0e6d780fc8dc320127dbc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7378f93d77a0e6d780fc8dc320127dbc"></a>
+virtual QHash&lt; int, QByteArray &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>roleNames</b> () const </td></tr>
+<tr class="separator:a7378f93d77a0e6d780fc8dc320127dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54d709f4a536bcd7e0f05ce3af8e77f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54d709f4a536bcd7e0f05ce3af8e77f4"></a>
+virtual QVariant&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> (const QModelIndex &amp;index, int role=Qt::DisplayRole) const </td></tr>
+<tr class="separator:a54d709f4a536bcd7e0f05ce3af8e77f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_files_model"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_files_model')"><img src="closed.png" alt="-"/>&#160;Открытые члены inherited from <a class="el" href="class_files_model.html">FilesModel</a></td></tr>
+<tr class="memitem:a81936e622b5d09f922fa66fc1233adf0 inherit pub_methods_class_files_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81936e622b5d09f922fa66fc1233adf0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FilesModel</b> (QObject *parent=0)</td></tr>
+<tr class="separator:a81936e622b5d09f922fa66fc1233adf0 inherit pub_methods_class_files_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4132a724c8f178662eaf854892f96d4 inherit pub_methods_class_files_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4132a724c8f178662eaf854892f96d4"></a>
+Q_INVOKABLE <a class="el" href="class_file.html">File</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>appendNew</b> (const QUrl &amp;path=QUrl())</td></tr>
+<tr class="separator:aa4132a724c8f178662eaf854892f96d4 inherit pub_methods_class_files_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f8ee5687fe212b0613247a80377a727 inherit pub_methods_class_files_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5f8ee5687fe212b0613247a80377a727"></a>
+Q_INVOKABLE <a class="el" href="class_file.html">File</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>insertNew</b> (int row, const QUrl &amp;path=QUrl())</td></tr>
+<tr class="separator:a5f8ee5687fe212b0613247a80377a727 inherit pub_methods_class_files_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Открытые члены inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:a23def2fe37d3c9190f74810d5458b47d inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23def2fe37d3c9190f74810d5458b47d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AbstractXmlItemsModel</b> (QObject *parent=0)</td></tr>
+<tr class="separator:a23def2fe37d3c9190f74810d5458b47d inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a640267efafb57c5d2c32a2cadda14831 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a640267efafb57c5d2c32a2cadda14831"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> (const int row) const </td></tr>
+<tr class="separator:a640267efafb57c5d2c32a2cadda14831 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db5d8803fc8150a84914d09ebff6917 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8db5d8803fc8150a84914d09ebff6917"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const qint64 id) const </td></tr>
+<tr class="separator:a8db5d8803fc8150a84914d09ebff6917 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a626825146f48c0d9d559df5253f29792 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a626825146f48c0d9d559df5253f29792"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>appendNew</b> ()</td></tr>
+<tr class="separator:a626825146f48c0d9d559df5253f29792 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9860eebf5151f44b72a06a19e5edf1f inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9860eebf5151f44b72a06a19e5edf1f"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>insertNew</b> (int row)</td></tr>
+<tr class="separator:aa9860eebf5151f44b72a06a19e5edf1f inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad529a1dcde6aaef3de42115f87af183f inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad529a1dcde6aaef3de42115f87af183f"></a>
+Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><b>remove</b> (int row)</td></tr>
+<tr class="separator:ad529a1dcde6aaef3de42115f87af183f inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44ea8293e256bb13f35901433363904d inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44ea8293e256bb13f35901433363904d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>loadFromDomElement</b> (const QDomElement &amp;domElement)</td></tr>
+<tr class="separator:a44ea8293e256bb13f35901433363904d inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a72123e5f98387241888bfa12ef0bca inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a72123e5f98387241888bfa12ef0bca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>appendItemsToDomElement</b> (QDomElement &amp;rootElement, QDomDocument &amp;domDocument) const </td></tr>
+<tr class="separator:a7a72123e5f98387241888bfa12ef0bca inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb4a00f50273796327106107c8d9bed inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaeb4a00f50273796327106107c8d9bed"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>rowCount</b> (const QModelIndex &amp;parent=QModelIndex()) const </td></tr>
+<tr class="separator:aaeb4a00f50273796327106107c8d9bed inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f3d36fe4881a0271a2478a54ee8bb0c inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f3d36fe4881a0271a2478a54ee8bb0c"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>insertRows</b> (int row, int count, const QModelIndex &amp;parent=QModelIndex())</td></tr>
+<tr class="separator:a6f3d36fe4881a0271a2478a54ee8bb0c inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a5045aa1d37f5e70aa42c52f1a1a13d inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a5045aa1d37f5e70aa42c52f1a1a13d"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeRows</b> (int row, int count, const QModelIndex &amp;parent=QModelIndex())</td></tr>
+<tr class="separator:a9a5045aa1d37f5e70aa42c52f1a1a13d inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29181a7d074217a663572a90c0c09133 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29181a7d074217a663572a90c0c09133"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> () const </td></tr>
+<tr class="separator:a29181a7d074217a663572a90c0c09133 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71cdd33507459a9d43b14ee60ce76184 inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71cdd33507459a9d43b14ee60ce76184"></a>
+QQmlComponent *&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalData</b> () const </td></tr>
+<tr class="separator:a71cdd33507459a9d43b14ee60ce76184 inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63cf19853c796813cf85ed7295f0748b inherit pub_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63cf19853c796813cf85ed7295f0748b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setItemAdditionalData</b> (QQmlComponent *itemAdditionalData)</td></tr>
+<tr class="separator:a63cf19853c796813cf85ed7295f0748b inherit pub_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Защищенные члены</h2></td></tr>
+<tr class="memitem:ada79a1fb7257d580da909e54e2b8ee5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada79a1fb7257d580da909e54e2b8ee5c"></a>
+virtual <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>newItem</b> ()</td></tr>
+<tr class="separator:ada79a1fb7257d580da909e54e2b8ee5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Защищенные члены inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:abf4f14dff4b715e77875017142622f6c inherit pro_methods_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf4f14dff4b715e77875017142622f6c"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>itemTagName</b> () const </td></tr>
+<tr class="separator:abf4f14dff4b715e77875017142622f6c inherit pro_methods_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_slots_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('pro_slots_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Защищенные слоты inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:aa7eceee66d835d82ce245501d08fd9da inherit pro_slots_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7eceee66d835d82ce245501d08fd9da"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>itemDataChanged</b> ()</td></tr>
+<tr class="separator:aa7eceee66d835d82ce245501d08fd9da inherit pro_slots_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_abstract_xml_items_model"><td colspan="2" onclick="javascript:toggleInherit('properties_class_abstract_xml_items_model')"><img src="closed.png" alt="-"/>&#160;Свойства inherited from <a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></td></tr>
+<tr class="memitem:af2a9fe8763b4e818842ee34588f8fbf0 inherit properties_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2a9fe8763b4e818842ee34588f8fbf0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b></td></tr>
+<tr class="separator:af2a9fe8763b4e818842ee34588f8fbf0 inherit properties_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30af818e83f6218dc5b3ed4bcad3a52 inherit properties_class_abstract_xml_items_model"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa30af818e83f6218dc5b3ed4bcad3a52"></a>
+QQmlComponent&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalData</b></td></tr>
+<tr class="separator:aa30af818e83f6218dc5b3ed4bcad3a52 inherit properties_class_abstract_xml_items_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>terminalQmlPlugin/<a class="el" href="torrentfilesmodel_8h_source.html">torrentfilesmodel.h</a></li>
+<li>terminalQmlPlugin/torrentfilesmodel.cpp</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_torrent_files_model.html">TorrentFilesModel</a></li>
+    <li class="footer">Документация по Terminal. Последние изменения: Пн 6 Окт 2014 14:53:39. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
+  </ul>
+</div>
+</body>
+</html>

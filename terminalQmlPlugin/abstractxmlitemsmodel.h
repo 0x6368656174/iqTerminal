@@ -5,6 +5,15 @@
 #include "abstractxmlitemobject.h"
 #include <QQmlComponent>
 
+/*!
+ * \brief Абстрактная модель на основе XML-элементов
+ *
+ * Даннаям модель полностью реализует интерфейс стандартных моделей QAbstractListModel библиотетки Qt. Отличается
+ * данная модель от стандартной тем, что в качестве элементов данных в ней используются экземпляры \ref AbstractXmlItemObject.
+ *
+ * Плюс данная модель дополняет стандартную модель Qt методами, позволяющей ей работать в качестве модели данных
+ * QML.
+ */
 class AbstractXmlItemsModel : public QAbstractListModel
 {
     Q_OBJECT

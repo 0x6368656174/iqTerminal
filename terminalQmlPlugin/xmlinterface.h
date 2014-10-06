@@ -6,6 +6,13 @@
 #include <QUrl>
 #include "abstractxmlitemsmodel.h"
 
+/*!
+ * \brief Класс, описывающий методы расширяющие \ref AbstractXmlItemsModel
+ *
+ * Данный класс описывает методы, расщиряющие функционал \ref AbstractXmlItemsModel. Это методы для работы
+ * с XML-элементами (\ref findElement(), \ref createElement()), а так же методы, позволяющие \ref AbstractXmlItemsModel
+ * загружать свои данные из XML-файлов (\ref reloadModel()) и сохранять свои данные в XML-файл (\ref saveModel()).
+ */
 class XmlInterface
 {
 protected:

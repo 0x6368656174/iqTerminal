@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Terminal: Класс AbstractXmlItemsModel</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Terminal
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Приложение Terminal</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="modules.html"><span>Группы</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;классов</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Члены&#160;классов</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_abstract_xml_items_model.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Свойства</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Группы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#signals">Сигналы</a> &#124;
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pro-slots">Защищенные слоты</a> &#124;
+<a href="#pro-methods">Защищенные члены</a> &#124;
+<a href="#properties">Свойства</a> &#124;
+<a href="class_abstract_xml_items_model-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс AbstractXmlItemsModel<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Абстрактная модель на основе XML-элементов  
+ <a href="class_abstract_xml_items_model.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="abstractxmlitemsmodel_8h_source.html">abstractxmlitemsmodel.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Граф наследования:AbstractXmlItemsModel:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="class_abstract_xml_items_model.png" usemap="#AbstractXmlItemsModel_map" alt=""/>
+  <map id="AbstractXmlItemsModel_map" name="AbstractXmlItemsModel_map">
+<area href="class_files_model.html" alt="FilesModel" shape="rect" coords="0,112,143,136"/>
+<area href="class_folders_model.html" alt="FoldersModel" shape="rect" coords="153,112,296,136"/>
+<area href="class_messages_model.html" alt="MessagesModel" shape="rect" coords="306,112,449,136"/>
+<area href="class_users_model.html" title="Модель, содержащая список пользователей " alt="UsersModel" shape="rect" coords="459,112,602,136"/>
+<area href="class_user_states_model.html" alt="UserStatesModel" shape="rect" coords="612,112,755,136"/>
+<area href="class_torrent_files_model.html" alt="TorrentFilesModel" shape="rect" coords="0,168,143,192"/>
+<area href="class_torrent_folders_model.html" alt="TorrentFoldersModel" shape="rect" coords="153,168,296,192"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
+Сигналы</h2></td></tr>
+<tr class="memitem:a3833b23f8543d0c8a2e61b17c45e11cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3833b23f8543d0c8a2e61b17c45e11cf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>countChanged</b> ()</td></tr>
+<tr class="separator:a3833b23f8543d0c8a2e61b17c45e11cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a394e8c80474276124cc87113a9df71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a394e8c80474276124cc87113a9df71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalDataChanged</b> ()</td></tr>
+<tr class="separator:a6a394e8c80474276124cc87113a9df71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a23def2fe37d3c9190f74810d5458b47d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23def2fe37d3c9190f74810d5458b47d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AbstractXmlItemsModel</b> (QObject *parent=0)</td></tr>
+<tr class="separator:a23def2fe37d3c9190f74810d5458b47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a640267efafb57c5d2c32a2cadda14831"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a640267efafb57c5d2c32a2cadda14831"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> (const int row) const </td></tr>
+<tr class="separator:a640267efafb57c5d2c32a2cadda14831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db5d8803fc8150a84914d09ebff6917"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8db5d8803fc8150a84914d09ebff6917"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const qint64 id) const </td></tr>
+<tr class="separator:a8db5d8803fc8150a84914d09ebff6917"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a626825146f48c0d9d559df5253f29792"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a626825146f48c0d9d559df5253f29792"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>appendNew</b> ()</td></tr>
+<tr class="separator:a626825146f48c0d9d559df5253f29792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9860eebf5151f44b72a06a19e5edf1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9860eebf5151f44b72a06a19e5edf1f"></a>
+Q_INVOKABLE <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>insertNew</b> (int row)</td></tr>
+<tr class="separator:aa9860eebf5151f44b72a06a19e5edf1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad529a1dcde6aaef3de42115f87af183f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad529a1dcde6aaef3de42115f87af183f"></a>
+Q_INVOKABLE bool&#160;</td><td class="memItemRight" valign="bottom"><b>remove</b> (int row)</td></tr>
+<tr class="separator:ad529a1dcde6aaef3de42115f87af183f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44ea8293e256bb13f35901433363904d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44ea8293e256bb13f35901433363904d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>loadFromDomElement</b> (const QDomElement &amp;domElement)</td></tr>
+<tr class="separator:a44ea8293e256bb13f35901433363904d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a72123e5f98387241888bfa12ef0bca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a72123e5f98387241888bfa12ef0bca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>appendItemsToDomElement</b> (QDomElement &amp;rootElement, QDomDocument &amp;domDocument) const </td></tr>
+<tr class="separator:a7a72123e5f98387241888bfa12ef0bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb4a00f50273796327106107c8d9bed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaeb4a00f50273796327106107c8d9bed"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>rowCount</b> (const QModelIndex &amp;parent=QModelIndex()) const </td></tr>
+<tr class="separator:aaeb4a00f50273796327106107c8d9bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f3d36fe4881a0271a2478a54ee8bb0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f3d36fe4881a0271a2478a54ee8bb0c"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>insertRows</b> (int row, int count, const QModelIndex &amp;parent=QModelIndex())</td></tr>
+<tr class="separator:a6f3d36fe4881a0271a2478a54ee8bb0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a5045aa1d37f5e70aa42c52f1a1a13d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a5045aa1d37f5e70aa42c52f1a1a13d"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeRows</b> (int row, int count, const QModelIndex &amp;parent=QModelIndex())</td></tr>
+<tr class="separator:a9a5045aa1d37f5e70aa42c52f1a1a13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29181a7d074217a663572a90c0c09133"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29181a7d074217a663572a90c0c09133"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> () const </td></tr>
+<tr class="separator:a29181a7d074217a663572a90c0c09133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71cdd33507459a9d43b14ee60ce76184"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71cdd33507459a9d43b14ee60ce76184"></a>
+QQmlComponent *&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalData</b> () const </td></tr>
+<tr class="separator:a71cdd33507459a9d43b14ee60ce76184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63cf19853c796813cf85ed7295f0748b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63cf19853c796813cf85ed7295f0748b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setItemAdditionalData</b> (QQmlComponent *itemAdditionalData)</td></tr>
+<tr class="separator:a63cf19853c796813cf85ed7295f0748b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-slots"></a>
+Защищенные слоты</h2></td></tr>
+<tr class="memitem:aa7eceee66d835d82ce245501d08fd9da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7eceee66d835d82ce245501d08fd9da"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>itemDataChanged</b> ()</td></tr>
+<tr class="separator:aa7eceee66d835d82ce245501d08fd9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Защищенные члены</h2></td></tr>
+<tr class="memitem:a3af6324ddb26e491d141e4c4466f808d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3af6324ddb26e491d141e4c4466f808d"></a>
+virtual <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>newItem</b> ()=0</td></tr>
+<tr class="separator:a3af6324ddb26e491d141e4c4466f808d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf4f14dff4b715e77875017142622f6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf4f14dff4b715e77875017142622f6c"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>itemTagName</b> () const </td></tr>
+<tr class="separator:abf4f14dff4b715e77875017142622f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Свойства</h2></td></tr>
+<tr class="memitem:af2a9fe8763b4e818842ee34588f8fbf0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2a9fe8763b4e818842ee34588f8fbf0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b></td></tr>
+<tr class="separator:af2a9fe8763b4e818842ee34588f8fbf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30af818e83f6218dc5b3ed4bcad3a52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa30af818e83f6218dc5b3ed4bcad3a52"></a>
+QQmlComponent&#160;</td><td class="memItemRight" valign="bottom"><b>itemAdditionalData</b></td></tr>
+<tr class="separator:aa30af818e83f6218dc5b3ed4bcad3a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Абстрактная модель на основе XML-элементов </p>
+<p>Даннаям модель полностью реализует интерфейс стандартных моделей QAbstractListModel библиотетки Qt. Отличается данная модель от стандартной тем, что в качестве элементов данных в ней используются экземпляры <a class="el" href="class_abstract_xml_item_object.html">AbstractXmlItemObject</a>.</p>
+<p>Плюс данная модель дополняет стандартную модель Qt методами, позволяющей ей работать в качестве модели данных QML. </p>
+</div><hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>terminalQmlPlugin/<a class="el" href="abstractxmlitemsmodel_8h_source.html">abstractxmlitemsmodel.h</a></li>
+<li>terminalQmlPlugin/abstractxmlitemsmodel.cpp</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_abstract_xml_items_model.html">AbstractXmlItemsModel</a></li>
+    <li class="footer">Документация по Terminal. Последние изменения: Пн 6 Окт 2014 14:53:39. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -48,6 +48,23 @@
 #include "torrents.h"
 #include "applicationmodel.h"
 
+/*!
+ * \mainpage Terminal - Приложение Terminal
+ *
+ * Приложение Terminal состоит из интерфейса, написаного на QML, и плагина \ref TerminalQmlPlugin, написаного на
+ * С++.
+ */
+
+/*!
+ * \defgroup TerminalQmlPlugin TerminalQmlPlugin
+ *
+ * \brief Набор классов С++, расширяющих функционал QML для приложения Terminal
+ *
+ * Данный набор классов расширяет функционал, используемый в QML для приложения Terminal.
+ * В него входят вспомогательные классы (\ref Helpers), а так же классы описывающие основную модель приложения
+ * (\ref AppModel).
+ */
+
 static QObject *core_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine)
