@@ -171,7 +171,7 @@ Page {
                     visible: !privateData.isEdited
                     onClicked: {
                         if (user_friendship_accepted) {
-                            chat.userProfile = user_profile
+                            chat.user = usersModel.get(index)
                             showRightPage(chat.name)
                         } else
                             showError(qsTr("Waiting adding contacts from ") + user_info.userProfile.name)
@@ -243,7 +243,7 @@ Page {
                     }
                 }
                 privateData.isEdited = false
-                usersContactsModel.save()
+                applicationModel.contactsModel.save()
             }
         }
     }

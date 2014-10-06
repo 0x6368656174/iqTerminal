@@ -8,7 +8,7 @@ import "../../elements"
 
 Page {
     id: chatPage
-    property string userProfile
+    property User user
 
     name: "chat"
 
@@ -17,7 +17,7 @@ Page {
         var plainText = TextDecorator.toPlainText(textInputText.getFormattedText(0, textInputText.length))
         if (attachmentBar.role === "" && audioRecordBar.role === "" && plainText === "")
             return
-        var newMessage = messagesModel.appendNew()
+        var newMessage = user.messagesModel.appendNew()
         newMessage.sendDateTime = new Date()
         newMessage.direction = Message.Outgoing
         newMessage.text = plainText
@@ -41,7 +41,7 @@ Page {
         textInputText.text = ""
         addButton.checked = false
 
-        messagesModel.save()
+        user.messagesModel.save()
     }
 
     BackButton {
@@ -50,36 +50,28 @@ Page {
         anchors.topMargin: Core.dp(70)
     }
 
-    UserProfile {
-        id: userProfileModel
-        source: Core.dataDir + "users/" + chatPage.userProfile
-        parentElement: "user/info"
-
-        stateModel.itemAdditionalData: QtObject {
-            property bool isEdited: false
-            property string nameToSave: ""
-            property string textToSave: ""
-        }
-    }
-
-    MessagesModel {
-        id: messagesModel
-        parentElement: "chat"
-        source: Core.dataDir + "chats/" + chatPage.userProfile
-
-        itemAdditionalData: QtObject {
+    Component {
+        id: messagesModelAdditionalData
+        QtObject {
             property bool collapsed: false
             property bool isPlaying: false
         }
+    }
 
+    onUserChanged: {
+        user.messagesModel.itemAdditionalData = messagesModelAdditionalData
+    }
+
+    Connections {
+        target: user?user.messagesModel:null
         onCountChanged: {
-            chatView.animatedPosition(count - 1)
+            chatView.animatedPosition(user.messagesModel.count - 1)
         }
     }
 
     MessagesFilterModel {
         id: messageFilterModel
-        messagesModel: messagesModel
+        messagesModel: user?user.messagesModel:null
     }
 
 
@@ -105,7 +97,7 @@ Page {
                 Image {
                     id: photoImage
                     anchors.fill: parent
-                    source: "image://xml/" + userProfileModel.source
+                    source: user?"image://xml/" + user.userInfo.userProfile.source:""
                     fillMode: Image.PreserveAspectFit
                 }
             }
@@ -121,13 +113,13 @@ Page {
             anchors.rightMargin: font.pixelSize
             anchors.right: parent.right
             elide: Text.ElideRight
-            text: userProfileModel.name
+            text: user?user.userInfo.userProfile.name:""
         }
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                userInfoPage.userProfile = userProfile
+                userInfoPage.userInfo = user.userInfo
                 showRightPage(userInfoPage.name)
             }
         }
@@ -283,7 +275,7 @@ Page {
                             } else {
                                 message_was_read = true
                             }
-                            messagesModel.save()
+                            user.messagesModel.save()
                         }
 
                         if (message_type === Message.Text) {
@@ -302,8 +294,8 @@ Page {
                                 audioPlayer.stop()
                                 audioPlayer.source = ""
                             }
-                            for (var i = 0; i < messagesModel.count; i++) {
-                                messagesModel.get(i).additionalData.isPlaying = false
+                            for (var i = 0; i < user.messagesModel.count; i++) {
+                                user.messagesModel.get(i).additionalData.isPlaying = false
                             }
 
                             message_additional_data.isPlaying = newIsPlayin
@@ -344,8 +336,8 @@ Page {
 
                     onPlayClicked: {
                         if (!message_additional_data.isPlaying) {
-                            for (var i = 0; i < messagesModel.count; i++) {
-                                messagesModel.get(i).additionalData.isPlaying = false
+                            for (var i = 0; i < user.messagesModel.count; i++) {
+                                user.messagesModel.get(i).additionalData.isPlaying = false
                             }
 
                             message_additional_data.isPlaying = true

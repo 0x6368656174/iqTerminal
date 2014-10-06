@@ -10,7 +10,26 @@ Page {
     id: downloadPage
     name: "torrent_download"
 
-    property string torrentXmlPath
+    Component {
+        id: torrentFolderAdditionalData
+        QtObject {
+            property bool collapsed: false
+            property bool isEdited: false
+            property bool isSelect: false
+        }
+    }
+
+    Component {
+        id: torrentFileAdditionalData
+        QtObject {
+            property bool isSelect: false
+        }
+    }
+
+    Component.onCompleted: {
+        applicationModel.torrents.downloadModel.folderAdditionalData = torrentFolderAdditionalData
+        applicationModel.torrents.downloadModel.fileAdditionalData = torrentFileAdditionalData
+    }
 
     QtObject {
         id: privateData
@@ -19,7 +38,7 @@ Page {
 
     TorrentFoldersFilterModel {
         id: folderModel
-        foldersModel: torrentDownloadModel
+        foldersModel: applicationModel.torrents.downloadModel
     }
 
     Image {
@@ -243,7 +262,7 @@ Page {
                     source: folder_in_process?"../../../images/51b.png":"../../../images/51a.png"
                     onClicked: {
                         folderModel.get(index).inProcess = !folderModel.get(index).inProcess
-                        torrentDownloadModel.save()
+                        applicationModel.torrents.downloadModel.save()
                     }
                 }
 
@@ -394,7 +413,7 @@ Page {
                                 width: privateData.isEdited?Core.dp(14):0
                                 height: width
                                 Behavior on width {NumberAnimation {duration: 200 } }
-                                source: file_additional_data.isSelect?"../../../images/34a.png":"../../../images/34.png"
+                                source: file_additional_data && file_additional_data.isSelect?"../../../images/34a.png":"../../../images/34.png"
                                 onClicked: file_additional_data.isSelect = !file_additional_data.isSelect
                             }
 
@@ -491,7 +510,7 @@ Page {
 
             privateData.isEdited = false
             editBar.editRole = ""
-            torrentDownloadModel.save()
+            applicationModel.torrents.downloadModel.save()
             for (i = 0; i < folderModel.count; i++) {
                 folderModel.get(i).additionalData.isSelect = false
                 for (j = 0; j < folderModel.get(i).filesModel.count; j++) {

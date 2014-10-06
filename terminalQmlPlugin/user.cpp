@@ -1,12 +1,15 @@
 #include "user.h"
+#include "core.h"
 
 User::User(QObject *parent) :
     AbstractXmlItemObject(parent),
     m_profile(""),
     m_online(false),
     m_friendshipAccepted(false),
-    m_userInfo(new UserInfo(this))
+    m_userInfo(new UserInfo(this)),
+    m_messagesModel(new MessagesModel(this))
 {
+    m_messagesModel->setParentElement("chat");
 }
 
 void User::reset()
@@ -28,6 +31,8 @@ void User::setProfile(const QString &profileFile)
         m_profile = profileFile;
 
         m_userInfo->setUserProfileFile(profileFile);
+
+        m_messagesModel->setSource(QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/chats/" + profileFile));
 
         emit profileChanged();
     }
@@ -60,6 +65,10 @@ void User::setFriendshipAccepted(bool friendshipAccepted)
 UserInfo *User::userInfo() const
 {
     return m_userInfo;
+}
+MessagesModel *User::messagesModel() const
+{
+    return m_messagesModel;
 }
 
 bool User::loadFromDomElement(const QDomElement &domElement)

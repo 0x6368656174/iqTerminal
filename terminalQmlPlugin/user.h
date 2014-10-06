@@ -3,6 +3,7 @@
 
 #include "abstractxmlitemobject.h"
 #include "userinfo.h"
+#include "messagesmodel.h"
 
 class User : public AbstractXmlItemObject
 {
@@ -11,6 +12,7 @@ class User : public AbstractXmlItemObject
     Q_PROPERTY(bool online READ online WRITE setOnline NOTIFY onlineChanged)
     Q_PROPERTY(bool friendshipAccepted READ friendshipAccepted WRITE setFriendshipAccepted NOTIFY friendshipAcceptedChanged)
     Q_PROPERTY(UserInfo* userInfo READ userInfo CONSTANT)
+    Q_PROPERTY(MessagesModel* messagesModel READ messagesModel CONSTANT)
 public:
     explicit User(QObject *parent = 0);
 
@@ -36,6 +38,8 @@ public:
 
     UserInfo *userInfo() const;
 
+    MessagesModel *messagesModel() const;
+
 signals:
     void profileChanged();
     void onlineChanged();
@@ -46,6 +50,7 @@ private:
     bool m_online;
     bool m_friendshipAccepted;
     UserInfo *m_userInfo;
+    MessagesModel *m_messagesModel;
 };
 
 #endif // USER_H

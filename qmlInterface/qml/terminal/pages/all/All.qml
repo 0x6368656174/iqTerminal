@@ -211,8 +211,8 @@ Page {
                 if(oldUser.additionalData.isSelect) {
                     //Найдем данного пользователя в контактах
                     var found = false
-                    for (var j = 0; j < usersContactsModel.count; j++) {
-                        if (usersContactsModel.get(j).profile === oldUser.profile) {
+                    for (var j = 0; j < applicationModel.contactsModel.count; j++) {
+                        if (applicationModel.contactsModel.get(j).profile === oldUser.profile) {
                             found = true
                             break
                         }
@@ -220,14 +220,14 @@ Page {
 
                     //Если не нашли пользователя
                     if (!found) {
-                        var newUser = usersContactsModel.appendNew()
+                        var newUser = applicationModel.contactsModel.appendNew()
                         newUser.profile = oldUser.profile
                         proxy.command("abonadd",oldUser.id)
                     }
                 }
                 oldUser.additionalData.isSelect = false
             }
-            usersContactsModel.save()
+            applicationModel.contactsModel.save()
             privateData.isEdited = false
         }
     }
