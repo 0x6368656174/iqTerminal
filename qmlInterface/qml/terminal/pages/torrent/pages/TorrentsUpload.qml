@@ -509,9 +509,9 @@ Page {
 
     FileDialog {
         id: fileDialog
+        selectMultiple: true
         selectFolder: true
-        showFiles: false
-        selectMultiple: false
+        selectFile: false
         height: torrentPage.height
         anchors.bottom: parent.bottom
         onVisibleChanged: {
@@ -522,8 +522,13 @@ Page {
         title: qsTr("Select folder") + applicationModel.settings.translatorStringEnd
 
         onAccepted: {
-            folderModel.insertNew(0, fileUrl)
+            //Добавим новые папки
+            for (var i = 0; i < fileDialog.foldersUrls.length; i++) {
+                applicationModel.torrents.uploadModel.insertNew(0, fileDialog.foldersUrls[i])
+            }
+
             applicationModel.torrents.uploadModel.save()
+            editBar.cansel()
         }
     }
 }

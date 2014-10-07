@@ -421,26 +421,37 @@ Page {
 
     FileDialog {
         id: fileDialog
-        selectMultiple: false
+        selectMultiple: true
+        selectFolder: true
         title: qsTr("Select image") + applicationModel.settings.translatorStringEnd
         anchors.bottom: parent.bottom
         height: userInfoPage.height
         onVisibleChanged: userInfoPageBackButton.visible = !visible
 
         onAccepted: {
-            for (var i = 0; i < userInfo.photosModel.count; i++) {
+            //Добавим новые папки
+            for (var i = 0; i < fileDialog.foldersUrls.length; i++) {
+                userInfo.photosModel.insertNew(0, fileDialog.foldersUrls[i])
+            }
+
+            //Добавим выделеные файлы
+            for (i = 0; i < userInfo.photosModel.count; i++) {
                 var folder = userInfo.photosModel.get(i)
                 if (folder.additionalData.isEdited) {
-                    folder.filesModel.insertNew(0, fileUrl)
-                    userInfo.photosModel.save()
+                    //Если редактируетя папка
+                    for (var j = 0; j < fileDialog.filesUrls.length; j++) {
+                        folder.filesModel.insertNew(j, fileDialog.filesUrls[j])
+                    }
                     break
                 }
                 var fileAdd = false
-                for (var j = 0; j < folder.filesModel.count; j++) {
+                for (j = 0; j < folder.filesModel.count; j++) {
                     var file = folder.filesModel.get(j)
                     if (file.additionalData.isEdited) {
-                        folder.filesModel.insertNew(j + 1, fileUrl)
-                        userInfo.photosModel.save()
+                        //Если редактируется файл
+                        for (var k = 0; k < fileDialog.filesUrls.length; k++) {
+                            folder.filesModel.insertNew(j + k + 1, fileDialog.filesUrls[k])
+                        }
                         fileAdd = true
                         break
                     }
@@ -448,6 +459,8 @@ Page {
                 if (fileAdd)
                     break
             }
+
+            userInfo.photosModel.save()
             editBar.cansel()
         }
 

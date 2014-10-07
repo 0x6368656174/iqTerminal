@@ -6,6 +6,8 @@ import "../pages"
 Page {
     id: fileDialog
     property url fileUrl
+    property var filesUrls
+    property var foldersUrls
     property string title
     property bool selectMultiple: false
     property bool selectFolder: false
@@ -29,6 +31,9 @@ Page {
     }
 
     function open() {
+        fileDialog.fileUrl = ""
+        fileDialog.filesUrls = []
+        fileDialog.foldersUrls = []
         opacity = 1
     }
 
@@ -230,6 +235,10 @@ Page {
     FolderListModel {
         id: folderModel
         folder: privateData.currentFolder
+        onFolderChanged: {
+            fileDialog.filesUrls = []
+            fileDialog.foldersUrls = []
+        }
         showDirsFirst: true
     }
 
@@ -356,28 +365,67 @@ Page {
                 width: fileIsDir && fileDialog.selectFolder || !fileIsDir && fileDialog.selectFile?(14 * applicationModel.settings.zoomFactor):0
                 height: width
                 fillMode: Image.PreserveAspectFit
-                source: "../images/34.png"
+//                source: "../images/34.png"
+                source: {
+                    var validUrl
+                    if (Core.operatingSystem === Core.Windows) {
+                        var windowsPath = filePath
+                        var windowsDrive = windowsPath.substring(0, 1)
+                        windowsDrive = windowsDrive.toUpperCase()
+                        windowsPath = windowsDrive + windowsPath.substring(1)
+                        validUrl = "file:///" + windowsPath
+                    } else {
+                        validUrl = "file://" + filePath
+                    }
+
+                    if (fileDialog.selectMultiple) {
+                        if (fileIsDir && fileDialog.foldersUrls && fileDialog.foldersUrls.indexOf(validUrl) !== -1) {
+                            return "../images/34a.png"
+                        } else if (!fileIsDir && fileDialog.filesUrls && fileDialog.filesUrls.indexOf(validUrl) !== -1) {
+                            return "../images/34a.png"
+                        }
+                    }
+
+                    if (itemMa.containsMouse) {
+                        return "../images/34a.png"
+                    }
+
+                    return "../images/34.png"
+                }
 
                 TerminalMouseArea {
+                    id: itemMa
                     anchors.fill: parent
                     platformIndependentHoverEnabled: true
                     onClicked: {
+                        var validUrl
                         if (Core.operatingSystem === Core.Windows) {
                             var windowsPath = filePath
                             var windowsDrive = windowsPath.substring(0, 1)
                             windowsDrive = windowsDrive.toUpperCase()
                             windowsPath = windowsDrive + windowsPath.substring(1)
-                            fileDialog.fileUrl = "file:///" + windowsPath
+                            validUrl = "file:///" + windowsPath
                         } else {
-                            fileDialog.fileUrl = "file://" + filePath
+                            validUrl = "file://" + filePath
                         }
-                        fileDialog.accepted()
-                    }
-                    onContainsMouseChanged: {
-                        if (containsMouse) {
-                            itemCheckButton.source = "../images/34a.png"
+
+                        if (!fileDialog.selectMultiple) {
+                            fileDialog.fileUrl = validUrl
+                            fileDialog.accepted()
                         } else {
-                            itemCheckButton.source = "../images/34.png"
+                            if (fileIsDir) {
+                                var urlIndex = fileDialog.foldersUrls.indexOf(validUrl)
+                                if (urlIndex > -1)
+                                    fileDialog.foldersUrls.splice(index, 1)
+                                else
+                                    fileDialog.foldersUrls.push(validUrl)
+                            } else {
+                                urlIndex = fileDialog.filesUrls.indexOf(validUrl)
+                                if (urlIndex > -1)
+                                    fileDialog.filesUrls.splice(index, 1)
+                                else
+                                    fileDialog.filesUrls.push(validUrl)
+                            }
                         }
                     }
                 }
@@ -393,11 +441,12 @@ Page {
         removeButtonEnabled: false
         canselButtonEnabled: true
         hideOnMissClick: false
-        selectAllButtonEnabled: fileDialog.selfSelect
+        selectAllButtonEnabled: fileDialog.selfSelect || fileDialog.selectMultiple
 
         onButtonClicked: {
             if (buttonType === "selectAll") {
-                fileDialog.fileUrl = privateData.currentFolder
+                if (fileDialog.selfSelect)
+                    fileDialog.fileUrl = privateData.currentFolder
                 fileDialog.accepted()
             }
         }
