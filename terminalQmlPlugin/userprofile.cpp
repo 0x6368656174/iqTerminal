@@ -10,7 +10,7 @@ UserProfile::UserProfile(QObject *parent) :
     m_name(""),
     m_photo(QImage()),
     m_stateModel(new UserStatesModel(this)),
-    m_preferredSize(QSize(800, 600)),
+    m_preferredSize(QSize(400, 200)),
     m_id(-1)
 {
 }
@@ -58,6 +58,7 @@ void UserProfile::setPreferredSize(const QSize &preferredSize)
         emit preferredSizeChanged();
     }
 }
+
 int UserProfile::id() const
 {
     return m_id;

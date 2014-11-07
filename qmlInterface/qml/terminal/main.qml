@@ -14,8 +14,8 @@ Window {
     visible: true
     title: "iqTerminal"
     visibility: Core.operatingSystem === Core.Android?Window.FullScreen:Window.Windowed
-    width: (208 * applicationModel.settings.zoomFactor)
-    height: (285 * applicationModel.settings.zoomFactor)
+    width: 800
+    height: 600
 
 
     property bool autorized: false

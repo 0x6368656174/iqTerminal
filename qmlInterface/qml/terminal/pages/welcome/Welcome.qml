@@ -310,7 +310,7 @@ Page {
             anchors.topMargin: (8 * applicationModel.settings.zoomFactor)
             height: runing?(2 * applicationModel.settings.zoomFactor):0
             Behavior on height {NumberAnimation {duration: 200 } }
-            onFinished: showError(qsTr("No connection"))
+            onFinished: showError(qsTr("No connection") + applicationModel.settings.translatorStringEnd)
         }
 
         Item {
@@ -342,7 +342,7 @@ Page {
                         welcomePage.remindPassword(remindEmal.text);
                     } else if (welcomePage.state === "changePage") {
                         if (changeNewPassword.text !== changeRepeatPassword.text) {
-                            showError(qsTr("Passwords do not match"))
+                            showError(qsTr("Passwords do not match") + applicationModel.settings.translatorStringEnd)
                         } else {
                             welcomePage.changePassword(changeOldPassword.text, changeNewPassword.text)
                         }
