@@ -1,41 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.1" language="ru_RU">
 <context>
     <name>AbstractXmlItemObject</name>
     <message>
-        <location filename="../terminalQmlPlugin/abstractxmlitemobject.cpp" line="57"/>
         <source>Dom Element is not &quot;%0&quot;</source>
-        <translation>DOM-элемент не &quot;%0&quot;</translation>
+        <translation type="vanished">DOM-элемент не &quot;%0&quot;</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/abstractxmlitemobject.cpp" line="66"/>
         <source>In parsing &quot;%0&quot; element found element without id, skipped...</source>
-        <translation>При парсинге &quot;%0&quot; элемента, найден элемент без id. Пропущен...</translation>
+        <translation type="vanished">При парсинге &quot;%0&quot; элемента, найден элемент без id. Пропущен...</translation>
     </message>
 </context>
 <context>
     <name>Base64</name>
     <message>
-        <location filename="../terminalQmlPlugin/base64.cpp" line="24"/>
         <source>URL is empty.</source>
-        <translation>URL пуст.</translation>
+        <translation type="vanished">URL пуст.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/base64.cpp" line="36"/>
         <source>Unable to open the file %0.</source>
-        <translation>Не возможно открыть файл %0.</translation>
+        <translation type="vanished">Не возможно открыть файл %0.</translation>
     </message>
 </context>
 <context>
     <name>Chat</name>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/chat/Chat.qml" line="687"/>
+        <location filename="../qmlInterface/qml/terminal/pages/chat/Chat.qml" line="741"/>
         <source>input text field</source>
         <translation>введите текст</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/chat/Chat.qml" line="782"/>
+        <location filename="../qmlInterface/qml/terminal/pages/chat/Chat.qml" line="836"/>
         <source>Select file</source>
         <translation>Выбирите файл</translation>
     </message>
@@ -43,52 +39,9 @@
 <context>
     <name>Contacts</name>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/contacts/Contacts.qml" line="177"/>
+        <location filename="../qmlInterface/qml/terminal/pages/contacts/Contacts.qml" line="178"/>
         <source>Waiting adding contacts from </source>
         <translation>Ожидаем принятие дружбы от </translation>
-    </message>
-</context>
-<context>
-    <name>Core</name>
-    <message>
-        <location filename="../terminalQmlPlugin/core.cpp" line="64"/>
-        <source>KiB</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../terminalQmlPlugin/core.cpp" line="64"/>
-        <source>MiB</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../terminalQmlPlugin/core.cpp" line="64"/>
-        <source>GiB</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../terminalQmlPlugin/core.cpp" line="65"/>
-        <source>TiB</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../terminalQmlPlugin/core.cpp" line="65"/>
-        <source>PiB</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../terminalQmlPlugin/core.cpp" line="65"/>
-        <source>EiB</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../terminalQmlPlugin/core.cpp" line="66"/>
-        <source>ZiB</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../terminalQmlPlugin/core.cpp" line="66"/>
-        <source>YiB</source>
-        <translation></translation>
     </message>
 </context>
 <context>
@@ -129,12 +82,12 @@
 <context>
     <name>FileDialog</name>
     <message>
-        <location filename="../qmlInterface/qml/terminal/elements/FileDialog.qml" line="287"/>
+        <location filename="../qmlInterface/qml/terminal/elements/FileDialog.qml" line="296"/>
         <source>Size</source>
         <translation>Размер</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/elements/FileDialog.qml" line="309"/>
+        <location filename="../qmlInterface/qml/terminal/elements/FileDialog.qml" line="318"/>
         <source>Elemens</source>
         <translation>Элементов</translation>
     </message>
@@ -142,46 +95,34 @@
 <context>
     <name>FileIO</name>
     <message>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="23"/>
         <source>File not found.</source>
-        <translation>Файл не найден.</translation>
+        <translation type="vanished">Файл не найден.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="24"/>
         <source>Not found %0.</source>
-        <translation>Не найден %0.</translation>
+        <translation type="vanished">Не найден %0.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="35"/>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="36"/>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="62"/>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="63"/>
         <source>Source is empty.</source>
-        <translation>Источник пуст.</translation>
+        <translation type="vanished">Источник пуст.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="52"/>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="53"/>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="71"/>
-        <location filename="../terminalQmlPlugin/fileio.cpp" line="72"/>
         <source>Unable to open the file %0.</source>
-        <translation>Не возможно открыть файл %0.</translation>
+        <translation type="vanished">Не возможно открыть файл %0.</translation>
     </message>
 </context>
 <context>
     <name>FileSystem</name>
     <message>
-        <location filename="../terminalQmlPlugin/filesystem.cpp" line="15"/>
         <source>File %0 not exists.</source>
-        <translation>Файл %0 не найден.</translation>
+        <translation type="vanished">Файл %0 не найден.</translation>
     </message>
 </context>
 <context>
     <name>FileValidator</name>
     <message>
-        <location filename="../terminalQmlPlugin/filevalidator.cpp" line="13"/>
         <source>URL is empty.</source>
-        <translation>URL пуст.</translation>
+        <translation type="vanished">URL пуст.</translation>
     </message>
 </context>
 <context>
@@ -205,7 +146,7 @@
 <context>
     <name>Menu</name>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="87"/>
+        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="85"/>
         <source>No connection</source>
         <translation>Нет соединения</translation>
     </message>
@@ -237,32 +178,32 @@
 <context>
     <name>MenuContext</name>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="168"/>
+        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="171"/>
         <source>I</source>
         <translation>Я</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="175"/>
+        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="178"/>
         <source>ALL</source>
         <translation>ВСЕ</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="182"/>
+        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="185"/>
         <source>CONTACTS</source>
         <translation>КОНТАКТЫ</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="189"/>
+        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="192"/>
         <source>VISITORS</source>
-        <translation>ПОСИТИТЕЛИ</translation>
+        <translation>ПОСЕТИТЕЛИ</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="196"/>
+        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="199"/>
         <source>TORRENT</source>
         <translation>ТОРРЕНТ</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="203"/>
+        <location filename="../qmlInterface/qml/terminal/pages/menu/Menu.qml" line="206"/>
         <source>SETTINGS</source>
         <translation>НАСТРОЙКИ</translation>
     </message>
@@ -270,20 +211,18 @@
 <context>
     <name>Message</name>
     <message>
-        <location filename="../terminalQmlPlugin/message.cpp" line="128"/>
         <source>Invalid message type &quot;%0&quot;.</source>
-        <translation>Не известный тип сообщения &quot;%0&quot;.</translation>
+        <translation type="vanished">Не известный тип сообщения &quot;%0&quot;.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/message.cpp" line="138"/>
         <source>Invalid message direction &quot;%0&quot;.</source>
-        <translation>Не известное направление сообщения &quot;%0&quot;.</translation>
+        <translation type="vanished">Не известное направление сообщения &quot;%0&quot;.</translation>
     </message>
 </context>
 <context>
     <name>Music</name>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/userInfo/pages/Music.qml" line="535"/>
+        <location filename="../qmlInterface/qml/terminal/pages/userInfo/pages/Music.qml" line="536"/>
         <source>Select audio</source>
         <translation>Выбирите аудио</translation>
     </message>
@@ -291,7 +230,7 @@
 <context>
     <name>Photo</name>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/userInfo/pages/Photo.qml" line="425"/>
+        <location filename="../qmlInterface/qml/terminal/pages/userInfo/pages/Photo.qml" line="426"/>
         <source>Select image</source>
         <translation>Выбирите изображение</translation>
     </message>
@@ -299,118 +238,95 @@
 <context>
     <name>ProxySettings</name>
     <message>
-        <location filename="../terminalQmlPlugin/proxysettings.cpp" line="87"/>
         <source>Dom Element is not &quot;%0&quot;</source>
-        <translation>DOM-элемент не &quot;%0&quot;</translation>
+        <translation type="vanished">DOM-элемент не &quot;%0&quot;</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../qmlInterface/main.cpp" line="64"/>
         <source>Copy &quot;:/data/%0&quot; to &quot;%1&quot;.</source>
-        <translation>Копируем: &quot;:/data/%0&quot; в &quot;%1&quot;.</translation>
+        <translation type="vanished">Копируем: &quot;:/data/%0&quot; в &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/main.cpp" line="77"/>
         <source>Copy &quot;%0&quot; to &quot;%1&quot;.</source>
-        <translation>Копируем &quot;%0&quot; в &quot;%1&quot;.</translation>
+        <translation type="vanished">Копируем &quot;%0&quot; в &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/terminalimageprovider.cpp" line="20"/>
         <source>File %0 not found.</source>
-        <translation>Файл %0 не найден.</translation>
+        <translation type="vanished">Файл %0 не найден.</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/terminalimageprovider.cpp" line="25"/>
         <source>Unable to open the file %0.</source>
-        <translation>Не возможно открыть файл %0.</translation>
+        <translation type="vanished">Не возможно открыть файл %0.</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/terminalimageprovider.cpp" line="33"/>
         <source>Error on parse &quot;%0&quot;: &quot;%1&quot;.</source>
-        <translation>Ошибка парсинга &quot;%0&quot;: &quot;%1&quot;.</translation>
+        <translation type="vanished">Ошибка парсинга &quot;%0&quot;: &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/terminalimageprovider.cpp" line="42"/>
         <source>Not found &lt;info&gt;&lt;photo&gt; in &quot;%0&quot;.</source>
-        <translation>Не найден &lt;info&gt;&lt;photo&gt; в &quot;%0&quot;.</translation>
+        <translation type="vanished">Не найден &lt;info&gt;&lt;photo&gt; в &quot;%0&quot;.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="10"/>
         <source>In XmlInterface::findElement() object can not be NULL.</source>
-        <translation>В XmlInterface::findElement() объект не может быть NULL.</translation>
+        <translation type="vanished">В XmlInterface::findElement() объект не может быть NULL.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="17"/>
         <source>Find element &quot;%0&quot; in &quot;%1&quot; in %2 failed. Source must be set first.</source>
-        <translation>Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Source должен быть установлен сначала.</translation>
+        <translation type="vanished">Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Source должен быть установлен сначала.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="25"/>
         <source>Find element &quot;%0&quot; in &quot;%1&quot; in %2 failed. Element must be set first.</source>
-        <translation>Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Element должен быть установлен сначала.</translation>
+        <translation type="vanished">Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Element должен быть установлен сначала.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="34"/>
         <source>Find element &quot;%0&quot; in &quot;%1&quot; in %2 failed. File &quot;%1&quot; not exists.</source>
-        <translation>Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Файл &quot;%1&quot; не найден.</translation>
+        <translation type="vanished">Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Файл &quot;%1&quot; не найден.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="41"/>
         <source>Find element &quot;%0&quot; in &quot;%1&quot; in %2 failed. Can not open file &quot;%1&quot;.</source>
-        <translation>Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Не удалось открыть файл &quot;%1&quot;.</translation>
+        <translation type="vanished">Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Не удалось открыть файл &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="49"/>
         <source>Find element &quot;%0&quot; in &quot;%1&quot; in %2 failed. Parse file &quot;%1&quot; error. Error: &quot;%3&quot;.</source>
-        <translation>Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Парсинг файла &quot;%1&quot; вызвал ошибку. Ошибка: &quot;%3&quot;.</translation>
+        <translation type="vanished">Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. Парсинг файла &quot;%1&quot; вызвал ошибку. Ошибка: &quot;%3&quot;.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="61"/>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="73"/>
         <source>Find element &quot;%0&quot; in &quot;%1&quot; in %2 failed. In file &quot;%1&quot; not found &quot;%3&quot;.</source>
-        <translation>Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. В файле &quot;%1&quot; не найден &quot;%3&quot;.</translation>
+        <translation type="vanished">Поиск элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удался. В файле &quot;%1&quot; не найден &quot;%3&quot;.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="88"/>
         <source>In XmlInterface::createElement() object can not be NULL.</source>
-        <translation>В XmlInterface::createElement() объект не может быть NULL.</translation>
+        <translation type="vanished">В XmlInterface::createElement() объект не может быть NULL.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="95"/>
         <source>Create element &quot;%0&quot; in &quot;%1&quot; in %2 failed. Source must be set first.</source>
-        <translation>Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. Source должен быть установлен сначала.</translation>
+        <translation type="vanished">Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. Source должен быть установлен сначала.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="103"/>
         <source>Create element &quot;%0&quot; in &quot;%1&quot; in %2 failed. ParentElement must be set first.</source>
-        <translation>Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. ParentElement должен быть установлен сначала.</translation>
+        <translation type="vanished">Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. ParentElement должен быть установлен сначала.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="114"/>
         <source>Create element &quot;%0&quot; in &quot;%1&quot; in %2 failed. Can not open file &quot;%0&quot;.</source>
-        <translation>Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. Не удалось открыть файл &quot;%1&quot;.</translation>
+        <translation type="vanished">Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. Не удалось открыть файл &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="122"/>
         <source>Create element &quot;%0&quot; in &quot;%1&quot; in %2 failed. Parse file &quot;%0&quot; error. Error: &quot;%3&quot;.</source>
-        <translation>Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. Парсинг файла &quot;%1&quot; вызвал ошибку. Ошибка: &quot;%3&quot;.</translation>
+        <translation type="vanished">Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. Парсинг файла &quot;%1&quot; вызвал ошибку. Ошибка: &quot;%3&quot;.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="135"/>
         <source>Create element &quot;%0&quot; in &quot;%1&quot; in %2 failed. In file &quot;%0&quot; not found &quot;%3&quot;.</source>
-        <translation>Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. В файле &quot;%1&quot; не найден &quot;%3&quot;.</translation>
+        <translation type="vanished">Создание элемента &quot;%0&quot; в &quot;%1&quot; в &quot;%2%&quot; не удалось. В файле &quot;%1&quot; не найден &quot;%3&quot;.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="172"/>
         <source>In XmlInterface::reoladModel() model can not be NULL.</source>
-        <translation>В XmlInterface::reloadModel() модель не может быть NULL.</translation>
+        <translation type="vanished">В XmlInterface::reloadModel() модель не может быть NULL.</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/xmlinterface.cpp" line="188"/>
         <source>In XmlInterface::saveModel() model can not be NULL.</source>
-        <translation>В XmlInterface::saveModel() модель не может быть NULL.</translation>
+        <translation type="vanished">В XmlInterface::saveModel() модель не может быть NULL.</translation>
     </message>
 </context>
 <context>
@@ -529,9 +445,8 @@
         <translation>Выбирите папку</translation>
     </message>
     <message>
-        <location filename="../terminalQmlPlugin/settings.cpp" line="189"/>
         <source>Unknown translation &quot;%0&quot;. Set to English</source>
-        <translation>Неизвестный перевод &quot;%0&quot;. Установлен в Английский</translation>
+        <translation type="vanished">Неизвестный перевод &quot;%0&quot;. Установлен в Английский</translation>
     </message>
 </context>
 <context>
@@ -624,15 +539,14 @@
 <context>
     <name>UserState</name>
     <message>
-        <location filename="../terminalQmlPlugin/userstate.cpp" line="6"/>
         <source>New State</source>
-        <translation>Создать новую</translation>
+        <translation type="vanished">Создать новую</translation>
     </message>
 </context>
 <context>
     <name>Video</name>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/userInfo/pages/Video.qml" line="415"/>
+        <location filename="../qmlInterface/qml/terminal/pages/userInfo/pages/Video.qml" line="416"/>
         <source>Select video</source>
         <translation>Выбирите видео</translation>
     </message>
@@ -640,79 +554,79 @@
 <context>
     <name>Welcome</name>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="111"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="106"/>
         <source>Sign In</source>
         <translation>Войти</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="154"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="149"/>
         <source>Register</source>
         <translation>Регистрация</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="197"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="192"/>
         <source>Remind Password</source>
         <translation>Напомнить Пароль</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="240"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="235"/>
         <source>Change Password</source>
         <translation>Изменить Пароль</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="313"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="308"/>
         <source>No connection</source>
         <translation>Нет соединения</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="352"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="340"/>
         <source>Passwords do not match</source>
         <translation>Пароль не правильный</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="469"/>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="503"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="457"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="491"/>
         <source>LOGIN</source>
         <translation>ЛОГИН</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="477"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="465"/>
         <source>PASSWORD</source>
         <translation>ПАРОЛЬ</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="510"/>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="539"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="498"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="527"/>
         <source>EMAIL</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="517"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="505"/>
         <source>YOUR NAME</source>
         <translation>ВАШЕ ИМЯ</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="562"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="550"/>
         <source>OLD PASSWORD</source>
         <translation>СТАРЫЙ ПАРОЛЬ</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="570"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="558"/>
         <source>NEW PASSWORD</source>
         <translation>НОВЫЙ ПАРОЛЬ</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="578"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="566"/>
         <source>REPEAT PASSWORD</source>
         <translation>ПОВТОРИТЕ ПАРОЛЬ</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="619"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="607"/>
         <source>Not save User &amp; Password</source>
         <translation>Не сохранять Логин и Пароль</translation>
     </message>
     <message>
-        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="619"/>
+        <location filename="../qmlInterface/qml/terminal/pages/welcome/Welcome.qml" line="607"/>
         <source>Save User &amp; Password</source>
         <translation>Сохранять Логин и Пароль</translation>
     </message>

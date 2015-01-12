@@ -234,16 +234,8 @@ Page {
                 for (i = 0; i < usersModel.count; i++) {
                     oldUser = usersModel.get(i)
                     if(oldUser.additionalData.isSelect) {
-                        //Найдем данного пользователя в контактах
-                        for (j = 0; j < applicationModel.contactsModel.count; j++) {
-                            if (applicationModel.contactsModel.get(j).profile === oldUser.profile) {
-                                applicationModel.contactsModel.remove(j)
-                                proxy.command("abonadd",oldUser.id)
-                                break
-                            }
-                        }
+                        proxy.command("abondel",oldUser.id)
                     }
-                    oldUser.additionalData.isSelect = false
                 }
                 applicationModel.contactsModel.save()
             }

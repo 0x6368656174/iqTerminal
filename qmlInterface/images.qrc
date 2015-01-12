@@ -166,8 +166,6 @@
         <file>qml/terminal/images/50b.png</file>
         <file>qml/terminal/images/52b.png</file>
         <file>qml/terminal/images/51cb.png</file>
-        <file>qml/terminal/smiles/1.png</file>
-        <file>qml/terminal/smiles/1a.png</file>
         <file>qml/terminal/images/200.png</file>
         <file>qml/terminal/images/200a.png</file>
         <file>qml/terminal/images/40a.png</file>
@@ -185,5 +183,26 @@
         <file>qml/terminal/images/206a.png</file>
         <file>qml/terminal/images/207.png</file>
         <file>qml/terminal/images/208.png</file>
+        <file>qml/terminal/images/75d.png</file>
+        <file>qml/terminal/smiles/0.png</file>
+        <file>qml/terminal/smiles/1.png</file>
+        <file>qml/terminal/smiles/1a.png</file>
+        <file>qml/terminal/smiles/2.png</file>
+        <file>qml/terminal/smiles/3.png</file>
+        <file>qml/terminal/smiles/4.png</file>
+        <file>qml/terminal/smiles/5.png</file>
+        <file>qml/terminal/smiles/6.png</file>
+        <file>qml/terminal/smiles/7.png</file>
+        <file>qml/terminal/smiles/8.png</file>
+        <file>qml/terminal/smiles/9.png</file>
+        <file>qml/terminal/smiles/0a.png</file>
+        <file>qml/terminal/smiles/2a.png</file>
+        <file>qml/terminal/smiles/3a.png</file>
+        <file>qml/terminal/smiles/4a.png</file>
+        <file>qml/terminal/smiles/5a.png</file>
+        <file>qml/terminal/smiles/6a.png</file>
+        <file>qml/terminal/smiles/7a.png</file>
+        <file>qml/terminal/smiles/8a.png</file>
+        <file>qml/terminal/smiles/9a.png</file>
     </qresource>
 </RCC>

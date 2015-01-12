@@ -33,6 +33,7 @@ public:
 public:
     QUrl source() const;
     void setSource(const QUrl &source);
+    void resetSource();
 
     QString parentElement() const;
     void setParentElement(const QString &parentElement);

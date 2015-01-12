@@ -20,62 +20,57 @@ Page {
     function signIn(login, password) {
         errorMessage.visible = false
         //Если авторизованы, то просто войдем
-//        autorized=true;
+//        autorized=true
         if (autorized) {
             showRightPage("menu")
         } else {
-            proxy.command("logon",login+","+password)
             progressBar.runing = true
+            proxy.command("logon",login+","+password)
         }
     }
 
     function register (login, email, name) {
         errorMessage.visible = false
-        proxy.command("register",login+","+email+","+name)
         progressBar.runing = true
+        proxy.command("register",login+","+email+","+name)
     }
 
     function remindPassword(email) {
         errorMessage.visible = false
-        proxy.command("restore",email)
         progressBar.runing = true
+        proxy.command("restore",email)
     }
 
     function changePassword(oldPassword, newPassword) {
         errorMessage.visible = false
-        proxy.command("change",oldPassword+","+newPassword+","+newPassword)
         progressBar.runing = true
+        proxy.command("change",oldPassword+","+newPassword+","+newPassword)
     }
 
     Connections {
         target: proxy
-        onLogonOk: autorized=true
+        onLogonOk: {
+            autorized=true
+        }
         onLogonError: {
-            progressBar.runing = false
             welcomePage.showError(result)
         }
         onRegistrOk: {
-            progressBar.runing = false
             welcomePage.showError(result)
         }
         onRegistrError: {
-            progressBar.runing = false
             welcomePage.showError(result)
         }
         onRestorePswdOk: {
-            progressBar.runing = false
             welcomePage.showError(result)
         }
         onRestorePswdError: {
-            progressBar.runing = false
             welcomePage.showError(result)
         }
         onChangePswdOk: {
-            progressBar.runing = false
             welcomePage.showError(result)
         }
         onChangePswdError: {
-            progressBar.runing = false
             welcomePage.showError(result)
         }
     }

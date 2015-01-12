@@ -198,8 +198,8 @@ Page {
                 }
             }
         }
-        /////СТАТУСЫ////////
 
+        /////СТАТУСЫ////////
         Rectangle {
             id: stateTextContainer
             anchors.top: nameContainter.bottom

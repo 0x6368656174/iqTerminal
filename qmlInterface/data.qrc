@@ -1,10 +1,20 @@
 <RCC>
     <qresource prefix="/">
         <file>data/i.xml</file>
-        <file>data/torrent.xml</file>
+        <file>data/download.xml</file>
+        <file>data/upload.xml</file>
+        <file>data/search.xml</file>
         <file>data/all.xml</file>
         <file>data/contacts.xml</file>
         <file>data/visitors.xml</file>
         <file>data/settings.xml</file>
+        <file>qtquick2applicationviewer/qtquick2applicationviewer.cpp</file>
+        <file>qtquick2applicationviewer/qtquick2applicationviewer.h</file>
+        <file>main.cpp</file>
+        <file>terminalimageprovider.cpp</file>
+        <file>terminalimageprovider.h</file>
+        <file>data/ringtone/file_load.wav</file>
+        <file>data/ringtone/file_not_load.wav</file>
+        <file>data/ringtone/sms_in.wav</file>
     </qresource>
 </RCC>

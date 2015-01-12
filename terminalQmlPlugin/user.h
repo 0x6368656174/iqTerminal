@@ -29,6 +29,7 @@ protected:
 public:
     QString profile() const {return m_profile;}
     void setProfile(const QString &profile);
+    void resetProfile();
 
     bool online() const;
     void setOnline(bool online);

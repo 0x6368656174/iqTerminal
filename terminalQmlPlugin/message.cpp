@@ -206,6 +206,5 @@ QDomElement Message::toDomElement(QDomDocument &domDocument) const
 
     QDomText textText = domDocument.createTextNode(text());
     rootElement.appendChild(textText);
-
     return rootElement;
 }

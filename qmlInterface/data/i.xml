@@ -1,41 +1,37 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <user>
-	<info>
-		<id>1</id>
-		<name>неизвестный</name>
-		<statuses>
-			<state id="0">
-				<name>О себе</name>
-				<text></text>
-			</state>
-			<state id="1">
-				<name>Возраст</name>
-				<text></text>
-			</state>
-			<state id="2">
-				<name>Пол</name>
-				<text></text>
-			</state>
-			<state id="3">
-				<name>Местонахождение</name>
-				<text></text>
-			</state>
-			<state id="4">
-				<name>Образование</name>
-				<text></text>
-			</state>
-			<state id="5">
-				<name>Род занятий</name>
-				<text></text>
-			</state>
-		</statuses>
-		<photo>
-		</photo>
-	</info>
-	<photos>
-	</photos>
-	<videos>
-	</videos>
-	<music>
-	</music>
+ <info>
+  <id>1</id>
+  <name>неизвестный</name>
+  <photo></photo>
+  <statuses>
+   <state id="0">
+    <name>О себе</name>
+    <text/>
+   </state>
+   <state id="1">
+    <name>Возраст</name>
+    <text/>
+   </state>
+   <state id="2">
+    <name>Пол</name>
+    <text/>
+   </state>
+   <state id="3">
+    <name>Местонахождение</name>
+    <text/>
+   </state>
+   <state id="4">
+    <name>Образование</name>
+    <text/>
+   </state>
+   <state id="5">
+    <name>Род занятий</name>
+    <text/>
+   </state>
+  </statuses>
+ </info>
+ <photos/>
+ <videos/>
+ <music/>
 </user>

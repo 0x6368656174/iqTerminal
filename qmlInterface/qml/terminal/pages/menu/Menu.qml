@@ -23,22 +23,20 @@ Page {
     Connections {
         target: proxy
         onAbonBookLoaded: {
-            usersContactsModel.reload()
             progressBar.runing=false
             menuPage.pageClicked("contacts")
         }
         onAbonWaitLoaded: {
-            usersVisitorsModel.reload()
             progressBar.runing=false
             menuPage.pageClicked("visitors")
         }
         onAbonListLoaded: {
-            usersAllModel.reload()
             progressBar.runing=false
             menuPage.pageClicked("all")
         }
         onAbonBookNotLoaded: {
             progressBar.runing=false
+//            menuPage.pageClicked("contacts")
             showError("Контакты не загружены")
         }
         onAbonWaitNotLoaded: {
@@ -86,7 +84,6 @@ Page {
             Behavior on height {NumberAnimation {duration: 200 } }
             onFinished: showError(qsTr("No connection"))
         }
-
 
         Component {
             id: menuDelegate
@@ -142,10 +139,18 @@ Page {
                     onClicked: if (expected_file === "") {
                                    menuPage.pageClicked(page_name)
                                } else {
-                                   if (fileWatcher.exist()) {
-                                       menuPage.pageClicked(page_name)
-                                   } else {
-                                       progressBar.runing = true
+                                   if(page_name==="contacts") {
+                                       //progressBar.runing=true
+                                       proxy.command("abonbook","")
+                                       menuPage.pageClicked("contacts")
+                                   }
+                                   if(page_name==="visitors")  {
+                                       progressBar.runing=true
+                                       proxy.command("abonwait","")
+                                   }
+                                   if(page_name==="all") {
+                                       progressBar.runing=true
+                                       proxy.command("abonlist","%%")
                                    }
                                }
                 }
@@ -153,7 +158,6 @@ Page {
                 Loader {
                     source: "../" + qml_page
                     onLoaded: {
-                        console.log("loader "+page_name)
                         item.name = page_name
                         menuPage.pageLoaded(item)
                     }
@@ -189,7 +193,7 @@ Page {
                 title: QT_TRANSLATE_NOOP("MenuContext", "VISITORS")
                 image: "17.png"
                 qml_page: "visitors/Visitors.qml"
-                expected_file: ""
+                expected_file: "visitors.xml"
             }
             ListElement {
                 page_name: "torrent"

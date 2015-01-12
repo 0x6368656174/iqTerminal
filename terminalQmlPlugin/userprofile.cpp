@@ -10,7 +10,7 @@ UserProfile::UserProfile(QObject *parent) :
     m_name(""),
     m_photo(QImage()),
     m_stateModel(new UserStatesModel(this)),
-    m_preferredSize(QSize(400, 200)),
+    m_preferredSize(QSize(160, 160)),
     m_id(-1)
 {
 }
@@ -35,7 +35,8 @@ QImage UserProfile::photo() const
 
 void UserProfile::setPhoto(QImage &photo)
 {
-    if (m_photo != photo) {
+    if (m_photo != photo)
+    {
         m_photo = photo;
         emit photoChanged();
     }
@@ -86,6 +87,14 @@ void UserProfile::setSource(const QUrl &source)
         if (!parentElement().isEmpty())
             reload();
     }
+}
+
+void UserProfile::resetSource()
+{
+    emit sourceChanged();
+
+//    if (!parentElement().isEmpty())
+        reload();
 }
 
 QString UserProfile::parentElement() const

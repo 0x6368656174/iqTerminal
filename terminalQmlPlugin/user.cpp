@@ -31,11 +31,18 @@ void User::setProfile(const QString &profileFile)
         m_profile = profileFile;
 
         m_userInfo->setUserProfileFile(profileFile);
-
         m_messagesModel->setSource(QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/chats/" + profileFile));
 
         emit profileChanged();
     }
+}
+
+void User::resetProfile()
+{
+    m_userInfo->resetUserProfileFile();
+    m_messagesModel->setSource(QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/chats/" + m_profile));
+
+    emit profileChanged();
 }
 bool User::online() const
 {
@@ -49,6 +56,7 @@ void User::setOnline(bool online)
         emit onlineChanged();
     }
 }
+
 bool User::friendshipAccepted() const
 {
     return m_friendshipAccepted;

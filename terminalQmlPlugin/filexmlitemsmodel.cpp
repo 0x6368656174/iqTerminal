@@ -24,6 +24,14 @@ void FileXmlItemsModel::setSource(const QUrl &source)
     }
 }
 
+void FileXmlItemsModel::resetSource()
+{
+    emit sourceChanged();
+
+    if (!parentElement().isEmpty())
+        reload();
+}
+
 QString FileXmlItemsModel::parentElement() const
 {
     return m_parentElement;

@@ -10,7 +10,8 @@ ApplicationModel::ApplicationModel(QObject *parent) :
     m_contactsModel(new UsersModel(this)),
     m_visitorsModel(new UsersModel(this)),
     m_torrents(new Torrents(this)),
-    m_settings(new Settings(this))
+    m_settings(new Settings(this)),
+    m_chatNotEmpty(false)
 {
     m_aboutMe->setUserProfileFile("../i.xml");
 
@@ -64,4 +65,18 @@ Torrents *ApplicationModel::torrents() const
 Settings *ApplicationModel::settings() const
 {
     return m_settings;
+}
+
+bool ApplicationModel::chatNotEmpty() const
+{
+    return m_chatNotEmpty;
+}
+
+void ApplicationModel::setChatNotEmpty(const bool value)
+{
+    if(m_chatNotEmpty!=value)
+    {
+        m_chatNotEmpty=value;
+        emit chatNotEmptyChanged();
+    }
 }

@@ -35,6 +35,7 @@ Page {
     UsersFilterModel {
         id: usersModel
         filterModel: applicationModel.allModel
+        onSourceModelChanged: photoImage.update()
     }
 
     GridView {
@@ -64,6 +65,7 @@ Page {
             width: usersView.cellWidth - (2 * applicationModel.settings.zoomFactor)
             height: usersView.cellHeight - (2 * applicationModel.settings.zoomFactor)
             color: "#6c676e"
+
 
             Item
             {

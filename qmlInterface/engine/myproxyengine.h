@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QString>
 #include <QVariant>
+#include <QImage>
 
 #include "MyGlobal.h"
 
@@ -46,8 +47,12 @@ signals:
     void changePswdOk(QString result);
     void changePswdError(QString result);
 
+    void updateCurCameraOutSignal(QImage);
+
 public slots:
     Q_INVOKABLE void command(QString cmd, QString param);
+
+    void updateCurCameraInSlot(QImage kadr);
 
 private slots:
     void AbonBookIsLoad();
@@ -56,6 +61,7 @@ private slots:
     void MyProfileUpload();
     void AnyProfileDownload();
     void MyTorrentUpload();
+    void TorrentSearchLoad();
 };
 
 #endif // MYPROXYENGINE_H

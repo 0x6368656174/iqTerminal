@@ -67,6 +67,8 @@ class ApplicationModel : public QObject
      */
     Q_PROPERTY(Settings* settings READ settings CONSTANT)
 
+    Q_PROPERTY(bool chatNotEmpty READ chatNotEmpty WRITE setChatNotEmpty NOTIFY chatNotEmptyChanged)
+
 public:
     /*!
      * \brief Метод для получения экземпляра объекта
@@ -91,6 +93,13 @@ public:
     Torrents *torrents() const;
 
     Settings *settings() const;
+
+    bool chatNotEmpty() const;
+    void setChatNotEmpty(const bool value);
+
+signals:
+    void chatNotEmptyChanged();
+
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
 
 private:
@@ -103,6 +112,8 @@ private:
     UsersModel *m_visitorsModel;
     Torrents *m_torrents;
     Settings *m_settings;
+
+    bool m_chatNotEmpty;
 };
 
 #endif // APPLICATIONMODEL_H

@@ -7,15 +7,16 @@ Torrents::Torrents(QObject *parent) :
     m_downloadModel(new TorrentFoldersModel(this)),
     m_uploadModel(new TorrentFoldersModel(this))
 {
-    QUrl torrentXmlPath = QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/torrent.xml");
-
-    m_searchModel->setParentElement("torrent/upload");
+    QUrl torrentXmlPath = QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/search.xml");
+    m_searchModel->setParentElement("torrent");
     m_searchModel->setSource(torrentXmlPath);
 
-    m_downloadModel->setParentElement("torrent/download");
+    torrentXmlPath = QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/download.xml");
+    m_downloadModel->setParentElement("torrent");
     m_downloadModel->setSource(torrentXmlPath);
 
-    m_uploadModel->setParentElement("torrent/upload");
+    torrentXmlPath = QUrl::fromLocalFile(Core::dataDir().toLocalFile() + "/upload.xml");
+    m_uploadModel->setParentElement("torrent");
     m_uploadModel->setSource(torrentXmlPath);
 }
 TorrentFoldersModel *Torrents::searchModel() const

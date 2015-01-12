@@ -132,7 +132,7 @@ Page {
                         source: {
                             if (!user_friendship_accepted)
                                 return "../../images/204c.png"
-                            else if (user_online)
+                            else if (user_info.sms)
                                 return "../../images/204b.png"
                             return "../../images/204a.png"
                         }
@@ -172,6 +172,7 @@ Page {
                     onClicked: {
                         if (user_friendship_accepted) {
                             chat.user = usersModel.get(index)
+                            proxy.command("chat",index)
                             showRightPage(chat.name)
                         } else
                             showError(qsTr("Waiting adding contacts from ") + user_info.userProfile.name)

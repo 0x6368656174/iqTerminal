@@ -4,7 +4,7 @@ import QtMultimedia 5.2
 import ".."
 //import "pages"
 import "../../elements"
-
+import "../../videocall"
 
 Page {
     id: chatPage
@@ -13,10 +13,10 @@ Page {
     name: "chat"
 
     function send() {
-        console.log("send")
         var plainText = TextDecorator.toPlainText(textInputText.getFormattedText(0, textInputText.length))
         if (attachmentBar.role === "" && audioRecordBar.role === "" && plainText === "")
             return
+
         var newMessage = user.messagesModel.appendNew()
         newMessage.sendDateTime = new Date()
         newMessage.direction = Message.Outgoing
@@ -32,6 +32,8 @@ Page {
         {
             newMessage.type = Message.Text
         }
+
+        proxy.sendMessage(newMessage)
 
         attachmentBar.role = ""
         audioRecordBar.role = ""
@@ -67,6 +69,7 @@ Page {
         onCountChanged: {
             chatView.animatedPosition(user.messagesModel.count - 1)
         }
+
     }
 
     MessagesFilterModel {
@@ -88,7 +91,7 @@ Page {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-//            color: "#6c676e"
+            //            color: "#6c676e"
             width: height
             Item{
                 anchors.centerIn: parent
@@ -144,6 +147,7 @@ Page {
         move: Transition {
             NumberAnimation { properties: "x,y"; duration: 1000 }
         }
+
 
         function animatedPosition(index) {
             chatView.positionViewAtIndex(index, ListView.Contain)
@@ -232,11 +236,27 @@ Page {
                         return ""
                     }
                 }
+                Rectangle {
+                    id: statusFile
+                    width: 3
+                    height: parent.height
+                    anchors.bottom: parent.bottom
+                    anchors.left: typeImage.right
+                    color: message_was_read?"#f00000":"#d4a4a4"
+                    visible: {
+                        if((message_type === Message.Text) || (message_direction === Message.Outgoing))
+                            return false
+                        else
+                            return true
+                    }
+
+                }
 
                 Text {
                     id: messageText
-                    anchors.left: typeImage.right
-                    anchors.leftMargin: message_type !== Message.Text?0:(8 * applicationModel.settings.zoomFactor)
+                    //                    anchors.left: typeImage.right
+                    anchors.left: statusFile.right
+                    anchors.leftMargin: message_type !== Message.Text?2:(8 * applicationModel.settings.zoomFactor)
                     anchors.right: parent.right
                     anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
                     anchors.topMargin: (12 * applicationModel.settings.zoomFactor)
@@ -268,15 +288,12 @@ Page {
                 TerminalMouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        if (message_direction === Message.Incoming) {
-                            if (messageText.lineCount > 1) {
-                                if (message_additional_data.collapse)
-                                    message_was_read = true
-                            } else {
-                                message_was_read = true
+                        if (message_direction === Message.Outgoing) return
+                        if (message_direction === Message.Incoming)
+                            if(message_was_read === false) {
+                                proxy.command("filechat",message_file_path)
+                                return
                             }
-                            user.messagesModel.save()
-                        }
 
                         if (message_type === Message.Text) {
 
@@ -364,8 +381,9 @@ Page {
 
                 Text {
                     id: sendTimeText
-                    anchors.left: message_direction === Message.Incoming?undefined:parent.left
-                    anchors.right: message_direction === Message.Outgoing?undefined:parent.right
+                    //                    anchors.left: message_direction === Message.Incoming?undefined:parent.left
+                    //                    anchors.right: message_direction === Message.Outgoing?undefined:parent.right
+                    anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     anchors.leftMargin: (8 * applicationModel.settings.zoomFactor)
                     anchors.rightMargin: (8 * applicationModel.settings.zoomFactor)
@@ -510,7 +528,7 @@ Page {
 
     Rectangle {
         id: smilesRow
-        property int smilesCount: 15
+        property int smilesCount: 10
         property int columnCount: (width - 2*smilesGrid.anchors.margins) / (20 * applicationModel.settings.zoomFactor) < 1?1:(width - 2*smilesGrid.anchors.margins) / (20 * applicationModel.settings.zoomFactor)
         property int rowCountInt: smilesCount / columnCount
         property int rowCount:  smilesCount / columnCount - rowCountInt !== 0?rowCountInt + 1:rowCountInt
@@ -551,9 +569,9 @@ Page {
                     hoverColor: backgroundColor
                     clip: false
                     imageFolder: "../../smiles/"
-                    imageNumber: 1
+                    imageNumber: index
                     platformIndependentHoverEnabled: smilesRow.height === smilesRow.collapcedHeight()
-                    onClicked: smilesRow.insertSmile("1.png")
+                    onClicked: smilesRow.insertSmile(index+".png")
                 }
             }
         }
@@ -569,7 +587,7 @@ Page {
         clip: true
         ChatButton {
             id: addButton
-            width: (parent.width - 3)/6
+            width: (parent.width - 4)/6
             height: parent.height
             anchors.left: parent.left
             imageNumber: 200
@@ -577,7 +595,7 @@ Page {
         }
         Item {
             id: subRows
-            width: (parent.width - 3)*4/6
+            width: (parent.width - 4)*4/6
             anchors.left: addButton.right
             anchors.leftMargin: 1
             height: firstButtonRow.height * 2
@@ -598,13 +616,28 @@ Page {
                     id: audioConferenceButton
                     width: (parent.width - 3)/4
                     height: parent.height
-                    imageNumber: 54
+                    imageNumber: 55
+                    onClicked: proxy.command("audio",user.id)
                 }
                 ChatButton {
                     id: videoConferenceButton
                     width: (parent.width - 3)/4
                     height: parent.height
-                    imageNumber: 55
+                    imageNumber: 54
+                    onClicked: {
+                        if(!chatVideo.visible)
+                        {
+                            proxy.command("video",user.id)
+                            chatVideo.visible = true
+                            cameraViewFinder.cameraStartCameraSource()
+                        }
+                        else
+                        {
+                            proxy.command("video-",user.id)
+                            chatVideo.visible = false
+                            cameraViewFinder.cameraStopSource()
+                        }
+                    }
                 }
                 ChatButton {
                     id: smileButton
@@ -664,11 +697,42 @@ Page {
         ChatButton {
             id: sendButton
             height: parent.height
+            width: (parent.width - 4)/7
             anchors.left: subRows.right
             anchors.leftMargin: 1
-            anchors.right: parent.right
             imageNumber: 56
             onClicked: chatPage.send()
+        }
+        Rectangle {
+            id: onlineStatus
+            height: parent.height
+            anchors.left: sendButton.right
+            anchors.leftMargin: 1
+            anchors.right: parent.right
+
+            Rectangle {
+                id: chatStatus
+                height: (parent.height-1)/3
+                width: parent.width
+                anchors.top: parent.top
+                color: user.userInfo.onlinec?"#00FF00":"#FF0000"
+            }
+            Rectangle {
+                id: audioStatus
+                height: (parent.height-1)/3
+                width: parent.width
+                anchors.top: chatStatus.bottom
+                anchors.topMargin: 1
+                color: user.userInfo.onlinea?"#00FF00":"#FF0000"
+            }
+            Rectangle {
+                id: videoStatus
+                height: (parent.height-1)/3
+                width: parent.width
+                anchors.top: audioStatus.bottom
+                anchors.topMargin: 1
+                color: user.userInfo.onlinev?"#00FF00":"#FF0000"
+            }
         }
     }
 
@@ -795,5 +859,53 @@ Page {
     PhotoCamera {
         id: photoCamera
         anchors.fill: parent
+    }
+
+//----------------------------------------------------------------------
+// видео временно воткнуто здесь
+// в окончательном варианте его отсюда убрать
+//----------------------------------------------------------------------
+    Rectangle {
+        id: chatVideo
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: titleRect.bottom
+        anchors.bottom: audioRecordBar.top
+        visible: false
+
+        // ----------------------------------------------------------------------------------------------------------------------
+        // Camera IN image - входное изображение, получаемое с движка. Можно создавать сколько удобно (не мешают друг другу)
+        // ----------------------------------------------------------------------------------------------------------------------
+        CameraIn {
+            anchors.fill: parent
+            color: "#bfbfbf"
+            border.width: 2
+            border.color: "white"
+        }
+
+        // ----------------------------------------------------------------------------------------------------------------------
+        // Camera view finder - одномоментно должен существовать в единственном экземпляре занимает устройство видеоввода (камеру)
+        // ----------------------------------------------------------------------------------------------------------------------
+        // Управление:
+        // cameraViewFinder.cameraNextCamera(); // Переключиться на следующую камеру
+        // cameraViewFinder.cameraStartCameraSource(); // Запустить передачу картинки с камеры в движок
+        // cameraViewFinder.cameraStartScreenSource(); // Запустить передачу картинки с экрана в движок (Только на десктопах)
+        // cameraViewFinder.cameraStopSource(); // Остановить передачу картинки в движок
+        // cameraViewFinder.cameraStartFromBegin(); // Передать в движок ключевой кадр (цельную картинку)
+
+        CameraViewFinder {
+            id: cameraViewFinder
+            x: 0
+            y: 0
+            width: 160
+            height: 120
+            color: "#bfbfbf"
+            border.width: 2
+            border.color: "white"
+            cameraInterval: 10 // количество передаваемых кадров в секунду
+            cameraWidth: 640 // ширина картинки с камеры
+            cameraHeight: 480 // высота картинки с камеры
+            cameraQuality: 10 // нечуствительность к изменениям в картинке 5-15
+        }
     }
 }

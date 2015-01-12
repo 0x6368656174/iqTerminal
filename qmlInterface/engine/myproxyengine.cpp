@@ -2,6 +2,7 @@
 #include <QFile>
 
 #include <QDebug>
+#include "applicationmodel.h"
 
 void MyProxyEngine::signalParsers(qint16 cmd, qint16 exitCode)
 {
@@ -104,8 +105,13 @@ void MyProxyEngine::command(QString cmd, QString param)
     if(cmd==cmdEsetprofile) MyProfileUpload();
     if(cmd==cmdEgetprofile) AnyProfileDownload();
     if(cmd==cmdEsettorrent) MyTorrentUpload();
-
+    if(cmd=="search") TorrentSearchLoad();
     if(cmd=="show") ChangePage(param);
+}
+
+void MyProxyEngine::updateCurCameraInSlot(QImage kadr)
+{
+    emit updateCurCameraOutSignal(kadr);
 }
 
 void MyProxyEngine::AbonBookIsLoad()
@@ -118,7 +124,7 @@ void MyProxyEngine::AbonBookIsLoad()
     book.append("<all>\n");
     book.append("<user id=\"95\">\n");
     book.append("<profile>95.xml</profile>\n");
-    book.append("<online>true</online>\n");
+    book.append("<online>false</online>\n");
     book.append("<friendship_accepted>true</friendship_accepted>\n");
     book.append("</user>\n");
     book.append("<user id=\"4141\">\n");
@@ -146,6 +152,8 @@ void MyProxyEngine::AbonBookIsLoad()
         file.close();
     }
 
+    ApplicationModel * appModel=ApplicationModel::instance();
+    appModel->contactsModel()->reload();
     emit abonBookLoaded();
 }
 
@@ -182,6 +190,8 @@ void MyProxyEngine::AbonListIsLoad()
         file.close();
     }
 
+    ApplicationModel * appModel=ApplicationModel::instance();
+    appModel->allModel()->reload();
     emit abonListLoaded();
 }
 
@@ -212,6 +222,9 @@ void MyProxyEngine::AbonWaitIsLoad()
         file.close();
     }
 
+    ApplicationModel * appModel=ApplicationModel::instance();
+    appModel->visitorsModel()->reload();
+
     emit abonWaitLoaded();
 }
 
@@ -231,4 +244,30 @@ void MyProxyEngine::MyTorrentUpload()
 {
     qDebug() << "MyTorrent upload";
     emit myTorrentUpLoaded();
+}
+
+void MyProxyEngine::TorrentSearchLoad()
+{
+    qDebug() << "search is load";
+    QByteArray book;
+
+    QFile file;
+    file.setFileName(v_homedir+QString("searchA.xml"));
+    if(file.open(QIODevice::ReadOnly))
+    {
+        book=file.readAll();
+        file.close();
+    }
+
+    file.setFileName(v_homedir+QString("search.xml"));
+    if(file.open(QIODevice::WriteOnly))
+    {
+        file.write(book);
+        file.close();
+    }
+
+    ApplicationModel * appModel=ApplicationModel::instance();
+    appModel->torrents()->searchModel()->reload();
+
+
 }

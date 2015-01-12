@@ -49,6 +49,11 @@ class UserInfo : public QObject
      */
     Q_PROPERTY(FoldersModel* musicsModel READ musicsModel CONSTANT)
 
+    Q_PROPERTY(bool sms READ sms WRITE setSms NOTIFY smsChanged)
+    Q_PROPERTY(bool onlinec READ onlinec WRITE setOnlinec NOTIFY onlinecChanged)
+    Q_PROPERTY(bool onlinea READ onlinea WRITE setOnlinea NOTIFY onlineaChanged)
+    Q_PROPERTY(bool onlinev READ onlinev WRITE setOnlinec NOTIFY onlinevChanged)
+
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 public:
     /*!
@@ -71,9 +76,23 @@ public:
 
     QString userProfileFile() const;
     void setUserProfileFile(const QString &userProfileFile);
+    void resetUserProfileFile();
+
+    bool sms() const;
+    void setSms(bool value);
+    bool onlinec() const;
+    void setOnlinec(bool value);
+    bool onlinea() const;
+    void setOnlinea(bool value);
+    bool onlinev() const;
+    void setOnlinev(bool value);
 
 signals:
     void userProfileFileChanged();
+    void smsChanged();
+    void onlinecChanged();
+    void onlineaChanged();
+    void onlinevChanged();
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
 
 private:
@@ -82,6 +101,9 @@ private:
     FoldersModel *m_photosModel;
     FoldersModel *m_videosModel;
     FoldersModel *m_musicsModel;
+
+    bool m_sms;
+    bool m_onlinec, m_onlinea, m_onlinev;
 };
 
 #endif // USERINFO_H

@@ -7,8 +7,8 @@ TARGET = iqTerminal
 QMAKE_CXXFLAGS += -std=c++0x
 
 include(../terminalQmlPlugin/terminalQmlPlugin.pri)
-
 include(engine/engine.pri)
+include(videoCall/videoCall.pri)
 
 #Не настоящая цель. Просто для удобства работы в QtCreator, чтоб была видна папка QML.
 #Сами файлы QML будут находиться в ресурсах, т.к. это в разы ускоряет работу приложения
@@ -42,7 +42,8 @@ RESOURCES += \
     data.qrc \
     qml.qrc \
     images.qrc \
-    translations.qrc
+    translations.qrc \
+    videocall.qrc
 
 lupdate_only {
 OTHER_FILES += \

@@ -511,7 +511,7 @@ Page {
         id: fileDialog
         selectMultiple: true
         selectFolder: true
-        selectFile: false
+        selectFile: true
         height: torrentPage.height
         anchors.bottom: parent.bottom
         onVisibleChanged: {

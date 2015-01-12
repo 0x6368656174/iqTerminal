@@ -16,7 +16,16 @@ void TextDecorator::initSmiles()
     if (!m_smiles.isEmpty())
         return;
 
-    m_smiles[":-)"] = "1a.png";
+    m_smiles[":0)"] = "0a.png";
+    m_smiles[":1)"] = "1a.png";
+    m_smiles[":2)"] = "2a.png";
+    m_smiles[":3)"] = "3a.png";
+    m_smiles[":4)"] = "4a.png";
+    m_smiles[":5)"] = "5a.png";
+    m_smiles[":6)"] = "6a.png";
+    m_smiles[":7)"] = "7a.png";
+    m_smiles[":8)"] = "8a.png";
+    m_smiles[":9)"] = "9a.png";
 }
 
 QString TextDecorator::toPlainText(const QString &str)

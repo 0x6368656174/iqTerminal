@@ -18,8 +18,10 @@ bool FileSystem::cp(const QUrl &source, const QUrl &destination)
 
     QFileInfo fi (destination.toLocalFile());
     if (fi.isDir()) {
-        return QFile::copy(source.toLocalFile(), destination.toLocalFile() + "/" + source.fileName());
+//        return QFile::copy(source.toLocalFile(), destination.toLocalFile() + "/" + source.fileName());
+        return QFile::rename(source.toLocalFile(), destination.toLocalFile() + "/" + source.fileName());
     }
 
-    return QFile::copy(source.toLocalFile(), destination.toLocalFile());
+//    return QFile::copy(source.toLocalFile(), destination.toLocalFile());
+    return QFile::rename(source.toLocalFile(), destination.toLocalFile());
 }

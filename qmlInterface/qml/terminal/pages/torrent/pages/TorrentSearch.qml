@@ -409,7 +409,8 @@ Page {
         id: searchBar
         z: 2
         onSearch: {
-            folderModel.filterString = text
+            proxy.command("search",text)
+//            folderModel.filterString = text
         }
     }
 
