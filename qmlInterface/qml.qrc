@@ -46,5 +46,6 @@
         <file>qml/terminal/pages/settings/ClickedText.qml</file>
         <file>qml/terminal/pages/settings/Separator.qml</file>
         <file>qml/terminal/pages/settings/Settings.qml</file>
+        <file>qml/terminal/pages/videocall/VideoCall.qml</file>
     </qresource>
 </RCC>

@@ -204,5 +204,23 @@
         <file>qml/terminal/smiles/7a.png</file>
         <file>qml/terminal/smiles/8a.png</file>
         <file>qml/terminal/smiles/9a.png</file>
+        <file>qml/terminal/images/209.png</file>
+        <file>qml/terminal/images/210.png</file>
+        <file>qml/terminal/images/211.png</file>
+        <file>qml/terminal/images/212.png</file>
+        <file>qml/terminal/images/213.png</file>
+        <file>qml/terminal/images/213a.png</file>
+        <file>qml/terminal/images/214.png</file>
+        <file>qml/terminal/images/214a.png</file>
+        <file>qml/terminal/images/215.png</file>
+        <file>qml/terminal/images/215a.png</file>
+        <file>qml/terminal/images/216.png</file>
+        <file>qml/terminal/images/216a.png</file>
+        <file>qml/terminal/images/217.png</file>
+        <file>qml/terminal/images/217a.png</file>
+        <file>qml/terminal/images/218.png</file>
+        <file>qml/terminal/images/218a.png</file>
+        <file>qml/terminal/images/219.png</file>
+        <file>qml/terminal/images/219a.png</file>
     </qresource>
 </RCC>

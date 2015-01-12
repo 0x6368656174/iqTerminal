@@ -7,6 +7,7 @@ import "pages/welcome"
 import "pages/menu"
 import "pages/userInfo"
 import "pages/chat"
+import "pages/videocall"
 import "elements"
 
 Window {
@@ -111,6 +112,11 @@ Window {
 
         Chat {
             id: chat
+            visible: false
+        }
+
+        VideoCall {
+            id: videoCall
             visible: false
         }
     }

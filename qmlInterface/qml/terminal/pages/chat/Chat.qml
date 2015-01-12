@@ -4,7 +4,7 @@ import QtMultimedia 5.2
 import ".."
 //import "pages"
 import "../../elements"
-import "../../videocall"
+import "../videocall"
 
 Page {
     id: chatPage
@@ -50,6 +50,7 @@ Page {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.topMargin: (70 * applicationModel.settings.zoomFactor)
+        visible: !fileChoiceDialog.visible
     }
 
     Component {
@@ -613,42 +614,25 @@ Page {
                 spacing: 1
                 visible: subRows.anchors.topMargin !== -firstButtonRow.height
                 ChatButton {
-                    id: audioConferenceButton
-                    width: (parent.width - 3)/4
-                    height: parent.height
-                    imageNumber: 55
-                    onClicked: proxy.command("audio",user.id)
-                }
-                ChatButton {
                     id: videoConferenceButton
-                    width: (parent.width - 3)/4
+                    width: (parent.width - 2)/3
                     height: parent.height
                     imageNumber: 54
                     onClicked: {
-                        if(!chatVideo.visible)
-                        {
-                            proxy.command("video",user.id)
-                            chatVideo.visible = true
-                            cameraViewFinder.cameraStartCameraSource()
-                        }
-                        else
-                        {
-                            proxy.command("video-",user.id)
-                            chatVideo.visible = false
-                            cameraViewFinder.cameraStopSource()
-                        }
+                        videoCall.userId = user.id
+                        videoCall.start()
                     }
                 }
                 ChatButton {
                     id: smileButton
-                    width: (parent.width - 3)/4
+                    width: (parent.width - 2)/3
                     height: parent.height
                     imageNumber: 78
                     onClicked: smileButton.checked = !smileButton.checked
                 }
                 ChatButton {
                     id: searchButton
-                    width: (parent.width - 3)/4
+                    width: (parent.width - 2)/3
                     height: parent.height
                     imageNumber: 202
                     onClicked: messageFilterModel.filterString = TextDecorator.toPlainText(textInputText.getFormattedText(0, textInputText.length))
@@ -859,53 +843,5 @@ Page {
     PhotoCamera {
         id: photoCamera
         anchors.fill: parent
-    }
-
-//----------------------------------------------------------------------
-// видео временно воткнуто здесь
-// в окончательном варианте его отсюда убрать
-//----------------------------------------------------------------------
-    Rectangle {
-        id: chatVideo
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: titleRect.bottom
-        anchors.bottom: audioRecordBar.top
-        visible: false
-
-        // ----------------------------------------------------------------------------------------------------------------------
-        // Camera IN image - входное изображение, получаемое с движка. Можно создавать сколько удобно (не мешают друг другу)
-        // ----------------------------------------------------------------------------------------------------------------------
-        CameraIn {
-            anchors.fill: parent
-            color: "#bfbfbf"
-            border.width: 2
-            border.color: "white"
-        }
-
-        // ----------------------------------------------------------------------------------------------------------------------
-        // Camera view finder - одномоментно должен существовать в единственном экземпляре занимает устройство видеоввода (камеру)
-        // ----------------------------------------------------------------------------------------------------------------------
-        // Управление:
-        // cameraViewFinder.cameraNextCamera(); // Переключиться на следующую камеру
-        // cameraViewFinder.cameraStartCameraSource(); // Запустить передачу картинки с камеры в движок
-        // cameraViewFinder.cameraStartScreenSource(); // Запустить передачу картинки с экрана в движок (Только на десктопах)
-        // cameraViewFinder.cameraStopSource(); // Остановить передачу картинки в движок
-        // cameraViewFinder.cameraStartFromBegin(); // Передать в движок ключевой кадр (цельную картинку)
-
-        CameraViewFinder {
-            id: cameraViewFinder
-            x: 0
-            y: 0
-            width: 160
-            height: 120
-            color: "#bfbfbf"
-            border.width: 2
-            border.color: "white"
-            cameraInterval: 10 // количество передаваемых кадров в секунду
-            cameraWidth: 640 // ширина картинки с камеры
-            cameraHeight: 480 // высота картинки с камеры
-            cameraQuality: 10 // нечуствительность к изменениям в картинке 5-15
-        }
     }
 }
