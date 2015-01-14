@@ -106,7 +106,7 @@ Page {
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.bottom: bottomItem.top
+            anchors.bottom: buttonRow.top
             anchors.bottomMargin: 20 * applicationModel.settings.zoomFactor
 
             Flipable {
@@ -149,8 +149,8 @@ Page {
             id: bottomItem
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: buttonRow.top
-            width: 160 * applicationModel.settings.zoomFactor
-            height: 120 * applicationModel.settings.zoomFactor
+            width: 120 * applicationModel.settings.zoomFactor
+            height: width / 1.3
 
             Flipable {
                 id: bottomFlipable
@@ -158,22 +158,34 @@ Page {
 
                 anchors.fill: parent
 
-                front: ShaderEffectSource {
+                front: Rectangle {
+                    color: "transparent"
+                    border.color: "white"
+                    border.width: 1
                     anchors.fill: bottomFlipable
-                    sourceItem: cameraViewFinder
+                    ShaderEffectSource {
+                        sourceItem: cameraViewFinder
+                        anchors.fill: parent
+                    }
                 }
 
-                back: ShaderEffectSource {
+                back: Rectangle {
+                    color: "transparent"
+                    border.color: "white"
+                    border.width: 1
                     anchors.fill: bottomFlipable
-                    sourceItem: cameraIn
+                    ShaderEffectSource {
+                        anchors.fill: parent
+                        sourceItem: cameraIn
+                    }
                 }
 
                 transform: Rotation {
                     id: bottomFlipableRotation
                     origin.x: bottomFlipable.width/2
                     origin.y: bottomFlipable.height/2
-                    axis.x: 0;
-                    axis.y: 1;
+                    axis.x: 0
+                    axis.y: 1
                     axis.z: 0
                     angle: 0
                 }
